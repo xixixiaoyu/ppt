@@ -7,6 +7,7 @@
 这些是你在本项目中必须遵守的最高准则。
 
 - **单一来源 (Single Source of Truth)**: 所有幻灯片集共享的功能（如导航、背景）都必须位于 `src/shared/` 目录中。不要复制代码，而是通过 Props 或注册表机制进行扩展。
+- **复用优于创造 (Reuse over Reinvention)**: 优先使用 `src/shared/` 中已有的组件（如 `ppt-container`）和功能，而不是重新发明轮子。
 - **代码即英文 (Code is English)**: 为了确保代码的清晰性和可维护性，所有代码（包括变量名、函数名、类名和注释）**必须**使用英文。UI 中面向用户的文本可以使用中文。
 - **可发现性 (Discoverability)**: 每个新的幻灯片集**必须**在 `src/router/index.ts` 中注册路由，并在 `src/views/Home.vue` 的导航菜单中添加入口。
 - **体验一致 (Consistent Experience)**: 保持核心交互的一致性。例如，背景设置浮层的快捷键是 `Ctrl / ⌘ + Shift + P`，关闭浮层是 `Esc`。如果修改，请务必同步更新 UI 上的提示文案。
@@ -41,8 +42,8 @@
 ### 创建一个新的幻灯片集
 
 1.  **创建文件结构**: 在 `src/presentations/` 目录下创建一个新的文件夹，以你选择的 `slug` 命名，并在其中创建 `index.vue` 文件。
-2.  **构建幻灯片内容**: 在 `index.vue` 中，使用 `<script setup lang="ts">`。将你的幻灯片内容（可以是独立组件或内联模板）组织成一个数组，并传递给 `<ppt-container>` 组件。
-3.  **集成背景系统**: 在 `index.vue` 中导入并使用 `<BackgroundManager>` 组件，并为其提供一个 `default-background` ID 和唯一的 `context-key`（通常就是 `slug`）。
+2.  **构建幻灯片内容**: 在 `index.vue` 中，使用 `<script setup lang="ts">`。将你的幻灯片内容组织成一个数组，并传递给作为“翻页组件库”的 `<ppt-container>` 组件。
+3.  **集成背景系统**: 在 `index.vue` 中导入并使用 `<BackgroundManager>` 组件。**禁止**在页面中硬编码背景色或图片，所有背景必须由该共享组件统一管理。
 4.  **注册路由**: 打开 `src/router/index.ts`，为新的幻灯片集添加一个**懒加载**的路由记录。
 5.  **更新主页导航**: 打开 `src/views/Home.vue`，在列表中添加一个指向新幻灯片集的链接。
 6.  **验证**:
@@ -63,6 +64,7 @@
   - **Tailwind CSS v3**: **禁止**使用 v4+ 的新特性（如 `@theme` 指令），不要轻易升级版本。
 - **编码规范**:
   - 共享逻辑必须放在 `src/shared/` 中，并保持其通用性，不得包含特定于某个幻灯片集的状态。
+  - 新组件的命名和实现风格，必须遵循第 8 章定义的“设计语言与页面模板”。
   - 尊重并保持键盘可访问性。
   - 本地化字符串必须通过 `src/locales/` 目录下的 JSON 文件管理。
 
