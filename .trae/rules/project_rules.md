@@ -6,10 +6,10 @@
 
 这些是你在本项目中必须遵守的最高准则。
 
-- **单一来源 (Single Source of Truth)**: 所有幻灯片集共享的功能（如导航、背景）都必须位于 `vue_ppt/src/shared/` 目录中。不要复制代码，而是通过 Props 或注册表机制进行扩展。
+- **单一来源 (Single Source of Truth)**: 所有幻灯片集共享的功能（如导航、背景）都必须位于 `src/shared/` 目录中。不要复制代码，而是通过 Props 或注册表机制进行扩展。
 - **代码即英文 (Code is English)**: 为了确保代码的清晰性和可维护性，所有代码（包括变量名、函数名、类名和注释）**必须**使用英文。UI 中面向用户的文本可以使用中文。
-- **可发现性 (Discoverability)**: 每个新的幻灯片集**必须**在 `vue_ppt/src/router/index.ts` 中注册路由，并在 `vue_ppt/src/views/Home.vue` 的导航菜单中添加入口。
-- **体验一致 (Consistent Experience)**: 保持核心交互的一致性。例如，背景设置浮层的快捷键是 `Ctrl/⌘ + Shift + P`，关闭浮层是 `Esc`。如果修改，请务必同步更新 UI 上的提示文案。
+- **可发现性 (Discoverability)**: 每个新的幻灯片集**必须**在 `src/router/index.ts` 中注册路由，并在 `src/views/Home.vue` 的导航菜单中添加入口。
+- **体验一致 (Consistent Experience)**: 保持核心交互的一致性。例如，背景设置浮层的快捷键是 `Ctrl / ⌘ + Shift + P`，关闭浮层是 `Esc`。如果修改，请务必同步更新 UI 上的提示文案。
 - **配置优于硬编码 (Configuration over Hardcoding)**: 幻灯片集特有的文案应存储在 `src/locales/<locale>/deck-<slug>.json` 中，而不是硬编码在 Vue 组件里。功能模块（如背景）应通过注册表动态加载。
 
 ## 2. 架构与关键文件 (Architecture & Key Files)
@@ -17,20 +17,20 @@
 理解文件结构是高效工作的第一步。
 
 - **应用入口**:
-  - `vue_ppt/src/main.ts`: Vue 应用的启动点。
-  - `vue_ppt/src/style.css`: 全局样式。
+  - `src/main.ts`: Vue 应用的启动点。
+  - `src/style.css`: 全局样式。
 - **核心导航与路由**:
-  - `vue_ppt/src/router/index.ts`: **注册新幻灯片集的地方**。
-  - `vue_ppt/src/views/Home.vue`: 项目主页，**需要在这里链接到新的幻灯片集**。
+  - `src/router/index.ts`: **注册新幻灯片集的地方**。
+  - `src/views/Home.vue`: 项目主页，**需要在这里链接到新的幻灯片集**。
 - **幻灯片内容**:
-  - `vue_ppt/src/presentations/<slug>/index.vue`: 单个幻灯片集的入口文件和内容组织。
+  - `src/presentations/<slug>/index.vue`: 单个幻灯片集的入口文件和内容组织。
 - **共享模块**:
-  - `vue_ppt/src/shared/ppt-container.vue`: **所有幻灯片集都必须使用的基础容器**，提供导航和进度条。
-  - `vue_ppt/src/shared/backgrounds/`: 共享的背景系统。
+  - `src/shared/ppt-container.vue`: **所有幻灯片集都必须使用的基础容器**，提供导航和进度条。
+  - `src/shared/backgrounds/`: 共享的背景系统。
     - `modules/`: 存放各个背景的组件。
     - `registry.ts`: 注册和管理所有可用背景。
 - **状态管理**:
-  - `vue_ppt/src/stores/`: Pinia 状态管理。
+  - `src/stores/`: Pinia 状态管理。
 - **文档**:
   - `docs/`: 项目的规划笔记和草稿。
 
@@ -40,11 +40,11 @@
 
 ### 创建一个新的幻灯片集
 
-1.  **创建文件结构**: 在 `vue_ppt/src/presentations/` 目录下创建一个新的文件夹，以你选择的 `slug` 命名，并在其中创建 `index.vue` 文件。
+1.  **创建文件结构**: 在 `src/presentations/` 目录下创建一个新的文件夹，以你选择的 `slug` 命名，并在其中创建 `index.vue` 文件。
 2.  **构建幻灯片内容**: 在 `index.vue` 中，使用 `<script setup lang="ts">`。将你的幻灯片内容（可以是独立组件或内联模板）组织成一个数组，并传递给 `<ppt-container>` 组件。
 3.  **集成背景系统**: 在 `index.vue` 中导入并使用 `<BackgroundManager>` 组件，并为其提供一个 `default-background` ID 和唯一的 `context-key`（通常就是 `slug`）。
-4.  **注册路由**: 打开 `vue_ppt/src/router/index.ts`，为新的幻灯片集添加一个**懒加载**的路由记录。
-5.  **更新主页导航**: 打开 `vue_ppt/src/views/Home.vue`，在列表中添加一个指向新幻灯片集的链接。
+4.  **注册路由**: 打开 `src/router/index.ts`，为新的幻灯片集添加一个**懒加载**的路由记录。
+5.  **更新主页导航**: 打开 `src/views/Home.vue`，在列表中添加一个指向新幻灯片集的链接。
 6.  **验证**:
     - 运行 `npm run dev`，在浏览器中访问新的幻灯片集，确保它可以正常加载、导航和切换背景。
     - 在进行重要修改后，运行 `vue-tsc --noEmit` 确保没有类型错误。
@@ -53,7 +53,7 @@
 
 - **同步快捷键**: 如果修改了快捷键，请务必在 `background-manager.vue` 和 `background-settings-overlay.vue` 中同步更新描述文本。
 - **保持无状态**: 共享背景模块自身不应持有状态。使用局部 `ref`，并在 `onUnmounted` 中清理资源。
-- **注册新模块**: 新的背景模块必须在 `registry.ts` 中注册，并提供有意义的 `name`, `description` 和 `tags`。
+- **注册新模块**: 新的背景模块必须在 `registry.ts` 中注册，并提供有意义的 `name`、`description` 和 `tags`。
 
 ## 4. 技术与编码规范 (Technical & Coding Standards)
 
@@ -115,7 +115,7 @@
     - 危险: `rose-500`
 
 - **字体与排版 (Typography)**
-  - **字体族**: 通用无衬线字体 (如 Inter, 系统 UI)，数字使用等宽样式 (`tabular-nums`)。
+  - **字体族**: 通用无衬线字体 (如 Inter, `system-ui`)，数字使用等宽样式 (`tabular-nums`)。
   - **层级与字号**:
     - H1: `text-6xl` - `8xl`, `font-black`, `tracking-tight`
     - H2: `text-4xl` - `5xl`, `font-extrabold`
@@ -153,7 +153,7 @@
 - **行动号召/结束 (CTA/End)**: 引导用户进行下一步操作。通常包含一个主按钮（品牌渐变）和一个次按钮（玻璃态）。
 - **分隔页 (Divider)**: 在长内容中分割章节，通常只包含一个大号的渐变标题和简短摘要。
 
-### 8.4 实施速记 (Implementation Cheatsheet)
+### 8.4 实施速查表 (Implementation Cheatsheet)
 
 - **页面外层容器**: `container mx-auto max-w-6xl px-6 md:px-8 py-12 lg:py-16`
 - **玻璃态卡片**: `bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 md:p-8`
