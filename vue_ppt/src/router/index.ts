@@ -5,24 +5,24 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/views/Home.vue')
+      component: () => import('@/views/Home.vue'),
     },
     {
       path: '/demo',
-      component: () => import('@/presentations/demo/index.vue')
+      component: () => import('@/presentations/demo/index.vue'),
     },
     {
       path: '/qwen3-next-bench',
-      component: () => import('@/presentations/qwen3-next-bench/index.vue')
+      component: () => import('@/presentations/qwen3-next-bench/index.vue'),
     },
     {
       path: '/design-language-template',
-      component: () => import('@/presentations/design-language-template/index.vue')
+      component: () => import('@/presentations/design-language-template/index.vue'),
     },
     {
       path: '/ai-skill-tree',
-      component: () => import('@/presentations/ai-skill-tree/index.vue')
-    }
+      component: () => import('@/presentations/ai-skill-tree/index.vue'),
+    },
   ],
 })
 

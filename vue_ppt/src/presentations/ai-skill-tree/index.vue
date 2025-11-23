@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import BackgroundManager from '../../shared/backgrounds/background-manager.vue'
-import { backgroundRegistry } from '../../shared/backgrounds/registry'
+import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
+import { backgroundRegistry } from '@/shared/backgrounds/registry'
 import {
   createPresentationContext,
-  providePresentationContext
-} from '../../shared/presentation/presentation-context'
+  providePresentationContext,
+} from '@/shared/presentation/presentation-context'
 
-import PptContainer from '@/shared/ppt-container.vue'
+import PptContainer from '@/shared/presentation/ppt-container.vue'
 
 import Slide1Title from './slide-1-title.vue'
 import Slide2Painpoints from './slide-2-painpoints.vue'
@@ -29,18 +29,18 @@ import Slide16AiCodeMindset from './slide-16-ai-code-mindset.vue'
 import Slide17CallToAction from './slide-17-call-to-action.vue'
 
 const localeOptions = [
-  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' }
+  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
 ] as const
 
 const presentationContext = createPresentationContext({
   defaults: {
     backgroundId: 'soft-mesh',
-    locale: 'zh-Hans'
+    locale: 'zh-Hans',
   },
   backgrounds: backgroundRegistry,
   locales: [...localeOptions],
   contextKey: 'ai-skill-tree-codex',
-  persist: true
+  persist: true,
 })
 
 providePresentationContext(presentationContext)
@@ -64,7 +64,7 @@ const slides = [
   Slide14ForgetSoftwareEngineering,
   Slide15LearnFrontendKnowledge,
   Slide16AiCodeMindset,
-  Slide17CallToAction
+  Slide17CallToAction,
 ]
 </script>
 

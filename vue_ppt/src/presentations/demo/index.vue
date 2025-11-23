@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BackgroundManager from '../../shared/backgrounds/background-manager.vue'
-import { backgroundRegistry } from '../../shared/backgrounds/registry'
+import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
+import { backgroundRegistry } from '@/shared/backgrounds/registry'
 import {
   createPresentationContext,
   providePresentationContext
-} from '../../shared/presentation/presentation-context'
-import { useDeckI18n } from '../../shared/i18n/use-deck-i18n'
-import type { LocaleCode, LocaleMeta } from '../../shared/i18n/types'
+} from '@/shared/presentation/presentation-context'
+import { useDeckI18n } from '@/shared/i18n/use-deck-i18n'
+import type { LocaleCode, LocaleMeta } from '@/shared/i18n/types'
 import deckDemoLocale from './locales/en.json'
 
 type LocaleConfig = Record<LocaleCode, Pick<LocaleMeta, 'label' | 'nativeLabel' | 'direction'>>

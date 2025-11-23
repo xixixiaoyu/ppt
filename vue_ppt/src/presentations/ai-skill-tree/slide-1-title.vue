@@ -6,9 +6,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
   <section class="slide-shell">
     <div class="title-block">
       <div class="title-frame">
-        <div class="title-top">
-          你不是在学做<span class="title-top-strong">PPT</span>
-        </div>
+        <div class="title-top">你不是在学做<span class="title-top-strong">PPT</span></div>
 
         <div class="title-vertical">
           <div class="vertical-block">
@@ -37,8 +35,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
   justify-content: center;
   padding: clamp(3rem, 8vw, 7rem);
   background: radial-gradient(120% 140% at 85% 10%, rgba(248, 113, 113, 0.18), transparent 55%),
-    radial-gradient(90% 120% at 10% 90%, rgba(59, 130, 246, 0.12), transparent 60%),
-    #edf2f7;
+    radial-gradient(90% 120% at 10% 90%, rgba(59, 130, 246, 0.12), transparent 60%), #edf2f7;
 }
 
 .title-block {
@@ -53,7 +50,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 .title-block::before,
 .title-block::after {
-  content: "";
+  content: '';
   position: absolute;
   pointer-events: none;
 }
