@@ -5,7 +5,7 @@ import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
 import { backgroundRegistry } from '@/shared/backgrounds/registry'
 import {
   createPresentationContext,
-  providePresentationContext
+  providePresentationContext,
 } from '@/shared/presentation/presentation-context'
 
 import PptContainer from '@/shared/presentation/ppt-container.vue'
@@ -21,20 +21,22 @@ import Slide8Checklist from './slide-8-checklist.vue'
 import Slide9FAQ from './slide-9-faq.vue'
 import Slide10CTA from './slide-10-cta.vue'
 import Slide11Poll from './slide-11-poll.vue'
+import Slide12Timeline from './slide-12-timeline.vue'
+import Slide13Code from './slide-13-code.vue'
 
 const localeOptions = [
-  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' }
+  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
 ] as const
 
 const presentationContext = createPresentationContext({
   defaults: {
     backgroundId: 'soft-mesh',
-    locale: 'zh-Hans'
+    locale: 'zh-Hans',
   },
   backgrounds: backgroundRegistry,
   locales: [...localeOptions],
   contextKey: 'design-language-template',
-  persist: true
+  persist: true,
 })
 
 providePresentationContext(presentationContext)
@@ -51,8 +53,10 @@ const slides = [
   Slide7Compare,
   Slide8Checklist,
   Slide9FAQ,
+  Slide12Timeline,
+  Slide13Code,
   Slide11Poll,
-  Slide10CTA
+  Slide10CTA,
 ]
 </script>
 
