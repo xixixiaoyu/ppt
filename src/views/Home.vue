@@ -31,35 +31,10 @@ const categories = ref<Category[]>([
     ],
   },
   {
-    id: 'ai-skill-tree',
-    name: 'AI邪修PPT',
-    expanded: true,
-    presentations: [
-      {
-        id: 'ai-skill-tree',
-        title: 'AI Skill Tree ',
-        description: '点亮隐藏技能树的关键节点',
-        route: '/ai-skill-tree',
-      },
-    ],
-  },
-  {
     id: 'demo',
     name: '演示模板',
     expanded: false,
     presentations: [
-      {
-        id: 'demo',
-        title: 'Demo Presentation',
-        description: '具有现代功能的交互式演示演示',
-        route: '/demo',
-      },
-      {
-        id: 'qwen3-next-bench',
-        title: 'Qwen3‑Next Bench',
-        description: '基准分析和性能洞察',
-        route: '/qwen3-next-bench',
-      },
       {
         id: 'design-language-template',
         title: '设计语言模板',
