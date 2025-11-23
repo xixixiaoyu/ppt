@@ -2,10 +2,7 @@
   <div class="ppt-container" @keydown="handleKeyDown" tabindex="0">
     <!-- 幻灯片内容区域 -->
     <div class="slides-viewport">
-      <div 
-        class="slide-wrapper"
-        :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-      >
+      <div class="slide-wrapper" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
         <div
           v-for="(slide, index) in slides"
           :key="index"
@@ -19,31 +16,31 @@
 
     <!-- 控制栏 -->
     <div class="controls">
-      <button 
-        @click="previousSlide" 
-        :disabled="currentSlide === 0"
-        class="control-btn"
-      >
-        ←
-      </button>
-      
+      <button @click="previousSlide" :disabled="currentSlide === 0" class="control-btn">←</button>
+
       <div class="slide-info">
-        {{ currentSlide + 1 }} / {{ slides.length }}
+        <span
+          class="page-edit"
+          contenteditable="true"
+          @keydown.enter.prevent="commitInlinePageJump"
+          @keydown.stop
+          @input="onEditableInput"
+          @focus="onEditableFocus"
+          @blur="commitInlinePageJump"
+          >{{ editablePage }}</span
+        >
+        <span> / {{ slides.length }}</span>
       </div>
-      
-      <button 
-        @click="nextSlide" 
-        :disabled="currentSlide === slides.length - 1"
-        class="control-btn"
-      >
+
+      <button @click="nextSlide" :disabled="currentSlide === slides.length - 1" class="control-btn">
         →
       </button>
     </div>
 
     <!-- 进度条 -->
     <div class="progress-bar">
-      <div 
-        class="progress" 
+      <div
+        class="progress"
         :style="{ width: `${((currentSlide + 1) / slides.length) * 100}%` }"
       ></div>
     </div>
@@ -73,27 +70,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 const props = defineProps({
   slides: {
     type: Array,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    default: 'PPT演示'
+    default: 'PPT演示',
   },
   thumbnailsLabel: {
     type: String,
-    default: '幻灯片预览'
-  }
+    default: '幻灯片预览',
+  },
 })
 
 const currentSlide = ref(0)
 const showThumbnails = ref(false)
 const NAVIGATION_COOLDOWN = 250
 let lastNavigationAt = 0
+const editablePage = ref('1')
 
 const getTimestamp = () => (typeof performance !== 'undefined' ? performance.now() : Date.now())
 
@@ -126,6 +124,10 @@ const goToSlide = (index) => {
 }
 
 const handleKeyDown = (event) => {
+  const t = event.target
+  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) {
+    return
+  }
   if (event.repeat) {
     event.preventDefault()
     return
@@ -155,6 +157,33 @@ const handleKeyDown = (event) => {
   }
 }
 
+const commitInlinePageJump = () => {
+  const n = parseInt(editablePage.value, 10)
+  if (Number.isNaN(n)) {
+    editablePage.value = String(currentSlide.value + 1)
+    return
+  }
+  const clamped = Math.min(Math.max(n, 1), props.slides.length)
+  goToSlide(clamped - 1)
+}
+
+const onEditableInput = (e) => {
+  const t = e.target
+  const raw = t && t.textContent ? t.textContent.trim() : ''
+  editablePage.value = raw
+}
+
+const onEditableFocus = (e) => {
+  const t = e.target
+  if (t && t.childNodes && t.childNodes.length) {
+    const sel = window.getSelection()
+    const range = document.createRange()
+    range.selectNodeContents(t)
+    sel.removeAllRanges()
+    sel.addRange(range)
+  }
+}
+
 onMounted(() => {
   document.title = props.title
   // 自动获取焦点以支持键盘导航
@@ -162,6 +191,11 @@ onMounted(() => {
   if (container) {
     container.focus()
   }
+  editablePage.value = String(currentSlide.value + 1)
+})
+
+watch(currentSlide, (val) => {
+  editablePage.value = String(val + 1)
 })
 </script>
 
@@ -245,6 +279,15 @@ onMounted(() => {
   min-width: 80px;
   text-align: center;
   font-size: 14px;
+}
+
+.page-edit {
+  display: inline-block;
+  min-width: 36px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
 }
 
 .progress-bar {
@@ -364,12 +407,12 @@ onMounted(() => {
     width: calc(100vw - 40px);
     right: 20px;
   }
-  
+
   .controls {
     padding: 10px 16px;
     gap: 15px;
   }
-  
+
   .control-btn {
     width: 40px;
     height: 40px;
