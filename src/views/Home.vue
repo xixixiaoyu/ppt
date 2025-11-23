@@ -18,6 +18,19 @@ interface Category {
 
 const categories = ref<Category[]>([
   {
+    id: 'aliyun-acp-tutorial',
+    name: '阿里云 ACP 认证教程',
+    expanded: true,
+    presentations: [
+      {
+        id: 'acp-llm-tutorial',
+        title: '构建生产级大模型问答系统',
+        description: '从入门到部署的全链路实践，基于阿里云 ACP 认证教程。',
+        route: '/acp-llm-tutorial',
+      },
+    ],
+  },
+  {
     id: 'ai-skill-tree',
     name: 'AI邪修PPT',
     expanded: true,

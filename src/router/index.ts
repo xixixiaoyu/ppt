@@ -23,6 +23,10 @@ const router = createRouter({
       path: '/ai-skill-tree',
       component: () => import('@/presentations/ai-skill-tree/index.vue'),
     },
+    {
+      path: '/acp-llm-tutorial',
+      component: () => import('@/presentations/acp-llm-tutorial/index.vue'),
+    },
   ],
 })
 
