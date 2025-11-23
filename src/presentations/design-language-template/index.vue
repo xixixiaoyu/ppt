@@ -23,6 +23,12 @@ import Slide10CTA from './slide-10-cta.vue'
 import Slide11Poll from './slide-11-poll.vue'
 import Slide12Timeline from './slide-12-timeline.vue'
 import Slide13Code from './slide-13-code.vue'
+import Slide14Steps from './slide-14-steps.vue'
+import Slide15BeforeAfter from './slide-15-before-after.vue'
+import Slide16ChapterDivider from './slide-16-chapter-divider.vue'
+import Slide17Team from './slide-17-team.vue'
+import Slide18Quote from './slide-18-quote.vue'
+import Slide19Media from './slide-19-media.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -55,6 +61,12 @@ const slides = [
   Slide9FAQ,
   Slide12Timeline,
   Slide13Code,
+  Slide14Steps,
+  Slide15BeforeAfter,
+  Slide16ChapterDivider,
+  Slide17Team,
+  Slide18Quote,
+  Slide19Media,
   Slide11Poll,
   Slide10CTA,
 ]
