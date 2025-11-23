@@ -220,7 +220,7 @@ onMounted(() => {
       sprite.position.set(x, y, z)
     })
 
-    if (particles.value && camera.value && renderer.value) {
+    if (particles.value && scene.value && camera.value && renderer.value) {
       particles.value.rotation.y += 0.001
       particles.value.rotation.x += 0.0005
 

@@ -7,6 +7,8 @@ export interface LocaleMeta {
   direction?: 'ltr' | 'rtl'
 }
 
-export type LocaleMessages = Record<string, string | LocaleMessages>
+export interface LocaleMessages {
+  [key: string]: string | LocaleMessages
+}
 
 export type TranslationParams = Record<string, string | number>
