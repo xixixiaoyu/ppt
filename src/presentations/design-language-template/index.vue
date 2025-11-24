@@ -14,31 +14,31 @@ import Slide1Hero from './slide-1-hero.vue'
 import Slide2Spotlight from './slide-2-spotlight.vue'
 import Slide3Outline from './slide-3-outline.vue'
 import Slide4Stats from './slide-4-stats.vue'
-import Slide6Tabs from './slide-5-tabs.vue'
-import Slide7Compare from './slide-6-compare.vue'
-import Slide8Checklist from './slide-7-checklist.vue'
-import Slide9FAQ from './slide-8-faq.vue'
-import Slide10CTA from './slide-9-cta.vue'
-import Slide11Poll from './slide-10-poll.vue'
-import Slide12Timeline from './slide-11-timeline.vue'
-import Slide13Code from './slide-12-code.vue'
-import Slide14Steps from './slide-13-steps.vue'
-import Slide15BeforeAfter from './slide-14-before-after.vue'
-import Slide16ChapterDivider from './slide-15-chapter-divider.vue'
-import Slide17Team from './slide-16-team.vue'
-import Slide18Quote from './slide-17-quote.vue'
-import Slide19Media from './slide-18-media.vue'
-import Slide20QAndA from './slide-19-q-and-a.vue'
-import Slide21ThankYou from './slide-20-thank-you.vue'
-import Slide22References from './slide-21-references.vue'
-import Slide23Pricing from './slide-22-pricing.vue'
-import Slide24Table from './slide-23-table.vue'
-import Slide25LineChart from './slide-24-line-chart.vue'
-import Slide26BarChart from './slide-25-bar-chart.vue'
-import Slide27PieChart from './slide-26-pie-chart.vue'
-import Slide28DonutChart from './slide-27-donut-chart.vue'
-import Slide29ScatterChart from './slide-28-scatter-chart.vue'
-import Slide30RadarChart from './slide-29-radar-chart.vue'
+import Slide5Tabs from './slide-5-tabs.vue'
+import Slide6Compare from './slide-6-compare.vue'
+import Slide7Checklist from './slide-7-checklist.vue'
+import Slide8FAQ from './slide-8-faq.vue'
+import Slide9CTA from './slide-9-cta.vue'
+import Slide10Poll from './slide-10-poll.vue'
+import Slide11Timeline from './slide-11-timeline.vue'
+import Slide12Code from './slide-12-code.vue'
+import Slide13Steps from './slide-13-steps.vue'
+import Slide14BeforeAfter from './slide-14-before-after.vue'
+import Slide15ChapterDivider from './slide-15-chapter-divider.vue'
+import Slide16Team from './slide-16-team.vue'
+import Slide17Quote from './slide-17-quote.vue'
+import Slide18Media from './slide-18-media.vue'
+import Slide19QAndA from './slide-19-q-and-a.vue'
+import Slide20ThankYou from './slide-20-thank-you.vue'
+import Slide21References from './slide-21-references.vue'
+import Slide22Pricing from './slide-22-pricing.vue'
+import Slide23Table from './slide-23-table.vue'
+import Slide24LineChart from './slide-24-line-chart.vue'
+import Slide25BarChart from './slide-25-bar-chart.vue'
+import Slide26PieChart from './slide-26-pie-chart.vue'
+import Slide27DonutChart from './slide-27-donut-chart.vue'
+import Slide28ScatterChart from './slide-28-scatter-chart.vue'
+import Slide29RadarChart from './slide-29-radar-chart.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -64,31 +64,31 @@ const slides = [
   Slide2Spotlight,
   Slide3Outline,
   Slide4Stats,
-  Slide6Tabs,
-  Slide7Compare,
-  Slide8Checklist,
-  Slide9FAQ,
-  Slide12Timeline,
-  Slide13Code,
-  Slide14Steps,
-  Slide15BeforeAfter,
-  Slide16ChapterDivider,
-  Slide17Team,
-  Slide18Quote,
-  Slide19Media,
-  Slide11Poll,
-  Slide20QAndA,
-  Slide21ThankYou,
-  Slide22References,
-  Slide23Pricing,
-  Slide24Table,
-  Slide10CTA,
-  Slide25LineChart,
-  Slide26BarChart,
-  Slide27PieChart,
-  Slide28DonutChart,
-  Slide29ScatterChart,
-  Slide30RadarChart,
+  Slide5Tabs,
+  Slide6Compare,
+  Slide7Checklist,
+  Slide8FAQ,
+  Slide11Timeline,
+  Slide12Code,
+  Slide13Steps,
+  Slide14BeforeAfter,
+  Slide15ChapterDivider,
+  Slide16Team,
+  Slide17Quote,
+  Slide18Media,
+  Slide10Poll,
+  Slide19QAndA,
+  Slide20ThankYou,
+  Slide21References,
+  Slide22Pricing,
+  Slide23Table,
+  Slide9CTA,
+  Slide24LineChart,
+  Slide25BarChart,
+  Slide26PieChart,
+  Slide27DonutChart,
+  Slide28ScatterChart,
+  Slide29RadarChart,
 ]
 </script>
 
