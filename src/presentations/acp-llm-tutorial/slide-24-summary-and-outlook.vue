@@ -45,7 +45,7 @@ const outlook = {
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8 bg-white">
+  <div class="h-full w-full flex flex-col justify-center items-center p-8">
     <div class="text-center mb-10 max-w-4xl">
       <h2
         class="text-6xl font-black tracking-tight bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 text-transparent bg-clip-text mb-4"

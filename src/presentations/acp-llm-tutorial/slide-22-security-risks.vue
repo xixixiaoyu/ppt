@@ -34,7 +34,7 @@ const threats = [
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8 bg-white">
+  <div class="h-full w-full flex flex-col justify-center items-center p-8">
     <div class="text-center mb-8 max-w-4xl">
       <h2
         class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-fuchsia-500"
