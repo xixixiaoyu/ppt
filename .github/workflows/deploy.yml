@@ -44,6 +44,7 @@ jobs:
       - name: Build (set base for GitHub Pages)
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_BASE: /${{ github.event.repository.name }}/
         run: pnpm run build -- --base=${BASE_PATH}
 
       - name: Add SPA 404 fallback
