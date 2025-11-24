@@ -52,14 +52,13 @@ const toggleCategory = (categoryId: string) => {
     </div>
 
     <div class="relative z-10 flex min-h-screen flex-col">
-      <header class="px-6 pt-16 text-center">
+      <header class="container mx-auto max-w-6xl px-6 md:px-8 pt-20 text-center">
         <p class="text-xs uppercase tracking-[0.6em] text-accent/70">PRESENTATION DECKS</p>
         <h1
           class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >
           演示文稿集合
         </h1>
-        <p class="mx-auto mt-4 max-w-2xl text-sm text-text-muted md:text-base"></p>
         <div class="mt-8">
           <RouterLink
             to="/design-language-template"
@@ -81,23 +80,19 @@ const toggleCategory = (categoryId: string) => {
         </div>
       </header>
 
-      <main class="flex-1 px-6 pb-16">
-        <div
-          class="mx-auto flex max-w-5xl flex-col overflow-hidden rounded-3xl border border-accent/20 bg-surface-muted/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(var(--accent),0.35)]"
-        >
-          <div class="border-b border-accent/10 px-8 py-6">
-            <div class="flex flex-col gap-2 text-left md:flex-row md:items-end md:justify-between">
-              <div>
-                <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
-              </div>
-              <span class="text-xs uppercase tracking-widest text-accent/70">
-                {{ categories.length }} Categories
-              </span>
+      <main class="flex-1">
+        <section class="container mx-auto max-w-6xl px-6 md:px-8 pb-16">
+          <div
+            class="rounded-3xl border border-accent/20 bg-surface-muted/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(var(--accent),0.35)] overflow-hidden"
+          >
+            <div class="border-b border-accent/10 px-8 py-6 flex items-end justify-between">
+              <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
+              <span class="text-xs uppercase tracking-widest text-accent/70"
+                >{{ categories.length }} Categories</span
+              >
             </div>
-          </div>
 
-          <div class="flex-1 overflow-hidden">
-            <div class="scroll-area h-[58vh] overflow-y-auto px-6 py-6 md:px-8">
+            <div class="px-6 md:px-8 py-6">
               <div class="space-y-6">
                 <section
                   v-for="category in categories"
@@ -106,10 +101,14 @@ const toggleCategory = (categoryId: string) => {
                 >
                   <button
                     @click="toggleCategory(category.id)"
+                    :aria-expanded="category.expanded"
                     class="group flex w-full items-center justify-between gap-6 rounded-2xl px-5 py-4 text-left transition-colors duration-200 hover:bg-accent/10"
                   >
                     <div class="flex items-center gap-3">
-                      <span class="marker marker-category" aria-hidden="true"></span>
+                      <span
+                        class="inline-flex w-[2px] h-4 bg-gradient-to-b from-accent to-accent/40"
+                        aria-hidden="true"
+                      ></span>
                       <div>
                         <h3 class="text-base font-bold uppercase tracking-widest text-text-primary">
                           {{ category.name }}
@@ -155,7 +154,10 @@ const toggleCategory = (categoryId: string) => {
                             'focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2',
                           ]"
                         >
-                          <span class="marker marker-doc" aria-hidden="true"></span>
+                          <span
+                            class="inline-flex w-[2px] h-3 mt-[3px] bg-gradient-to-b from-accent to-accent/40"
+                            aria-hidden="true"
+                          ></span>
                           <div class="flex-1">
                             <p class="text-sm font-medium text-text-primary">
                               {{ presentation.title }}
@@ -183,7 +185,7 @@ const toggleCategory = (categoryId: string) => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   </div>
@@ -204,47 +206,5 @@ const toggleCategory = (categoryId: string) => {
   filter: blur(120px);
   opacity: 0.5;
   pointer-events: none;
-}
-
-.scroll-area {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(var(--accent) / 0.4) transparent;
-}
-
-.scroll-area::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scroll-area::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scroll-area::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgb(var(--accent) / 0.6), rgb(var(--accent) / 0.2));
-  border-radius: 9999px;
-}
-
-.marker {
-  position: relative;
-  display: inline-flex;
-  width: 18px;
-  justify-content: center;
-}
-
-.marker::before {
-  content: '';
-  display: block;
-  border-radius: 9999px;
-  width: 2px;
-  background: linear-gradient(to bottom, rgb(var(--accent) / 0.9), rgb(var(--accent) / 0.4));
-}
-
-.marker-category::before {
-  height: 18px;
-}
-
-.marker-doc::before {
-  height: 14px;
-  opacity: 0.7;
 }
 </style>
