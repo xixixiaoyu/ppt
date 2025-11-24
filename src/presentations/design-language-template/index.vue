@@ -14,7 +14,6 @@ import Slide1Hero from './slide-1-hero.vue'
 import Slide2Spotlight from './slide-2-spotlight.vue'
 import Slide3Outline from './slide-3-outline.vue'
 import Slide4Stats from './slide-4-stats.vue'
-import Slide5Chart from './slide-5-chart.vue'
 import Slide6Tabs from './slide-6-tabs.vue'
 import Slide7Compare from './slide-7-compare.vue'
 import Slide8Checklist from './slide-8-checklist.vue'
@@ -65,7 +64,6 @@ const slides = [
   Slide2Spotlight,
   Slide3Outline,
   Slide4Stats,
-  Slide5Chart,
   Slide6Tabs,
   Slide7Compare,
   Slide8Checklist,
@@ -95,7 +93,15 @@ const slides = [
 </script>
 
 <template>
-  <div class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary" style="--surface: 248 250 252; --surface-muted: 241 245 249; --text-primary: 15 23 42; --text-muted: 71 85 105;">
+  <div
+    class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary"
+    style="
+      --surface: 248 250 252;
+      --surface-muted: 241 245 249;
+      --text-primary: 15 23 42;
+      --text-muted: 71 85 105;
+    "
+  >
     <BackgroundManager />
     <main class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10">
       <div class="deck-shell h-full w-full">
