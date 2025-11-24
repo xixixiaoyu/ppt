@@ -11,6 +11,13 @@
     --accent: 13 148 136;
     --border: 71 85 105;
     --highlight: 253 224 71;
+    --mesh-saturation: 1.08;
+    --mesh-contrast: 1.04;
+    --grid-size: 26px;
+    --grid-size-mobile: 22px;
+    --grid-opacity: 0.12;
+    --veil-blur: 6px;
+    --veil-opacity: 0.10;
   }
 
   body {
@@ -22,5 +29,13 @@
   body::selection {
     background-color: rgb(var(--highlight) / 0.3);
     color: rgb(var(--text-primary));
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --veil-blur: 4px;
+    --grid-opacity: 0.10;
+    --mesh-saturation: 1.06;
   }
 }
