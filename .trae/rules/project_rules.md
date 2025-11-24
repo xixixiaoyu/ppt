@@ -12,18 +12,6 @@
 
 这样做可以最大限度地保证演示文稿的视觉一致性和代码质量。
 
-
-## 主题色规范：以 #7db3a6 为主
-
-- 主色为 `#7db3a6`（RGB 125, 179, 166），已绑定到全局变量 `--accent`，位置 `src/style.css:11`。
-- 使用 Tailwind 扩展色 `accent` 来应用主题色：`text-accent`、`bg-accent`、`border-accent`、`ring-accent`、`shadow-glow`。
-- 渐变建议统一采用以 `accent` 为主的方案，例如：
-  - `bg-gradient-to-r from-accent via-accent/30 to-white`
-  - `bg-gradient-to-r from-accent to-accent/80`
-- SVG 与自定义样式中，使用 `rgb(var(--accent))` 或 `rgba(var(--accent) / 0.7)` 引用主题色，避免硬编码其他色值。
-- 模板复用时，应将示例中的 `indigo` / `fuchsia` / `emerald` 主色梯度替换为以 `accent` 为主的梯度或纯色；允许以低透明度作为点缀，但不得喧宾夺主。
-
-
 本文档旨在为 AI 提供明确的指导，以生成符合 `presentations_by_ai` 项目规范的演示文稿。
 
 ## 1. 基本原则
