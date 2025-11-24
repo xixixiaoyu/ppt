@@ -32,7 +32,3 @@ const open = ref<number | null>(0)
     </ul>
   </section>
 </template>
-
-<style scoped>
-</style>
-

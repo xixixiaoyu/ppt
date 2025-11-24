@@ -54,6 +54,3 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>

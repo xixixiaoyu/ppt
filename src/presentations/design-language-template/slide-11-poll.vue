@@ -55,7 +55,3 @@ watch(() => props.isActive, active => {
     <p class="mt-6 text-center text-sm text-slate-500">合计：{{ total }} 次模拟投票（仅示例）。</p>
   </section>
 </template>
-
-<style scoped>
-</style>
-

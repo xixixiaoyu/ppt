@@ -94,15 +94,15 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
 </script>
 
 <template>
-  <section class="slide-shell">
-    <div class="chart-frame">
-      <header class="chart-header">
-        <h3>趋势对比（示例）</h3>
-        <p>纯 SVG 绘制的线图，展示不同方案的趋势变化。数据为占位。</p>
+  <section class="h-full w-full flex items-center justify-center p-[clamp(1.5rem,4vw,4rem)]">
+    <div class="w-full max-w-[960px] rounded-[32px] p-[clamp(1.5rem,4vw,2.5rem)] bg-white/70 border border-slate-200/30 backdrop-blur-[18px] shadow-[0_40px_100px_-40px_rgba(15,23,42,0.35)] flex flex-col gap-[clamp(1rem,2vw,1.5rem)]">
+      <header>
+        <h3 class="m-0 text-[clamp(1.4rem,3vw,1.9rem)] font-extrabold tracking-tight text-slate-800">趋势对比（示例）</h3>
+        <p class="mt-2 text-slate-600 text-[0.95rem]">纯 SVG 绘制的线图，展示不同方案的趋势变化。数据为占位。</p>
       </header>
 
-      <div class="chart-body">
-        <svg :viewBox="`0 0 ${width} ${height}`" role="img" aria-label="示例折线图">
+      <div>
+        <svg :viewBox="`0 0 ${width} ${height}`" role="img" aria-label="示例折线图" class="w-full h-auto">
           <defs>
             <linearGradient id="lineGradientA" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#6366f1" />
@@ -120,10 +120,10 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
           </defs>
 
           <!-- 背景 -->
-          <rect x="0" y="0" :width="width" :height="height" rx="32" class="chart-surface" />
+          <rect x="0" y="0" :width="width" :height="height" rx="32" fill="rgba(248, 250, 252, 0.65)" stroke="rgba(148, 163, 184, 0.2)" />
 
           <!-- 横向网格线 -->
-          <g class="grid-lines">
+          <g>
             <line
               v-for="(line, idx) in guideLines"
               :key="idx"
@@ -131,39 +131,49 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
               :x2="width - padding.right"
               :y1="line.y"
               :y2="line.y"
+              stroke="rgba(148, 163, 184, 0.3)"
+              stroke-dasharray="6 10"
             />
           </g>
 
           <!-- Y 轴标签 -->
-          <g class="axis-labels y-axis">
+          <g>
             <text
               v-for="(line, idx) in guideLines"
               :key="`y-${idx}`"
               :x="padding.left - 16"
               :y="line.y + 4"
+              fill="rgba(71, 85, 105, 0.7)"
+              font-size="12"
+              text-anchor="end"
+              dominant-baseline="middle"
             >
               {{ line.label }}
             </text>
           </g>
 
           <!-- X 轴标签 -->
-          <g class="axis-labels x-axis">
+          <g>
             <text
               v-for="(label, idx) in labels"
               :key="`x-${idx}`"
               :x="xFor(idx)"
               :y="height - padding.bottom + 28"
+              fill="rgba(71, 85, 105, 0.7)"
+              font-size="12"
+              text-anchor="middle"
+              dominant-baseline="hanging"
             >
               {{ label }}
             </text>
           </g>
 
           <!-- 柱状图 -->
-          <g class="bar-group">
+          <g>
             <rect
               v-for="(bar, idx) in barRects"
               :key="`bar-${idx}`"
-              class="chart-bar"
+              class="drop-shadow-[0_16px_28px_rgba(15,23,42,0.18)]"
               :x="bar.x"
               :width="barWidth"
               :y="bar.y"
@@ -177,21 +187,32 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
           </g>
 
           <!-- 折线 -->
-          <g class="series-group">
+          <g>
             <template v-for="(series, si) in chartSeries" :key="series.name">
               <path
-                class="chart-line"
-                :class="[`delay-${si}`]"
+                fill="none"
                 :d="series.path"
                 :stroke="`url(#${series.gradientId})`"
                 pathLength="1"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-              />
+                stroke-width="4"
+                stroke-dasharray="1"
+                stroke-dashoffset="1"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  from="1"
+                  to="0"
+                  dur="1.2s"
+                  :begin="`${si * 0.2}s`"
+                  fill="freeze"
+                />
+              </path>
               <circle
                 v-for="(point, pi) in series.points"
                 :key="`${series.name}-${pi}`"
-                class="chart-dot"
+                class="drop-shadow-[0_4px_12px_rgba(99,102,241,0.35)]"
                 :cx="point.x"
                 :cy="point.y"
                 r="6"
@@ -210,151 +231,12 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
         </svg>
       </div>
 
-      <footer class="chart-footer">
-        <div class="legend" v-for="(entry, si) in legendEntries" :key="`legend-${entry.name}`">
-          <span class="legend-chip" :style="{ backgroundImage: entry.cssGradient }"></span>
-          <span class="legend-label">{{ entry.name }}</span>
+      <footer class="flex gap-5 flex-wrap text-[0.9rem] text-slate-800/85">
+        <div class="inline-flex items-center gap-2" v-for="(entry, si) in legendEntries" :key="`legend-${entry.name}`">
+          <span class="inline-block w-[18px] h-[18px] rounded-[6px] bg-[length:100%_100%] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.6)]" :style="{ backgroundImage: entry.cssGradient }"></span>
+          <span class="font-semibold">{{ entry.name }}</span>
         </div>
       </footer>
     </div>
   </section>
 </template>
-
-<style scoped>
-.slide-shell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  padding: clamp(1.5rem, 4vw, 4rem);
-}
-
-.chart-frame {
-  width: min(960px, 100%);
-  border-radius: 32px;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 40px 100px -40px rgba(15, 23, 42, 0.35);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-
-.chart-header h3 {
-  margin: 0;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: rgb(30, 41, 59);
-}
-
-.chart-header p {
-  margin: 0.5rem 0 0;
-  color: rgba(71, 85, 105, 0.8);
-  font-size: 0.95rem;
-}
-
-.chart-body svg {
-  width: 100%;
-  height: auto;
-}
-
-.chart-surface {
-  fill: rgba(248, 250, 252, 0.65);
-  stroke: rgba(148, 163, 184, 0.2);
-}
-
-.bar-group {
-  transform-origin: center;
-}
-
-.chart-bar {
-  filter: drop-shadow(0 16px 28px rgba(15, 23, 42, 0.18));
-}
-
-.grid-lines line {
-  stroke: rgba(148, 163, 184, 0.3);
-  stroke-dasharray: 6 10;
-}
-
-.axis-labels text {
-  fill: rgba(71, 85, 105, 0.7);
-  font-size: 0.75rem;
-  text-anchor: middle;
-}
-
-.y-axis text {
-  text-anchor: end;
-  dominant-baseline: middle;
-}
-
-.x-axis text {
-  dominant-baseline: hanging;
-}
-
-.chart-line {
-  fill: none;
-  stroke-width: 4;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: draw-line 1.2s ease forwards;
-}
-
-.chart-line.delay-1 {
-  animation-delay: 0.2s;
-}
-
-.chart-dot {
-  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.35));
-}
-
-.chart-footer {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-  color: rgba(30, 41, 59, 0.85);
-}
-
-.legend {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.legend-chip {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border-radius: 6px;
-  background-size: 100% 100%;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-}
-
-.legend-label {
-  font-weight: 600;
-}
-
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .chart-frame {
-    padding: 1.5rem;
-  }
-
-  .chart-header h3 {
-    font-size: 1.4rem;
-  }
-
-  .chart-footer {
-    justify-content: center;
-  }
-}
-</style>

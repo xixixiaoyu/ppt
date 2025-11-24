@@ -4,7 +4,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 <template>
   <section class="container mx-auto max-w-5xl px-6 md:px-8 lg:px-12 py-16">
-    <div class="relative overflow-hidden rounded-4xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl px-8 py-16 text-center">
+    <div class="relative overflow-hidden rounded-[2rem] border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl px-8 py-16 text-center">
       <div class="absolute inset-0 -z-0 opacity-60">
         <svg viewBox="0 0 800 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
@@ -34,8 +34,3 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
     </div>
   </section>
 </template>
-
-<style scoped>
-.rounded-4xl { border-radius: 2rem; }
-</style>
-

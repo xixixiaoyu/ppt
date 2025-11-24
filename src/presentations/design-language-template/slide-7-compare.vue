@@ -50,7 +50,3 @@ const plans = [
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
-

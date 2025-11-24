@@ -38,7 +38,3 @@ const statusClass = (s: string) => ({
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
-

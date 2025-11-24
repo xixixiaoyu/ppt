@@ -29,7 +29,3 @@ const outline = [
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
-

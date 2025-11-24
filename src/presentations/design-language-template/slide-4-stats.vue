@@ -76,7 +76,3 @@ watch(() => props.isActive, (active) => {
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
-

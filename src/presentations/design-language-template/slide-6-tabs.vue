@@ -38,7 +38,3 @@ const active = ref('a')
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
-
