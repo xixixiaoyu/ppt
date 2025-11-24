@@ -309,6 +309,8 @@ watch(currentSlide, (val) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .controls {
