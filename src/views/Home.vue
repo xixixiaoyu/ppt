@@ -19,7 +19,7 @@ interface Category {
 const categories = ref<Category[]>([
   {
     id: 'demo',
-    name: '演示模板',
+    name: '大模型',
     expanded: true,
     presentations: [
       {
@@ -27,12 +27,6 @@ const categories = ref<Category[]>([
         title: '构建生产级大模型问答系统',
         description: '从入门到部署的全链路实践，基于阿里云 ACP 认证教程。',
         route: '/acp-llm-tutorial',
-      },
-      {
-        id: 'design-language-template',
-        title: '设计语言模板',
-        description: '基于设计语言的多版式中文模板（含动效/互动）',
-        route: '/design-language-template',
       },
     ],
   },
@@ -66,6 +60,25 @@ const toggleCategory = (categoryId: string) => {
           演示文稿集合
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-sm text-text-muted md:text-base"></p>
+        <div class="mt-8">
+          <RouterLink
+            to="/design-language-template"
+            class="inline-flex items-center gap-2 rounded-full bg-accent/20 px-6 py-3 text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/30 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2"
+          >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+              <path d="M2 17L12 22L22 17" />
+              <path d="M2 12L12 17L22 12" />
+            </svg>
+            设计语言模板
+          </RouterLink>
+        </div>
       </header>
 
       <main class="flex-1 px-6 pb-16">
@@ -76,7 +89,6 @@ const toggleCategory = (categoryId: string) => {
             <div class="flex flex-col gap-2 text-left md:flex-row md:items-end md:justify-between">
               <div>
                 <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
-                <p class="text-xs text-text-muted">分类展开列表，保持主体区域独立滚动。</p>
               </div>
               <span class="text-xs uppercase tracking-widest text-accent/70">
                 {{ categories.length }} Categories
