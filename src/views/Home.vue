@@ -54,36 +54,38 @@ const toggleCategory = (categoryId: string) => {
 </script>
 
 <template>
-  <div class="home-shell relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+  <div class="home-shell relative min-h-screen overflow-hidden bg-surface text-text-primary">
     <div class="absolute inset-0 pointer-events-none">
       <div
-        class="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-900/10 to-cyan-500/10"
+        class="absolute inset-0 bg-gradient-to-br from-surface/40 via-surface/10 to-accent/10"
       ></div>
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.25),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(56,189,248,0.2),transparent_45%)]"
+        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--accent)/0.25),transparent_50%),radial-gradient(circle_at_80%_30%,rgb(var(--accent)/0.2),transparent_45%)]"
       ></div>
     </div>
 
     <div class="relative z-10 flex min-h-screen flex-col">
       <header class="px-6 pt-16 text-center">
-        <p class="text-xs uppercase tracking-[0.6em] text-cyan-400/70">PRESENTATION DECKS</p>
-        <h1 class="mt-6 text-4xl font-semibold tracking-tight text-cyan-100 md:text-5xl">
+        <p class="text-xs uppercase tracking-[0.6em] text-accent/70">PRESENTATION DECKS</p>
+        <h1
+          class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
+        >
           演示文稿集合
         </h1>
-        <p class="mx-auto mt-4 max-w-2xl text-sm text-slate-400 md:text-base"></p>
+        <p class="mx-auto mt-4 max-w-2xl text-sm text-text-muted md:text-base"></p>
       </header>
 
       <main class="flex-1 px-6 pb-16">
         <div
-          class="mx-auto flex max-w-5xl flex-col overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-900/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(34,211,238,0.8)]"
+          class="mx-auto flex max-w-5xl flex-col overflow-hidden rounded-3xl border border-accent/20 bg-surface-muted/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(var(--accent),0.35)]"
         >
-          <div class="border-b border-cyan-500/10 px-8 py-6">
+          <div class="border-b border-accent/10 px-8 py-6">
             <div class="flex flex-col gap-2 text-left md:flex-row md:items-end md:justify-between">
               <div>
-                <h2 class="text-lg font-medium text-cyan-200">演示列表</h2>
-                <p class="text-xs text-slate-400">分类展开列表，保持主体区域独立滚动。</p>
+                <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
+                <p class="text-xs text-text-muted">分类展开列表，保持主体区域独立滚动。</p>
               </div>
-              <span class="text-xs uppercase tracking-widest text-cyan-500/70">
+              <span class="text-xs uppercase tracking-widest text-accent/70">
                 {{ categories.length }} Categories
               </span>
             </div>
@@ -95,25 +97,25 @@ const toggleCategory = (categoryId: string) => {
                 <section
                   v-for="category in categories"
                   :key="category.id"
-                  class="rounded-2xl border border-cyan-500/10 bg-slate-900/40"
+                  class="rounded-2xl border border-accent/10 bg-surface/40"
                 >
                   <button
                     @click="toggleCategory(category.id)"
-                    class="group flex w-full items-center justify-between gap-6 rounded-2xl px-5 py-4 text-left transition-colors duration-200 hover:bg-cyan-500/5"
+                    class="group flex w-full items-center justify-between gap-6 rounded-2xl px-5 py-4 text-left transition-colors duration-200 hover:bg-accent/10"
                   >
                     <div class="flex items-center gap-3">
                       <span class="marker marker-category" aria-hidden="true"></span>
                       <div>
-                        <h3 class="text-base font-bold uppercase tracking-widest text-cyan-100">
+                        <h3 class="text-base font-bold uppercase tracking-widest text-text-primary">
                           {{ category.name }}
                         </h3>
-                        <p class="text-xs text-slate-400">
+                        <p class="text-xs text-text-muted">
                           {{ category.presentations.length }} 个演示文稿
                         </p>
                       </div>
                     </div>
                     <svg
-                      class="h-4 w-4 text-cyan-300 transition-transform duration-200"
+                      class="h-4 w-4 text-accent transition-transform duration-200"
                       :class="{ 'rotate-180': category.expanded }"
                       viewBox="0 0 24 24"
                       fill="none"
@@ -135,7 +137,7 @@ const toggleCategory = (categoryId: string) => {
                   >
                     <ul
                       v-show="category.expanded"
-                      class="divide-y divide-cyan-500/10 border-t border-cyan-500/10"
+                      class="divide-y divide-accent/10 border-t border-accent/10"
                     >
                       <li v-for="presentation in category.presentations" :key="presentation.id">
                         <RouterLink
@@ -143,23 +145,23 @@ const toggleCategory = (categoryId: string) => {
                           class="flex items-start gap-3 px-5 py-4 transition-colors duration-200"
                           :class="[
                             presentation.route === '#'
-                              ? 'pointer-events-none text-slate-500/70'
-                              : 'hover:bg-cyan-500/5',
-                            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 focus-visible:outline-offset-2',
+                              ? 'pointer-events-none text-text-muted'
+                              : 'hover:bg-accent/10',
+                            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2',
                           ]"
                         >
                           <span class="marker marker-doc" aria-hidden="true"></span>
                           <div class="flex-1">
-                            <p class="text-sm font-medium text-cyan-100">
+                            <p class="text-sm font-medium text-text-primary">
                               {{ presentation.title }}
                             </p>
-                            <p class="mt-1 text-sm leading-relaxed text-slate-400">
+                            <p class="mt-1 text-sm leading-relaxed text-text-muted">
                               {{ presentation.description }}
                             </p>
                           </div>
                           <svg
                             v-if="presentation.route !== '#'"
-                            class="mt-1 h-4 w-4 text-cyan-300"
+                            class="mt-1 h-4 w-4 text-accent"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -189,10 +191,10 @@ const toggleCategory = (categoryId: string) => {
   inset: -40%;
   background: conic-gradient(
     from 90deg at 50% 50%,
-    rgba(14, 165, 233, 0.12),
+    rgb(var(--accent) / 0.12),
     transparent 30%,
     transparent 60%,
-    rgba(59, 130, 246, 0.12)
+    rgb(var(--accent) / 0.12)
   );
   filter: blur(120px);
   opacity: 0.5;
@@ -201,7 +203,7 @@ const toggleCategory = (categoryId: string) => {
 
 .scroll-area {
   scrollbar-width: thin;
-  scrollbar-color: rgba(34, 211, 238, 0.4) transparent;
+  scrollbar-color: rgb(var(--accent) / 0.4) transparent;
 }
 
 .scroll-area::-webkit-scrollbar {
@@ -213,7 +215,7 @@ const toggleCategory = (categoryId: string) => {
 }
 
 .scroll-area::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(56, 189, 248, 0.6), rgba(14, 165, 233, 0.2));
+  background: linear-gradient(to bottom, rgb(var(--accent) / 0.6), rgb(var(--accent) / 0.2));
   border-radius: 9999px;
 }
 
@@ -229,7 +231,7 @@ const toggleCategory = (categoryId: string) => {
   display: block;
   border-radius: 9999px;
   width: 2px;
-  background: linear-gradient(to bottom, rgba(34, 211, 238, 0.9), rgba(14, 165, 233, 0.4));
+  background: linear-gradient(to bottom, rgb(var(--accent) / 0.9), rgb(var(--accent) / 0.4));
 }
 
 .marker-category::before {
