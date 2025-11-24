@@ -83,7 +83,7 @@ const slides = [
 </script>
 
 <template>
-  <div class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary" style="--surface: 248 250 252; --surface-muted: 241 245 249; --text-primary: 15 23 42; --text-muted: 71 85 105; --accent: 99 102 241;">
+  <div class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary" style="--surface: 248 250 252; --surface-muted: 241 245 249; --text-primary: 15 23 42; --text-muted: 71 85 105;">
     <BackgroundManager />
     <main class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10">
       <div class="deck-shell h-full w-full">
