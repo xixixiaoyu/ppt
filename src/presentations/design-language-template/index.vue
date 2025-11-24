@@ -18,7 +18,6 @@ import Slide5Tabs from './slide-5-tabs.vue'
 import Slide6Compare from './slide-6-compare.vue'
 import Slide7Checklist from './slide-7-checklist.vue'
 import Slide8FAQ from './slide-8-faq.vue'
-import Slide9CTA from './slide-9-cta.vue'
 import Slide10Poll from './slide-10-poll.vue'
 import Slide11Timeline from './slide-11-timeline.vue'
 import Slide12Code from './slide-12-code.vue'
@@ -82,7 +81,6 @@ const slides = [
   Slide21References,
   Slide22Pricing,
   Slide23Table,
-  Slide9CTA,
   Slide24LineChart,
   Slide25BarChart,
   Slide26PieChart,
