@@ -18,8 +18,8 @@ interface Category {
 
 const categories = ref<Category[]>([
   {
-    id: 'aliyun-acp-tutorial',
-    name: '阿里云 ACP 认证教程',
+    id: 'demo',
+    name: '演示模板',
     expanded: true,
     presentations: [
       {
@@ -28,13 +28,6 @@ const categories = ref<Category[]>([
         description: '从入门到部署的全链路实践，基于阿里云 ACP 认证教程。',
         route: '/acp-llm-tutorial',
       },
-    ],
-  },
-  {
-    id: 'demo',
-    name: '演示模板',
-    expanded: false,
-    presentations: [
       {
         id: 'design-language-template',
         title: '设计语言模板',
