@@ -21,7 +21,7 @@ const items = [
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
         解决方案：检索增强生成
       </h2>
@@ -35,13 +35,13 @@ const items = [
         v-for="(item, i) in items"
         :key="i"
         class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md p-6 md:p-8 shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl h-full"
-        :class="item.recommended ? 'ring-2 ring-indigo-400/60 shadow-indigo-400/30' : ''"
+        :class="item.recommended ? 'ring-2 ring-accent/60 shadow-[0_10px_28px_rgba(var(--accent)/0.3)]' : ''"
       >
         <div class="flex items-center justify-between">
           <h3 class="text-2xl font-bold text-slate-900">{{ item.name }}</h3>
           <span
             v-if="item.recommended"
-            class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-700"
+            class="rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-accent"
             >推荐方案</span
           >
         </div>

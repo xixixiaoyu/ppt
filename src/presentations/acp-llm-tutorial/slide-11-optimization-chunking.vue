@@ -25,51 +25,47 @@ const solutions = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
-    <div class="mb-8 text-center">
-      <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
-      >
-        优化策略 (三)：精细化文档切片
+  <section class="h-full w-full flex flex-col justify-center p-8">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl xl:text-5xl font-extrabold tracking-tight">
+        <span
+          class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
+        >优化策略 (三)：精细化文档切片</span>
       </h2>
-      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        切片的质量，直接决定了模型能拿到多高质量的“参考资料”。
-      </p>
+      <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">切片的质量，直接决定了模型能拿到多高质量的“参考资料”。</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Challenges -->
-      <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl p-6">
+      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg">
         <h3 class="text-xl font-bold text-slate-800 mb-4">挑战：不合适的切片尺寸</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in challenges" :key="i" class="flex items-start gap-3">
             <span class="text-red-500 text-lg mt-1">❌</span>
             <div>
-              <h4 class="font-bold text-slate-900">{{ item.title }}</h4>
-              <p class="text-slate-700 text-sm">{{ item.description }}</p>
+              <h4 class="font-semibold text-slate-900">{{ item.title }}</h4>
+              <p class="text-slate-600 text-sm">{{ item.description }}</p>
             </div>
           </li>
         </ul>
       </div>
 
       <!-- Solutions -->
-      <div
-        class="relative rounded-2xl p-6 bg-white/70 backdrop-blur-md border border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-gradient-to-r before:from-indigo-500 before:to-fuchsia-500"
-      >
-        <h3 class="text-xl font-bold text-slate-900 mb-4">对策：智能切片策略</h3>
+      <div class="bg-white/60 backdrop-blur-sm p-6 border border-emerald-500/50 rounded-xl shadow-lg">
+        <h3 class="text-xl font-bold text-emerald-800 mb-4">对策：智能切片策略</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in solutions" :key="i" class="flex items-start gap-3">
             <span class="text-green-500 text-lg mt-1">✅</span>
             <div>
-              <h4 class="font-bold text-slate-900">{{ item.title }}</h4>
-              <p class="text-slate-700 text-sm">{{ item.description }}</p>
+              <h4 class="font-semibold text-slate-900">{{ item.title }}</h4>
+              <p class="text-slate-600 text-sm">{{ item.description }}</p>
             </div>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-8 text-center">
+    <div class="mt-6 text-center">
       <p
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md text-slate-700 text-sm"
       >

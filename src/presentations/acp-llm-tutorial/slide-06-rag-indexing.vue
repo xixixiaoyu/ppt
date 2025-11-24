@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { highlight } from '../../utils/highlight'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const code = `// 1. 加载文档
@@ -34,13 +36,15 @@ const interpretations = [
     description: '将内存中的索引保存到文件系统，以便后续直接加载，避免重复构建，提高效率。',
   },
 ]
+
+const highlightedCode = computed(() => highlight(code, 'typescript'))
 </script>
 
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
         RAG 实践：建立索引
       </h2>
@@ -53,13 +57,13 @@ const interpretations = [
       <div
         class="bg-slate-900/80 text-slate-100 rounded-2xl border border-white/10 p-6 font-mono text-sm leading-relaxed"
       >
-        <pre><code>{{ code }}</code></pre>
+        <pre class="whitespace-pre-wrap break-words"><code class="whitespace-pre-wrap break-words" v-html="highlightedCode" /></pre>
       </div>
       <div class="space-y-4">
         <div
           v-for="(item, i) in interpretations"
           :key="i"
-          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl p-5"
+          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl p-5 h-full"
         >
           <h3 class="font-bold text-slate-900">{{ i + 1 }}. {{ item.term }}</h3>
           <p class="mt-1 text-slate-700 text-sm" v-html="item.description"></p>

@@ -31,7 +31,7 @@ const activeTab = ref('indexing')
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
         RAG 的工作流程
       </h2>
@@ -46,7 +46,7 @@ const activeTab = ref('indexing')
         :key="tab.id"
         @click="activeTab = tab.id"
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-800 transition hover:bg-white/80"
-        :class="{ '!bg-white/90 ring-2 ring-indigo-400/60': activeTab === tab.id }"
+        :class="{ '!bg-white/90 ring-2 ring-accent/60': activeTab === tab.id }"
       >
         {{ tab.label }}
       </button>

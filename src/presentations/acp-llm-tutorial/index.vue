@@ -93,4 +93,24 @@ const slides = [
 .deck-shell :deep(.ppt-container) {
   @apply bg-transparent;
 }
+
+.deck-shell :deep(.controls) {
+  @apply fixed bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-3 py-1.5 text-xs text-text-primary shadow-xl shadow-black/40 backdrop-blur-xl;
+}
+
+.deck-shell :deep(.control-btn) {
+  @apply flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow-md shadow-black/30 ring-1 ring-black/5 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300 disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.deck-shell :deep(.slide-info) {
+  @apply min-w-[56px] text-center text-xs font-semibold text-slate-900;
+}
+
+.deck-shell :deep(.progress-bar) {
+  @apply fixed inset-x-0 bottom-0 h-[3px] bg-slate-900/30;
+}
+
+.deck-shell :deep(.progress) {
+  @apply h-full bg-gradient-to-r from-accent to-accent transition-all duration-300;
+}
 </style>

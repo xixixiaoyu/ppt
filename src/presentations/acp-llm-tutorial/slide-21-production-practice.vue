@@ -41,38 +41,38 @@ const pillars = [
 </script>
 
 <template>
-  <div class="h-full flex flex-col justify-center items-center p-8">
+  <div class="h-full w-full flex flex-col justify-center items-center p-8 bg-white">
     <div class="text-center mb-10 max-w-4xl">
-      <h2 class="text-4xl font-bold text-slate-900">上线篇：生产实践</h2>
-      <p class="text-lg text-slate-600 mt-2">部署只是开始，稳定、高效、经济地运行才是目标。</p>
+      <h2
+        class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500"
+      >
+        上线篇：生产实践
+      </h2>
+      <p class="text-lg text-slate-600 mt-3">部署只是开始，稳定、高效、经济地运行才是目标。</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
       <div
         v-for="pillar in pillars"
         :key="pillar.title"
-        class="flex flex-col bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6"
+        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6"
       >
         <div class="flex items-center gap-4">
           <component :is="pillar.icon" class="h-10 w-10" :class="`text-${pillar.color}-500`" />
           <div>
-            <h3 class="text-2xl font-bold" :class="`text-${pillar.color}-800`">
+            <h3 class="text-2xl font-bold text-slate-800">
               {{ pillar.title }}
             </h3>
-            <p class="text-slate-600 text-sm">{{ pillar.subtitle }}</p>
+            <p class="text-slate-500 text-sm font-medium">{{ pillar.subtitle }}</p>
           </div>
         </div>
         <ul class="mt-6 space-y-4 text-sm text-slate-700 flex-grow">
           <li v-for="point in pillar.points" :key="point.title">
-            <strong class="font-semibold" :class="`text-${pillar.color}-700`"
-              >{{ point.title }}:</strong
-            >
-            <span class="text-slate-600/90 ml-1">{{ point.text }}</span>
+            <span class="font-semibold text-slate-700">{{ point.title }}:</span>
+            <span class="text-slate-600 ml-1.5">{{ point.text }}</span>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped></style>

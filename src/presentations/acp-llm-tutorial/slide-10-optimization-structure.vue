@@ -1,59 +1,84 @@
-<template>
-  <div class="slide-content p-8">
-    <h2 class="text-4xl font-bold mb-6">优化策略 (二)：优化文档结构 (Markdown)</h2>
-    <p class="text-lg text-slate-600 mb-8">
-      为非结构化文本添加 Markdown 格式，可以显著提升模型对文档层次和关键信息的理解能力。
-    </p>
-    <div class="grid grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-2xl font-semibold mb-4 text-slate-800">原始数据 (Before)</h3>
-        <div class="code-block text-sm p-4 rounded-xl bg-slate-100 border">
-          <pre><code>LlamaIndex 官方文档
+<script setup lang="ts">
+import { computed } from 'vue'
+import { highlight } from '../../utils/highlight'
+
+defineProps<{ isActive?: boolean; isPreview?: boolean }>()
+
+const beforeCode = `LlamaIndex 官方文档
 
 简介
 LlamaIndex 是一个...
 
 核心概念
 - Node: 数据单元
-- Index: 节点集合</code></pre>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-2xl font-semibold mb-4 text-slate-800">结构化后 (After)</h3>
-        <div class="code-block text-sm p-4 rounded-xl bg-slate-100 border">
-          <pre><code>## LlamaIndex 官方文档
+- Index: 节点集合`
+
+const afterCode = `## LlamaIndex 官方文档
 
 ### 简介
 LlamaIndex 是一个...
 
 ### 核心概念
 - **Node**: 数据单元
-- **Index**: 节点集合</code></pre>
+- **Index**: 节点集合`
+
+const highlightedAfterCode = computed(() => highlight(afterCode, 'markdown'))
+
+const interpretations = [
+  {
+    term: '明确层次',
+    description: 'Markdown 的标题 (<code>#</code>, <code>##</code>) 帮助模型区分章节和段落，理解内容的主次关系。'
+  },
+  {
+    term: '突出重点',
+    description: '粗体、斜体和列表等元素能让模型注意到关键术语和并列关系。'
+  },
+  {
+    term: '提升精度',
+    description: '模型在生成答案时，可以更准确地引用到具体的章节标题，使答案来源更清晰，减少“捏造”事实的可能性。'
+  }
+]
+</script>
+
+<template>
+  <section class="h-full w-full flex flex-col justify-center p-8">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl xl:text-5xl font-extrabold tracking-tight">
+        <span
+          class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
+        >优化策略 (二)：优化文档结构</span>
+      </h2>
+      <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">为非结构化文本添加 Markdown 格式，提升模型对关键信息的理解能力。</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Before -->
+      <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/80 rounded-xl text-slate-200 text-sm shadow-lg">
+        <div class="flex items-center justify-between px-4 py-2 border-b border-slate-700/80">
+          <h3 class="font-bold text-slate-300">Before: 原始数据</h3>
+          <span class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300">待优化</span>
+        </div>
+        <pre class="p-4 overflow-x-auto"><code class="font-mono">{{ beforeCode }}</code></pre>
+      </div>
+
+      <!-- After -->
+      <div class="bg-slate-800/80 backdrop-blur-sm border border-emerald-700/80 rounded-xl text-slate-200 text-sm shadow-lg">
+        <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-700/80">
+          <h3 class="font-bold text-emerald-300">After: 结构化后</h3>
+          <span class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-emerald-900/50 text-emerald-300">效果显著</span>
+        </div>
+        <pre class="p-4 overflow-x-auto"><code class="font-mono" v-html="highlightedAfterCode" /></pre>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg">
+      <h3 class="font-bold text-slate-800 text-xl mb-3">解读：结构即上下文</h3>
+      <div class="flex flex-col gap-2">
+        <div v-for="(item, i) in interpretations" :key="i">
+          <h4 class="font-semibold text-slate-700">{{ item.term }}</h4>
+          <p class="text-slate-600 text-sm" v-html="item.description" />
         </div>
       </div>
     </div>
-    <div class="mt-8 p-6 bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl">
-      <h3 class="text-2xl font-bold mb-4 text-indigo-600">解读：结构即上下文</h3>
-      <ul class="list-disc list-inside space-y-2 text-lg text-slate-700">
-        <li>
-          <b>明确层次</b>: Markdown 的标题 (<code>#</code>, <code>##</code>)
-          帮助模型区分章节和段落，理解内容的主次关系。
-        </li>
-        <li><b>突出重点</b>: 粗体、斜体和列表等元素能让模型注意到关键术语和并列关系。</li>
-        <li>
-          <b>提升精度</b>:
-          模型在生成答案时，可以更准确地引用到具体的章节标题，使答案来源更清晰，减少“捏造”事实的可能性。
-        </li>
-      </ul>
-    </div>
-  </div>
+  </section>
 </template>
-
-<style scoped>
-.slide-content {
-  @apply flex flex-col justify-center h-full;
-}
-.code-block {
-  @apply bg-slate-900/80 text-slate-100 rounded-2xl border border-white/10 p-6;
-}
-</style>

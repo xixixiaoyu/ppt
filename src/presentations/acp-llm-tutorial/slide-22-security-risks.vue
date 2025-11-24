@@ -34,27 +34,31 @@ const threats = [
 </script>
 
 <template>
-  <div class="h-full flex flex-col justify-center items-center p-8">
+  <div class="h-full w-full flex flex-col justify-center items-center p-8 bg-white">
     <div class="text-center mb-8 max-w-4xl">
-      <h2 class="text-4xl font-bold text-slate-900">安全篇：大模型应用的安全风险</h2>
-      <p class="text-lg text-slate-600 mt-2">
+      <h2
+        class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-fuchsia-500"
+      >
+        安全篇：大模型应用的安全风险
+      </h2>
+      <p class="text-lg text-slate-600 mt-3">
         当模型对外开放时，新的挑战浮出水面：如何防范恶意使用和内容风险？
       </p>
     </div>
 
     <div
-      class="w-full max-w-5xl bg-white/60 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-lg p-8 mb-8"
+      class="w-full max-w-5xl bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-8 mb-8"
     >
       <h3 class="text-2xl font-bold text-center text-slate-800 mb-4">{{ problem.title }}</h3>
-      <p class="text-center text-slate-600 mb-6">{{ problem.description }}</p>
-      <ul class="grid grid-cols-3 gap-4 text-center">
+      <p class="text-center text-slate-600 mb-6 max-w-3xl mx-auto">{{ problem.description }}</p>
+      <ul class="flex justify-center gap-4 text-center flex-wrap">
         <li
           v-for="point in problem.points"
           :key="point"
-          class="bg-white/50 rounded-2xl p-3 text-sm"
+          class="bg-rose-100/80 ring-1 ring-rose-200/50 rounded-full px-4 py-1.5 text-sm"
         >
-          <span class="font-semibold text-rose-600">{{ point.split('：')[0] }}</span>
-          <span class="text-slate-700">：{{ point.split('：')[1] }}</span>
+          <span class="font-semibold text-rose-700">{{ point.split('：')[0] }}</span>
+          <span class="text-slate-700/90">：{{ point.split('：')[1] }}</span>
         </li>
       </ul>
     </div>
@@ -63,16 +67,14 @@ const threats = [
       <div
         v-for="threat in threats"
         :key="threat.title"
-        class="flex flex-col bg-rose-50/50 backdrop-blur-md border border-rose-200/30 rounded-3xl shadow-xl p-6 text-center"
+        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 text-center items-center"
       >
         <div class="flex justify-center mb-4">
           <component :is="threat.icon" class="h-10 w-10 text-rose-500" />
         </div>
-        <h3 class="text-xl font-bold text-rose-900">{{ threat.title }}</h3>
-        <p class="text-rose-900/80 mt-2 flex-grow text-sm">{{ threat.description }}</p>
+        <h3 class="text-xl font-bold text-slate-800">{{ threat.title }}</h3>
+        <p class="text-slate-600 mt-2 flex-grow text-sm">{{ threat.description }}</p>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped></style>

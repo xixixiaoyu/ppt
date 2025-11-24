@@ -45,35 +45,31 @@ const outlook = {
 </script>
 
 <template>
-  <div
-    class="slide-content p-12 flex flex-col justify-center items-center text-center h-full text-white"
-  >
-    <h2
-      class="text-6xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400 text-transparent bg-clip-text mb-4"
-    >
-      总结与展望
-    </h2>
-    <p class="text-xl text-white/70 max-w-4xl">
-      我们已经走过了一段完整的旅程：从一个简单的问答机器人，到一个健壮、高效、安全的生产级大模型应用。
-    </p>
+  <div class="h-full w-full flex flex-col justify-center items-center p-8 bg-white">
+    <div class="text-center mb-10 max-w-4xl">
+      <h2
+        class="text-6xl font-black tracking-tight bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 text-transparent bg-clip-text mb-4"
+      >
+        总结与展望
+      </h2>
+      <p class="text-xl text-slate-600 max-w-4xl">
+        我们已经走过了一段完整的旅程：从一个简单的问答机器人，到一个健壮、高效、安全的生产级大模型应用。
+      </p>
+    </div>
 
-    <div class="mt-10 w-full max-w-6xl">
-      <h3 class="text-3xl font-bold text-white/90 mb-6">你的大模型应用开发技能树</h3>
+    <div class="mt-8 w-full max-w-6xl">
+      <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center">你的大模型应用开发技能树</h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div
           v-for="category in skillTree"
           :key="category.title"
-          class="bg-white/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30 flex flex-col items-center text-center h-full"
+          class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center h-full"
         >
-          <component
-            :is="category.icon"
-            class="h-10 w-10 mb-3"
-            :class="`text-${category.color}-400`"
-          />
-          <h4 class="text-xl font-bold mb-3" :class="`text-${category.color}-300`">
+          <component :is="category.icon" class="h-10 w-10 mb-3" :class="`text-${category.color}-500`" />
+          <h4 class="text-xl font-bold mb-3 text-slate-800">
             {{ category.title }}
           </h4>
-          <ul class="text-sm space-y-1.5 text-white/70">
+          <ul class="text-sm space-y-1.5 text-slate-600">
             <li v-for="skill in category.skills" :key="skill">{{ skill }}</li>
           </ul>
         </div>
@@ -82,12 +78,12 @@ const outlook = {
 
     <div class="mt-10 w-full max-w-4xl">
       <div
-        class="bg-white/20 backdrop-blur-xl rounded-3xl p-6 border border-white/30 flex items-center gap-6"
+        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 flex items-center gap-6"
       >
-        <LightBulbIcon class="h-16 w-16 text-amber-400 shrink-0" />
+        <LightBulbIcon class="h-16 w-16 text-amber-500 shrink-0" />
         <div class="text-left">
-          <h3 class="text-2xl font-bold text-amber-300">{{ outlook.title }}</h3>
-          <p class="mt-2 text-white/80">{{ outlook.description }}</p>
+          <h3 class="text-2xl font-bold text-slate-800">{{ outlook.title }}</h3>
+          <p class="mt-2 text-slate-600">{{ outlook.description }}</p>
         </div>
       </div>
     </div>

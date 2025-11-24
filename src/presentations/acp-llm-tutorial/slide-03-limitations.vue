@@ -1,14 +1,23 @@
 <script setup lang="ts">
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
+
+const quote = '我们公司项目管理应该用什么工具？'
+const author = '一位新同事的提问'
 </script>
 
 <template>
-  <section class="h-full w-full grid place-items-center p-6 md:p-8">
-    <div class="text-center max-w-5xl">
-      <blockquote class="text-4xl md:text-6xl font-semibold tracking-tight text-slate-800">
-        “我们公司项目管理应该用什么工具？”
-      </blockquote>
-      <p class="mt-6 text-lg md:text-xl text-slate-600">— 一位新同事的提问</p>
+  <section class="h-full w-full grid place-items-center p-6">
+    <div class="max-w-4xl">
+      <div class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8 md:p-12">
+        <blockquote class="text-3xl md:text-4xl leading-relaxed font-semibold text-slate-800 text-center">
+          “{{ quote }}”
+        </blockquote>
+        <div class="mt-8 flex items-center justify-center">
+          <div class="text-slate-600">
+            — <span class="font-medium text-slate-700">{{ author }}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>

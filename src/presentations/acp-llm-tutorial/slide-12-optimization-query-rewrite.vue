@@ -33,50 +33,44 @@ const solutions = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
-    <div class="mb-8 text-center">
-      <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
-      >
-        优化策略 (四)：查询改写
+  <section class="h-full w-full grid grid-rows-[auto_1fr] p-6 lg:p-10">
+    <div class="flex-none">
+      <h2 class="text-4xl font-extrabold">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500">
+          优化：查询重写 (Query Rewriting)
+        </span>
       </h2>
-      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
+      <p class="mt-2 text-slate-600 max-w-3xl">
         用户的原始问题往往不完美。在检索前“预处理”问题，是提升召回率的关键一步。
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start pt-6">
       <!-- Challenges -->
-      <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl p-6">
-        <h3 class="text-xl font-bold text-slate-800 mb-4">原始问题的挑战</h3>
-        <ul class="space-y-4">
-          <li v-for="(item, i) in challenges" :key="i" class="flex items-start gap-3">
-            <span class="font-mono text-amber-600 text-sm mt-1">// {{ item.type }}</span>
-            <p class="text-slate-700 text-sm flex-1">{{ item.description }}</p>
+      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-xl shadow-lg h-full">
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">
+          挑战
+        </h3>
+        <ul class="space-y-4 text-slate-700">
+          <li v-for="item in challenges" :key="item.type" class="flex items-start">
+            <span class="font-bold text-indigo-600 w-16 flex-shrink-0">{{ item.type }}</span>
+            <span class="ml-4">{{ item.description }}</span>
           </li>
         </ul>
       </div>
 
       <!-- Solutions -->
-      <div
-        class="relative rounded-2xl p-6 bg-white/70 backdrop-blur-md border border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-gradient-to-r before:from-indigo-500 before:to-fuchsia-500"
-      >
-        <h3 class="text-xl font-bold text-slate-900 mb-4">查询改写技术</h3>
-        <ul class="space-y-4">
-          <li v-for="(item, i) in solutions" :key="i" class="flex items-start gap-3">
-            <span class="font-mono text-sky-600 text-sm mt-1">// {{ item.type }}</span>
-            <p class="text-slate-700 text-sm flex-1">{{ item.description }}</p>
+      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-xl shadow-lg h-full">
+        <h3 class="text-2xl font-bold text-emerald-700 mb-4">
+          解决方案
+        </h3>
+        <ul class="space-y-4 text-slate-700">
+          <li v-for="item in solutions" :key="item.type" class="flex items-start">
+            <span class="font-bold text-emerald-600 w-16 flex-shrink-0">{{ item.type }}</span>
+            <span class="ml-4">{{ item.description }}</span>
           </li>
         </ul>
       </div>
-    </div>
-
-    <div class="mt-8 text-center">
-      <p
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md text-slate-700 text-sm"
-      >
-        💡 目标：将用户的“口语化”问题，转化为机器最容易理解的“结构化”检索指令。
-      </p>
     </div>
   </section>
 </template>
