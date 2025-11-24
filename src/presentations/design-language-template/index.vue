@@ -29,6 +29,11 @@ import Slide16ChapterDivider from './slide-16-chapter-divider.vue'
 import Slide17Team from './slide-17-team.vue'
 import Slide18Quote from './slide-18-quote.vue'
 import Slide19Media from './slide-19-media.vue'
+import Slide20QAndA from './slide-20-q-and-a.vue'
+import Slide21ThankYou from './slide-21-thank-you.vue'
+import Slide22References from './slide-22-references.vue'
+import Slide23Pricing from './slide-23-pricing.vue'
+import Slide24Table from './slide-24-table.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -68,6 +73,11 @@ const slides = [
   Slide18Quote,
   Slide19Media,
   Slide11Poll,
+  Slide20QAndA,
+  Slide21ThankYou,
+  Slide22References,
+  Slide23Pricing,
+  Slide24Table,
   Slide10CTA,
 ]
 </script>
