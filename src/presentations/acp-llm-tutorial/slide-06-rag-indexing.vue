@@ -55,9 +55,11 @@ const highlightedCode = computed(() => highlight(code, 'typescript'))
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div
-        class="bg-slate-900/80 text-slate-100 rounded-2xl border border-white/10 p-6 font-mono text-sm leading-relaxed"
+        class="bg-slate-900/80 text-slate-100 rounded-2xl border border-white/10 p-6 font-mono text-sm leading-relaxed shadow-2xl"
       >
-        <pre class="whitespace-pre-wrap break-words"><code class="whitespace-pre-wrap break-words" v-html="highlightedCode" /></pre>
+        <pre
+          class="whitespace-pre-wrap break-words"
+        ><code class="whitespace-pre-wrap break-words" v-html="highlightedCode" /></pre>
       </div>
       <div class="space-y-4">
         <div

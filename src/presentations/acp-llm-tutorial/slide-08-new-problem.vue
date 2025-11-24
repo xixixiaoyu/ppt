@@ -12,7 +12,7 @@ const role = 'RAG 应用面临的新挑战：检索召回不准确，导致大�
       <h2 class="text-5xl font-extrabold tracking-tight text-slate-800">
         新问题：答案依然不够好？
       </h2>
-      <div class="mt-10 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8">
+      <div class="mt-10 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8 transition hover:-translate-y-0.5">
         <blockquote
           class="text-4xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500"
         >

@@ -37,7 +37,7 @@ const solutions = [
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Challenges -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg">
+      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl">
         <h3 class="text-xl font-bold text-slate-800 mb-4">挑战：不合适的切片尺寸</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in challenges" :key="i" class="flex items-start gap-3">
@@ -51,7 +51,7 @@ const solutions = [
       </div>
 
       <!-- Solutions -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border border-emerald-500/50 rounded-xl shadow-lg">
+      <div class="bg-white/60 backdrop-blur-sm p-6 border border-emerald-500/50 rounded-2xl shadow-xl">
         <h3 class="text-xl font-bold text-emerald-800 mb-4">对策：智能切片策略</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in solutions" :key="i" class="flex items-start gap-3">

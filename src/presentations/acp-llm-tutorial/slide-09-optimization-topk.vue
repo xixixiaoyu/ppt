@@ -31,7 +31,7 @@ const interpretations = [
   <section class="h-full w-full grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
     <div class="flex flex-col justify-center">
       <div
-        class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/80 rounded-xl text-slate-200 text-sm xl:text-base shadow-2xl shadow-slate-800/20"
+        class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/80 rounded-2xl text-slate-200 text-sm xl:text-base shadow-2xl shadow-slate-800/20"
       >
         <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-700/80">
           <div class="w-3 h-3 rounded-full bg-red-500" />

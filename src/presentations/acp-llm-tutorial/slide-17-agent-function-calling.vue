@@ -55,7 +55,7 @@ const highlightedCode = computed(() => steps.map(step => highlight(step.code, st
     <div class="grid place-items-center">
       <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6">
         <!-- Step 1: LLM Output -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg h-full flex flex-col">
+        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg h-full flex flex-col transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[0].title }}</h3>
           <p class="text-slate-700 text-sm mb-4 flex-none">{{ steps[0].description }}</p>
           <div class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto">
@@ -69,7 +69,7 @@ const highlightedCode = computed(() => steps.map(step => highlight(step.code, st
         </div>
 
         <!-- Step 2: Application Execution -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg h-full flex flex-col">
+        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg h-full flex flex-col transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[1].title }}</h3>
           <p class="text-slate-700 text-sm mb-4 flex-none">{{ steps[1].description }}</p>
           <div class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto">

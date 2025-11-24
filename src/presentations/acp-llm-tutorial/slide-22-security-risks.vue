@@ -47,7 +47,7 @@ const threats = [
     </div>
 
     <div
-      class="w-full max-w-5xl bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-8 mb-8"
+      class="w-full max-w-5xl bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-8 mb-8 transition hover:-translate-y-0.5"
     >
       <h3 class="text-2xl font-bold text-center text-slate-800 mb-4">{{ problem.title }}</h3>
       <p class="text-center text-slate-600 mb-6 max-w-3xl mx-auto">{{ problem.description }}</p>
@@ -67,7 +67,7 @@ const threats = [
       <div
         v-for="threat in threats"
         :key="threat.title"
-        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 text-center items-center"
+        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 text-center items-center transition hover:-translate-y-0.5"
       >
         <div class="flex justify-center mb-4">
           <component :is="threat.icon" class="h-10 w-10 text-rose-500" />

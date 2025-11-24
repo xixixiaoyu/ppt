@@ -34,28 +34,40 @@ const steps = [
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-start pt-6">
       <!-- Step 1: Define Tools -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg flex flex-col h-full">
+      <div
+        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+      >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[0].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[0].description }}</p>
-        <pre class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"><code>{{ steps[0].code }}</code></pre>
+        <pre
+          class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"
+        ><code>{{ steps[0].code }}</code></pre>
       </div>
 
       <!-- Step 2: Select Tool -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg flex flex-col h-full">
+      <div
+        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+      >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[1].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[1].description }}</p>
         <div class="mt-4 p-3 bg-slate-100 rounded-lg text-xs">
           <p class="text-slate-500">用户: "最新的 AI 论文有哪些？"</p>
           <p class="font-bold text-indigo-600 mt-2 text-center text-lg">⬇️</p>
-          <p class="font-semibold text-slate-800 mt-1 text-center">LLM 决定使用 `search_arxiv_paper`</p>
+          <p class="font-semibold text-slate-800 mt-1 text-center">
+            LLM 决定使用 `search_arxiv_paper`
+          </p>
         </div>
       </div>
 
       <!-- Step 3: Generate Parameters -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg flex flex-col h-full">
+      <div
+        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+      >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[2].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[2].description }}</p>
-        <pre class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"><code>{{ steps[2].code }}</code></pre>
+        <pre
+          class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"
+        ><code>{{ steps[2].code }}</code></pre>
       </div>
     </div>
   </section>

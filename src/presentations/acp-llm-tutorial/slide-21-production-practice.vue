@@ -55,7 +55,7 @@ const pillars = [
       <div
         v-for="pillar in pillars"
         :key="pillar.title"
-        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6"
+        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-4">
           <component :is="pillar.icon" class="h-10 w-10" :class="`text-${pillar.color}-500`" />

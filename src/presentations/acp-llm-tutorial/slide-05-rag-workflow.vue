@@ -45,7 +45,7 @@ const activeTab = ref('indexing')
         v-for="tab in tabs"
         :key="tab.id"
         @click="activeTab = tab.id"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-800 transition hover:bg-white/80"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-800 transition hover:bg-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
         :class="{ '!bg-white/90 ring-2 ring-accent/60': activeTab === tab.id }"
       >
         {{ tab.label }}
@@ -53,7 +53,7 @@ const activeTab = ref('indexing')
     </div>
 
     <div
-      class="mt-6 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 md:p-8 min-h-[240px]"
+      class="mt-6 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 md:p-8 min-h-[240px] transition hover:-translate-y-0.5"
     >
       <ul class="space-y-3 text-slate-700 text-lg">
         <li

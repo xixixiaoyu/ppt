@@ -33,10 +33,10 @@ const reranked = [
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start pt-6">
       <!-- Initial Retrieval -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-xl shadow-lg h-full">
-        <h3 class="text-2xl font-bold text-slate-800 mb-4">
-          1. 初步检索 (海选)
-        </h3>
+      <div
+        class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5"
+      >
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">1. 初步检索 (海选)</h3>
         <p class="text-sm text-slate-600 mb-4">
           向量数据库快速召回 Top-K 个语义相似的文档，速度快，但可能包含噪声。
         </p>
@@ -45,19 +45,23 @@ const reranked = [
             v-for="item in initialRetrieval"
             :key="item.doc"
             class="p-3 rounded-lg flex justify-between items-center transition-all"
-            :class="[item.isNoise ? 'bg-rose-100/80 text-rose-700' : 'bg-slate-100/80 text-slate-800']"
+            :class="[
+              item.isNoise ? 'bg-rose-100/80 text-rose-700' : 'bg-slate-100/80 text-slate-800',
+            ]"
           >
             <span>{{ item.doc }}</span>
-            <span class="font-mono text-xs" :class="[item.isNoise ? 'font-semibold' : '']">相似度: {{ item.score }}</span>
+            <span class="font-mono text-xs" :class="[item.isNoise ? 'font-semibold' : '']"
+              >相似度: {{ item.score }}</span
+            >
           </div>
         </div>
       </div>
 
       <!-- Re-ranking -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-xl shadow-lg h-full">
-        <h3 class="text-2xl font-bold text-emerald-700 mb-4">
-          2. 精排 (复赛)
-        </h3>
+      <div
+        class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5"
+      >
+        <h3 class="text-2xl font-bold text-emerald-700 mb-4">2. 精排 (复赛)</h3>
         <p class="text-sm text-slate-600 mb-4">
           Re-ranker 模型对初步结果进行二次打分，根据真实相关性重新排序。
         </p>

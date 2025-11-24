@@ -27,16 +27,18 @@ const highlightedAfterCode = computed(() => highlight(afterCode, 'markdown'))
 const interpretations = [
   {
     term: '明确层次',
-    description: 'Markdown 的标题 (<code>#</code>, <code>##</code>) 帮助模型区分章节和段落，理解内容的主次关系。'
+    description:
+      'Markdown 的标题 (<code>#</code>, <code>##</code>) 帮助模型区分章节和段落，理解内容的主次关系。',
   },
   {
     term: '突出重点',
-    description: '粗体、斜体和列表等元素能让模型注意到关键术语和并列关系。'
+    description: '粗体、斜体和列表等元素能让模型注意到关键术语和并列关系。',
   },
   {
     term: '提升精度',
-    description: '模型在生成答案时，可以更准确地引用到具体的章节标题，使答案来源更清晰，减少“捏造”事实的可能性。'
-  }
+    description:
+      '模型在生成答案时，可以更准确地引用到具体的章节标题，使答案来源更清晰，减少“捏造”事实的可能性。',
+  },
 ]
 </script>
 
@@ -44,34 +46,48 @@ const interpretations = [
   <section class="h-full w-full flex flex-col justify-center p-8">
     <div class="text-center mb-8">
       <h2 class="text-4xl xl:text-5xl font-extrabold tracking-tight">
-        <span
-          class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
-        >优化策略 (二)：优化文档结构</span>
+        <span class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
+          >优化策略 (二)：优化文档结构</span
+        >
       </h2>
-      <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">为非结构化文本添加 Markdown 格式，提升模型对关键信息的理解能力。</p>
+      <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">
+        为非结构化文本添加 Markdown 格式，提升模型对关键信息的理解能力。
+      </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Before -->
-      <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/80 rounded-xl text-slate-200 text-sm shadow-lg">
+      <div
+        class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/80 rounded-2xl text-slate-200 text-sm shadow-2xl"
+      >
         <div class="flex items-center justify-between px-4 py-2 border-b border-slate-700/80">
           <h3 class="font-bold text-slate-300">Before: 原始数据</h3>
-          <span class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300">待优化</span>
+          <span
+            class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300"
+            >待优化</span
+          >
         </div>
         <pre class="p-4 overflow-x-auto"><code class="font-mono">{{ beforeCode }}</code></pre>
       </div>
 
       <!-- After -->
-      <div class="bg-slate-800/80 backdrop-blur-sm border border-emerald-700/80 rounded-xl text-slate-200 text-sm shadow-lg">
+      <div
+        class="bg-slate-800/80 backdrop-blur-sm border border-emerald-700/80 rounded-2xl text-slate-200 text-sm shadow-2xl"
+      >
         <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-700/80">
           <h3 class="font-bold text-emerald-300">After: 结构化后</h3>
-          <span class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-emerald-900/50 text-emerald-300">效果显著</span>
+          <span
+            class="inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-semibold bg-emerald-900/50 text-emerald-300"
+            >效果显著</span
+          >
         </div>
-        <pre class="p-4 overflow-x-auto"><code class="font-mono" v-html="highlightedAfterCode" /></pre>
+        <pre
+          class="p-4 overflow-x-auto"
+        ><code class="font-mono" v-html="highlightedAfterCode" /></pre>
       </div>
     </div>
 
-    <div class="mt-6 bg-white/60 backdrop-blur-sm p-6 border rounded-xl shadow-lg">
+    <div class="mt-6 bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl">
       <h3 class="font-bold text-slate-800 text-xl mb-3">解读：结构即上下文</h3>
       <div class="flex flex-col gap-2">
         <div v-for="(item, i) in interpretations" :key="i">

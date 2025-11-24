@@ -43,7 +43,7 @@ const frameworks = {
     <div class="grid place-items-center">
       <div class="w-full max-w-6xl space-y-8">
         <!-- Why -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg">
+        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-2">{{ why.title }}</h3>
           <p class="text-slate-700 text-sm mb-4">{{ why.description }}</p>
           <ul class="space-y-2 text-sm">
@@ -57,7 +57,7 @@ const frameworks = {
         <div>
           <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">四大核心评测指标</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div v-for="metric in metrics" :key="metric.name" class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg text-center">
+            <div v-for="metric in metrics" :key="metric.name" class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl text-center transition hover:-translate-y-0.5">
               <div class="flex justify-center mb-3">
                 <component :is="metric.icon" class="h-10 w-10 text-indigo-500" />
               </div>
@@ -68,7 +68,7 @@ const frameworks = {
         </div>
 
         <!-- Frameworks -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg text-center">
+        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl text-center transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-3">{{ frameworks.title }}</h3>
           <div class="flex justify-center gap-8 items-center">
             <span v-for="item in frameworks.items" :key="item" class="text-2xl font-mono text-slate-800 font-semibold">{{ item }}</span>

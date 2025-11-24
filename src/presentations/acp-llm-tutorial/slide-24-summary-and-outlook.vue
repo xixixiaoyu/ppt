@@ -63,7 +63,7 @@ const outlook = {
         <div
           v-for="category in skillTree"
           :key="category.title"
-          class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center h-full"
+          class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center h-full transition hover:-translate-y-0.5"
         >
           <component :is="category.icon" class="h-10 w-10 mb-3" :class="`text-${category.color}-500`" />
           <h4 class="text-xl font-bold mb-3 text-slate-800">
@@ -78,7 +78,7 @@ const outlook = {
 
     <div class="mt-10 w-full max-w-4xl">
       <div
-        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 flex items-center gap-6"
+        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex items-center gap-6 transition hover:-translate-y-0.5"
       >
         <LightBulbIcon class="h-16 w-16 text-amber-500 shrink-0" />
         <div class="text-left">

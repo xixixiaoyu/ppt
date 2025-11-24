@@ -47,7 +47,7 @@ const solutions = [
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start pt-6">
       <!-- Challenges -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-xl shadow-lg h-full">
+      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5">
         <h3 class="text-2xl font-bold text-slate-800 mb-4">
           挑战
         </h3>
@@ -60,7 +60,7 @@ const solutions = [
       </div>
 
       <!-- Solutions -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-xl shadow-lg h-full">
+      <div class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5">
         <h3 class="text-2xl font-bold text-emerald-700 mb-4">
           解决方案
         </h3>

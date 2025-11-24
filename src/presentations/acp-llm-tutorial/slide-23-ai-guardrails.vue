@@ -73,7 +73,9 @@ const modernMethod = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
       <!-- Legacy Method Card -->
-      <div class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-lg p-6 flex flex-col h-full">
+      <div
+        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
+      >
         <div class="flex items-center gap-3 mb-4">
           <component :is="legacyMethod.icon" class="h-8 w-8 text-slate-400" />
           <h3 class="text-2xl font-bold text-slate-700">
@@ -81,7 +83,11 @@ const modernMethod = {
           </h3>
         </div>
         <ul class="space-y-4">
-          <li v-for="point in legacyMethod.points" :key="point.title" class="flex items-start gap-3">
+          <li
+            v-for="point in legacyMethod.points"
+            :key="point.title"
+            class="flex items-start gap-3"
+          >
             <component :is="point.icon" class="h-6 w-6 text-slate-400 shrink-0 mt-1" />
             <div>
               <h4 class="font-semibold text-slate-800">{{ point.title }}</h4>
@@ -93,7 +99,7 @@ const modernMethod = {
 
       <!-- Modern Method Card (Highlighted) -->
       <div
-        class="bg-white/60 backdrop-blur-sm ring-2 ring-indigo-500/50 rounded-2xl shadow-xl p-6 flex flex-col h-full"
+        class="bg-white/60 backdrop-blur-sm ring-2 ring-indigo-500/50 rounded-2xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-3 mb-4">
           <component :is="modernMethod.icon" class="h-8 w-8 text-indigo-500" />
@@ -103,7 +109,11 @@ const modernMethod = {
         </div>
         <p class="text-slate-600 mb-4 text-sm">{{ modernMethod.description }}</p>
         <ul class="space-y-4">
-          <li v-for="point in modernMethod.points" :key="point.title" class="flex items-start gap-3">
+          <li
+            v-for="point in modernMethod.points"
+            :key="point.title"
+            class="flex items-start gap-3"
+          >
             <component :is="point.icon" class="h-6 w-6 text-indigo-500 shrink-0 mt-1" />
             <div>
               <h4 class="font-semibold text-slate-800">{{ point.title }}</h4>

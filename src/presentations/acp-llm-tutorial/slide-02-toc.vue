@@ -16,17 +16,26 @@ const items = [
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
+      <h2
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
+      >
         议程概览
       </h2>
       <p class="mt-2 text-slate-600">我们将系统性地探讨构建生产级问答系统的全过程。</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article v-for="(item, idx) in items" :key="idx" class="group bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 md:p-8 transition hover:-translate-y-0.5 hover:shadow-2xl">
+      <article
+        v-for="(item, idx) in items"
+        :key="idx"
+        class="group bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 md:p-8 transition hover:-translate-y-0.5 hover:shadow-2xl hover:ring-2 hover:ring-accent/40"
+      >
         <div class="flex items-start justify-between">
           <h3 class="text-xl md:text-2xl font-bold text-slate-900">{{ item.title }}</h3>
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-accent/20 to-accent/10 border border-white/40 text-slate-900">{{ idx + 1 }}</span>
+          <span
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-accent/20 to-accent/10 border border-white/40 text-slate-900 transition group-hover:scale-105"
+            >{{ idx + 1 }}</span
+          >
         </div>
         <p class="mt-3 text-sm text-slate-600">{{ item.note }}</p>
       </article>

@@ -5,7 +5,7 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div
-      class="relative overflow-hidden rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl"
+      class="relative overflow-hidden rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl transition hover:-translate-y-0.5"
     >
       <div class="absolute inset-0 -z-0 opacity-40">
         <svg
@@ -41,7 +41,7 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
       <div class="relative z-10 grid place-items-center px-6 py-16 md:py-24">
         <div class="text-center">
           <h1
-            class="text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+            class="text-5xl md:text-7xl font-black tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
           >
             构建生产级大模型问答系统
           </h1>
