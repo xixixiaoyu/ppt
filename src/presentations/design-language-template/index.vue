@@ -34,6 +34,12 @@ import Slide21ThankYou from './slide-21-thank-you.vue'
 import Slide22References from './slide-22-references.vue'
 import Slide23Pricing from './slide-23-pricing.vue'
 import Slide24Table from './slide-24-table.vue'
+import Slide25LineChart from './slide-25-line-chart.vue'
+import Slide26BarChart from './slide-26-bar-chart.vue'
+import Slide27PieChart from './slide-27-pie-chart.vue'
+import Slide28DonutChart from './slide-28-donut-chart.vue'
+import Slide29ScatterChart from './slide-29-scatter-chart.vue'
+import Slide30RadarChart from './slide-30-radar-chart.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -79,6 +85,12 @@ const slides = [
   Slide23Pricing,
   Slide24Table,
   Slide10CTA,
+  Slide25LineChart,
+  Slide26BarChart,
+  Slide27PieChart,
+  Slide28DonutChart,
+  Slide29ScatterChart,
+  Slide30RadarChart,
 ]
 </script>
 
