@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { CheckBadgeIcon, DocumentMagnifyingGlassIcon, MagnifyingGlassCircleIcon, ArrowsPointingInIcon } from '@heroicons/vue/24/outline'
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -28,9 +31,9 @@ const frameworks = {
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="text-center mb-8">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">提效篇：自动化评测</h2>
+      <HeadingGradient :level="2" size="5xl">提效篇：自动化评测</HeadingGradient>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
         告别“感觉良好”，用数据驱动模型迭代。
       </p>
@@ -39,7 +42,7 @@ const frameworks = {
     <div class="grid place-items-center">
       <div class="w-full max-w-6xl space-y-8">
         <!-- Why -->
-        <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl transition hover:-translate-y-0.5">
+        <Card padding="md" class="transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-2">{{ why.title }}</h3>
           <p class="text-slate-700 text-sm mb-4">{{ why.description }}</p>
           <ul class="space-y-2 text-sm">
@@ -47,31 +50,31 @@ const frameworks = {
               <strong class="font-semibold text-indigo-700">{{ point.strong }}：</strong>{{ point.text }}
             </li>
           </ul>
-        </div>
+        </Card>
 
         <!-- Metrics -->
         <div>
           <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">四大核心评测指标</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div v-for="metric in metrics" :key="metric.name" class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl text-center transition hover:-translate-y-0.5">
+            <Card v-for="metric in metrics" :key="metric.name" padding="md" class="text-center transition hover:-translate-y-0.5">
               <div class="flex justify-center mb-3">
                 <component :is="metric.icon" class="h-10 w-10 text-indigo-500" />
               </div>
               <h4 class="font-bold text-slate-900 text-base">{{ metric.name }}</h4>
               <p class="text-slate-700 text-sm mt-1">{{ metric.description }}</p>
-            </div>
+            </Card>
           </div>
         </div>
 
         <!-- Frameworks -->
-        <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl text-center transition hover:-translate-y-0.5">
+        <Card padding="md" class="text-center transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-3">{{ frameworks.title }}</h3>
           <div class="flex justify-center gap-8 items-center">
             <span v-for="item in frameworks.items" :key="item" class="text-2xl font-mono text-slate-800 font-semibold">{{ item }}</span>
           </div>
           <p class="mt-3 text-slate-600 text-sm">{{ frameworks.description }}</p>
-        </div>
+        </Card>
       </div>
     </div>
-  </section>
+  </Section>
 </template>

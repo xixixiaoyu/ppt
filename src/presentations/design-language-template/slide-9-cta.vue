@@ -1,35 +1,31 @@
 <script setup lang="ts">
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import WaveGlow from '@/shared/ui/WaveGlow.vue'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
 
 <template>
-  <section class="container mx-auto max-w-5xl px-6 md:px-8 lg:px-12 py-16">
-    <div class="relative overflow-hidden rounded-[2rem] border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl px-8 py-16 text-center">
-      <div class="absolute inset-0 -z-0 opacity-60">
-        <svg viewBox="0 0 800 200" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.9)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.5)' }" />
-            </linearGradient>
-          </defs>
-          <path d="M0 120 C 120 80, 240 160, 360 120 S 600 80, 800 120" fill="none" stroke="url(#glow)" stroke-width="12" opacity="0.6">
-            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0 120 C 120 80, 240 160, 360 120 S 600 80, 800 120; M0 120 C 120 140, 240 100, 360 120 S 600 160, 800 120; M0 120 C 120 80, 240 160, 360 120 S 600 80, 800 120"/>
-          </path>
-        </svg>
-      </div>
-      <h2 class="relative z-10 text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+  <Section max="5xl" p="xl">
+    <Card rounded="[2rem]" padding="xl" class="text-center">
+      <WaveGlow class="opacity-60" />
+      <HeadingGradient :level="2" size="5xl" palette="indigo-fuchsia-emerald" class="relative z-10">
         准备好应用到你的演示了吗？
-      </h2>
+      </HeadingGradient>
       <p class="relative z-10 mt-4 text-slate-700">按钮仅作示例，无实际操作。</p>
       <div class="relative z-10 mt-8 flex items-center justify-center gap-4">
-        <button class="rounded-full bg-gradient-to-r from-accent to-accent px-6 py-3 text-white shadow-lg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50">
+        <button
+          class="rounded-full bg-gradient-to-r from-accent to-accent px-6 py-3 text-white shadow-lg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50"
+        >
           继续探索
         </button>
-        <button class="rounded-full border border-white/40 bg-white/60 px-6 py-3 text-slate-800 backdrop-blur-md hover:bg-white/70">
+        <button
+          class="rounded-full border border-white/40 bg-white/60 px-6 py-3 text-slate-800 backdrop-blur-md hover:bg-white/70"
+        >
           查看示例
         </button>
       </div>
-    </div>
-  </section>
+    </Card>
+  </Section>
 </template>

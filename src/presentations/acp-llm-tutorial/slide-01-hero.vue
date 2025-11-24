@@ -1,12 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
-    <div
-      class="relative overflow-hidden rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl transition hover:-translate-y-0.5"
-    >
+  <Section>
+    <Card padding="xl" class="grid place-items-center">
       <div class="absolute inset-0 -z-0 opacity-40">
         <svg
           class="h-full w-full"
@@ -38,18 +39,21 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         </svg>
       </div>
 
-      <div class="relative z-10 grid place-items-center px-6 py-16 md:py-24">
+      <div class="relative z-10 px-6 py-4 md:py-8">
         <div class="text-center">
-          <h1
-            class="text-5xl md:text-7xl font-black tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500"
+          <HeadingGradient
+            :level="1"
+            size="7xl"
+            palette="indigo-fuchsia-emerald"
+            class="leading-tight"
           >
             构建生产级大模型问答系统
-          </h1>
+          </HeadingGradient>
           <p class="mt-5 text-lg md:text-2xl text-slate-700 max-w-4xl mx-auto">
             从入门到部署的全链路实践
           </p>
         </div>
       </div>
-    </div>
-  </section>
+    </Card>
+  </Section>
 </template>

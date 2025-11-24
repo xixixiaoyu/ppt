@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const steps = [
@@ -10,21 +13,15 @@ const steps = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="mb-8 text-center">
-      <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
-      >
-        步骤流程（占位）
-      </h2>
+      <HeadingGradient :level="2" size="5xl">步骤流程（占位）</HeadingGradient>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">用于表达端到端方法论与工作流。</p>
     </div>
 
     <div class="hidden md:flex items-center justify-center gap-4">
       <template v-for="(s, i) in steps" :key="s.title">
-        <div
-          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl shadow-lg p-6 text-center w-56"
-        >
+        <Card rounded="2xl" padding="md" class="text-center w-56">
           <div
             class="mx-auto grid place-items-center w-10 h-10 rounded-full bg-gradient-to-r from-accent to-accent text-white font-bold mb-3"
           >
@@ -32,16 +29,14 @@ const steps = [
           </div>
           <h3 class="text-lg font-bold text-slate-900">{{ s.title }}</h3>
           <p class="text-slate-700 text-sm mt-1">{{ s.description }}</p>
-        </div>
+        </Card>
         <div v-if="i < steps.length - 1" class="text-slate-500">→</div>
       </template>
     </div>
 
     <div class="md:hidden space-y-4">
       <template v-for="(s, i) in steps" :key="s.title">
-        <div
-          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl shadow-lg p-5"
-        >
+        <Card rounded="2xl" padding="md">
           <div class="flex items-center gap-3">
             <div
               class="grid place-items-center w-8 h-8 rounded-full bg-gradient-to-r from-accent to-accent text-white font-bold"
@@ -53,9 +48,9 @@ const steps = [
               <p class="text-slate-700 text-sm">{{ s.description }}</p>
             </div>
           </div>
-        </div>
+        </Card>
         <div v-if="i < steps.length - 1" class="text-center text-slate-400">↓</div>
       </template>
     </div>
-  </section>
+  </Section>
 </template>

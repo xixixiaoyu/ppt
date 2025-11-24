@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { RocketLaunchIcon, BanknotesIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -41,17 +44,18 @@ const pillars = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="text-center mb-8 max-w-4xl mx-auto">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">上线篇：生产实践</h2>
+      <HeadingGradient :level="2" size="5xl">上线篇：生产实践</HeadingGradient>
       <p class="text-lg text-slate-600 mt-3">部署只是开始，稳定、高效、经济地运行才是目标。</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
-      <div
+      <Card
         v-for="pillar in pillars"
         :key="pillar.title"
-        class="flex flex-col bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 transition hover:-translate-y-0.5"
+        padding="md"
+        class="flex flex-col transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-4">
           <component :is="pillar.icon" class="h-10 w-10" :class="`text-${pillar.color}-500`" />
@@ -68,7 +72,7 @@ const pillars = [
             <span class="text-slate-600 ml-1.5">{{ point.text }}</span>
           </li>
         </ul>
-      </div>
+      </Card>
     </div>
-  </section>
+  </Section>
 </template>

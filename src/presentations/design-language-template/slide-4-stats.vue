@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onMounted, watch, ref } from 'vue'
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 
 const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -12,7 +15,7 @@ interface StatItem {
 const stats: StatItem[] = [
   { label: '示例转化率', target: 68, suffix: '%' },
   { label: '增长（占位）', target: 1240 },
-  { label: '满意度（样例）', target: 96, suffix: '%' }
+  { label: '满意度（样例）', target: 96, suffix: '%' },
 ]
 
 const values = ref<number[]>(stats.map(() => 0))
@@ -48,31 +51,32 @@ onMounted(() => {
   if (props.isActive) animate()
 })
 
-watch(() => props.isActive, (active) => {
-  if (active) {
-    values.value = stats.map(() => 0)
-    if (rafId) cancelAnimationFrame(rafId)
-    animate()
+watch(
+  () => props.isActive,
+  (active) => {
+    if (active) {
+      values.value = stats.map(() => 0)
+      if (rafId) cancelAnimationFrame(rafId)
+      animate()
+    }
   }
-})
+)
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="mb-8">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
-        指标看板（占位）
-      </h2>
+      <HeadingGradient :level="2" size="5xl">指标看板（占位）</HeadingGradient>
       <p class="mt-2 text-slate-600">示例动画数字，进入该页时缓动上升。</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div v-for="(stat, i) in stats" :key="i" class="flex flex-col gap-2 bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 md:p-8">
+      <Card v-for="(stat, i) in stats" :key="i" padding="md" class="flex flex-col gap-2">
         <div class="text-5xl font-black tracking-tight text-slate-900">
           {{ values[i] }}<span v-if="stat.suffix">{{ stat.suffix }}</span>
         </div>
         <div class="text-sm text-slate-600">{{ stat.label }}</div>
-      </div>
+      </Card>
     </div>
-  </section>
+  </Section>
 </template>

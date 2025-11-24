@@ -1,4 +1,7 @@
 <script setup lang='ts'>
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 type Plan = { name: string; price: string; highlight?: boolean; features: string[] }
@@ -24,19 +27,18 @@ const plans: Plan[] = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="mb-8 text-center">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
-        定价方案（占位）
-      </h2>
+      <HeadingGradient :level="2" size="5xl">定价方案（占位）</HeadingGradient>
       <p class="mt-2 text-slate-600">展示不同套餐与权益，辅助商务沟通</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div
+      <Card
         v-for="p in plans"
         :key="p.name"
-        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 flex flex-col"
+        padding="md"
+        class="flex flex-col"
         :class="p.highlight ? 'ring-2 ring-[rgb(var(--accent))]' : ''"
       >
         <div class="flex items-baseline justify-between">
@@ -53,7 +55,7 @@ const plans: Plan[] = [
         <button class="mt-6 rounded-full bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))] px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent/50">
           了解更多
         </button>
-      </div>
+      </Card>
     </div>
-  </section>
+  </Section>
 </template>

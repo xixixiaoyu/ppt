@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const beforePoints = [
@@ -15,16 +18,14 @@ const afterPoints = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <Section>
     <div class="mb-8 text-center">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
-        优化前后（占位）
-      </h2>
+      <HeadingGradient :level="2" size="5xl">优化前后（占位）</HeadingGradient>
       <p class="mt-2 text-slate-600">用于展示改版效果与价值对比。</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="rounded-3xl border border-slate-300/40 bg-white/70 backdrop-blur-md shadow-xl p-6">
+      <Card class="border-slate-300/40">
         <div class="flex items-center justify-between">
           <h3 class="text-xl font-bold text-slate-800">优化前</h3>
           <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">需要改进</span>
@@ -35,9 +36,8 @@ const afterPoints = [
             {{ p }}
           </li>
         </ul>
-      </div>
-
-      <div class="rounded-3xl border border-accent/30 bg-white/70 backdrop-blur-md shadow-xl p-6">
+      </Card>
+      <Card class="border-accent/30">
         <div class="flex items-center justify-between">
           <h3 class="text-xl font-bold text-accent">优化后</h3>
           <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent">效果显著</span>
@@ -48,7 +48,7 @@ const afterPoints = [
             {{ p }}
           </li>
         </ul>
-      </div>
+      </Card>
     </div>
-  </section>
+  </Section>
 </template>
