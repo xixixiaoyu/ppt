@@ -19,16 +19,20 @@
       <button @click="previousSlide" :disabled="currentSlide === 0" class="control-btn">←</button>
 
       <div class="slide-info">
-        <span
-          class="page-edit"
-          contenteditable="true"
+        <input
+          class="page-edit text-center"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          v-model="editablePage"
+          :style="{ width: `${inputWidth}ch` }"
           @keydown.enter.prevent="commitInlinePageJump"
           @keydown.stop
+          @keydown="onEditableKeyDown"
           @input="onEditableInput"
           @focus="onEditableFocus"
           @blur="commitInlinePageJump"
-          >{{ editablePage }}</span
-        >
+        />
         <span> / {{ slides.length }}</span>
       </div>
 
@@ -70,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 
 const props = defineProps({
   slides: {
@@ -92,6 +96,7 @@ const showThumbnails = ref(false)
 const NAVIGATION_COOLDOWN = 250
 let lastNavigationAt = 0
 const editablePage = ref('1')
+const inputWidth = computed(() => Math.max(2, String(props.slides.length).length))
 
 const getTimestamp = () => (typeof performance !== 'undefined' ? performance.now() : Date.now())
 
@@ -157,30 +162,103 @@ const handleKeyDown = (event) => {
   }
 }
 
+const clamp = (n, min, max) => Math.min(Math.max(n, min), max)
+
 const commitInlinePageJump = () => {
-  const n = parseInt(editablePage.value, 10)
-  if (Number.isNaN(n)) {
+  const raw = editablePage.value.trim()
+  if (!raw) {
     editablePage.value = String(currentSlide.value + 1)
     return
   }
-  const clamped = Math.min(Math.max(n, 1), props.slides.length)
+  const parsed = parseInt(raw, 10)
+  if (Number.isNaN(parsed)) {
+    editablePage.value = String(currentSlide.value + 1)
+    return
+  }
+  const clamped = clamp(parsed, 1, props.slides.length)
+  if (clamped - 1 === currentSlide.value) {
+    editablePage.value = String(clamped)
+    return
+  }
   goToSlide(clamped - 1)
 }
 
 const onEditableInput = (e) => {
   const t = e.target
-  const raw = t && t.textContent ? t.textContent.trim() : ''
-  editablePage.value = raw
+  const raw = t && typeof t.value === 'string' ? t.value : t && t.textContent ? t.textContent : ''
+  const sanitized = String(raw).replace(/\D+/g, '')
+  editablePage.value = sanitized
 }
 
 const onEditableFocus = (e) => {
   const t = e.target
+  if (t && typeof t.select === 'function') {
+    try {
+      t.select()
+    } catch {}
+    return
+  }
   if (t && t.childNodes && t.childNodes.length) {
     const sel = window.getSelection()
     const range = document.createRange()
     range.selectNodeContents(t)
     sel.removeAllRanges()
     sel.addRange(range)
+  }
+}
+
+const onEditableKeyDown = (e) => {
+  const key = e.key
+  const total = props.slides.length
+  const current = (() => {
+    const n = parseInt(editablePage.value || '0', 10)
+    return Number.isNaN(n) ? currentSlide.value + 1 : n
+  })()
+
+  const stepAdjust = (delta) => {
+    const next = clamp(current + delta, 1, total)
+    editablePage.value = String(next)
+  }
+
+  switch (key) {
+    case 'ArrowUp':
+      e.preventDefault()
+      e.stopPropagation()
+      stepAdjust(1)
+      break
+    case 'ArrowDown':
+      e.preventDefault()
+      e.stopPropagation()
+      stepAdjust(-1)
+      break
+    case 'Home':
+      e.preventDefault()
+      e.stopPropagation()
+      editablePage.value = '1'
+      break
+    case 'End':
+      e.preventDefault()
+      e.stopPropagation()
+      editablePage.value = String(total)
+      break
+    case 'PageUp':
+      e.preventDefault()
+      e.stopPropagation()
+      stepAdjust(5)
+      break
+    case 'PageDown':
+      e.preventDefault()
+      e.stopPropagation()
+      stepAdjust(-5)
+      break
+    case 'Escape':
+      e.preventDefault()
+      e.stopPropagation()
+      editablePage.value = String(currentSlide.value + 1)
+      e.target.blur()
+      break
+    default:
+      break
   }
 }
 
