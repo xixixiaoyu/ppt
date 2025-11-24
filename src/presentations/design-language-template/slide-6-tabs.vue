@@ -13,7 +13,7 @@ const active = ref('a')
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-6">
-      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         选项卡（占位）
       </h2>
       <p class="mt-2 text-slate-600">轻量级切换示例。点击不同标签查看内容。</p>
@@ -25,7 +25,7 @@ const active = ref('a')
         :key="tab.id"
         @click="active = tab.id"
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-800 transition hover:bg-white/70"
-        :class="{ 'bg-gradient-to-r from-indigo-500/20 to-emerald-400/20': active === tab.id }"
+        :class="{ 'bg-gradient-to-r from-accent/20 to-accent/10': active === tab.id }"
       >
         {{ tab.label }}
       </button>

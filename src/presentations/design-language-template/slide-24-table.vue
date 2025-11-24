@@ -15,7 +15,7 @@ const rows: Row[] = [
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-6">
-      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))]">
+      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         数据表格（占位）
       </h2>
       <p class="mt-2 text-slate-600">用于展示结构化信息与横向对比</p>
@@ -40,4 +40,3 @@ const rows: Row[] = [
     </div>
   </section>
 </template>
-

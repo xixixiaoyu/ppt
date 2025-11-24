@@ -4,9 +4,9 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 type Choice = { id: string; label: string; color: string }
 const choices: Choice[] = [
-  { id: 'a', label: '更喜欢动效', color: 'from-indigo-500 to-fuchsia-500' },
-  { id: 'b', label: '更喜欢简洁', color: 'from-emerald-500 to-cyan-500' },
-  { id: 'c', label: '视场景而定', color: 'from-amber-500 to-rose-500' }
+  { id: 'a', label: '更喜欢动效', color: 'from-accent/90 to-accent/60' },
+  { id: 'b', label: '更喜欢简洁', color: 'from-accent/70 to-accent/40' },
+  { id: 'c', label: '视场景而定', color: 'from-accent/50 to-accent/30' }
 ]
 
 const counts = ref<number[]>(choices.map(() => 0))
@@ -30,7 +30,7 @@ watch(() => props.isActive, active => {
 <template>
   <section class="container mx-auto max-w-5xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-6 text-center">
-      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         互动投票（占位）
       </h2>
       <p class="mt-2 text-slate-600">点击按钮模拟投票，进度条实时变化。</p>
@@ -39,7 +39,7 @@ watch(() => props.isActive, active => {
     <div class="space-y-4">
       <div v-for="(c, i) in choices" :key="c.id" class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-4">
         <div class="flex items-center justify-between gap-4">
-          <button @click="vote(i)" class="shrink-0 rounded-full bg-gradient-to-r px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-300" :class="c.color">
+          <button @click="vote(i)" class="shrink-0 rounded-full bg-gradient-to-r px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50" :class="c.color">
             投票：{{ c.label }}
           </button>
           <div class="flex-1">

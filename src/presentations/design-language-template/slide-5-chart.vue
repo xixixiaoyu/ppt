@@ -9,14 +9,14 @@ const rawSeries = [
   {
     name: '示例策略',
     gradientId: 'lineGradientA',
-    cssGradient: 'linear-gradient(120deg, #6366f1, #8b5cf6, #34d399)',
+    cssGradient: 'linear-gradient(120deg, rgb(var(--accent) / 0.95), rgb(var(--accent) / 0.6))',
     values: [32, 48, 55, 62, 72],
     delay: 0
   },
   {
     name: '对照方案',
     gradientId: 'lineGradientB',
-    cssGradient: 'linear-gradient(120deg, #38bdf8, #60a5fa, #a855f7)',
+    cssGradient: 'linear-gradient(120deg, rgb(var(--accent) / 0.6), rgb(var(--accent) / 0.4))',
     values: [28, 36, 44, 53, 60],
     delay: 150
   }
@@ -25,7 +25,7 @@ const rawSeries = [
 const barSeries = {
   name: '体量参考',
   gradientId: 'barGradient',
-  cssGradient: 'linear-gradient(180deg, rgba(129, 140, 248, 0.9), rgba(56, 189, 248, 0.75))',
+  cssGradient: 'linear-gradient(180deg, rgb(var(--accent) / 0.9), rgb(var(--accent) / 0.5))',
   values: [40, 52, 58, 64, 70]
 } as const
 
@@ -105,17 +105,16 @@ const legendEntries = computed(() => [barSeries, ...chartSeries.value])
         <svg :viewBox="`0 0 ${width} ${height}`" role="img" aria-label="示例折线图" class="w-full h-auto">
           <defs>
             <linearGradient id="lineGradientA" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6366f1" />
-              <stop offset="50%" stop-color="#8b5cf6" />
-              <stop offset="100%" stop-color="#34d399" />
+              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.95)' }" />
+              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.6)' }" />
             </linearGradient>
             <linearGradient id="lineGradientB" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#38bdf8" />
-              <stop offset="100%" stop-color="#a855f7" />
+              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.6)' }" />
+              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.4)' }" />
             </linearGradient>
             <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="rgba(129, 140, 248, 0.95)" />
-              <stop offset="100%" stop-color="rgba(56, 189, 248, 0.7)" />
+              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.9)' }" />
+              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.5)' }" />
             </linearGradient>
           </defs>
 

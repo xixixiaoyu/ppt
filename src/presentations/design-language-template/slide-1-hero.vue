@@ -9,9 +9,8 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         <svg class="h-full w-full" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6366f1"/>
-              <stop offset="50%" stop-color="#d946ef"/>
-              <stop offset="100%" stop-color="#34d399"/>
+              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.9)' }" />
+              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.5)' }" />
             </linearGradient>
             <!-- 扩大滤镜区域，避免模糊边界呈现矩形裁剪痕迹 -->
             <filter id="blur" filterUnits="userSpaceOnUse" x="-200" y="-200" width="1200" height="1000" color-interpolation-filters="sRGB">
@@ -33,14 +32,14 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
       <div class="relative z-10 grid place-items-center px-6 py-16 md:py-24">
         <div class="text-center">
-          <h1 class="text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
             设计语言模板（示例）
           </h1>
           <p class="mt-5 text-lg md:text-2xl text-slate-700">
             多版式、可重用、含交互与 SVG 动效的中文演示模板
           </p>
           <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <button class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 px-6 py-3 text-white shadow-lg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300">
+            <button class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent px-6 py-3 text-white shadow-lg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50">
               立即开始
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>

@@ -18,7 +18,7 @@ const role = '关于设计语言的思考'
           · {{ role }}
         </div>
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 text-white text-xs font-semibold"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-accent to-accent text-white text-xs font-semibold"
         >
           引用 / 证言
         </div>

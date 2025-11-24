@@ -11,7 +11,7 @@ const sources = [
 <template>
   <section class="container mx-auto max-w-5xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-6">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))]">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         参考资料
       </h2>
       <p class="mt-2 text-slate-600">为结论与数据提供来源与出处</p>
@@ -36,4 +36,3 @@ const sources = [
     </ul>
   </section>
 </template>
-

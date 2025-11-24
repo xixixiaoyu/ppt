@@ -23,7 +23,7 @@ const plans = [
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-6">
-      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+      <h2 class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         对比选择（占位）
       </h2>
       <p class="mt-2 text-slate-600">并列卡片示例，中间卡片高亮为“推荐”。</p>
@@ -34,7 +34,7 @@ const plans = [
         v-for="(p, i) in plans"
         :key="i"
         class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md p-6 md:p-8 shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl"
-        :class="p.recommended ? 'ring-2 ring-indigo-400/60 shadow-indigo-400/30' : ''"
+        :class="p.recommended ? 'ring-2 ring-accent/60 shadow-[0_10px_28px_rgba(var(--accent)/0.3)]' : ''"
       >
         <div class="flex items-center justify-between">
           <h3 class="text-2xl font-bold text-slate-900">{{ p.name }}</h3>

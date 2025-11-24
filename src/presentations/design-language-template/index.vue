@@ -83,7 +83,7 @@ const slides = [
 </script>
 
 <template>
-  <div class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary">
+  <div class="relative flex h-screen w-screen overflow-hidden bg-surface text-text-primary" style="--surface: 248 250 252; --surface-muted: 241 245 249; --text-primary: 15 23 42; --text-muted: 71 85 105; --accent: 99 102 241;">
     <BackgroundManager />
     <main class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10">
       <div class="deck-shell h-full w-full">
@@ -115,7 +115,7 @@ const slides = [
 }
 
 .deck-shell :deep(.progress) {
-  @apply h-full bg-gradient-to-r from-indigo-600 via-fuchsia-500 to-emerald-400 transition-all duration-300;
+  @apply h-full bg-gradient-to-r from-accent to-accent transition-all duration-300;
 }
 
 .deck-shell :deep(.thumbnails) {
@@ -143,7 +143,7 @@ const slides = [
 }
 
 .deck-shell :deep(.thumbnail.active) {
-  @apply border-2 border-indigo-400 bg-indigo-400/20;
+  @apply border-2 border-accent bg-accent/20;
 }
 
 .deck-shell :deep(.thumbnail-number) {

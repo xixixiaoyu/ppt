@@ -24,13 +24,13 @@ const points = [
       </div>
       <div>
         <h2
-          class="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >
           {{ title }}
         </h2>
         <ul class="mt-4 space-y-2 text-slate-700 text-sm">
           <li v-for="p in points" :key="p" class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
             {{ p }}
           </li>
         </ul>

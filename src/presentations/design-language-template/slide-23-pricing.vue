@@ -26,7 +26,7 @@ const plans: Plan[] = [
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))]">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         定价方案（占位）
       </h2>
       <p class="mt-2 text-slate-600">展示不同套餐与权益，辅助商务沟通</p>
@@ -50,11 +50,10 @@ const plans: Plan[] = [
             <span>{{ f }}</span>
           </li>
         </ul>
-        <button class="mt-6 rounded-full bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))] px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-300">
+        <button class="mt-6 rounded-full bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))] px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent/50">
           了解更多
         </button>
       </div>
     </div>
   </section>
 </template>
-

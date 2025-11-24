@@ -32,16 +32,16 @@ const milestones: { label: string; title: string; description: string; status: S
 
 const statusGradient = (s: Status) =>
   s === 'done'
-    ? 'from-emerald-500 to-cyan-500'
+    ? 'from-accent to-accent'
     : s === 'in_progress'
-    ? 'from-indigo-500 to-fuchsia-500'
-    : 'from-slate-400 to-slate-500'
+    ? 'from-accent/80 to-accent/60'
+    : 'from-accent/30 to-accent/20'
 
 const statusChip = (s: Status) =>
   s === 'done'
-    ? 'bg-emerald-100 text-emerald-700'
+    ? 'bg-accent/10 text-accent'
     : s === 'in_progress'
-    ? 'bg-indigo-100 text-indigo-700'
+    ? 'bg-accent/8 text-accent'
     : 'bg-slate-100 text-slate-700'
 </script>
 
@@ -49,7 +49,7 @@ const statusChip = (s: Status) =>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
         路线图（占位）
       </h2>

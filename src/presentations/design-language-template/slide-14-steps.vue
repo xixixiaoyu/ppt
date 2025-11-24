@@ -13,7 +13,7 @@ const steps = [
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
         步骤流程（占位）
       </h2>
@@ -26,7 +26,7 @@ const steps = [
           class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl shadow-lg p-6 text-center w-56"
         >
           <div
-            class="mx-auto grid place-items-center w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-emerald-500 text-white font-bold mb-3"
+            class="mx-auto grid place-items-center w-10 h-10 rounded-full bg-gradient-to-r from-accent to-accent text-white font-bold mb-3"
           >
             {{ i + 1 }}
           </div>
@@ -44,7 +44,7 @@ const steps = [
         >
           <div class="flex items-center gap-3">
             <div
-              class="grid place-items-center w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-emerald-500 text-white font-bold"
+              class="grid place-items-center w-8 h-8 rounded-full bg-gradient-to-r from-accent to-accent text-white font-bold"
             >
               {{ i + 1 }}
             </div>

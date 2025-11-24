@@ -2,16 +2,16 @@
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const members = [
-  { name: 'Alex Chen', role: '产品负责人', initials: 'AC', gradient: 'from-indigo-500 to-fuchsia-500' },
-  { name: 'Li Wei', role: '前端工程师', initials: 'LW', gradient: 'from-emerald-500 to-cyan-500' },
-  { name: 'Zhao Yun', role: '设计师', initials: 'ZY', gradient: 'from-amber-500 to-rose-500' }
+  { name: 'Alex Chen', role: '产品负责人', initials: 'AC', gradient: 'from-accent to-accent' },
+  { name: 'Li Wei', role: '前端工程师', initials: 'LW', gradient: 'from-accent to-accent' },
+  { name: 'Zhao Yun', role: '设计师', initials: 'ZY', gradient: 'from-accent to-accent' }
 ]
 </script>
 
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="mb-8 text-center">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
         团队介绍（占位）
       </h2>
       <p class="mt-2 text-slate-600">用于演讲者或项目团队的介绍。</p>
