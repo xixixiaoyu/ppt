@@ -5,7 +5,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 <template>
   <section class="h-full w-full grid place-items-center p-6">
     <div class="text-center max-w-3xl">
-      <h2 class="text-5xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent))]">
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-violet-400 to-sky-500">
         问答环节
       </h2>
       <p class="mt-4 text-lg text-slate-600">欢迎现场提问或线上留言</p>
@@ -17,4 +17,3 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
     </div>
   </section>
 </template>
-

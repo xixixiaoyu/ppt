@@ -18,7 +18,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           </path>
         </svg>
       </div>
-      <h2 class="relative z-10 text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
+      <h2 class="relative z-10 text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
         准备好应用到你的演示了吗？
       </h2>
       <p class="relative z-10 mt-4 text-slate-700">按钮仅作示例，无实际操作。</p>

@@ -32,7 +32,7 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
       <div class="relative z-10 grid place-items-center px-6 py-16 md:py-24">
         <div class="text-center">
-          <h1 class="text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400">
             设计语言模板（示例）
           </h1>
           <p class="mt-5 text-lg md:text-2xl text-slate-700">
