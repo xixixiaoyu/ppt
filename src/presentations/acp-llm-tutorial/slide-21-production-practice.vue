@@ -41,21 +41,17 @@ const pillars = [
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8">
-    <div class="text-center mb-10 max-w-4xl">
-      <h2
-        class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500"
-      >
-        上线篇：生产实践
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-8 max-w-4xl mx-auto">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">上线篇：生产实践</h2>
       <p class="text-lg text-slate-600 mt-3">部署只是开始，稳定、高效、经济地运行才是目标。</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
       <div
         v-for="pillar in pillars"
         :key="pillar.title"
-        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 transition hover:-translate-y-0.5"
+        class="flex flex-col bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-4">
           <component :is="pillar.icon" class="h-10 w-10" :class="`text-${pillar.color}-500`" />
@@ -74,5 +70,5 @@ const pillars = [
         </ul>
       </div>
     </div>
-  </div>
+  </section>
 </template>

@@ -20,33 +20,29 @@ const steps = [
 </script>
 
 <template>
-  <section class="h-full w-full grid grid-rows-[auto_1fr] p-6 lg:p-10">
-    <div class="flex-none">
-      <h2 class="text-4xl font-extrabold">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500">
-          Agent 的“行动”：工具调用
-        </span>
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="mb-8">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">Agent 的“行动”：工具调用</h2>
       <p class="mt-2 text-slate-600 max-w-3xl">
         这是赋予 Agent 执行能力的魔法棒，让它能与外部世界交互。
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-start pt-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 items-start">
       <!-- Step 1: Define Tools -->
       <div
-        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[0].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[0].description }}</p>
         <pre
-          class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"
+          class="mt-4 bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-3 text-xs font-mono whitespace-pre-wrap"
         ><code>{{ steps[0].code }}</code></pre>
       </div>
 
       <!-- Step 2: Select Tool -->
       <div
-        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[1].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[1].description }}</p>
@@ -61,12 +57,12 @@ const steps = [
 
       <!-- Step 3: Generate Parameters -->
       <div
-        class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg flex flex-col h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <h3 class="text-xl font-bold text-slate-900 mb-2">{{ steps[2].title }}</h3>
         <p class="text-slate-700 text-sm flex-grow">{{ steps[2].description }}</p>
         <pre
-          class="mt-4 bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono whitespace-pre-wrap"
+          class="mt-4 bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-3 text-xs font-mono whitespace-pre-wrap"
         ><code>{{ steps[2].code }}</code></pre>
       </div>
     </div>

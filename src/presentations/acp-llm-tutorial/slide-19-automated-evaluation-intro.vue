@@ -28,13 +28,9 @@ const frameworks = {
 </script>
 
 <template>
-  <section class="h-full w-full grid grid-rows-[auto_1fr] p-6 lg:p-10">
-    <div class="flex-none text-center">
-      <h2 class="text-4xl font-extrabold">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500">
-          提效篇：自动化评测
-        </span>
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-8">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">提效篇：自动化评测</h2>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
         告别“感觉良好”，用数据驱动模型迭代。
       </p>
@@ -43,7 +39,7 @@ const frameworks = {
     <div class="grid place-items-center">
       <div class="w-full max-w-6xl space-y-8">
         <!-- Why -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl transition hover:-translate-y-0.5">
+        <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-2">{{ why.title }}</h3>
           <p class="text-slate-700 text-sm mb-4">{{ why.description }}</p>
           <ul class="space-y-2 text-sm">
@@ -57,7 +53,7 @@ const frameworks = {
         <div>
           <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">四大核心评测指标</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div v-for="metric in metrics" :key="metric.name" class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl text-center transition hover:-translate-y-0.5">
+            <div v-for="metric in metrics" :key="metric.name" class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl text-center transition hover:-translate-y-0.5">
               <div class="flex justify-center mb-3">
                 <component :is="metric.icon" class="h-10 w-10 text-indigo-500" />
               </div>
@@ -68,7 +64,7 @@ const frameworks = {
         </div>
 
         <!-- Frameworks -->
-        <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl text-center transition hover:-translate-y-0.5">
+        <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl text-center transition hover:-translate-y-0.5">
           <h3 class="text-xl font-bold text-slate-900 mb-3">{{ frameworks.title }}</h3>
           <div class="flex justify-center gap-8 items-center">
             <span v-for="item in frameworks.items" :key="item" class="text-2xl font-mono text-slate-800 font-semibold">{{ item }}</span>

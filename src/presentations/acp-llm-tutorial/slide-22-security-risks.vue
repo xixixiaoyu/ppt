@@ -34,20 +34,16 @@ const threats = [
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8">
-    <div class="text-center mb-8 max-w-4xl">
-      <h2
-        class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-fuchsia-500"
-      >
-        安全篇：大模型应用的安全风险
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-8 max-w-4xl mx-auto">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">安全篇：大模型应用的安全风险</h2>
       <p class="text-lg text-slate-600 mt-3">
         当模型对外开放时，新的挑战浮出水面：如何防范恶意使用和内容风险？
       </p>
     </div>
 
     <div
-      class="w-full max-w-5xl bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-8 mb-8 transition hover:-translate-y-0.5"
+      class="w-full max-w-5xl bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-8 mb-8 transition hover:-translate-y-0.5 mx-auto"
     >
       <h3 class="text-2xl font-bold text-center text-slate-800 mb-4">{{ problem.title }}</h3>
       <p class="text-center text-slate-600 mb-6 max-w-3xl mx-auto">{{ problem.description }}</p>
@@ -55,7 +51,7 @@ const threats = [
         <li
           v-for="point in problem.points"
           :key="point"
-          class="bg-rose-100/80 ring-1 ring-rose-200/50 rounded-full px-4 py-1.5 text-sm"
+          class="bg-rose-100/80 border border-rose-200/50 rounded-full px-4 py-1.5 text-sm"
         >
           <span class="font-semibold text-rose-700">{{ point.split('：')[0] }}</span>
           <span class="text-slate-700/90">：{{ point.split('：')[1] }}</span>
@@ -63,11 +59,11 @@ const threats = [
       </ul>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
       <div
         v-for="threat in threats"
         :key="threat.title"
-        class="flex flex-col bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 text-center items-center transition hover:-translate-y-0.5"
+        class="flex flex-col bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 text-center items-center transition hover:-translate-y-0.5"
       >
         <div class="flex justify-center mb-4">
           <component :is="threat.icon" class="h-10 w-10 text-rose-500" />
@@ -76,5 +72,5 @@ const threats = [
         <p class="text-slate-600 mt-2 flex-grow text-sm">{{ threat.description }}</p>
       </div>
     </div>
-  </div>
+  </section>
 </template>

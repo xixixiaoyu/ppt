@@ -41,7 +41,7 @@ const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
       <div class="relative z-10 grid place-items-center px-6 py-16 md:py-24">
         <div class="text-center">
           <h1
-            class="text-5xl md:text-7xl font-black tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-emerald-400"
+            class="text-5xl md:text-7xl font-black tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500"
           >
             构建生产级大模型问答系统
           </h1>

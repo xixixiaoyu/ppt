@@ -6,13 +6,13 @@ const author = '一位新同事的提问'
 </script>
 
 <template>
-  <section class="h-full w-full grid place-items-center p-6 lg:p-10">
-    <div class="max-w-4xl">
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="max-w-4xl mx-auto">
       <div
         class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8 md:p-12 transition hover:-translate-y-0.5"
       >
         <blockquote
-          class="text-3xl md:text-4xl leading-tight font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500"
+          class="text-3xl md:text-4xl leading-tight font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >
           “{{ quote }}”
         </blockquote>

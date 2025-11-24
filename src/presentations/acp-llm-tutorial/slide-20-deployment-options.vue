@@ -47,13 +47,9 @@ const options = [
 </script>
 
 <template>
-  <section class="h-full w-full grid grid-rows-[auto_1fr] p-6 lg:p-10">
-    <div class="flex-none text-center">
-      <h2 class="text-4xl font-extrabold">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500">
-          上线篇：模型部署 (Model Deployment)
-        </span>
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-8">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">上线篇：模型部署 (Model Deployment)</h2>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
         将训练好的模型投入生产，使其创造真实价值。
       </p>
@@ -64,7 +60,7 @@ const options = [
         <article
           v-for="option in options"
           :key="option.title"
-          class="flex flex-col bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-lg transition hover:-translate-y-0.5"
+          class="flex flex-col bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl transition hover:-translate-y-0.5"
           :class="{ 'ring-2 ring-indigo-500/50': option.recommended }"
         >
           <div class="flex items-start justify-between mb-4">

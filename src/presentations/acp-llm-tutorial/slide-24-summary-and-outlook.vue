@@ -45,14 +45,14 @@ const outlook = {
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8">
-    <div class="text-center mb-10 max-w-4xl">
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-10 max-w-4xl mx-auto">
       <h2
-        class="text-6xl font-black tracking-tight bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 text-transparent bg-clip-text mb-4"
+        class="text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-emerald-500 mb-4"
       >
         总结与展望
       </h2>
-      <p class="text-xl text-slate-600 max-w-4xl">
+      <p class="text-xl text-slate-600 max-w-4xl mx-auto">
         我们已经走过了一段完整的旅程：从一个简单的问答机器人，到一个健壮、高效、安全的生产级大模型应用。
       </p>
     </div>
@@ -63,9 +63,13 @@ const outlook = {
         <div
           v-for="category in skillTree"
           :key="category.title"
-          class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center h-full transition hover:-translate-y-0.5"
+          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center h-full transition hover:-translate-y-0.5"
         >
-          <component :is="category.icon" class="h-10 w-10 mb-3" :class="`text-${category.color}-500`" />
+          <component
+            :is="category.icon"
+            class="h-10 w-10 mb-3"
+            :class="`text-${category.color}-500`"
+          />
           <h4 class="text-xl font-bold mb-3 text-slate-800">
             {{ category.title }}
           </h4>
@@ -78,7 +82,7 @@ const outlook = {
 
     <div class="mt-10 w-full max-w-4xl">
       <div
-        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex items-center gap-6 transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 flex items-center gap-6 transition hover:-translate-y-0.5"
       >
         <LightBulbIcon class="h-16 w-16 text-amber-500 shrink-0" />
         <div class="text-left">
@@ -87,5 +91,5 @@ const outlook = {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

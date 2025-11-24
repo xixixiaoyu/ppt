@@ -19,22 +19,18 @@ const reranked = [
 </script>
 
 <template>
-  <section class="h-full w-full grid grid-rows-[auto_1fr] p-6 lg:p-10">
-    <div class="flex-none">
-      <h2 class="text-4xl font-extrabold">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-fuchsia-500">
-          优化：检索后重排 (Re-ranking)
-        </span>
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="mb-8">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化：检索后重排 (Re-ranking)</h2>
       <p class="mt-2 text-slate-600 max-w-3xl">
         对初步检索结果进行“精加工”，去粗取精，提升最终答案的质量。
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start pt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
       <!-- Initial Retrieval -->
       <div
-        class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md p-6 lg:p-8 border border-slate-200/30 rounded-3xl shadow-xl h-full transition hover:-translate-y-0.5"
       >
         <h3 class="text-2xl font-bold text-slate-800 mb-4">1. 初步检索 (海选)</h3>
         <p class="text-sm text-slate-600 mb-4">
@@ -59,7 +55,7 @@ const reranked = [
 
       <!-- Re-ranking -->
       <div
-        class="bg-white/60 backdrop-blur-sm p-6 lg:p-8 border border-emerald-500/50 rounded-2xl shadow-xl h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md p-6 lg:p-8 border border-emerald-500/50 rounded-3xl shadow-xl h-full transition hover:-translate-y-0.5"
       >
         <h3 class="text-2xl font-bold text-emerald-700 mb-4">2. 精排 (复赛)</h3>
         <p class="text-sm text-slate-600 mb-4">

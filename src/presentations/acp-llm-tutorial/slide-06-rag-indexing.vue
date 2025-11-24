@@ -65,7 +65,7 @@ const highlightedCode = computed(() => highlight(code, 'typescript'))
         <div
           v-for="(item, i) in interpretations"
           :key="i"
-          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-2xl p-5 h-full"
+          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl p-5 h-full shadow-xl"
         >
           <h3 class="font-bold text-slate-900">{{ i + 1 }}. {{ item.term }}</h3>
           <p class="mt-1 text-slate-700 text-sm" v-html="item.description"></p>

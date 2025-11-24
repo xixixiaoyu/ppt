@@ -25,19 +25,15 @@ const solutions = [
 </script>
 
 <template>
-  <section class="h-full w-full flex flex-col justify-center p-8">
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="text-center mb-8">
-      <h2 class="text-4xl xl:text-5xl font-extrabold tracking-tight">
-        <span
-          class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
-        >优化策略 (三)：精细化文档切片</span>
-      </h2>
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化策略（三）：精细化文档切片</h2>
       <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">切片的质量，直接决定了模型能拿到多高质量的“参考资料”。</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Challenges -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl">
+      <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl">
         <h3 class="text-xl font-bold text-slate-800 mb-4">挑战：不合适的切片尺寸</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in challenges" :key="i" class="flex items-start gap-3">
@@ -51,7 +47,7 @@ const solutions = [
       </div>
 
       <!-- Solutions -->
-      <div class="bg-white/60 backdrop-blur-sm p-6 border border-emerald-500/50 rounded-2xl shadow-xl">
+      <div class="bg-white/70 backdrop-blur-md p-6 border border-emerald-500/50 rounded-3xl shadow-xl">
         <h3 class="text-xl font-bold text-emerald-800 mb-4">对策：智能切片策略</h3>
         <ul class="space-y-4">
           <li v-for="(item, i) in solutions" :key="i" class="flex items-start gap-3">
@@ -67,7 +63,7 @@ const solutions = [
 
     <div class="mt-6 text-center">
       <p
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md text-slate-700 text-sm"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-slate-200/30 backdrop-blur-md text-slate-700 text-sm"
       >
         💡 核心目标：确保每个切片都是一个“高信噪比、语义自洽”的信息单元。
       </p>

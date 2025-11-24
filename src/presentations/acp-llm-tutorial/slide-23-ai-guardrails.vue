@@ -61,20 +61,16 @@ const modernMethod = {
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col justify-center items-center p-8">
-    <div class="text-center mb-10 max-w-4xl">
-      <h2
-        class="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-sky-500"
-      >
-        安全篇：AI 内容安全 (AI Guardrails)
-      </h2>
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+    <div class="text-center mb-10 max-w-4xl mx-auto">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">安全篇：AI 内容安全 (AI Guardrails)</h2>
       <p class="text-lg text-slate-600 mt-3">为你的大模型应用构建专业的、可扩展的安全护城河。</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
       <!-- Legacy Method Card -->
       <div
-        class="bg-white/60 backdrop-blur-sm ring-1 ring-slate-200/50 rounded-2xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-3 mb-4">
           <component :is="legacyMethod.icon" class="h-8 w-8 text-slate-400" />
@@ -99,7 +95,7 @@ const modernMethod = {
 
       <!-- Modern Method Card (Highlighted) -->
       <div
-        class="bg-white/60 backdrop-blur-sm ring-2 ring-indigo-500/50 rounded-2xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
+        class="bg-white/70 backdrop-blur-md ring-2 ring-indigo-500/50 rounded-3xl shadow-xl p-6 flex flex-col h-full transition hover:-translate-y-0.5"
       >
         <div class="flex items-center gap-3 mb-4">
           <component :is="modernMethod.icon" class="h-8 w-8 text-indigo-500" />
@@ -123,5 +119,5 @@ const modernMethod = {
         </ul>
       </div>
     </div>
-  </div>
+  </section>
 </template>

@@ -43,14 +43,10 @@ const interpretations = [
 </script>
 
 <template>
-  <section class="h-full w-full flex flex-col justify-center p-8">
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="text-center mb-8">
-      <h2 class="text-4xl xl:text-5xl font-extrabold tracking-tight">
-        <span class="bg-gradient-to-r from-fuchsia-500 to-indigo-500 bg-clip-text text-transparent"
-          >优化策略 (二)：优化文档结构</span
-        >
-      </h2>
-      <p class="mt-2 text-lg text-slate-600 max-w-2xl mx-auto">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化策略（二）：优化文档结构</h2>
+      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
         为非结构化文本添加 Markdown 格式，提升模型对关键信息的理解能力。
       </p>
     </div>
@@ -87,7 +83,7 @@ const interpretations = [
       </div>
     </div>
 
-    <div class="mt-6 bg-white/60 backdrop-blur-sm p-6 border rounded-2xl shadow-xl">
+    <div class="mt-6 bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
       <h3 class="font-bold text-slate-800 text-xl mb-3">解读：结构即上下文</h3>
       <div class="flex flex-col gap-2">
         <div v-for="(item, i) in interpretations" :key="i">
