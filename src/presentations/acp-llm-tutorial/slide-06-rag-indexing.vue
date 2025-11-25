@@ -4,44 +4,46 @@ import { highlight } from '../../utils/highlight'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const code = `// 1. 加载文档
-const documents = await new SimpleDirectoryReader().loadData({ directoryPath: './knowledge_base/test' })
+const documents = await new SimpleDirectoryReader().loadData({ directoryPath: './data' })
 
-// 2. 定义 Embedding 模型
-const embedModel = new llamaindex.DashScopeEmbedding({
-  model: llamaindex.DashScopeTextEmbeddingModels.TEXT_EMBEDDING_V2
+// 2. 定义 ServiceContext, 包含 Embedding 模型等
+const serviceContext = serviceContextFromDefaults({
+  embedModel: new DashScopeEmbedding(),
 })
 
-// 3. 构建索引
-const index = await llamaindex.VectorStoreIndex.fromDocuments(documents, { embedModel })
-
-// 4. 持久化存储
-await index.storageContext.persist({ persistPath: './knowledge_base/test' })`
+// 3. 构建并持久化索引
+const index = await VectorStoreIndex.fromDocuments(documents, { serviceContext })
+await index.storageContext.persist({ persistPath: './storage' })`
 
 const interpretations = [
   {
-    term: '加载文档',
-    description: '用 <code>SimpleDirectoryReader</code> 从目录加载文档。',
+    term: '加载文档 (Load)',
+    description: '<code>SimpleDirectoryReader</code> 是一个文档加载器，LlamaIndex 内置了数十种加载器，可以从文件、Notion、Lark 等多种数据源加载数据。',
   },
   {
-    term: '定义模型',
-    description: '实例化 <code>DashScopeEmbedding</code>，将文本转为向量。',
-  },
-  {
-    term: '构建索引',
+    term: '配置上下文 (ServiceContext)',
     description:
-      '调用 <code>VectorStoreIndex.fromDocuments</code> 完成分块与向量化，生成索引。',
+      '<code>serviceContext</code> 用于统一管理服务，如 Embedding 模型、LLM 等。这里我们使用通义千问的 Embedding 模型 <code>DashScopeEmbedding</code>。',
   },
   {
-    term: '持久化',
-    description: '持久化索引，后续可直接加载，避免重复构建。',
+    term: '构建索引 (Index)',
+    description:
+      '<code>VectorStoreIndex</code> 是最常用的索引类型。调用 <code>fromDocuments</code> 时，LlamaIndex 会自动完成文本分块、调用 Embedding 模型、构建索引等一系列操作。',
   },
   {
-    term: 'Embedding 选择',
-    description: '关注维度、领域适配与成本；领域模型更准。',
+    term: '持久化 (Persist)',
+    description: '将构建好的索引保存到文件系统，避免每次重复构建，后续可直接加载复用。',
+  },
+]
+
+const engineeringChoices = [
+  {
+    term: '模型选型：Embedding',
+    description: '选择合适的 Embedding 模型至关重要。需要综合考虑模型的维度 (影响存储和计算成本)、在特定领域的表现以及调用成本。通常，针对特定领域 (如代码、金融) 微调的 Embedding 模型效果更佳。',
   },
   {
-    term: '向量数据库',
-    description: 'Faiss 适合本地原型，Milvus/PAI 适合生产。',
+    term: '存储选型：向量数据库',
+    description: '对于本地原型或小型项目，<code>Faiss</code> (通过 <code>faiss-node</code>) 是一个不错的选择。对于生产环境，应考虑使用专业的向量数据库，如 <code>Milvus</code>、<code>Zilliz Cloud</code> 或云厂商提供的服务 (如阿里云 AnalyticeDB for PG)。',
   },
 ]
 
@@ -73,10 +75,18 @@ const highlightedCode = computed(() => highlight(code, 'typescript'))
         <div
           v-for="(item, i) in interpretations"
           :key="i"
-          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl p-5 h-full shadow-xl"
+          class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl p-5 shadow-xl"
         >
           <h3 class="font-bold text-slate-900">{{ i + 1 }}. {{ item.term }}</h3>
           <p class="mt-1 text-slate-700 text-sm" v-html="item.description"></p>
+        </div>
+        <div
+          v-for="(item, i) in engineeringChoices"
+          :key="i"
+          class="bg-amber-400/10 backdrop-blur-md border border-amber-400/30 rounded-3xl p-5 shadow-xl ring-2 ring-amber-400/50"
+        >
+          <h3 class="font-bold text-amber-900">{{ item.term }}</h3>
+          <p class="mt-1 text-amber-800 text-sm" v-html="item.description"></p>
         </div>
       </div>
     </div>

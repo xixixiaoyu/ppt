@@ -4,30 +4,30 @@ import { highlight } from '../../utils/highlight'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
-const code = `
-// 1. 加载索引
-const storageContext = await llamaindex.storageContextFromDefaults({
-  persistPath: './knowledge_base/test'
-})
-const index = await llamaindex.VectorStoreIndex.init({ storageContext, embedModel })
+const code = `// 1. 加载索引
+const storageContext = await storageContextFromDefaults({ persistPath: './storage' })
+const index = await loadIndexFromStorage(storageContext)
 
-// 2. 创建查询引擎
-const queryEngine = index.asQueryEngine()
+// 2. 创建 Retriever, 负责召回
+const retriever = index.asRetriever({ similarityTopK: 5 })
 
-// 3. 执行查询
-const { response, sourceNodes } = await queryEngine.query({
-  query: '我们公司项目管理应该用什么工具？'
-})
+// 3. 创建 QueryEngine, 负责生成
+const queryEngine = index.asQueryEngine({ retriever })
+
+// 4. 执行查询
+const { response, sourceNodes } = await queryEngine.query({ query: '项目管理用什么工具？' })
 `
 
 const highlightedCode = computed(() => highlight(code, 'typescript'))
 
-const advanced = [
-  'similarity_top_k：控制一次召回的文档数量',
-  'filters：按部门、时间等元数据过滤结果',
-  'mmr：最大边际相关性，减少冗余，提高多样性',
-  '混合检索：关键词 + 向量联合检索',
-  'reranker：使用跨编码器对结果精排',
+const recall = [
+  '<code>similarityTopK</code>: 控制召回文档的数量，是平衡效果与性能的关键参数。数量太少可能漏掉关键信息，太多则会增加噪声和LLM处理成本。',
+  '<code>VectorIndexRetriever</code>: LlamaIndex 提供了多种 Retriever，例如可以结合元数据进行过滤，或者实现关键词 + 向量的混合检索。',
+]
+
+const rerank = [
+  '<code>CohereRerank</code>: 在召回 (Recall) 之后，可以使用 Reranker 模型对结果进行重新排序，提高最相关文档的排名，从而提升最终生成答案的质量。',
+  '<code>LLM Reranker</code>: 除了使用专门的 Reranker 模型，也可以利用 LLM 自身对召回的文档进行打分和排序，但需要注意成本和延迟。',
 ]
 </script>
 
@@ -46,57 +46,37 @@ const advanced = [
           <pre class="p-6 overflow-x-auto"><code class="font-mono" v-html="highlightedCode" /></pre>
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-6 text-slate-700">
+      <div class="flex flex-col justify-center gap-4 text-slate-700">
         <h2
           class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >
-          RAG：检索
+          RAG 实践：检索与生成
         </h2>
-        <div class="flex flex-col gap-4 text-lg">
+        <div class="flex flex-col gap-3 text-lg">
           <div
-            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
+            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-4"
           >
             <h3 class="font-bold text-slate-800">1. 加载索引</h3>
-            <p class="text-slate-600 mt-1">从持久化存储加载向量索引。</p>
+            <p class="text-slate-600 mt-1 text-sm">从持久化存储中快速恢复索引，无需重复构建。</p>
           </div>
           <div
-            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
+            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-4"
           >
-            <h3 class="font-bold text-slate-800">2. 创建查询引擎</h3>
-            <p class="text-slate-600 mt-1">基于索引创建查询引擎。</p>
+            <h3 class="font-bold text-slate-800">2. 创建 Retriever (召回)</h3>
+            <p class="text-slate-600 mt-1 text-sm leading-relaxed" v-html="recall[0]"></p>
+            <p class="text-slate-600 mt-2 text-sm leading-relaxed" v-html="recall[1]"></p>
           </div>
           <div
-            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
+            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-4"
           >
-            <h3 class="font-bold text-slate-800">3. 执行查询</h3>
-            <p class="text-slate-600 mt-1">执行自然语言查询。</p>
+            <h3 class="font-bold text-slate-800">3. 创建 QueryEngine (生成)</h3>
+            <p class="text-slate-600 mt-1 text-sm">QueryEngine 封装了与 LLM 的交互，它接收 Retriever 召回的上下文和用户问题，然后调用 LLM 生成最终答案。</p>
           </div>
           <div
-            class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
+            class="bg-white/70 backdrop-blur-md border border-indigo-300/50 rounded-3xl shadow-xl p-4"
           >
-            <h3 class="font-bold text-slate-800">4. 获取结果</h3>
-            <p class="text-slate-600 mt-1">返回相关片段 (Source Nodes) 与回答 (Response)。</p>
-          </div>
-          <div
-            class="bg-white/70 backdrop-blur-md border border-indigo-300/50 rounded-3xl shadow-xl p-5"
-          >
-            <h3 class="font-bold text-slate-800">高级配置</h3>
-            <ul class="mt-2 space-y-2 text-slate-700 text-base">
-              <li v-for="it in advanced" :key="it" class="flex items-start gap-2">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="text-indigo-500"
-                >
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-                <span>{{ it }}</span>
-              </li>
-            </ul>
+            <h3 class="font-bold text-indigo-800">可选优化：Rerank (精排)</h3>
+            <p class="text-indigo-600 mt-1 text-sm leading-relaxed" v-html="rerank[0]"></p>
           </div>
         </div>
       </div>

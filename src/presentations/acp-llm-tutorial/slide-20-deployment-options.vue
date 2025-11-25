@@ -1,110 +1,173 @@
 <script setup lang="ts">
-import { CloudArrowUpIcon, ServerStackIcon, CodeBracketIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
+import {
+  CloudArrowUpIcon,
+  ServerStackIcon,
+  CodeBracketIcon,
+  BoltIcon,
+  CubeTransparentIcon,
+} from '@heroicons/vue/24/outline'
+import Section from '@/shared/ui/Section.vue'
+import Card from '@/shared/ui/Card.vue'
+import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const options = [
   {
     icon: CodeBracketIcon,
-    title: '入门：直接调用 API',
-    description: '使用云厂商（如阿里云百炼）提供的预置模型服务。',
-    points: [
-      { type: 'pro', text: '零部署、零运维' },
-      { type: 'pro', text: '按需付费，成本可控' },
-      { type: 'con', text: '有调用频率限制 (QPM/TPM)' },
-      { type: 'con', text: '不支持自定义模型' },
-    ],
-    fit: '业务初期、快速验证',
-    recommended: false,
+    title: '方案一：Serverless (Vercel AI SDK / 函数计算)',
+    description:
+      '前端直接集成 Vercel AI SDK 或通过云函数调用模型 API，实现快速开发和自动扩缩容。适合原型验证和中低流量应用。',
+    codeLanguage: 'typescript',
+    code: `// 前端使用 Vercel AI SDK，轻松处理流式响应
+import { useChat } from 'ai/react'
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat()
+  // ... UI 渲染
+}`,
+    pros: ['开发体验好，前端友好', '零运维，按需付费', '天然支持流式响应'],
+    cons: ['冷启动延迟较高', '计算资源和执行时间受限'],
   },
   {
     icon: ServerStackIcon,
-    title: '进阶：手动部署 (vLLM)',
-    description: '在自有服务器上，使用 vLLM 等框架部署开源或微调模型。',
-    points: [
-      { type: 'pro', text: '完全控制模型和环境' },
-      { type: 'pro', text: '无外部调用限制' },
-      { type: 'con', text: '运维成本高，需要专业技能' },
-      { type: 'con', text: '资源扩展性、可靠性受限' },
-    ],
-    fit: '内部研究、特定场景',
-    recommended: false,
+    title: '方案二：容器化自托管 (Docker + vLLM/TGI)',
+    description:
+      '将模型及推理服务（如 vLLM）打包成 Docker 镜像，部署在自己的 GPU 服务器或云主机上。提供最大灵活性和控制力。',
+    codeLanguage: 'dockerfile',
+    code: `FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+# 安装 Python 和 vLLM
+RUN pip install vllm
+
+# 复制模型权重
+COPY ./qwen-7b-chat /app/qwen-7b-chat
+
+# 启动 vLLM 推理服务
+CMD ["python", "-m", "vllm.entrypoints.openai.api_server", \
+     "--model", "/app/qwen-7b-chat", "--host", "0.0.0.0"]`,
+    pros: ['完全控制环境和模型', '无平台限制，性能可压榨到极致', '可集成到现有 K8s 体系'],
+    cons: ['运维复杂，需 GPU 资源管理经验', '扩展性和高可用需自行构建'],
   },
   {
     icon: CloudArrowUpIcon,
-    title: '生产：云服务部署',
-    description: '利用专业的云产品（百炼、PAI-EAS、FC 等）实现高可用部署。',
-    points: [
-      { type: 'pro', text: '高可用、高并发、弹性伸缩' },
-      { type: 'pro', text: '运维负担轻，专注业务' },
-      { type: 'pro', text: '丰富的生态集成' },
-      { type: 'con', text: '平台有一定学习成本' },
-    ],
-    fit: '所有生产级应用',
-    recommended: true,
+    title: '方案三：专用推理平台 (Anyscale, Together)',
+    description:
+      '使用 Anyscale, Together AI 等专门为 LLM 推理优化的第三方服务。它们通过批量处理、量化等技术实现极致的成本和性能。',
+    codeLanguage: 'python',
+    code: `// 调用专用推理平台的 API，通常与 OpenAI 兼容
+import openai
+
+client = openai.OpenAI(
+  api_key="your_api_key",
+  base_url="https://api.together.xyz/v1/",
+)
+
+chat_completion = client.chat.completions.create(...)`,
+    pros: ['极致的性能和性价比', '按量付费，无需关心底层硬件', '通常提供 Serverless API'],
+    cons: ['平台锁定风险', '数据隐私和安全需评估'],
   },
 ]
 
-const guidance = [
-  '小试牛刀：API 调用最快，上线验证想法',
-  '深度控制：自部署可控性强，但需专业运维',
-  '生产首选：云服务弹性与高可用，性价比优',
-  '多模型共存：按任务复杂度路由到不同模型',
-  '流式输出：显著优化用户感知延迟',
-  '监控与告警：QPS、延迟、错误率与成本可视化'
-]
+const bestPractices = {
+  title: '生产最佳实践',
+  items: [
+    {
+      icon: BoltIcon,
+      name: '流式输出 (Streaming) 是标配',
+      description:
+        '通过流式响应显著降低用户感知的首字延迟 (Time to First Token)，是提升体验的关键。后端需使用异步框架 (FastAPI, aiohttp) 实现，前端配合处理数据流。',
+    },
+    {
+      icon: CubeTransparentIcon,
+      name: '模型网关 (Model Gateway)',
+      description:
+        '构建一个统一的入口服务，对内部分发请求到不同模型（如复杂任务用 GPT-4，简单任务用 Qwen）。实现路由、鉴权、限流、缓存和日志记录，解耦业务与模型。',
+    },
+    {
+      icon: CodeBracketIcon,
+      name: '监控关键指标',
+      description:
+        '除了常规的 QPS、延迟和错误率，还需关注 TTFT (首字延迟)、Tokens/Sec (吞吐率)、并发数和 GPU 利用率，这些是衡量 LLM 服务性能和成本的核心。',
+    },
+  ],
+}
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
-    <div class="text-center mb-8">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">上线篇：模型部署 (Model Deployment)</h2>
-      <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
-        将模型投入生产，创造价值。
+  <Section>
+    <div class="text-center mb-12">
+      <HeadingGradient :level="2" size="5xl">LLM 应用部署：从原型到生产</HeadingGradient>
+      <p class="mt-3 text-slate-600 max-w-3xl mx-auto">
+        选择合适的部署策略，平衡成本、性能与运维复杂度，是 LLM 应用走向成功的关键一步。
       </p>
     </div>
 
-    <div class="grid place-items-center">
-      <div class="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article
+    <div class="w-full max-w-7xl mx-auto space-y-10">
+      <!-- Deployment Options -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card
           v-for="option in options"
           :key="option.title"
-          class="flex flex-col bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl transition hover:-translate-y-0.5"
-          :class="{ 'ring-2 ring-indigo-500/50': option.recommended }"
+          padding="md"
+          class="flex flex-col transition hover:-translate-y-0.5"
         >
-          <div class="flex items-start justify-between mb-4">
-            <component :is="option.icon" class="h-10 w-10 text-slate-600" />
-            <span v-if="option.recommended" class="rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold">推荐</span>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="bg-indigo-100 p-2 rounded-lg">
+              <component :is="option.icon" class="h-7 w-7 text-indigo-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">{{ option.title }}</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">{{ option.title }}</h3>
-          <p class="text-slate-700 mt-2 text-sm flex-grow">{{ option.description }}</p>
-          
-          <ul class="mt-4 space-y-2 text-sm">
-            <li v-for="point in option.points" :key="point.text" class="flex items-start gap-2">
-              <CheckCircleIcon v-if="point.type === 'pro'" class="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-              <XCircleIcon v-else class="h-5 w-5 text-rose-500 flex-shrink-0 mt-0.5" />
-              <span class="text-slate-800">{{ point.text }}</span>
-            </li>
-          </ul>
-
-          <div class="mt-6 text-center pt-4 border-t border-slate-200/80">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-700">
-              适合：{{ option.fit }}
+          <p class="text-slate-700 text-sm mb-4 flex-grow">{{ option.description }}</p>
+          <div class="my-4">
+            <div
+              class="bg-slate-800 rounded-lg overflow-hidden border border-slate-700 shadow-inner text-xs"
+            >
+              <div class="px-4 py-2 border-b border-slate-600/80">
+                <span class="text-xs text-slate-400 font-mono">{{ option.codeLanguage }}</span>
+              </div>
+              <pre
+                class="language-python p-4 text-white/80"
+              ><code v-html="option.code.trim()"></code></pre>
             </div>
           </div>
-        </article>
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <h4 class="font-semibold text-slate-800 text-sm mb-2">权衡点：</h4>
+            <ul class="space-y-1.5 text-xs">
+              <li
+                v-for="pro in option.pros"
+                :key="pro"
+                class="flex items-start gap-2 text-emerald-700"
+              >
+                <span class="font-bold">+</span><span>{{ pro }}</span>
+              </li>
+              <li
+                v-for="con in option.cons"
+                :key="con"
+                class="flex items-start gap-2 text-rose-700"
+              >
+                <span class="font-bold">-</span><span>{{ con }}</span>
+              </li>
+            </ul>
+          </div>
+        </Card>
       </div>
-      <div class="mt-8 w-full max-w-7xl">
-        <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
-          <h3 class="text-xl font-bold text-slate-900 mb-3">选型建议</h3>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-            <li v-for="it in guidance" :key="it" class="flex items-start gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
-              <span>{{ it }}</span>
-            </li>
-          </ul>
+
+      <!-- Best Practices -->
+      <Card padding="lg" class="bg-slate-50">
+        <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">
+          {{ bestPractices.title }}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div v-for="item in bestPractices.items" :key="item.name" class="text-center">
+            <div class="inline-block bg-indigo-100 p-3 rounded-full mb-3">
+              <component :is="item.icon" class="h-8 w-8 text-indigo-600" />
+            </div>
+            <h4 class="font-bold text-slate-900">{{ item.name }}</h4>
+            <p class="text-slate-600 text-sm mt-1">{{ item.description }}</p>
+          </div>
         </div>
-      </div>
+      </Card>
     </div>
-  </section>
+  </Section>
 </template>

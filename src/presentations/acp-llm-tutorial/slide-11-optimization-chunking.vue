@@ -15,19 +15,19 @@ const challenges = [
 const solutions = [
   {
     title: '语义切分 (Semantic Chunking)',
-    description: '根据段落、句子或特定分隔符进行切分，最大程度保证语义的完整性。',
+    description: '<strong>是什么:</strong> 基于 NLP 模型识别句子边界或语义主题来切分文档，比固定长度切分更能保持语义完整性。在 LlamaIndex 中可通过 <code>SemanticSplitterNodeParser</code> 实现。<br><strong>适用场景:</strong> 适用于段落结构清晰、语义连贯的文档，如文章、报告等。'
   },
   {
-    title: '重叠切块 (Overlapping Chunks)',
-    description: '在相邻切片间保留一部分重叠内容，有效缓解上下文被割裂的问题。',
+    title: '重叠切块 (Overlap)',
+    description: '<strong>是什么:</strong> 在相邻的块之间设置重叠区域 (e.g., <code>chunkOverlap: 50</code>)，确保句子或段落的连续性不被硬性切断。<br><strong>适用场景:</strong> 几乎是所有切分策略的“标配”，能有效缓解边界效应，是简单又高效的优化。'
   },
   {
     title: '句窗检索 (Sentence Window)',
-    description: '以命中的句子为中心，向前后扩展若干句，组合成更完整的上下文。',
+    description: '<strong>是什么:</strong> 检索时以单个句子为单位，但将其周围的句子（“窗口”）一同提供给 LLM 作为上下文。这实现了检索的精确性和上下文的完整性之间的平衡。<br><strong>适用场景:</strong> 当需要对非常具体的事实进行问答时，此方法能精确定位，同时补充必要的背景信息。'
   },
   {
     title: '自动合并检索 (Auto-merging)',
-    description: '将相邻且相关的切片自动合并，避免碎片化导致的信息丢失。',
+    description: '<strong>是什么:</strong> 先检索小粒度的子文档，然后追溯其父文档，将多个相关的子文档合并成一个更大的、信息更完整的上下文。<br><strong>适用场景:</strong> 适用于具有层级结构（如书、章节、段落）的文档，能有效避免信息碎片化。'
   },
 ]
 </script>
@@ -73,7 +73,7 @@ const solutions = [
       <p
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-slate-200/30 backdrop-blur-md text-slate-700 text-sm"
       >
-        💡 核心目标：确保每个切片都是一个“高信噪比、语义自洽”的信息单元。
+        💡 经验法则：从 <code>SemanticSplitterNodeParser</code> + 合理的 <code>chunkOverlap</code> (10-20%) 开始，它能解决 80% 的问题。
       </p>
     </div>
   </section>

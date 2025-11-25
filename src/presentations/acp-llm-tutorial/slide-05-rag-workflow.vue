@@ -4,37 +4,27 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const tabs = [
   {
-    id: 'indexing',
-    label: '1. 建立索引 (Indexing)',
+    id: 'offline',
+    label: '离线阶段：数据准备 (Offline)',
     content: [
-      '文档解析：加载并解析文件',
-      '文本分段：切分长文为块',
-      '向量化：用 embedding 转为向量',
-      '存储索引：写入向量库',
+      '数据提取：从不同数据源 (如 Confluence, Notion, GitHub) 提取文档',
+      '文本解析与分块：加载文档并将其切割成更小、更易于检索的文本块 (Chunk)',
+      '向量化 (Embedding)：调用模型将文本块转换为高维向量',
+      '建立索引：将文本块及其向量存储到专门的向量数据库中',
     ],
   },
   {
-    id: 'retrieval',
-    label: '2. 检索生成 (Retrieval & Generation)',
+    id: 'online',
+    label: '在线阶段：检索与生成 (Online)',
     content: [
-      '问题向量化：将问题转换为向量',
-      '相似度检索：在库中找最相似块',
-      '构建提示词：组合问题与上下文',
-      '生成答案：交给模型生成',
-    ],
-  },
-  {
-    id: 'generation',
-    label: '3. 生成策略 (Answering)',
-    content: [
-      'Stuff：上下文直接拼接',
-      'Refine：逐步细化',
-      'Map-Reduce：分块回答再聚合',
-      '引用与来源：附出处更可信',
+      '问题向量化：当用户提问时，同样调用 Embedding 模型将其转换为向量',
+      '相似度检索：在向量数据库中执行相似度搜索，召回与问题最相关的 Top-K 个文本块',
+      '构建上下文与提示词 (Prompt)：将召回的文本块与原始问题整合成一个丰富的 Prompt',
+      '调用大模型生成答案：将构建好的 Prompt 发送给大模型，获取最终答案',
     ],
   },
 ]
-const activeTab = ref('indexing')
+const activeTab = ref('offline')
 </script>
 
 <template>
@@ -46,7 +36,7 @@ const activeTab = ref('indexing')
         RAG 的工作流程
       </h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        流程分为“建立索引”和“检索生成”两阶段。
+        流程分为“离线的数据准备”和“在线的检索生成”两个阶段。
       </p>
     </div>
 

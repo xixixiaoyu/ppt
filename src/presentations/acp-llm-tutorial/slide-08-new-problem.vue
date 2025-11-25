@@ -3,16 +3,21 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const quote = '张伟是哪个部门的？'
 const author = '用户的新问题'
-const role = '挑战：召回不准，回答错误。'
+const role =
+  '挑战：检索到的片段可能不包含“张伟”的部门信息，或包含多个“张伟”的信息，导致答案错误或混乱。'
 </script>
 
 <template>
   <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">
+      <h2
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
+      >
         新问题：答案仍不够好？
       </h2>
-      <div class="mt-10 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8 transition hover:-translate-y-0.5">
+      <div
+        class="mt-10 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-2xl p-8 transition hover:-translate-y-0.5"
+      >
         <blockquote
           class="text-4xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >

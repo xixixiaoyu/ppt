@@ -26,19 +26,20 @@ const highlightedAfterCode = computed(() => highlight(afterCode, 'markdown'))
 
 const interpretations = [
   {
-    term: '明确层次',
+    term: '为什么结构很重要？',
     description:
-      '标题层级帮助模型区分章节与主次关系。',
+      'LLM 在其训练数据中见过大量 Markdown、代码等结构化文本。提供结构化的输入，相当于使用了模型最“熟悉”的语言，能有效激活其对层次、重点和逻辑关系的理解能力。'
   },
   {
-    term: '突出重点',
-    description: '粗体、斜体、列表突出关键术语与并列关系。',
+    term: '如何实现结构化？',
+    description:
+      '<strong>Markdown 是基础:</strong> 在数据清洗阶段，尽可能将纯文本转换为带有标题、列表、粗体等标记的 Markdown 格式。<br><strong>元数据是关键:</strong> 将文档的标题、作者、日期等元数据与内容一同组织成结构化格式 (如 JSON)，这对于后续实现更精准的元数据过滤至关重要。'
   },
   {
-    term: '提升精度',
+    term: '对下游任务的影响',
     description:
-      '生成更易引用到具体章节，来源更清晰，减少捏造。',
-  },
+      '高质量的结构化数据不仅能提升答案的准确性，还有助于模型生成更清晰、更具逻辑性的回答，并能更容易地实现精确到章节级别的引用追溯。'
+  }
 ]
 </script>
 
@@ -47,7 +48,7 @@ const interpretations = [
     <div class="text-center mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化策略（二）：优化文档结构</h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        为文本加 Markdown 结构，提升对关键信息的理解。
+        好的结构是高质量上下文的基础。让模型更好地“阅读”你的文档。
       </p>
     </div>
 

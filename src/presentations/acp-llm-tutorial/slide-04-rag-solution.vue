@@ -3,16 +3,16 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const items = [
   {
-    name: '核心思想：开卷考试',
+    name: '核心思想：外挂知识库',
     recommended: false,
     description:
-      '遇到未知问题，不让模型“回忆”，而是提供相关资料，基于资料回答。即上下文工程。',
+      '当模型遇到其内部知识无法回答的问题时，通过外部知识库检索相关信息，并将其动态注入到模型的输入中，从而引导模型生成更准确的回答。',
   },
   {
     name: '技术实现：RAG',
     recommended: true,
     description:
-      'RAG 是“开卷考试”的主流做法，结合外部知识库，动态供给模型所需信息。',
+      '检索增强生成 (RAG) 是实现“外挂知识库”的主流技术范式。它将信息检索 (Retrieval) 与文本生成 (Generation) 相结合，有效提升了模型的准确性和时效性。',
   },
 ]
 </script>

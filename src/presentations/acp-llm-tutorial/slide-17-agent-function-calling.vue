@@ -7,43 +7,66 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const steps = [
   {
-    title: '1. LLM 生成函数调用',
-    description: '模型输出结构化的 JSON 对象，精确描述希望执行的函数及参数。',
+    title: '1. LLM 生成调用指令',
+    description: 'LLM 的唯一职责是生成一个结构化的“调用指令”，清晰表达其意图和所需参数。',
     language: 'json',
     code: `{
-  "tool_name": "search_arxiv_paper",
+  "function_name": "query_order_status",
   "parameters": {
-    "query": "latest AI papers"
+    "order_id": "A202411259876"
   }
 }`,
   },
   {
-    title: '2. 应用解析并执行',
-    description: '你的代码接收此 JSON，作为指令调用本地或远程的真实函数。',
+    title: '2. 分发器解析并执行',
+    description: '后端“分发器”根据指令动态路由到具体实现，执行并返回结果，实现逻辑与 LLM 解耦。',
     language: 'python',
-    code: `def search_arxiv_paper(query: str):
-    # ... code to search Arxiv API ...
-    return results
+    code: `// 1. 定义并注册你的工具
+tool_registry = {
+    "query_order_status": query_order_status,
+    "refund_order": refund_order,
+}
 
-# 1. Parse LLM output
-llm_response = get_llm_output()
+// 2. LLM 生成调用指令
+llm_output = get_llm_output()
 
-# 2. Dispatch and execute
-if llm_response.get('tool_name') == 'search_arxiv_paper':
-    query = llm_response['parameters']['query']
-    results = search_arxiv_paper(query)
-    # 3. (Optional) Send results back to LLM`,
+// 3. 分发器解析并执行
+tool_name = llm_output.get("function_name")
+params = llm_output.get("parameters")
+
+if tool_name in tool_registry:
+    # 动态、安全地调用函数
+    tool_function = tool_registry[tool_name]
+    result = tool_function(**params)
+else:
+    # 处理工具未找到的错误
+    result = f"Error: Tool '{tool_name}' not found."
+
+# 4. 将结果返回给 LLM 主循环`,
   },
 ]
 
 const highlightedCode = computed(() => steps.map((step) => highlight(step.code, step.language)))
 
 const practices = [
-  '对 LLM 输出做 JSON Schema 校验',
-  '参数默认值与边界检查',
-  '幂等设计与重试机制',
-  '异常分类：可重试 vs 不可重试',
-  '审计与速率限制',
+  {
+    title: '工具注册与发现',
+    content: '建立一个集中的工具注册表，支持动态添加、版本化和权限控制。',
+  },
+  {
+    title: '异步执行与并发控制',
+    content:
+      '对于耗时长的工具 (如 API 调用、数据分析)，分发器应支持异步执行，避免阻塞 Agent 主循环。',
+  },
+  {
+    title: '统一的错误处理',
+    content: '定义标准的错误格式，区分业务错误和技术错误，为 LLM 提供清晰的失败反馈以供其决策。',
+  },
+  {
+    title: '可观测性 (Observability)',
+    content:
+      '对工具的调用频率、成功率、耗时和 token 消耗进行监控、日志记录和告警，这是优化和排错的基础。',
+  },
 ]
 </script>
 
@@ -53,10 +76,10 @@ const practices = [
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
-        深入核心：Function Calling 机制
+        Agent 架构模式：从路由到执行
       </h2>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
-        Tool Calling 讲“做什么”，Function Calling 讲“怎么做”。
+        Function Calling 是连接 LLM 意图与后端服务执行的标准化协议，是实现可扩展 Agent 的基石。
       </p>
     </div>
 
@@ -95,35 +118,28 @@ const practices = [
       </div>
     </div>
 
-    <div class="mt-8 flex justify-center">
-      <div
-        class="bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200/30 shadow-xl"
-      >
-        <p class="text-slate-600 text-sm">
-          💡 Function Calling 是连接大语言模型与现有软件生态系统的桥梁。
-        </p>
-      </div>
-    </div>
-
-    <div class="mt-8 w-full max-w-6xl mx-auto">
+    <div class="mt-10 w-full max-w-6xl mx-auto">
       <div
         class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl"
       >
-        <h3 class="text-xl font-bold text-slate-900 mb-2">工程实践要点</h3>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-          <li v-for="it in practices" :key="it" class="flex items-start gap-2">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">分发器 (Dispatcher) 设计要点</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-slate-700">
+          <li v-for="item in practices" :key="item.title" class="flex items-start gap-3">
             <svg
-              width="16"
-              height="16"
+              class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              class="text-indigo-500"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
               <path d="M20 6L9 17l-5-5" />
             </svg>
-            <span>{{ it }}</span>
+            <div>
+              <h4 class="font-semibold text-slate-800">{{ item.title }}</h4>
+              <p class="text-slate-600">{{ item.content }}</p>
+            </div>
           </li>
         </ul>
       </div>
