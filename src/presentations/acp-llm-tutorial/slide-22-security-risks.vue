@@ -6,7 +6,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 const problem = {
   title: '传统安全边界的失效',
   description:
-    '大模型的自然语言接口使其极易受到“社交工程”式的攻击。传统的防火墙和规则引擎难以应对语义层面的挑战。',
+    '自然语言接口易受“社工”攻击；传统防护难应对语义挑战。',
   points: [
     '输入开放性：用户可以输入任何内容，增加了攻击面。',
     '输出不确定性：模型的生成内容难以预测，可能产生有害信息。',
@@ -18,18 +18,27 @@ const threats = [
   {
     icon: BeakerIcon,
     title: '提示注入 (Prompt Injection)',
-    description: '攻击者通过精心构造的输入，劫持模型原始意图，使其执行恶意指令或泄露敏感信息。',
+    description: '精心输入劫持意图，诱导执行或泄露敏感。',
   },
   {
     icon: ExclamationTriangleIcon,
     title: '不当内容生成',
-    description: '在诱导下，模型可能生成涉黄、涉暴、涉政或包含仇恨言论的内容，带来合规风险。',
+    description: '诱导下生成不当内容，存在合规风险。',
   },
   {
     icon: LockOpenIcon,
     title: '数据与隐私泄露',
-    description: '模型可能在无意中泄露训练数据中的个人信息、商业机密等敏感内容。',
+    description: '可能泄露训练数据中的个人信息与机密。',
   },
+]
+
+const defenses = [
+  '输入侧：提示词模板与输入清洗，限制敏感意图',
+  '输出侧：内容安全检测与拦截，分级处理',
+  '隔离：工具调用最小权限原则，关键操作需确认',
+  '审计：全链路日志与回溯，便于事后排查',
+  '数据：脱敏与访问控制，避免隐私泄露',
+  '人机协同：高风险场景引入人工复核'
 ]
 </script>
 
@@ -70,6 +79,17 @@ const threats = [
         </div>
         <h3 class="text-xl font-bold text-slate-800">{{ threat.title }}</h3>
         <p class="text-slate-600 mt-2 flex-grow text-sm">{{ threat.description }}</p>
+      </div>
+    </div>
+    <div class="mt-8 w-full max-w-7xl mx-auto">
+      <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
+        <h3 class="text-xl font-bold text-slate-800 mb-3">防护清单</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+          <li v-for="it in defenses" :key="it" class="flex items-start gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{{ it }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

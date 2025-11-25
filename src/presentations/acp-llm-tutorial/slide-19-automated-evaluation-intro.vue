@@ -28,6 +28,13 @@ const frameworks = {
   items: ['Ragas', 'TruLens', 'DeepEval'],
   description: '这些工具提供了标准化的评测流程和指标，是构建健壮 RAG 应用的得力助手。',
 }
+
+const pipeline = [
+  '构建评测集：覆盖高频与难题场景',
+  '运行评测：定期对版本进行回归测试',
+  '记录与对比：指标趋势与差异分析',
+  '问题分类与修复：定位瓶颈并优化策略'
+]
 </script>
 
 <template>
@@ -73,6 +80,16 @@ const frameworks = {
             <span v-for="item in frameworks.items" :key="item" class="text-2xl font-mono text-slate-800 font-semibold">{{ item }}</span>
           </div>
           <p class="mt-3 text-slate-600 text-sm">{{ frameworks.description }}</p>
+        </Card>
+
+        <Card padding="md" class="transition hover:-translate-y-0.5">
+          <h3 class="text-xl font-bold text-slate-900 mb-2">落地流程</h3>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li v-for="it in pipeline" :key="it" class="flex items-start gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>{{ it }}</span>
+            </li>
+          </ul>
         </Card>
       </div>
     </div>

@@ -16,6 +16,12 @@ const reranked = [
   { doc: 'Doc F', score: 0.6, isKept: false },
   { doc: 'Doc H', score: 0.55, isKept: false },
 ]
+
+const notes = [
+  'Bi-encoder：召回快但粗，适合海选阶段',
+  'Cross-encoder：打分慢但准，适合精排阶段',
+  '实操：先向量召回再跨编码器精排，兼顾速度与质量'
+]
 </script>
 
 <template>
@@ -23,7 +29,7 @@ const reranked = [
     <div class="mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化：检索后重排 (Re-ranking)</h2>
       <p class="mt-2 text-slate-600 max-w-3xl">
-        对初步检索结果进行“精加工”，去粗取精，提升最终答案的质量。
+        对初检结果精加工，去粗取精，提升答案质量。
       </p>
     </div>
 
@@ -34,7 +40,7 @@ const reranked = [
       >
         <h3 class="text-2xl font-bold text-slate-800 mb-4">1. 初步检索 (海选)</h3>
         <p class="text-sm text-slate-600 mb-4">
-          向量数据库快速召回 Top-K 个语义相似的文档，速度快，但可能包含噪声。
+          向量数据库快速召回 Top-K 相似文档，速度快但含噪。
         </p>
         <div class="space-y-2 text-sm">
           <div
@@ -59,7 +65,7 @@ const reranked = [
       >
         <h3 class="text-2xl font-bold text-emerald-700 mb-4">2. 精排 (复赛)</h3>
         <p class="text-sm text-slate-600 mb-4">
-          Re-ranker 模型对初步结果进行二次打分，根据真实相关性重新排序。
+          Re-ranker 二次打分，按真实相关性排序。
         </p>
         <div class="space-y-2 text-sm">
           <div
@@ -77,6 +83,15 @@ const reranked = [
           </div>
         </div>
       </div>
+    </div>
+    <div class="mt-6 bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
+      <h3 class="text-xl font-bold text-slate-800 mb-3">模型选择建议</h3>
+      <ul class="space-y-2 text-slate-700 text-sm">
+        <li v-for="it in notes" :key="it" class="flex items-start gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+          <span>{{ it }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>

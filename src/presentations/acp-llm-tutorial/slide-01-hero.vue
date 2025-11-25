@@ -52,6 +52,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <p class="mt-5 text-lg md:text-2xl text-slate-700 max-w-4xl mx-auto">
             从入门到部署的全链路实践
           </p>
+          <p class="mt-3 text-sm md:text-base text-slate-600 max-w-4xl mx-auto">
+            面向开发者的工程方法，也提供正确使用指南
+          </p>
         </div>
       </div>
     </Card>

@@ -24,7 +24,7 @@ const steps = [
     <div class="mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">进阶篇：初识 Agent</h2>
       <p class="mt-2 text-slate-600 max-w-3xl">
-        如果说 RAG 让大模型变得“博学”，那么 Agent 则赋予了大模型“行动”的能力。
+        RAG 让模型“博学”，Agent 赋予“行动”。
       </p>
     </div>
 

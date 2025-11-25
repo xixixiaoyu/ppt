@@ -17,7 +17,7 @@ const steps = [
   {
     icon: CpuChipIcon,
     title: '2. “因材施教”',
-    description: '通过梯度下降算法，让模型学习“标准答案”，逐步调整自身参数以减少“损失 (Loss)”。',
+    description: '用梯度下降学习“标准答案”，逐步降低损失 (Loss)。',
     highlight: true,
   },
   {
@@ -26,6 +26,14 @@ const steps = [
     description: '获得一个在特定任务上表现更出色、更高效的“专家模型”。',
   },
 ]
+
+const caveats = [
+  '数据质量优先于数据量，避免噪声与偏见',
+  '训练-验证-测试三分法，防止过拟合',
+  '任务明确：分类、抽取、长文总结各有最佳实践',
+  '成本评估：显存、时长与云资源费用',
+  '安全合规：隐私与版权数据不可用于训练'
+]
 </script>
 
 <template>
@@ -33,7 +41,7 @@ const steps = [
     <div class="text-center mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">提效篇：模型微调 (Fine-tuning)</h2>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
-        当 RAG 的“开卷考试”遇到瓶颈，我们需要为模型进行“内功修炼”。
+        当 RAG 遇到瓶颈，需要模型“内功修炼”。
       </p>
     </div>
 
@@ -68,6 +76,18 @@ const steps = [
         <p class="text-slate-600 text-sm">
           💡 微调成本高昂但对提升模型的“专业能力”至关重要。
         </p>
+      </div>
+    </div>
+
+    <div class="mt-8 w-full max-w-6xl mx-auto">
+      <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl">
+        <h3 class="text-xl font-bold text-slate-900 mb-2">实践注意事项</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+          <li v-for="it in caveats" :key="it" class="flex items-start gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{{ it }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

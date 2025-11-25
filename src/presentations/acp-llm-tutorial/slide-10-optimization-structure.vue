@@ -28,16 +28,16 @@ const interpretations = [
   {
     term: '明确层次',
     description:
-      'Markdown 的标题 (<code>#</code>, <code>##</code>) 帮助模型区分章节和段落，理解内容的主次关系。',
+      '标题层级帮助模型区分章节与主次关系。',
   },
   {
     term: '突出重点',
-    description: '粗体、斜体和列表等元素能让模型注意到关键术语和并列关系。',
+    description: '粗体、斜体、列表突出关键术语与并列关系。',
   },
   {
     term: '提升精度',
     description:
-      '模型在生成答案时，可以更准确地引用到具体的章节标题，使答案来源更清晰，减少“捏造”事实的可能性。',
+      '生成更易引用到具体章节，来源更清晰，减少捏造。',
   },
 ]
 </script>
@@ -47,7 +47,7 @@ const interpretations = [
     <div class="text-center mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">优化策略（二）：优化文档结构</h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        为非结构化文本添加 Markdown 格式，提升模型对关键信息的理解能力。
+        为文本加 Markdown 结构，提升对关键信息的理解。
       </p>
     </div>
 

@@ -6,13 +6,13 @@ const items = [
     name: '核心思想：开卷考试',
     recommended: false,
     description:
-      '当模型遇到未知问题时，我们不强迫它“回忆”，而是直接为它提供相关的参考资料，让它基于资料来回答。这便是上下文工程 (Context Engineering) 的精髓。',
+      '遇到未知问题，不让模型“回忆”，而是提供相关资料，基于资料回答。即上下文工程。',
   },
   {
     name: '技术实现：RAG',
     recommended: true,
     description:
-      'RAG (Retrieval Augmented Generation) 是实现“开卷考试”最主流、最有效的技术。它将外部知识库与大模型结合，动态地为模型提供回答问题所需的信息。',
+      'RAG 是“开卷考试”的主流做法，结合外部知识库，动态供给模型所需信息。',
   },
 ]
 </script>

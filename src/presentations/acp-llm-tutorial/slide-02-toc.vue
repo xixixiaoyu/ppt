@@ -21,7 +21,7 @@ const items = [
       >
         议程概览
       </h2>
-      <p class="mt-2 text-slate-600">我们将系统性地探讨构建生产级问答系统的全过程。</p>
+      <p class="mt-2 text-slate-600">系统化梳理构建生产级问答系统的全流程。</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -42,6 +42,15 @@ const outlook = {
   description:
     '大模型技术日新月异，Agent、多模态、端侧模型等新范式层出不穷。今天的终点只是明天新的起点。保持好奇，不断探索，你将成为这场技术变革的引领者。',
 }
+
+const actions = [
+  '搭建最小可行 RAG，支持引用与来源',
+  '加入评测：Faithfulness 等核心指标',
+  '优化检索：Top-K、MMR 与重排',
+  '工程化：流式、缓存、重试与监控',
+  '安全：前后置检测与最小权限',
+  '部署：选择合适的云服务与弹性策略'
+]
 </script>
 
 <template>
@@ -53,7 +62,7 @@ const outlook = {
         总结与展望
       </h2>
       <p class="text-xl text-slate-600 max-w-4xl mx-auto">
-        我们已经走过了一段完整的旅程：从一个简单的问答机器人，到一个健壮、高效、安全的生产级大模型应用。
+        从简单问答到生产级应用：健壮、高效、安全。
       </p>
     </div>
 
@@ -89,6 +98,18 @@ const outlook = {
           <h3 class="text-2xl font-bold text-slate-800">{{ outlook.title }}</h3>
           <p class="mt-2 text-slate-600">{{ outlook.description }}</p>
         </div>
+      </div>
+    </div>
+
+    <div class="mt-8 w-full max-w-6xl mx-auto">
+      <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
+        <h3 class="text-2xl font-bold text-slate-800 mb-3 text-center">行动清单</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+          <li v-for="it in actions" :key="it" class="flex items-start gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{{ it }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

@@ -21,6 +21,14 @@ const { response, sourceNodes } = await queryEngine.query({
 `
 
 const highlightedCode = computed(() => highlight(code, 'typescript'))
+
+const advanced = [
+  'similarity_top_k：控制一次召回的文档数量',
+  'filters：按部门、时间等元数据过滤结果',
+  'mmr：最大边际相关性，减少冗余，提高多样性',
+  '混合检索：关键词 + 向量联合检索',
+  'reranker：使用跨编码器对结果精排',
+]
 </script>
 
 <template>
@@ -49,27 +57,46 @@ const highlightedCode = computed(() => highlight(code, 'typescript'))
             class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
           >
             <h3 class="font-bold text-slate-800">1. 加载索引</h3>
-            <p class="text-slate-600 mt-1">从持久化存储中加载之前创建的向量索引。</p>
+            <p class="text-slate-600 mt-1">从持久化存储加载向量索引。</p>
           </div>
           <div
             class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
           >
             <h3 class="font-bold text-slate-800">2. 创建查询引擎</h3>
-            <p class="text-slate-600 mt-1">基于加载的索引，创建一个查询引擎实例。</p>
+            <p class="text-slate-600 mt-1">基于索引创建查询引擎。</p>
           </div>
           <div
             class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
           >
             <h3 class="font-bold text-slate-800">3. 执行查询</h3>
-            <p class="text-slate-600 mt-1">使用查询引擎执行自然语言查询。</p>
+            <p class="text-slate-600 mt-1">执行自然语言查询。</p>
           </div>
           <div
             class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-5"
           >
             <h3 class="font-bold text-slate-800">4. 获取结果</h3>
-            <p class="text-slate-600 mt-1">
-              返回最相关的文档片段 (Source Nodes) 和生成的回答 (Response)。
-            </p>
+            <p class="text-slate-600 mt-1">返回相关片段 (Source Nodes) 与回答 (Response)。</p>
+          </div>
+          <div
+            class="bg-white/70 backdrop-blur-md border border-indigo-300/50 rounded-3xl shadow-xl p-5"
+          >
+            <h3 class="font-bold text-slate-800">高级配置</h3>
+            <ul class="mt-2 space-y-2 text-slate-700 text-base">
+              <li v-for="it in advanced" :key="it" class="flex items-start gap-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="text-indigo-500"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>{{ it }}</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

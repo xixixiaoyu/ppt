@@ -19,17 +19,17 @@ const legacyMethod = {
     {
       icon: EyeSlashIcon,
       title: '易被绕过',
-      description: '攻击者可用同音字、拆字、变体字等方式轻松绕过。',
+      description: '同音、拆字、变体等轻松绕过。',
     },
     {
       icon: CubeTransparentIcon,
       title: '缺乏语境',
-      description: '无法理解上下文，容易误判和漏判 (例如，“苹果”是水果还是公司？)。',
+      description: '无法理解上下文，误判与漏判频发。',
     },
     {
       icon: WrenchIcon,
       title: '维护困难',
-      description: '风险词库需要持续、专业地更新，成本高昂。',
+      description: '风险词库需持续更新，成本高。',
     },
   ],
 }
@@ -39,7 +39,7 @@ const modernMethod = {
   title: 'AI Guardrails：智能安全网关',
   color: 'indigo',
   description:
-    '它是一个独立于大模型的安全服务，在请求送达模型前和模型返回结果后进行双向审查，提供体系化的防护能力。',
+    '独立安全服务：请求前/响应后双向审查，体系化防护。',
   points: [
     {
       icon: CubeTransparentIcon,
@@ -54,10 +54,18 @@ const modernMethod = {
     {
       icon: CogIcon,
       title: '可定制策略',
-      description: '允许用户根据业务场景，自定义风险词库和拦截规则，实现灵活管控。',
+      description: '按场景自定义词库与规则，灵活管控。',
     },
   ],
 }
+
+const integration = [
+  '前置检测：用户输入先过安全网关',
+  '后置检测：模型输出再检合规策略',
+  '策略管理：维护风险词库与场景规则',
+  '反馈闭环：拦截结果与原因回传前端',
+  '审计留痕：保存检测记录用于复盘'
+]
 </script>
 
 <template>
@@ -115,6 +123,17 @@ const modernMethod = {
               <h4 class="font-semibold text-slate-800">{{ point.title }}</h4>
               <p class="text-slate-600 text-sm">{{ point.description }}</p>
             </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 w-full max-w-6xl">
+      <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
+        <h3 class="text-xl font-bold text-slate-800 mb-3">集成步骤</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+          <li v-for="it in integration" :key="it" class="flex items-start gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{{ it }}</span>
           </li>
         </ul>
       </div>

@@ -20,20 +20,28 @@ await index.storageContext.persist({ persistPath: './knowledge_base/test' })`
 const interpretations = [
   {
     term: '加载文档',
-    description: '使用 <code>SimpleDirectoryReader</code> 从指定目录加载所有文档，这是知识的源头。',
+    description: '用 <code>SimpleDirectoryReader</code> 从目录加载文档。',
   },
   {
     term: '定义模型',
-    description: '实例化通义千问的 <code>DashScopeEmbedding</code> 模型，用于将文本转换为向量。',
+    description: '实例化 <code>DashScopeEmbedding</code>，将文本转为向量。',
   },
   {
     term: '构建索引',
     description:
-      '调用 <code>VectorStoreIndex.fromDocuments</code>，这是最核心的一步。它在内部完成了“文本分块”和“向量化”，然后将生成的向量存储在内存中。',
+      '调用 <code>VectorStoreIndex.fromDocuments</code> 完成分块与向量化，生成索引。',
   },
   {
     term: '持久化',
-    description: '将内存中的索引保存到文件系统，以便后续直接加载，避免重复构建，提高效率。',
+    description: '持久化索引，后续可直接加载，避免重复构建。',
+  },
+  {
+    term: 'Embedding 选择',
+    description: '关注维度、领域适配与成本；领域模型更准。',
+  },
+  {
+    term: '向量数据库',
+    description: 'Faiss 适合本地原型，Milvus/PAI 适合生产。',
   },
 ]
 

@@ -29,6 +29,18 @@ const solutions = [
     type: '打标',
     description: '“工程师的注意点” → 过滤 `role: "工程师"` + 检索 “注意点”。',
   },
+  {
+    type: '同义词归一化',
+    description: '“笔记本” ↔ “手提电脑”，统一关键词以提升匹配率。',
+  },
+  {
+    type: '限制条件注入',
+    description: '补充时间、地域、部门等限制，避免过宽检索带来噪声。',
+  },
+  {
+    type: '关键词扩展',
+    description: '自动扩展相关术语与缩写，如 “KPI” ↔ “关键绩效指标”。',
+  },
 ]
 </script>
 
@@ -41,7 +53,7 @@ const solutions = [
         优化：查询重写 (Query Rewriting)
       </h2>
       <p class="mt-2 text-slate-600 max-w-3xl">
-        用户的原始问题往往不完美。在检索前“预处理”问题，是提升召回率的关键一步。
+        检索前预处理问题，提升召回率。
       </p>
     </div>
 

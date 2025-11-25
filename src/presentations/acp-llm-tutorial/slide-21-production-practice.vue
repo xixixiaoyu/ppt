@@ -41,13 +41,22 @@ const pillars = [
     ],
   },
 ]
+
+const checklist = [
+  '设置流式返回与超时重试',
+  '启用缓存与批处理提升吞吐',
+  '建立指标：延迟、错误率、成本',
+  '灰度发布与 A/B 测试',
+  '兜底策略：小模型或规则引擎',
+  '完善日志与可观测性'
+]
 </script>
 
 <template>
   <Section>
     <div class="text-center mb-8 max-w-4xl mx-auto">
       <HeadingGradient :level="2" size="5xl">上线篇：生产实践</HeadingGradient>
-      <p class="text-lg text-slate-600 mt-3">部署只是开始，稳定、高效、经济地运行才是目标。</p>
+      <p class="text-lg text-slate-600 mt-3">部署只是开始，目标是稳、快、省。</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
@@ -70,6 +79,17 @@ const pillars = [
           <li v-for="point in pillar.points" :key="point.title">
             <span class="font-semibold text-slate-700">{{ point.title }}:</span>
             <span class="text-slate-600 ml-1.5">{{ point.text }}</span>
+          </li>
+        </ul>
+      </Card>
+    </div>
+    <div class="mt-8 w-full max-w-7xl mx-auto">
+      <Card padding="md" class="transition hover:-translate-y-0.5">
+        <h3 class="text-xl font-bold text-slate-900 mb-2">上线落地 Checklist</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+          <li v-for="it in checklist" :key="it" class="flex items-start gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>{{ it }}</span>
           </li>
         </ul>
       </Card>

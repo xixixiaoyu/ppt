@@ -44,6 +44,15 @@ const options = [
     recommended: true,
   },
 ]
+
+const guidance = [
+  '小试牛刀：API 调用最快，上线验证想法',
+  '深度控制：自部署可控性强，但需专业运维',
+  '生产首选：云服务弹性与高可用，性价比优',
+  '多模型共存：按任务复杂度路由到不同模型',
+  '流式输出：显著优化用户感知延迟',
+  '监控与告警：QPS、延迟、错误率与成本可视化'
+]
 </script>
 
 <template>
@@ -51,7 +60,7 @@ const options = [
     <div class="text-center mb-8">
       <h2 class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70">上线篇：模型部署 (Model Deployment)</h2>
       <p class="mt-2 text-slate-600 max-w-3xl mx-auto">
-        将训练好的模型投入生产，使其创造真实价值。
+        将模型投入生产，创造价值。
       </p>
     </div>
 
@@ -84,6 +93,17 @@ const options = [
             </div>
           </div>
         </article>
+      </div>
+      <div class="mt-8 w-full max-w-7xl">
+        <div class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-3">选型建议</h3>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+            <li v-for="it in guidance" :key="it" class="flex items-start gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>{{ it }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

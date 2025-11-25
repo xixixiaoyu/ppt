@@ -4,11 +4,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 const challenges = [
   {
     title: '切片过大 (Too Large)',
-    description: '引入过多无关的“噪声”信息，稀释了核心答案的浓度，干扰模型判断。',
+    description: '噪声多，稀释核心，干扰判断。',
   },
   {
     title: '切片过小 (Too Small)',
-    description: '关键信息被无情截断，导致上下文不完整，模型无法形成完整理解。',
+    description: '上下文不完整，难以理解。',
   },
 ]
 
@@ -20,6 +20,14 @@ const solutions = [
   {
     title: '重叠切块 (Overlapping Chunks)',
     description: '在相邻切片间保留一部分重叠内容，有效缓解上下文被割裂的问题。',
+  },
+  {
+    title: '句窗检索 (Sentence Window)',
+    description: '以命中的句子为中心，向前后扩展若干句，组合成更完整的上下文。',
+  },
+  {
+    title: '自动合并检索 (Auto-merging)',
+    description: '将相邻且相关的切片自动合并，避免碎片化导致的信息丢失。',
   },
 ]
 </script>

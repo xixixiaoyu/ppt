@@ -3,6 +3,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const quote = '我们公司项目管理应该用什么工具？'
 const author = '一位新同事的提问'
+
+const mustKnow = [
+  '不是搜索引擎，可能“幻觉”',
+  '有知识截止，近期可能不知',
+  '上下文有限，过长会截断',
+  '同问不同答，输出有随机性',
+  '勿输入敏感隐私',
+  '优先使用带引用的 RAG 应用',
+]
 </script>
 
 <template>
@@ -21,6 +30,22 @@ const author = '一位新同事的提问'
             — <span class="font-medium text-slate-700">{{ author }}</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="mt-8 max-w-5xl mx-auto">
+      <div
+        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6"
+      >
+        <ul class="flex flex-wrap gap-2">
+          <li
+            v-for="it in mustKnow"
+            :key="it"
+            class="px-3 py-1.5 rounded-full text-sm bg-slate-100 border border-slate-200/60 text-slate-700"
+          >
+            {{ it }}
+          </li>
+        </ul>
       </div>
     </div>
   </section>
