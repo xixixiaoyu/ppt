@@ -48,7 +48,7 @@ const solutions = [
             <span class="text-red-500 text-lg mt-1">❌</span>
             <div>
               <h4 class="font-semibold text-slate-900">{{ item.title }}</h4>
-              <p class="text-slate-600 text-sm">{{ item.description }}</p>
+              <p class="text-slate-600 text-sm" v-html="item.description"></p>
             </div>
           </li>
         </ul>
