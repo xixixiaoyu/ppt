@@ -18,7 +18,8 @@ await index.storageContext.persist({ persistPath: './storage' })`
 const interpretations = [
   {
     term: '加载文档 (Load)',
-    description: '<code>SimpleDirectoryReader</code> 是一个文档加载器，LlamaIndex 内置了数十种加载器，可以从文件、Notion、Lark 等多种数据源加载数据。',
+    description:
+      '<code>SimpleDirectoryReader</code> 是一个文档加载器，LlamaIndex 内置了数十种加载器，可以从文件、Notion、Lark 等多种数据源加载数据。',
   },
   {
     term: '配置上下文 (ServiceContext)',
@@ -39,11 +40,13 @@ const interpretations = [
 const engineeringChoices = [
   {
     term: '模型选型：Embedding',
-    description: '选择合适的 Embedding 模型至关重要。需要综合考虑模型的维度 (影响存储和计算成本)、在特定领域的表现以及调用成本。通常，针对特定领域 (如代码、金融) 微调的 Embedding 模型效果更佳。',
+    description:
+      '选择合适的 Embedding 模型至关重要。需要综合考虑模型的维度 (影响存储和计算成本)、在特定领域的表现以及调用成本。通常，针对特定领域 (如代码、金融) 微调的 Embedding 模型效果更佳。',
   },
   {
     term: '存储选型：向量数据库',
-    description: '对于本地原型或小型项目，<code>Faiss</code> (通过 <code>faiss-node</code>) 是一个不错的选择。对于生产环境，应考虑使用专业的向量数据库，如 <code>Milvus</code>、<code>Zilliz Cloud</code> 或云厂商提供的服务 (如阿里云 AnalyticeDB for PG)。',
+    description:
+      '对于本地原型或小型项目，<code>Faiss</code> (通过 <code>faiss-node</code>) 是一个不错的选择。对于生产环境，应考虑使用专业的向量数据库，如 <code>Milvus</code>、<code>Zilliz Cloud</code> 或云厂商提供的服务 (如阿里云 AnalyticDB for PG)。',
   },
 ]
 
