@@ -9,6 +9,8 @@ import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
 import PptContainer from '@/shared/presentation/ppt-container.vue'
 
 import Slide01Hero from './slide-01-hero.vue'
+import Slide02Principles from './slide-02-principles.vue'
+import Slide03Training from './slide-03-training.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -27,7 +29,7 @@ const presentationContext = createPresentationContext({
 
 providePresentationContext(presentationContext)
 
-const slides = [Slide01Hero]
+const slides = [Slide01Hero, Slide02Principles, Slide03Training]
 </script>
 
 <template>
