@@ -25,8 +25,14 @@ const categories = ref<Category[]>([
       {
         id: 'acp-llm-tutorial',
         title: '构建生产级大模型问答系统',
-        description: '从入门到部署的全链路实践，基于阿里云 ACP 认证教程。',
+        description: '',
         route: '/acp-llm-tutorial',
+      },
+      {
+        id: 'acp-llm-tutorial',
+        title: 'acp',
+        description: '',
+        route: '/llm',
       },
     ],
   },
