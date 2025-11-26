@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { highlight } from '../../utils/highlight'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const tabs = [
@@ -54,6 +55,9 @@ const promptExample = `你是一位知识库问答助手。根据给定的上下
 - 直接给出结论并简要引用依据
 - 使用中文作答，保持简洁准确
 - 若不确定，请给出澄清问题`
+
+const highlightedIndexExample = computed(() => highlight(indexExample, 'json'))
+const highlightedPromptExample = computed(() => highlight(promptExample, 'markdown'))
 </script>
 
 <template>
@@ -108,16 +112,24 @@ const promptExample = `你是一位知识库问答助手。根据给定的上下
 
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div
-        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6"
+        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 flex flex-col"
       >
         <h3 class="text-lg font-bold text-slate-900 mb-3">示例：索引条目</h3>
-        <pre class="font-mono text-sm whitespace-pre-wrap"><code>{{ indexExample }}</code></pre>
+        <div
+          class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto"
+        >
+          <pre><code class="whitespace-pre-wrap" v-html="highlightedIndexExample" /></pre>
+        </div>
       </div>
       <div
-        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6"
+        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 flex flex-col"
       >
         <h3 class="text-lg font-bold text-slate-900 mb-3">示例：丰富 Prompt</h3>
-        <pre class="font-mono text-sm whitespace-pre-wrap"><code>{{ promptExample }}</code></pre>
+        <div
+          class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto"
+        >
+          <pre><code class="whitespace-pre-wrap" v-html="highlightedPromptExample" /></pre>
+        </div>
       </div>
     </div>
   </section>
