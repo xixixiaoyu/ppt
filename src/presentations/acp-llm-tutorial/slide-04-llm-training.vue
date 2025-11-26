@@ -30,15 +30,18 @@ const trainingSteps = [
       <div
         class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6"
       >
-        <ul class="flex flex-wrap gap-2">
-          <li
-            v-for="it in trainingSteps"
-            :key="it"
-            class="px-3 py-1.5 rounded-full text-sm bg-slate-100 border border-slate-200/60 text-slate-700"
-          >
-            {{ it }}
-          </li>
-        </ul>
+        <div class="space-y-6">
+          <div v-for="(it, index) in trainingSteps" :key="it" class="flex items-start">
+            <div
+              class="flex-shrink-0 w-9 h-9 bg-accent/80 text-white rounded-full flex items-center justify-center font-bold text-lg mr-4 shadow"
+            >
+              {{ index + 1 }}
+            </div>
+            <p class="text-slate-700 leading-relaxed pt-1">
+              {{ it }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
