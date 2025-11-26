@@ -5,7 +5,7 @@
 - **技术栈**: Vue 3, TypeScript, Vite, Tailwind CSS
 - **项目结构**:
   - `src/presentations`: 存放所有幻灯片主题的核心目录。每个子目录代表一个独立的幻灯片主题。
-  - `src/presentations/design-language-template`: 这是一个基础设计模板，包含了多种预设的幻灯片页面组件，是你创建新主题的起点。
+  - `src/presentations/design-language-template`: 这是一个基础设计模板，包含了多种预设的幻灯片页面组件，是你创建新主题的起点。你在创建新幻灯片的时候也可以基于这里的模板进行借鉴和定制。
   - `src/router/index.ts`: 路由配置文件，用于将新的幻灯片主题集成到应用中。
   - `src/shared`: 存放共享组件、工具函数和样式。
 
