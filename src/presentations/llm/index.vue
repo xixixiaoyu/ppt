@@ -15,6 +15,8 @@ import Slide04ApiIntegration from './slide-04-api-integration.vue'
 import Slide05ApiParameters from './slide-05-api-parameters.vue'
 import Slide06Tokens from './slide-06-tokens.vue'
 import Slide07PromptEngineering from './slide-07-prompt-engineering.vue'
+import Slide08CurrentApplications from './slide-08-current-applications.vue'
+import Slide09FutureApplications from './slide-09-future-applications.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -41,6 +43,8 @@ const slides = [
   Slide05ApiParameters,
   Slide06Tokens,
   Slide07PromptEngineering,
+  Slide08CurrentApplications,
+  Slide09FutureApplications,
 ]
 </script>
 
