@@ -276,7 +276,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             </p>
           </div>
 
-          <!-- Thinking / Reasoning -->
+          <!-- Thinking -->
           <div
             class="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/50 shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
           >
@@ -300,14 +300,16 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <path d="M12 6v2" />
                 </svg>
               </div>
-              <h3 class="font-bold text-slate-800 text-lg font-mono">reasoning_effort</h3>
+              <h3 class="font-bold text-slate-800 text-lg font-mono">thinking</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              <strong>思考程度</strong>。如 o1/o3-mini 系列的
-              <code class="bg-slate-100 px-1 rounded text-xs">low/medium/high</code>。
+              <strong>思考模式</strong>。如
+              <code class="bg-slate-100 px-1 rounded text-xs"
+                >{"type": "enabled", "budget_tokens": 1024}</code
+              >。
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                效果：控制模型在生成回答前的“隐式思维链”长度。思考越多，处理复杂逻辑越强，但延迟越高。
+                效果：决定<strong>是否</strong>让模型在回答前进行深度思考 (CoT)，并可设置思考预算。
               </span>
             </p>
           </div>
