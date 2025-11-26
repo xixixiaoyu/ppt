@@ -10,6 +10,8 @@ import PptContainer from '@/shared/presentation/ppt-container.vue'
 
 import Slide01Hero from './slide-01-hero.vue'
 import Slide02Toc from './slide-02-toc.vue'
+import Slide03LlmPrinciple from './slide-03-llm-principle.vue'
+import Slide04LlmTraining from './slide-04-llm-training.vue'
 import Slide03Limitations from './slide-03-limitations.vue'
 import Slide04RagSolution from './slide-04-rag-solution.vue'
 import Slide05RagWorkflow from './slide-05-rag-workflow.vue'
@@ -53,6 +55,8 @@ providePresentationContext(presentationContext)
 const slides = [
   Slide01Hero,
   Slide02Toc,
+  Slide03LlmPrinciple,
+  Slide04LlmTraining,
   Slide03Limitations,
   Slide04RagSolution,
   Slide05RagWorkflow,
