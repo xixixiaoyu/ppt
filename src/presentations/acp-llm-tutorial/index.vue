@@ -131,4 +131,28 @@ const slides = [
 .deck-shell :deep(.progress) {
   @apply h-full bg-gradient-to-r from-accent to-accent transition-all duration-300;
 }
+
+.deck-shell :deep(pre) {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.6) rgba(148, 163, 184, 0.2);
+}
+
+.deck-shell :deep(pre)::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.deck-shell :deep(pre)::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+}
+
+.deck-shell :deep(pre)::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #6366f1 0%, #22d3ee 50%, #10b981 100%);
+  border-radius: 9999px;
+}
+
+.deck-shell :deep(pre)::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 50%, #059669 100%);
+}
 </style>
