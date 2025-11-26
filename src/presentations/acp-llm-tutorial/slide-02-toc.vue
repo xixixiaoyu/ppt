@@ -5,6 +5,7 @@ const items = [
   { title: '背景', note: '为什么需要答疑机器人？' },
   { title: '核心', note: 'RAG - 扩展大模型的知识' },
   { title: '优化', note: '提升回答质量与准确度' },
+  { title: '提示词', note: '提示词工程最佳实践' },
   { title: '进阶', note: '构建 Agent 完成复杂任务' },
   { title: '提效', note: '模型微调与自动化评测' },
   { title: '上线', note: '模型部署与生产实践' },

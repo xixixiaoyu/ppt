@@ -34,6 +34,9 @@ import Slide21ProductionPractice from './slide-21-production-practice.vue'
 import Slide22SecurityRisks from './slide-22-security-risks.vue'
 import Slide23AiGuardrails from './slide-23-ai-guardrails.vue'
 import Slide24SummaryAndOutlook from './slide-24-summary-and-outlook.vue'
+import Slide25PromptEngineering from './slide-25-prompt-engineering.vue'
+import Slide26PromptStrategies from './slide-26-prompt-strategies.vue'
+import Slide27PromptRag from './slide-27-prompt-rag.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -79,6 +82,9 @@ const slides = [
   Slide22SecurityRisks,
   Slide23AiGuardrails,
   Slide24SummaryAndOutlook,
+  Slide25PromptEngineering,
+  Slide26PromptStrategies,
+  Slide27PromptRag,
 ]
 </script>
 
