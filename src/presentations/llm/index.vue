@@ -11,6 +11,8 @@ import PptContainer from '@/shared/presentation/ppt-container.vue'
 import Slide01Hero from './slide-01-hero.vue'
 import Slide02Principles from './slide-02-principles.vue'
 import Slide03Training from './slide-03-training.vue'
+import Slide04ApiIntegration from './slide-04-api-integration.vue'
+import Slide05ApiParameters from './slide-05-api-parameters.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -29,7 +31,13 @@ const presentationContext = createPresentationContext({
 
 providePresentationContext(presentationContext)
 
-const slides = [Slide01Hero, Slide02Principles, Slide03Training]
+const slides = [
+  Slide01Hero,
+  Slide02Principles,
+  Slide03Training,
+  Slide04ApiIntegration,
+  Slide05ApiParameters,
+]
 </script>
 
 <template>
