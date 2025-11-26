@@ -110,27 +110,79 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
       </ul>
     </div>
 
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div
-        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 flex flex-col"
-      >
-        <h3 class="text-lg font-bold text-slate-900 mb-3">示例：索引条目</h3>
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Example 1: Index -->
+      <div class="relative group">
         <div
-          class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto"
+          class="absolute -inset-2 rounded-[2rem] bg-gradient-to-r from-emerald-400/30 to-teal-500/30 opacity-40 blur-xl transition duration-700 group-hover:opacity-80"
+        ></div>
+        <div
+          class="relative h-full rounded-2xl bg-[#1e1e1e] border border-white/10 overflow-hidden shadow-2xl flex flex-col"
         >
-          <pre><code class="whitespace-pre-wrap" v-html="highlightedIndexExample" /></pre>
+          <div
+            class="flex items-center justify-between gap-2 px-4 py-3 border-b border-white/5 bg-white/5"
+          >
+            <div class="flex gap-2">
+              <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+            </div>
+            <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
+              INDEX_EXAMPLE.JSON
+            </span>
+          </div>
+          <div class="p-6 overflow-y-auto custom-scrollbar max-h-[400px]">
+            <pre
+              class="font-mono text-sm leading-relaxed text-blue-100/90"
+            ><code class="whitespace-pre-wrap" v-html="highlightedIndexExample" /></pre>
+          </div>
         </div>
       </div>
-      <div
-        class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 flex flex-col"
-      >
-        <h3 class="text-lg font-bold text-slate-900 mb-3">示例：丰富 Prompt</h3>
+
+      <!-- Example 2: Prompt -->
+      <div class="relative group">
         <div
-          class="flex-grow bg-slate-900/80 text-slate-100 rounded-xl border border-white/10 p-4 font-mono text-sm overflow-auto"
+          class="absolute -inset-2 rounded-[2rem] bg-gradient-to-r from-blue-400/30 to-indigo-500/30 opacity-40 blur-xl transition duration-700 group-hover:opacity-80"
+        ></div>
+        <div
+          class="relative h-full rounded-2xl bg-[#1e1e1e] border border-white/10 overflow-hidden shadow-2xl flex flex-col"
         >
-          <pre><code class="whitespace-pre-wrap" v-html="highlightedPromptExample" /></pre>
+          <div
+            class="flex items-center justify-between gap-2 px-4 py-3 border-b border-white/5 bg-white/5"
+          >
+            <div class="flex gap-2">
+              <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+            </div>
+            <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
+              PROMPT_TEMPLATE.MD
+            </span>
+          </div>
+          <div class="p-6 overflow-y-auto custom-scrollbar max-h-[400px]">
+            <pre
+              class="font-mono text-sm leading-relaxed text-blue-100/90"
+            ><code class="whitespace-pre-wrap" v-html="highlightedPromptExample" /></pre>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+</style>
