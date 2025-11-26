@@ -25,6 +25,35 @@ const tabs = [
   },
 ]
 const activeTab = ref('offline')
+
+const indexExample = `{
+  'chunk_id': 'employee-handbook.md#3',
+  'doc_id': 'employee-handbook.md',
+  'text': '请假流程：员工需提前 3 天在 HR 系统提交申请，直属领导审批。',
+  'embedding': [0.012, -0.234, 0.443, -0.017, 0.128, -0.065, 0.201, 0.089],
+  'metadata': {
+    'source': 'HR 手册',
+    'page': 12,
+    'tags': ['流程', '假期']
+  }
+}`
+
+const promptExample = `你是一位知识库问答助手。根据给定的上下文回答用户问题；若答案不在上下文中，请明确说明并提出澄清问题。
+
+问题：
+“项目管理用什么工具？”
+
+上下文：
+[1] 文档 'project-management.md' 段落 3：
+我们统一使用 Jira 进行需求、任务与缺陷管理，所有团队需在入职一周内创建项目并配置工作流。
+
+[2] 文档 'onboarding.md' 段落 7：
+新成员需要加入公司 Jira 组织，并在个人主页完成权限申请。
+
+要求：
+- 直接给出结论并简要引用依据
+- 使用中文作答，保持简洁准确
+- 若不确定，请给出澄清问题`
 </script>
 
 <template>
@@ -75,6 +104,17 @@ const activeTab = ref('offline')
           <span>{{ item }}</span>
         </li>
       </ul>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">示例：索引条目</h3>
+        <pre class="font-mono text-sm whitespace-pre-wrap"><code>{{ indexExample }}</code></pre>
+      </div>
+      <div class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">示例：丰富 Prompt</h3>
+        <pre class="font-mono text-sm whitespace-pre-wrap"><code>{{ promptExample }}</code></pre>
+      </div>
     </div>
   </section>
 </template>
