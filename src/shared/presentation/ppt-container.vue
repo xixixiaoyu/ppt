@@ -100,6 +100,24 @@ const inputWidth = computed(() => Math.max(2, String(props.slides.length).length
 
 const getTimestamp = () => (typeof performance !== 'undefined' ? performance.now() : Date.now())
 
+const readInitialSlideFromURL = () => {
+  if (typeof window === 'undefined') return
+  const url = new URL(window.location.href)
+  const raw = url.searchParams.get('slide') ?? url.searchParams.get('s')
+  if (!raw) return
+  const n = parseInt(String(raw), 10)
+  if (Number.isNaN(n)) return
+  const clamped = Math.min(Math.max(n, 1), props.slides.length)
+  currentSlide.value = clamped - 1
+}
+
+const writeSlideToURL = () => {
+  if (typeof window === 'undefined') return
+  const url = new URL(window.location.href)
+  url.searchParams.set('slide', String(currentSlide.value + 1))
+  window.history.replaceState(null, '', url)
+}
+
 const nextSlide = () => {
   const now = getTimestamp()
   if (now - lastNavigationAt < NAVIGATION_COOLDOWN) {
@@ -269,11 +287,13 @@ onMounted(() => {
   if (container) {
     container.focus()
   }
+  readInitialSlideFromURL()
   editablePage.value = String(currentSlide.value + 1)
 })
 
 watch(currentSlide, (val) => {
   editablePage.value = String(val + 1)
+  writeSlideToURL()
 })
 </script>
 
