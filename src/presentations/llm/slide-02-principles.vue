@@ -66,7 +66,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <span class="text-indigo-500">01.</span> 自注意力机制 (Self-Attention)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              想象你在阅读长句时，为了理解“它”指代什么，会下意识回顾前文。模型也是如此：它计算输入序列中每个词与其他词的<strong>关联权重</strong>，从而捕捉长距离的依赖关系和丰富的上下文语境。
+              想象你在阅读长句时，为了理解"它"指代什么，会下意识回顾前文。模型也是如此：它计算输入序列中每个词与其他词的<strong>关联权重</strong>，从而捕捉长距离的依赖关系和丰富的上下文语境。
             </p>
           </div>
 
@@ -77,9 +77,32 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <span class="text-fuchsia-500">02.</span> 前馈神经网络 (Feed-Forward)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              如果 Attention 是“感知”上下文，那么 FFN 就是“消化”信息。它是一个巨大的记忆网络，对
+              如果 Attention 是"感知"上下文，那么 FFN 就是"消化"信息。它是一个巨大的记忆网络，对
               Attention
               提取的特征进行<strong>非线性变换和加工</strong>，将这些关联信息转化为更深层的语义表示。
+            </p>
+          </div>
+
+          <div
+            class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+              <span class="text-emerald-500">03.</span> 概率预测 (Probability)
+            </h3>
+            <p class="mt-3 text-slate-600 leading-relaxed text-sm">
+              大模型的核心是一个<strong>概率分布预测器</strong>。它不断学习词汇间的统计规律，为每个可能的下一个词分配概率，并通过采样策略生成连贯文本。
+            </p>
+          </div>
+
+          <div
+            class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+              <span class="text-amber-500">04.</span> 位置编码 (Positional Encoding)
+            </h3>
+            <p class="mt-3 text-slate-600 leading-relaxed text-sm">
+              由于 Transformer
+              本身不具备序列顺序感知能力，位置编码为每个词添加"位置信息"。这使得模型能够理解"我爱你"和"你爱我"的语义差异，捕捉语言的时序特性。
             </p>
           </div>
         </div>
