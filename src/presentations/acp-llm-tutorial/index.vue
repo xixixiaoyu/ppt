@@ -11,32 +11,21 @@ import PptContainer from '@/shared/presentation/ppt-container.vue'
 import Slide01Hero from './slide-01-hero.vue'
 import Slide02Toc from './slide-02-toc.vue'
 import Slide03LlmPrinciple from './slide-03-llm-principle.vue'
-import Slide04LlmTraining from './slide-04-llm-training.vue'
 import Slide03Limitations from './slide-03-limitations.vue'
 import Slide04RagSolution from './slide-04-rag-solution.vue'
 import Slide05RagWorkflow from './slide-05-rag-workflow.vue'
 import Slide06RagIndexing from './slide-06-rag-indexing.vue'
 import Slide07RagRetrieval from './slide-07-rag-retrieval.vue'
-import Slide08NewProblem from './slide-08-new-problem.vue'
 import Slide09OptimizationTopk from './slide-09-optimization-topk.vue'
-import Slide10OptimizationStructure from './slide-10-optimization-structure.vue'
-import Slide11OptimizationChunking from './slide-11-optimization-chunking.vue'
-import Slide12OptimizationQueryRewrite from './slide-12-optimization-query-rewrite.vue'
-import Slide13OptimizationRerank from './slide-13-optimization-rerank.vue'
 import Slide14AgentIntro from './slide-14-agent-intro.vue'
 import Slide15AgentToolCalling from './slide-15-agent-tool-calling.vue'
 import Slide16AgentValidation from './slide-16-agent-validation.vue'
-import Slide17AgentFunctionCalling from './slide-17-agent-function-calling.vue'
 import Slide18FineTuningIntro from './slide-18-fine-tuning-intro.vue'
 import Slide19AutomatedEvaluationIntro from './slide-19-automated-evaluation-intro.vue'
-import Slide20DeploymentOptions from './slide-20-deployment-options.vue'
 import Slide21ProductionPractice from './slide-21-production-practice.vue'
-import Slide22SecurityRisks from './slide-22-security-risks.vue'
 import Slide23AiGuardrails from './slide-23-ai-guardrails.vue'
 import Slide24SummaryAndOutlook from './slide-24-summary-and-outlook.vue'
-import Slide25PromptEngineering from './slide-25-prompt-engineering.vue'
 import Slide26PromptStrategies from './slide-26-prompt-strategies.vue'
-import Slide27PromptRag from './slide-27-prompt-rag.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -59,32 +48,21 @@ const slides = [
   Slide01Hero,
   Slide02Toc,
   Slide03LlmPrinciple,
-  Slide04LlmTraining,
   Slide03Limitations,
   Slide04RagSolution,
   Slide05RagWorkflow,
   Slide06RagIndexing,
   Slide07RagRetrieval,
-  Slide08NewProblem,
   Slide09OptimizationTopk,
-  Slide10OptimizationStructure,
-  Slide11OptimizationChunking,
-  Slide12OptimizationQueryRewrite,
-  Slide13OptimizationRerank,
   Slide14AgentIntro,
   Slide15AgentToolCalling,
   Slide16AgentValidation,
-  Slide17AgentFunctionCalling,
   Slide18FineTuningIntro,
   Slide19AutomatedEvaluationIntro,
-  Slide20DeploymentOptions,
   Slide21ProductionPractice,
-  Slide22SecurityRisks,
   Slide23AiGuardrails,
   Slide24SummaryAndOutlook,
-  Slide25PromptEngineering,
   Slide26PromptStrategies,
-  Slide27PromptRag,
 ]
 </script>
 

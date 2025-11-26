@@ -29,6 +29,43 @@ const tips = [
   '<strong>实验与评估:</strong> Top-K 是一个超参数，最优值需要通过在验证集上进行实验来确定。可以从 3-5 开始尝试，观察其对最终答案质量和系统响应时间的影响。',
   '<strong>与 Rerank 结合:</strong> 一个常见的策略是设置一个相对较大的 Top-K (例如 10-20) 进行“粗召回”，然后使用一个轻量级的 Reranker 模型进行“精排”，筛选出最相关的 2-3 个文档。',
 ]
+
+const qrChallenges = [
+  { type: '歧义性', description: '“找张伟” → 公司里有三个张伟，你问的是哪一个？' },
+  { type: '不完整', description: '“RAG原理” → 是想了解工作流程、核心组件还是优缺点？' },
+  { type: '错配词', description: '用户说“笔记本”，但知识库里全是“手提电脑”。' },
+]
+
+const qrSolutions = [
+  { type: '意图澄清与扩写', description: '将模糊的问题变得更具体。例如，“RAG原理” → “请详细解释RAG的工作流程，包括它的核心组件和关键步骤。”' },
+  { type: '问题分解', description: '将复杂问题分解为多个可独立检索的子问题。例如，“对比RAG和微调” → 1. RAG的优缺点？ 2. 微调的优缺点？ 3. 何时选择二者？' },
+  { type: '假设性问题生成', description: '根据文档内容反向生成可能的用户问题，与文档一同索引以提高匹配度。' },
+  { type: '同义词与术语扩展', description: '将提问扩展为包含同义词、缩写与相关术语的多查询，例如“笔记本” → [“笔记本”, “手提电脑”, “Laptop”]。' },
+]
+
+const rerankInitial = [
+  { doc: 'Doc A', score: 0.85, isNoise: false },
+  { doc: 'Doc F', score: 0.82, isNoise: true },
+  { doc: 'Doc B', score: 0.81, isNoise: false },
+  { doc: 'Doc H', score: 0.79, isNoise: true },
+  { doc: 'Doc C', score: 0.78, isNoise: false },
+]
+
+const reranked = [
+  { doc: 'Doc B', score: 0.98, isKept: true },
+  { doc: 'Doc A', score: 0.95, isKept: true },
+  { doc: 'Doc C', score: 0.92, isKept: true },
+  { doc: 'Doc F', score: 0.6, isKept: false },
+  { doc: 'Doc H', score: 0.55, isKept: false },
+]
+
+const rerankNotes = [
+  '<strong>Bi-encoder:</strong> 问题与文档独立编码，适合海选，速度快。',
+  '<strong>Cross-encoder:</strong> 问题与文档对拼接后共同打分，精度更高，适合精排。',
+  '<strong>工程实践:</strong> 先用 Bi-encoder 召回 Top100，再用 Cross-encoder 精排取 Top3-5。',
+]
+
+const rerankCode = `const nodePostprocessor = new CohereRerank({ topN: 5 })\n\nconst queryEngine = index.asQueryEngine({\n  nodePostprocessors: [nodePostprocessor],\n})`
 </script>
 
 <template>
@@ -85,6 +122,81 @@ const tips = [
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white/70 backdrop-blur-md p-6 border border-slate-200/30 rounded-3xl shadow-xl">
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">优化：查询重写</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-bold text-slate-900 mb-2">挑战</h4>
+            <ul class="space-y-3 text-slate-700 text-sm">
+              <li v-for="item in qrChallenges" :key="item.type" class="flex items-start gap-2">
+                <span class="font-bold text-indigo-600 w-16 flex-shrink-0">{{ item.type }}</span>
+                <span class="ml-1">{{ item.description }}</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-emerald-700 mb-2">解决方案</h4>
+            <ul class="space-y-3 text-slate-700 text-sm">
+              <li v-for="item in qrSolutions" :key="item.type" class="flex items-start gap-2">
+                <span class="font-bold text-emerald-600 w-16 flex-shrink-0">{{ item.type }}</span>
+                <span class="ml-1">{{ item.description }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/70 backdrop-blur-md p-6 border border-emerald-500/50 rounded-3xl shadow-xl">
+        <h3 class="text-2xl font-bold text-emerald-800 mb-3">优化：检索后重排</h3>
+        <p class="text-slate-600 text-sm mb-3">Re-ranker 二次打分，按真实相关性排序</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-semibold text-slate-800 mb-2">初步检索</h4>
+            <div class="space-y-2 text-xs">
+              <div
+                v-for="item in rerankInitial"
+                :key="item.doc"
+                class="p-2 rounded-lg flex justify-between items-center"
+                :class="[item.isNoise ? 'bg-rose-100/80 text-rose-700' : 'bg-slate-100/80 text-slate-800']"
+              >
+                <span>{{ item.doc }}</span>
+                <span class="font-mono">{{ item.score }}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-semibold text-emerald-800 mb-2">精排结果</h4>
+            <div class="space-y-2 text-xs">
+              <div
+                v-for="item in reranked"
+                :key="item.doc"
+                class="p-2 rounded-lg flex justify-between items-center"
+                :class="[item.isKept ? 'bg-emerald-100/80 text-emerald-800 font-bold' : 'bg-slate-200/80 text-slate-500 line-through']"
+              >
+                <span>{{ item.doc }}</span>
+                <span class="font-mono">{{ item.score }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <ul class="space-y-1 text-slate-700 text-sm">
+            <li v-for="it in rerankNotes" :key="it" class="flex items-start gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span v-html="it"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-3 rounded-2xl border border-slate-200/30 bg-slate-900/80 text-slate-100 p-4">
+          <h4 class="font-semibold mb-2">示例代码</h4>
+          <pre class="font-mono text-xs whitespace-pre-wrap"><code>{{ rerankCode }}</code></pre>
         </div>
       </div>
     </div>

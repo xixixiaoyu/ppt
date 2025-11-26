@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { CodeBracketIcon, ShieldCheckIcon, CogIcon } from '@heroicons/vue/24/solid'
+import { ShieldExclamationIcon, CodeBracketSquareIcon, CpuChipIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -66,6 +67,37 @@ else:
     }
   }
 ]
+
+const risks = [
+  {
+    id: 'LLM01',
+    icon: ShieldExclamationIcon,
+    title: '提示词注入',
+    description: '通过构造输入覆盖系统提示词，诱导模型执行非预期操作。',
+    scenario: '示例：用户要求忽略原指令并泄露系统提示词。'
+  },
+  {
+    id: 'LLM07',
+    icon: CodeBracketSquareIcon,
+    title: '不安全的输出处理',
+    description: '无条件信任模型输出并直接传递到前端或后端。',
+    scenario: '示例：渲染含恶意脚本的输出导致 XSS。'
+  },
+  {
+    id: 'LLM04',
+    icon: CpuChipIcon,
+    title: '模型拒绝服务',
+    description: '提交高计算负载请求导致服务拥塞与成本飙升。',
+    scenario: '示例：长序列或极复杂推理反复提交。'
+  },
+  {
+    id: 'LLM06',
+    icon: EyeSlashIcon,
+    title: '敏感信息泄露',
+    description: '回答中泄露训练数据或上下文中的隐私信息。',
+    scenario: '示例：RAG 引用了包含员工薪资的片段。'
+  }
+]
 </script>
 
 <template>
@@ -113,6 +145,34 @@ else:
             </span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4 text-center">常见风险速览</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">
+        <div
+          v-for="risk in risks"
+          :key="risk.id"
+          class="bg-white/70 backdrop-blur-md border border-slate-200/40 rounded-3xl shadow-xl p-6 flex flex-col"
+        >
+          <div class="flex items-center gap-3 mb-2">
+            <div class="bg-rose-100 p-2 rounded-xl border border-rose-200/80">
+              <component :is="risk.icon" class="text-rose-600" :class="risk.id === 'LLM04' ? 'h-8 w-8' : 'h-7 w-7'" />
+            </div>
+            <div>
+              <span class="text-xs font-mono text-rose-700">{{ risk.id }}</span>
+              <h4 class="text-lg font-bold text-slate-800">{{ risk.title }}</h4>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm mb-3">{{ risk.description }}</p>
+          <div class="bg-slate-50 border border-slate-200/80 p-3 rounded-lg">
+            <p class="text-sm text-slate-700">{{ risk.scenario }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" class="text-sm text-slate-500 hover:text-indigo-600 transition">参考：OWASP Top 10 for LLM</a>
       </div>
     </div>
   </section>
