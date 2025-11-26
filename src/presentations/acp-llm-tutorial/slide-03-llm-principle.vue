@@ -2,13 +2,27 @@
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const title = '大模型基本原理'
-const principle = [
-  'Transformer 架构是核心，基于自注意力机制（Self-Attention）',
-  '天生擅长处理序列数据，例如自然语言',
-  '通过海量文本数据进行预训练（Pre-training），学习语言的统计规律',
-  '通过微调（Fine-tuning）适应特定任务，例如翻译、摘要、对话等',
-  '模型规模（参数数量）越大，能力越强，涌现出更复杂的推理能力',
-  '本质上是一个“概率计算器”，预测下一个词的概率分布',
+const principles = [
+  {
+    title: '核心架构',
+    content: '基于 Transformer 架构，运用自注意力机制（Self-Attention）高效处理序列数据。',
+  },
+  {
+    title: '预训练',
+    content: '在海量文本数据上进行预训练，学习语言的深层统计规律与知识。',
+  },
+  {
+    title: '微调',
+    content: '通过在特定任务数据上进行微调，适配翻译、摘要、对话等多样化应用场景。',
+  },
+  {
+    title: '规模效应',
+    content: '模型参数规模越大，能力越强，并可能涌现出更复杂的推理能力。',
+  },
+  {
+    title: '概率本质',
+    content: '其本质是一个概率计算器，通过计算生成下一个词的概率分布来构建回应。',
+  },
 ]
 </script>
 
@@ -26,17 +40,29 @@ const principle = [
       </div>
     </div>
 
-    <div class="mt-8 max-w-5xl mx-auto">
+    <div class="mt-12 max-w-5xl mx-auto">
       <div
-        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6"
+        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-8"
       >
-        <ul class="flex flex-wrap gap-2">
+        <ul class="space-y-6">
           <li
-            v-for="it in principle"
-            :key="it"
-            class="px-3 py-1.5 rounded-full text-sm bg-slate-100 border border-slate-200/60 text-slate-700"
+            v-for="p in principles"
+            :key="p.title"
+            class="flex items-start"
           >
-            {{ it }}
+            <div
+              class="flex-shrink-0 h-8 w-8 flex items-center justify-center rounded-full bg-slate-100 border border-slate-200/60 text-slate-600"
+            >
+              <div class="h-2.5 w-2.5 rounded-full bg-accent/80" />
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-slate-800 text-lg">
+                {{ p.title }}
+              </h3>
+              <p class="text-slate-700 mt-1 leading-relaxed">
+                {{ p.content }}
+              </p>
+            </div>
           </li>
         </ul>
       </div>

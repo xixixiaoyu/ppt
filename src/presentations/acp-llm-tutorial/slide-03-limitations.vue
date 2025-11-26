@@ -5,11 +5,11 @@ const quote = '我们公司项目管理应该用什么工具？'
 const author = '一位新同事的提问'
 
 const mustKnow = [
-  '回答可能包含“幻觉”，需要事实校验',
+  '回答可能包含“幻觉”，需结合事实校验',
   '知识库有截止日期，无法获取最新信息',
   '输入长度受限，无法处理大规模私有知识',
   '输出包含随机性，结果难以稳定复现',
-  '需要结合外部知识源，并提供答案出处',
+  '需结合外部知识源，并提供答案出处',
   '私有化部署成本高，数据安全需谨慎',
 ]
 </script>
@@ -33,19 +33,22 @@ const mustKnow = [
       </div>
     </div>
 
-    <div class="mt-8 max-w-5xl mx-auto">
+    <div class="mt-12 max-w-5xl mx-auto">
       <div
-        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-6"
+        class="bg-white/70 backdrop-blur-md border border-slate-200/30 rounded-3xl shadow-xl p-8"
       >
-        <ul class="flex flex-wrap gap-2">
-          <li
-            v-for="it in mustKnow"
-            :key="it"
-            class="px-3 py-1.5 rounded-full text-sm bg-slate-100 border border-slate-200/60 text-slate-700"
-          >
-            {{ it }}
+        <ol class="space-y-4">
+          <li v-for="(it, index) in mustKnow" :key="it" class="flex items-start">
+            <div
+              class="flex-shrink-0 h-8 w-8 flex items-center justify-center rounded-full bg-slate-100 border border-slate-200/60 text-slate-600 font-semibold text-sm"
+            >
+              {{ index + 1 }}
+            </div>
+            <p class="ml-4 text-slate-700 leading-relaxed">
+              {{ it }}
+            </p>
           </li>
-        </ul>
+        </ol>
       </div>
     </div>
   </section>
