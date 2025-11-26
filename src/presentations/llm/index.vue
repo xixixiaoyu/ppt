@@ -18,6 +18,8 @@ import Slide07PromptEngineering from './slide-07-prompt-engineering.vue'
 import Slide08CurrentApplications from './slide-08-current-applications.vue'
 import Slide09FutureApplications from './slide-09-future-applications.vue'
 import Slide10LimitationsAndSolutions from './slide-10-limitations-and-solutions.vue'
+import Slide11RagIndexing from './slide-11-rag-workflow.vue'
+import Slide12FunctionCallingAndMcp from './slide-12-function-calling-and-mcp.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -47,6 +49,8 @@ const slides = [
   Slide08CurrentApplications,
   Slide09FutureApplications,
   Slide10LimitationsAndSolutions,
+  Slide11RagIndexing,
+  Slide12FunctionCallingAndMcp,
 ]
 </script>
 
