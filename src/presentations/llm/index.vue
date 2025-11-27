@@ -18,7 +18,7 @@ import Slide07PromptEngineering from './slide-07-prompt-engineering.vue'
 import Slide08CurrentApplications from './slide-08-current-applications.vue'
 import Slide09FutureApplications from './slide-09-future-applications.vue'
 import Slide10LimitationsAndSolutions from './slide-10-limitations-and-solutions.vue'
-import Slide11RagIndexing from './slide-11-rag-workflow.vue'
+import Slide11RagWorkflow from './slide-11-rag-workflow.vue'
 import Slide11bEmbeddingAndVectorDb from './slide-11b-embedding-and-vector-db.vue'
 import Slide12LlamaIndexRag from './slide-12-llamaindex-rag.vue'
 import Slide13RagOptimization from './slide-13-rag-optimization.vue'
@@ -75,7 +75,7 @@ const slides = [
 
   // Part 3: RAG (Retrieval Augmented Generation)
   Slide11bEmbeddingAndVectorDb, // NEW: Foundation for RAG
-  Slide11RagIndexing,
+  Slide11RagWorkflow,
   Slide12LlamaIndexRag,
   Slide13RagOptimization,
   Slide18RagEvaluationDimensions,
