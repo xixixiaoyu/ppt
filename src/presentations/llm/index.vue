@@ -34,6 +34,8 @@ import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
 import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
 import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
+import Slide27EdgeAndSmallModels from './slide-27-edge-and-small-models.vue'
+import Slide28UnreliableEngineering from './slide-28-unreliable-engineering.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -79,6 +81,8 @@ const slides = [
   Slide24MultiAgentPatterns,
   Slide25DeploymentStrategies,
   Slide26ProductionBestPractices,
+  Slide27EdgeAndSmallModels,
+  Slide28UnreliableEngineering,
 ]
 </script>
 
