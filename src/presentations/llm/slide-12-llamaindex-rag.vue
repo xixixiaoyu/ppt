@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { highlight } from '../../utils/highlight'
+import { highlight } from '@/utils/highlight'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
