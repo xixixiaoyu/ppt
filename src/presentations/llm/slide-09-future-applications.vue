@@ -46,7 +46,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <HeadingGradient
             :level="1"
             size="5xl"
-            palette="fuchsia-rose-orange"
+            palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
             未来很有可能的应用场景

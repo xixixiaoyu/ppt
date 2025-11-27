@@ -47,7 +47,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <HeadingGradient
             :level="1"
             size="5xl"
-            palette="blue-indigo-violet"
+            palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
             目前最佳的应用场景
@@ -134,8 +134,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             </p>
           </div>
 
-           <!-- Customer Support -->
-           <div
+          <!-- Customer Support -->
+          <div
             class="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/50 shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
           >
             <div class="flex items-center gap-2 mb-2">
@@ -148,7 +148,6 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <span class="text-xs text-slate-400">例: 自动化工单处理</span>
             </p>
           </div>
-
         </div>
       </div>
     </Card>

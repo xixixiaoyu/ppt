@@ -46,7 +46,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <HeadingGradient
             :level="1"
             size="5xl"
-            palette="blue-indigo-violet"
+            palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
             局限与破局：大模型的阿喀琉斯之踵
