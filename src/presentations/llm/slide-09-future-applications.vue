@@ -49,7 +49,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            未来很有可能的应用场景
+            未来前沿应用场景
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
             从数字世界走向物理世界，从工具走向伙伴
@@ -58,10 +58,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
         <!-- 未来场景布局 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-          
           <!-- 左侧：Agents & Multimodal -->
           <div class="flex flex-col gap-4">
-             <div
+            <div
               class="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm flex-1"
             >
               <div class="flex items-center gap-3 mb-3">
@@ -70,8 +69,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </div>
               <p class="text-slate-600 leading-relaxed">
                 不再仅仅是回答问题，而是能够<strong>自主规划任务、调用工具、修正错误</strong>并完成复杂目标。
-                <br/>
-                <span class="text-sm text-slate-400 mt-2 block">想象一下：只需一句话“帮我策划并预订去日本的旅行”，AI 就能自动查询攻略、对比机票酒店、完成支付并生成日程表。</span>
+                <br />
+                <span class="text-sm text-slate-400 mt-2 block"
+                  >想象一下：只需一句话“帮我策划并预订去日本的旅行”，AI
+                  就能自动查询攻略、对比机票酒店、完成支付并生成日程表。</span
+                >
               </p>
             </div>
 
@@ -84,8 +86,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </div>
               <p class="text-slate-600 leading-relaxed">
                 像人类一样同时理解<strong>语音、视频、图像和文本</strong>，实现零延迟的实时自然交互。
-                <br/>
-                <span class="text-sm text-slate-400 mt-2 block">视频通话中的 AI 助手能看懂你的表情，听懂你的语气，并实时提供建议。</span>
+                <br />
+                <span class="text-sm text-slate-400 mt-2 block"
+                  >视频通话中的 AI 助手能看懂你的表情，听懂你的语气，并实时提供建议。</span
+                >
               </p>
             </div>
           </div>
@@ -101,8 +105,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </div>
               <p class="text-slate-600 leading-relaxed">
                 将大模型的大脑装入机器人的身体，使其能够<strong>理解物理世界并进行操作</strong>。
-                <br/>
-                <span class="text-sm text-slate-400 mt-2 block">家庭服务机器人整理房间、烹饪食物；工业机器人自主适应新的生产任务。</span>
+                <br />
+                <span class="text-sm text-slate-400 mt-2 block"
+                  >家庭服务机器人整理房间、烹饪食物；工业机器人自主适应新的生产任务。</span
+                >
               </p>
             </div>
 
@@ -115,12 +121,13 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </div>
               <p class="text-slate-600 leading-relaxed">
                 在海量科学文献和数据中寻找规律，辅助<strong>新材料研发、药物设计、基因编辑</strong>等前沿探索。
-                <br/>
-                <span class="text-sm text-slate-400 mt-2 block">AI 预测蛋白质结构仅仅是开始，未来可能协助攻克癌症等疑难杂症。</span>
+                <br />
+                <span class="text-sm text-slate-400 mt-2 block"
+                  >AI 预测蛋白质结构仅仅是开始，未来可能协助攻克癌症等疑难杂症。</span
+                >
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </Card>

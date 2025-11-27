@@ -37,6 +37,8 @@ import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
 import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
 import Slide27EdgeAndSmallModels from './slide-27-edge-and-small-models.vue'
 import Slide28UnreliableEngineering from './slide-28-unreliable-engineering.vue'
+import Slide29Summary from './slide-29-summary.vue'
+import Slide30ThankYou from './slide-30-thank-you.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -99,6 +101,8 @@ const slides = [
   // Part 7: Conclusion
   Slide08CurrentApplications,
   Slide09FutureApplications,
+  Slide29Summary,
+  Slide30ThankYou,
 ]
 </script>
 

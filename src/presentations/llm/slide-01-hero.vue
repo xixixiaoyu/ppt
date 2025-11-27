@@ -47,9 +47,28 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight"
           >
-            标题
+            大语言模型应用开发实战
           </HeadingGradient>
-          <p class="mt-5 text-lg md:text-2xl text-slate-700 max-w-4xl mx-auto">描述</p>
+          <p class="mt-5 text-lg md:text-2xl text-slate-700 max-w-4xl mx-auto">
+            从原理到 RAG，从 Agent 到生产环境最佳实践
+          </p>
+          <div class="mt-8 flex justify-center gap-4">
+            <span
+              class="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10"
+            >
+              LLM 原理
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-fuchsia-50 px-3 py-1 text-sm font-medium text-fuchsia-700 ring-1 ring-inset ring-fuchsia-700/10"
+            >
+              RAG 架构
+            </span>
+            <span
+              class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-inset ring-emerald-700/10"
+            >
+              Agent 开发
+            </span>
+          </div>
         </div>
       </div>
     </Card>
