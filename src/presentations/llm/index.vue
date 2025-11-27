@@ -19,6 +19,7 @@ import Slide08CurrentApplications from './slide-08-current-applications.vue'
 import Slide09FutureApplications from './slide-09-future-applications.vue'
 import Slide10LimitationsAndSolutions from './slide-10-limitations-and-solutions.vue'
 import Slide11RagIndexing from './slide-11-rag-workflow.vue'
+import Slide11bEmbeddingAndVectorDb from './slide-11b-embedding-and-vector-db.vue'
 import Slide12LlamaIndexRag from './slide-12-llamaindex-rag.vue'
 import Slide13RagOptimization from './slide-13-rag-optimization.vue'
 import Slide14LlmTypesAndWorkflow from './slide-14-llm-types-and-workflow.vue'
@@ -54,35 +55,50 @@ const presentationContext = createPresentationContext({
 
 providePresentationContext(presentationContext)
 
+// Reordered slides for better logical flow
 const slides = [
+  // Part 1: Fundamentals
   Slide01Hero,
   Slide02Principles,
+  Slide14LlmTypesAndWorkflow, // Moved here: Understand types/workflow after principles
   Slide03Training,
+  Slide06Tokens, // Moved here: Tokens are fundamental to training & usage
+  Slide10LimitationsAndSolutions, // Moved here: Transition from fundamentals to solutions
+
+  // Part 2: Development & API
   Slide04ApiIntegration,
   Slide05ApiParameters,
-  Slide06Tokens,
   Slide07PromptEngineering,
-  Slide08CurrentApplications,
-  Slide09FutureApplications,
-  Slide10LimitationsAndSolutions,
+  Slide22FunctionCallingAndMcp, // Moved here: Advanced dev capability
+
+  // Part 3: RAG (Retrieval Augmented Generation)
+  Slide11bEmbeddingAndVectorDb, // NEW: Foundation for RAG
   Slide11RagIndexing,
   Slide12LlamaIndexRag,
   Slide13RagOptimization,
-  Slide14LlmTypesAndWorkflow,
-  Slide16FineTuningDetails,
-  Slide17TrainingEvaluation,
-  Slide15RagVsFineTuning,
   Slide18RagEvaluationDimensions,
   Slide19Ragas,
   Slide20RagAnswerQuality,
   Slide21RagSafety,
-  Slide22FunctionCallingAndMcp,
+
+  // Part 4: Fine-tuning
+  Slide15RagVsFineTuning,
+  Slide16FineTuningDetails,
+  Slide17TrainingEvaluation,
+
+  // Part 5: Agents
   Slide23AgentArchitecture,
   Slide24MultiAgentPatterns,
+
+  // Part 6: Engineering & Production
   Slide25DeploymentStrategies,
-  Slide26ProductionBestPractices,
   Slide27EdgeAndSmallModels,
+  Slide26ProductionBestPractices,
   Slide28UnreliableEngineering,
+
+  // Part 7: Conclusion
+  Slide08CurrentApplications,
+  Slide09FutureApplications,
 ]
 </script>
 
