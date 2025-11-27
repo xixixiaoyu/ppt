@@ -61,7 +61,7 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-12 pb-32 lg:pt-16 lg:pb-40">
     <div class="mb-8 text-center">
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
@@ -73,41 +73,41 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-2">
-      <button
-        v-for="tab in tabs"
-        :key="tab.id"
-        @click="activeTab = tab.id"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-800 transition hover:bg-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
-        :class="{ '!bg-white/90 ring-2 ring-accent/60': activeTab === tab.id }"
+    <div class="flex justify-center">
+      <div
+        class="inline-flex p-1 bg-slate-200/50 backdrop-blur-sm rounded-2xl border border-white/20"
       >
-        {{ tab.label }}
-      </button>
+        <button
+          v-for="tab in tabs"
+          :key="tab.id"
+          @click="activeTab = tab.id"
+          class="px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300"
+          :class="[
+            activeTab === tab.id
+              ? 'bg-white text-slate-800 shadow-sm ring-1 ring-black/5'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50',
+          ]"
+        >
+          {{ tab.label }}
+        </button>
+      </div>
     </div>
 
-    <div
-      class="mt-6 rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-6 md:p-8 min-h-[240px] transition hover:-translate-y-0.5"
-    >
-      <ul class="space-y-3 text-slate-700 text-lg">
-        <li
-          v-for="(item, index) in tabs.find((t) => t.id === activeTab)?.content"
-          :key="index"
-          class="flex items-start gap-3"
+    <div class="mt-8 grid gap-4">
+      <div
+        v-for="(item, index) in tabs.find((t) => t.id === activeTab)?.content"
+        :key="index"
+        class="group flex items-start gap-4 p-4 rounded-2xl bg-white/60 border border-white/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-300"
+      >
+        <div
+          class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-bold text-sm shadow-sm group-hover:scale-110 transition-transform"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            class="text-emerald-500/80 shrink-0 mt-1.5"
-          >
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
-          <span>{{ item }}</span>
-        </li>
-      </ul>
+          {{ index + 1 }}
+        </div>
+        <p class="pt-1 text-slate-700 leading-relaxed font-medium">
+          {{ item }}
+        </p>
+      </div>
     </div>
 
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
