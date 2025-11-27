@@ -19,7 +19,19 @@ import Slide08CurrentApplications from './slide-08-current-applications.vue'
 import Slide09FutureApplications from './slide-09-future-applications.vue'
 import Slide10LimitationsAndSolutions from './slide-10-limitations-and-solutions.vue'
 import Slide11RagIndexing from './slide-11-rag-workflow.vue'
-import Slide12FunctionCallingAndMcp from './slide-12-function-calling-and-mcp.vue'
+import Slide12LlamaIndexRag from './slide-12-llamaindex-rag.vue'
+import Slide13RagOptimization from './slide-13-rag-optimization.vue'
+import Slide14LlmTypesAndWorkflow from './slide-14-llm-types-and-workflow.vue'
+import Slide15RagVsFineTuning from './slide-15-rag-vs-fine-tuning.vue'
+import Slide16FineTuningDetails from './slide-16-fine-tuning-details.vue'
+import Slide17TrainingEvaluation from './slide-17-training-evaluation.vue'
+import Slide18RagEvaluationDimensions from './slide-18-rag-evaluation-dimensions.vue'
+import Slide19Ragas from './slide-19-ragas.vue'
+import Slide20RagAnswerQuality from './slide-20-rag-answer-quality.vue'
+import Slide21RagSafety from './slide-21-rag-safety.vue'
+import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
+import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
+import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -50,7 +62,19 @@ const slides = [
   Slide09FutureApplications,
   Slide10LimitationsAndSolutions,
   Slide11RagIndexing,
-  Slide12FunctionCallingAndMcp,
+  Slide12LlamaIndexRag,
+  Slide13RagOptimization,
+  Slide14LlmTypesAndWorkflow,
+  Slide16FineTuningDetails,
+  Slide17TrainingEvaluation,
+  Slide15RagVsFineTuning,
+  Slide18RagEvaluationDimensions,
+  Slide19Ragas,
+  Slide20RagAnswerQuality,
+  Slide21RagSafety,
+  Slide22FunctionCallingAndMcp,
+  Slide23AgentArchitecture,
+  Slide24MultiAgentPatterns,
 ]
 </script>
 

@@ -37,7 +37,10 @@ const renderToken = (tok: string, lang: string) => {
   // RAG-specific tokens
   if (lang === 'typescript') {
     if (tok === 'similarity_top_k') return `<span class='text-emerald-300'>${t}</span>`
-    if (['buildIndex', 'asQueryEngine', 'query'].includes(tok)) return `<span class='text-cyan-300'>${t}</span>`
+    if (['buildIndex', 'asQueryEngine', 'query', 'loadData', 'fromDocuments', 'persist', 'toString', 'log'].includes(tok)) return `<span class='text-cyan-300'>${t}</span>`
+    if (['SimpleDirectoryReader', 'VectorStoreIndex', 'console'].includes(tok)) return `<span class='text-emerald-300'>${t}</span>`
+    // Auto-detect class names (PascalCase)
+    if (/^[A-Z][a-zA-Z0-9]*$/.test(tok) && !keywords.has(tok)) return `<span class='text-emerald-300'>${t}</span>`
   }
 
   // Agent-specific tokens

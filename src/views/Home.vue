@@ -24,12 +24,6 @@ const categories = ref<Category[]>([
     presentations: [
       {
         id: 'acp-llm-tutorial',
-        title: '构建生产级大模型问答系统',
-        description: '',
-        route: '/acp-llm-tutorial',
-      },
-      {
-        id: 'acp-llm-tutorial',
         title: 'acp',
         description: '',
         route: '/llm',

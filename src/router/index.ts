@@ -12,10 +12,6 @@ const router = createRouter({
       component: () => import('@/presentations/design-language-template/index.vue'),
     },
     {
-      path: '/acp-llm-tutorial',
-      component: () => import('@/presentations/acp-llm-tutorial/index.vue'),
-    },
-    {
       path: '/llm',
       component: () => import('@/presentations/llm/index.vue'),
     },
