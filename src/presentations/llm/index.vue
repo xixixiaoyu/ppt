@@ -32,6 +32,8 @@ import Slide21RagSafety from './slide-21-rag-safety.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
+import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
+import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
 
 const localeOptions = [
   { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
@@ -75,6 +77,8 @@ const slides = [
   Slide22FunctionCallingAndMcp,
   Slide23AgentArchitecture,
   Slide24MultiAgentPatterns,
+  Slide25DeploymentStrategies,
+  Slide26ProductionBestPractices,
 ]
 </script>
 
