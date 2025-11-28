@@ -93,28 +93,39 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
       </div>
     </div>
 
-    <div class="mt-8 grid gap-4">
-      <div
-        v-for="(item, index) in tabs.find((t) => t.id === activeTab)?.content"
-        :key="index"
-        class="group flex items-start gap-4 p-4 rounded-2xl bg-white/60 border border-white/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-300"
-      >
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <!-- Steps List -->
+      <div class="grid gap-4">
         <div
-          class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-bold text-sm shadow-sm group-hover:scale-110 transition-transform"
+          v-for="(item, index) in tabs.find((t) => t.id === activeTab)?.content"
+          :key="index"
+          class="group flex items-start gap-4 p-4 rounded-2xl bg-white/60 border border-white/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-300"
         >
-          {{ index + 1 }}
+          <div
+            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white font-bold text-sm shadow-sm group-hover:scale-110 transition-transform"
+            :class="
+              activeTab === 'offline'
+                ? 'bg-gradient-to-br from-emerald-400 to-teal-500'
+                : 'bg-gradient-to-br from-blue-400 to-indigo-500'
+            "
+          >
+            {{ index + 1 }}
+          </div>
+          <p class="pt-1 text-slate-700 leading-relaxed font-medium">
+            {{ item }}
+          </p>
         </div>
-        <p class="pt-1 text-slate-700 leading-relaxed font-medium">
-          {{ item }}
-        </p>
       </div>
-    </div>
 
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <!-- Example 1: Index -->
-      <div class="relative group">
+      <!-- Example Code Block -->
+      <div class="relative group h-full">
         <div
-          class="absolute -inset-2 rounded-[2rem] bg-gradient-to-r from-emerald-400/30 to-teal-500/30 opacity-40 blur-xl transition duration-700 group-hover:opacity-80"
+          class="absolute -inset-2 rounded-[2rem] opacity-40 blur-xl transition duration-700 group-hover:opacity-80"
+          :class="
+            activeTab === 'offline'
+              ? 'bg-gradient-to-r from-emerald-400/30 to-teal-500/30'
+              : 'bg-gradient-to-r from-blue-400/30 to-indigo-500/30'
+          "
         ></div>
         <div
           class="relative h-full rounded-2xl bg-[#1e1e1e] border border-white/10 overflow-hidden shadow-2xl flex flex-col"
@@ -128,41 +139,13 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
               <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
             </div>
             <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
-              INDEX_EXAMPLE.JSON
+              {{ activeTab === 'offline' ? 'INDEX_EXAMPLE.JSON' : 'PROMPT_TEMPLATE.MD' }}
             </span>
           </div>
-          <div class="p-6 overflow-y-auto custom-scrollbar max-h-[400px]">
+          <div class="p-6 overflow-y-auto custom-scrollbar max-h-[500px]">
             <pre
               class="font-mono text-sm leading-relaxed text-blue-100/90"
-            ><code class="whitespace-pre-wrap" v-html="highlightedIndexExample" /></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 2: Prompt -->
-      <div class="relative group">
-        <div
-          class="absolute -inset-2 rounded-[2rem] bg-gradient-to-r from-blue-400/30 to-indigo-500/30 opacity-40 blur-xl transition duration-700 group-hover:opacity-80"
-        ></div>
-        <div
-          class="relative h-full rounded-2xl bg-[#1e1e1e] border border-white/10 overflow-hidden shadow-2xl flex flex-col"
-        >
-          <div
-            class="flex items-center justify-between gap-2 px-4 py-3 border-b border-white/5 bg-white/5"
-          >
-            <div class="flex gap-2">
-              <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-              <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-              <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-            </div>
-            <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
-              PROMPT_TEMPLATE.MD
-            </span>
-          </div>
-          <div class="p-6 overflow-y-auto custom-scrollbar max-h-[400px]">
-            <pre
-              class="font-mono text-sm leading-relaxed text-blue-100/90"
-            ><code class="whitespace-pre-wrap" v-html="highlightedPromptExample" /></pre>
+            ><code class="whitespace-pre-wrap" v-html="activeTab === 'offline' ? highlightedIndexExample : highlightedPromptExample" /></pre>
           </div>
         </div>
       </div>
