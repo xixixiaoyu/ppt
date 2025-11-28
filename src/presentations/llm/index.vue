@@ -29,14 +29,13 @@ import Slide17TrainingEvaluation from './slide-17-training-evaluation.vue'
 import Slide18RagEvaluationDimensions from './slide-18-rag-evaluation-dimensions.vue'
 import Slide19Ragas from './slide-19-ragas.vue'
 import Slide20RagAnswerQuality from './slide-20-rag-answer-quality.vue'
-import Slide21RagSafety from './slide-21-rag-safety.vue'
+import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engineering.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
 import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
 import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
 import Slide27EdgeAndSmallModels from './slide-27-edge-and-small-models.vue'
-import Slide28UnreliableEngineering from './slide-28-unreliable-engineering.vue'
 import Slide29Summary from './slide-29-summary.vue'
 import Slide30ThankYou from './slide-30-thank-you.vue'
 
@@ -81,7 +80,6 @@ const slides = [
   Slide18RagEvaluationDimensions,
   Slide19Ragas,
   Slide20RagAnswerQuality,
-  Slide21RagSafety,
 
   // Part 4: Fine-tuning
   Slide15RagVsFineTuning,
@@ -96,7 +94,7 @@ const slides = [
   Slide25DeploymentStrategies,
   Slide27EdgeAndSmallModels,
   Slide26ProductionBestPractices,
-  Slide28UnreliableEngineering,
+  SlideMergedTrustworthyEngineering,
 
   // Part 7: Conclusion
   Slide08CurrentApplications,
