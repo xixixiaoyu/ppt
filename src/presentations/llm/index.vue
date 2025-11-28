@@ -27,9 +27,7 @@ import Slide14LlmTypesAndWorkflow from './slide-14-llm-types-and-workflow.vue'
 import Slide15RagVsFineTuning from './slide-15-rag-vs-fine-tuning.vue'
 import Slide16FineTuningDetails from './slide-16-fine-tuning-details.vue'
 import Slide17TrainingEvaluation from './slide-17-training-evaluation.vue'
-import Slide18RagEvaluationDimensions from './slide-18-rag-evaluation-dimensions.vue'
-import Slide19Ragas from './slide-19-ragas.vue'
-import Slide20RagAnswerQuality from './slide-20-rag-answer-quality.vue'
+import SlideMergedRagEvaluation from './slide-merged-rag-evaluation.vue'
 import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engineering.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
@@ -80,13 +78,11 @@ const slides = [
   Slide11RagWorkflow,
   Slide12LlamaIndexRag,
   Slide13RagOptimization,
-  Slide18RagEvaluationDimensions,
-  Slide19Ragas,
-  Slide20RagAnswerQuality,
+  SlideMergedRagEvaluation,
 
   // Part 4: Fine-tuning
-  Slide15RagVsFineTuning,
   Slide16FineTuningDetails,
+  Slide15RagVsFineTuning,
   Slide17TrainingEvaluation,
 
   // Part 5: Agents
