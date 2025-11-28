@@ -31,10 +31,8 @@ import SlideMergedLlmOverview from './slide-merged-llm-overview.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
-import Slide25bModelSelectionStrategy from './slide-25b-model-selection-strategy.vue'
-import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
+import SlideMergedModelStrategy from './slide-merged-model-strategy.vue'
 import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
-import Slide27EdgeAndSmallModels from './slide-27-edge-and-small-models.vue'
 import Slide29Summary from './slide-29-summary.vue'
 import Slide30ThankYou from './slide-30-thank-you.vue'
 
@@ -88,9 +86,7 @@ const slides = [
   Slide24MultiAgentPatterns,
 
   // Part 6: Engineering & Production
-  Slide25bModelSelectionStrategy, // NEW: Cost & Selection
-  Slide25DeploymentStrategies,
-  Slide27EdgeAndSmallModels,
+  SlideMergedModelStrategy, // Merged: Selection, Deployment & Edge
   Slide26ProductionBestPractices,
   SlideMergedTrustworthyEngineering,
 
