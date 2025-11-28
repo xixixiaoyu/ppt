@@ -15,6 +15,7 @@ import Slide04ApiIntegration from './slide-04-api-integration.vue'
 import Slide05ApiParameters from './slide-05-api-parameters.vue'
 import Slide06Tokens from './slide-06-tokens.vue'
 import Slide07PromptEngineering from './slide-07-prompt-engineering.vue'
+import Slide07bMultimodality from './slide-07b-multimodality.vue'
 import Slide08CurrentApplications from './slide-08-current-applications.vue'
 import Slide09FutureApplications from './slide-09-future-applications.vue'
 import Slide10LimitationsAndSolutions from './slide-10-limitations-and-solutions.vue'
@@ -33,6 +34,7 @@ import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engine
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
+import Slide25bModelSelectionStrategy from './slide-25b-model-selection-strategy.vue'
 import Slide25DeploymentStrategies from './slide-25-deployment-strategies.vue'
 import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
 import Slide27EdgeAndSmallModels from './slide-27-edge-and-small-models.vue'
@@ -70,6 +72,7 @@ const slides = [
   Slide04ApiIntegration,
   Slide05ApiParameters,
   Slide07PromptEngineering,
+  Slide07bMultimodality, // NEW: Beyond Text
   Slide22FunctionCallingAndMcp, // Moved here: Advanced dev capability
 
   // Part 3: RAG (Retrieval Augmented Generation)
@@ -91,6 +94,7 @@ const slides = [
   Slide24MultiAgentPatterns,
 
   // Part 6: Engineering & Production
+  Slide25bModelSelectionStrategy, // NEW: Cost & Selection
   Slide25DeploymentStrategies,
   Slide27EdgeAndSmallModels,
   Slide26ProductionBestPractices,
