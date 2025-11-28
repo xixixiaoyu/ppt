@@ -29,6 +29,7 @@ import Slide16FineTuningDetails from './slide-16-fine-tuning-details.vue'
 import Slide17TrainingEvaluation from './slide-17-training-evaluation.vue'
 import SlideMergedRagEvaluation from './slide-merged-rag-evaluation.vue'
 import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engineering.vue'
+import SlideMergedLlmOverview from './slide-merged-llm-overview.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
@@ -62,7 +63,7 @@ const slides = [
   Slide01Hero,
   Slide02Principles,
   Slide06Tokens, // Moved here: Tokens are the atoms, understand them before workflow
-  Slide14LlmTypesAndWorkflow, // Moved here: Workflow relies on understanding tokens
+  SlideMergedLlmOverview, // Merged: Workflow, Types & Multimodality
   Slide03Training,
   Slide10LimitationsAndSolutions, // Moved here: Transition from fundamentals to solutions
 
@@ -70,7 +71,6 @@ const slides = [
   Slide04ApiIntegration,
   Slide05ApiParameters,
   Slide07PromptEngineering,
-  Slide07bMultimodality, // NEW: Beyond Text
   Slide22FunctionCallingAndMcp, // Moved here: Advanced dev capability
 
   // Part 3: RAG (Retrieval Augmented Generation)
