@@ -63,9 +63,9 @@ const slides = [
   // Part 1: Fundamentals
   Slide01Hero,
   Slide02Principles,
-  Slide14LlmTypesAndWorkflow, // Moved here: Understand types/workflow after principles
+  Slide06Tokens, // Moved here: Tokens are the atoms, understand them before workflow
+  Slide14LlmTypesAndWorkflow, // Moved here: Workflow relies on understanding tokens
   Slide03Training,
-  Slide06Tokens, // Moved here: Tokens are fundamental to training & usage
   Slide10LimitationsAndSolutions, // Moved here: Transition from fundamentals to solutions
 
   // Part 2: Development & API
