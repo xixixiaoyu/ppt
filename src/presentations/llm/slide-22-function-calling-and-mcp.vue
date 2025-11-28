@@ -148,7 +148,7 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
           </div>
           <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
             <pre
-              class="font-mono text-sm leading-7 text-blue-100/90"
+              class="font-mono text-sm leading-7 text-blue-100/90 whitespace-pre-wrap break-words"
             ><code v-html="activeTab === 'fc' ? fcExample : mcpExample"></code></pre>
           </div>
         </div>

@@ -104,7 +104,7 @@ const currentCode = computed(() => {
 
         <div class="flex-1 overflow-auto p-6 custom-scrollbar">
           <pre
-            class="!bg-transparent !p-0 !m-0 font-mono text-sm leading-relaxed"
+            class="!bg-transparent !p-0 !m-0 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words"
           ><code v-html="currentCode"></code></pre>
         </div>
 

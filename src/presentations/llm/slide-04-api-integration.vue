@@ -140,7 +140,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </div>
             </div>
             <div class="p-6 overflow-x-auto flex-1 font-mono text-sm leading-relaxed">
-              <pre><code class="language-python"><span class="text-purple-400">import</span> <span class="text-slate-200">os</span>
+              <pre
+                class="whitespace-pre-wrap break-words"
+              ><code class="language-python"><span class="text-purple-400">import</span> <span class="text-slate-200">os</span>
 <span class="text-purple-400">from</span> <span class="text-slate-200">openai</span> <span class="text-purple-400">import</span> <span class="text-slate-200">OpenAI</span>
 
 <span class="text-slate-500"># 初始化客户端 (自动读取环境变量)</span>
