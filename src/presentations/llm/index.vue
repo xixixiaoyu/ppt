@@ -32,7 +32,6 @@ import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vu
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
 import SlideMergedModelStrategy from './slide-merged-model-strategy.vue'
-import Slide26ProductionBestPractices from './slide-26-production-best-practices.vue'
 import Slide29Summary from './slide-29-summary.vue'
 import Slide30ThankYou from './slide-30-thank-you.vue'
 
@@ -87,7 +86,6 @@ const slides = [
 
   // Part 6: Engineering & Production
   SlideMergedModelStrategy, // Merged: Selection, Deployment & Edge
-  Slide26ProductionBestPractices,
   SlideMergedTrustworthyEngineering,
 
   // Part 7: Conclusion
