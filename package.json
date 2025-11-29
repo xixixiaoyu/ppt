@@ -17,7 +17,8 @@
     "lint:check": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint:format": "pnpm lint && pnpm format"
+    "lint:format": "pnpm lint && pnpm format",
+    "prepare": "husky"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -39,6 +40,8 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "^10.6.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.4.49",
     "prettier": "^3.7.2",
@@ -46,5 +49,14 @@
     "typescript": "~5.8.0",
     "vite": "^7.0.6",
     "vue-tsc": "^3.0.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
