@@ -23,6 +23,7 @@ export default [
     files: ['**/*.ts', '**/*.tsx', '**/*.vue'],
     parserOptions: {
       project: './tsconfig.json',
+      tsconfigRootDir: import.meta.dirname,
     },
     rules: {
       // TypeScript 相关规则
@@ -32,6 +33,7 @@ export default [
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/prefer-const': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
     },
   }),
 

@@ -4,6 +4,7 @@ import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 import Section from '@/shared/ui/Section.vue'
 import { computed, ref } from 'vue'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 // 定义统一的数据接口

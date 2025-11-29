@@ -97,6 +97,7 @@ const currentData = computed(() => {
 })
 
 // 获取当前类型的标题
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const currentTitle = computed(() => {
   const titles = {
     multiple: '单选题',

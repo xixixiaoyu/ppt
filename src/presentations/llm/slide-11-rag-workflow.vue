@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { highlight } from '@/utils/highlight'
+import { computed, ref } from 'vue'
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const tabs = [
@@ -153,6 +153,7 @@ const highlightedPromptExample = computed(() =>
             </span>
           </div>
           <div class="p-6 overflow-y-auto custom-scrollbar max-h-[500px]">
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <pre
               class="font-mono text-sm leading-relaxed text-blue-100/90"
             ><code class="whitespace-pre-wrap" v-html="activeTab === 'offline' ? highlightedIndexExample : highlightedPromptExample" /></pre>

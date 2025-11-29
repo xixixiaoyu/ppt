@@ -3,6 +3,7 @@ import type { EChartsOption } from '@/shared/charts/echarts'
 import { VChart } from '@/shared/charts/echarts'
 import { computed, ref } from 'vue'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 // 图表类型配置

@@ -144,6 +144,7 @@ const currentData = computed(() => {
 })
 
 // 获取当前类型的标题
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const currentTitle = computed(() => {
   const titles = {
     video: '视频播放',
@@ -183,6 +184,7 @@ const nextImage = () => {
 }
 
 // 播放/暂停
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const togglePlay = () => {
   isPlaying.value = !isPlaying.value
 }

@@ -1,11 +1,12 @@
 {
-  "name": "vue_ppt",
+  "name": "vue-ppt",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.13.1",
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "^20.19.0 || >=22.12.0",
+    "pnpm": ">=10.13.1"
   },
   "scripts": {
     "dev": "vite",

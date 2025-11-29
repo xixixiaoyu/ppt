@@ -186,6 +186,7 @@ const highlights = [
       <div
         class="bg-slate-900/80 text-slate-100 rounded-2xl border border-white/10 p-6 font-mono text-sm leading-relaxed"
       >
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <pre
           class="whitespace-pre-wrap break-words"
         ><code class="whitespace-pre-wrap break-words" v-html="highlightedCode" /></pre>

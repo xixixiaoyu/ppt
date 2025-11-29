@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 // 定义统一的数据接口

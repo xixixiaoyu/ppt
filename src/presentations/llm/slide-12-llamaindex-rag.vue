@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { highlight } from '@/utils/highlight'
+import { computed, ref } from 'vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -106,6 +106,7 @@ const currentCode = computed(() => {
         </div>
 
         <div class="flex-1 overflow-auto p-6 custom-scrollbar">
+          <!-- eslint-disable-next-line vue/no-v-html -->
           <pre
             class="!bg-transparent !p-0 !m-0 font-mono text-sm leading-relaxed whitespace-pre-wrap break-words"
           ><code v-html="currentCode"></code></pre>

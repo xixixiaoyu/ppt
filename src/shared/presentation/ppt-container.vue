@@ -87,7 +87,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
   slides: {
@@ -156,14 +156,14 @@ const previousSlide = () => {
   }
 }
 
-const goToSlide = index => {
+const goToSlide = (index: number) => {
   currentSlide.value = index
   showThumbnails.value = false
   lastNavigationAt = getTimestamp()
 }
 
-const handleKeyDown = event => {
-  const t = event.target
+const handleKeyDown = (event: KeyboardEvent) => {
+  const t = event.target as HTMLElement
   if (
     t &&
     (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
@@ -199,7 +199,8 @@ const handleKeyDown = event => {
   }
 }
 
-const clamp = (n, min, max) => Math.min(Math.max(n, min), max)
+const clamp = (n: number, min: number, max: number) =>
+  Math.min(Math.max(n, min), max)
 
 const commitInlinePageJump = () => {
   const raw = editablePage.value.trim()
@@ -220,8 +221,8 @@ const commitInlinePageJump = () => {
   goToSlide(clamped - 1)
 }
 
-const onEditableInput = e => {
-  const t = e.target
+const onEditableInput = (e: Event) => {
+  const t = e.target as HTMLInputElement
   const raw =
     t && typeof t.value === 'string'
       ? t.value
@@ -232,8 +233,8 @@ const onEditableInput = e => {
   editablePage.value = sanitized
 }
 
-const onEditableFocus = e => {
-  const t = e.target
+const onEditableFocus = (e: FocusEvent) => {
+  const t = e.target as HTMLInputElement
   if (t && typeof t.select === 'function') {
     try {
       t.select()
@@ -244,14 +245,16 @@ const onEditableFocus = e => {
   }
   if (t && t.childNodes && t.childNodes.length) {
     const sel = window.getSelection()
-    const range = document.createRange()
-    range.selectNodeContents(t)
-    sel.removeAllRanges()
-    sel.addRange(range)
+    if (sel) {
+      const range = document.createRange()
+      range.selectNodeContents(t)
+      sel.removeAllRanges()
+      sel.addRange(range)
+    }
   }
 }
 
-const onEditableKeyDown = e => {
+const onEditableKeyDown = (e: KeyboardEvent) => {
   const key = e.key
   const total = props.slides.length
   const current = (() => {
@@ -259,7 +262,7 @@ const onEditableKeyDown = e => {
     return Number.isNaN(n) ? currentSlide.value + 1 : n
   })()
 
-  const stepAdjust = delta => {
+  const stepAdjust = (delta: number) => {
     const next = clamp(current + delta, 1, total)
     editablePage.value = String(next)
   }
@@ -299,7 +302,7 @@ const onEditableKeyDown = e => {
       e.preventDefault()
       e.stopPropagation()
       editablePage.value = String(currentSlide.value + 1)
-      e.target.blur()
+      ;(e.target as HTMLElement).blur()
       break
     default:
       break
@@ -309,7 +312,7 @@ const onEditableKeyDown = e => {
 onMounted(() => {
   document.title = props.title
   // 自动获取焦点以支持键盘导航
-  const container = document.querySelector('.ppt-container')
+  const container = document.querySelector('.ppt-container') as HTMLElement
   if (container) {
     container.focus()
   }

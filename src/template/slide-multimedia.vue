@@ -3,6 +3,51 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
+// 定义媒体数据类型
+interface VideoData {
+  title: string
+  description: string
+  videoUrl: string
+  thumbnail: string
+  duration: string
+  features: string[]
+}
+
+interface AudioData {
+  title: string
+  description: string
+  audioUrl: string
+  cover: string
+  duration: string
+  features: string[]
+}
+
+interface GalleryData {
+  title: string
+  description: string
+  images: Array<{
+    id: number
+    url: string
+    title: string
+  }>
+  features: string[]
+}
+
+interface MixedData {
+  title: string
+  description: string
+  videoUrl: string
+  audioUrl: string
+  images: Array<{
+    id: number
+    url: string
+    title: string
+  }>
+  features: string[]
+}
+
+type MediaData = VideoData | AudioData | GalleryData | MixedData
+
 // 多媒体类型配置
 const mediaTypes = [
   { id: 'video', name: '视频播放', icon: '🎬' },
@@ -14,7 +59,7 @@ const mediaTypes = [
 const activeMediaType = ref('video')
 
 // 视频数据
-const videoData = {
+const videoData: VideoData = {
   title: '产品演示视频',
   description: '展示产品核心功能和使用场景',
   videoUrl:
@@ -30,7 +75,7 @@ const videoData = {
 }
 
 // 音频数据
-const audioData = {
+const audioData: AudioData = {
   title: '播客节目',
   description: '技术分享与行业洞察',
   audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
@@ -44,7 +89,7 @@ const audioData = {
 }
 
 // 图片画廊数据
-const galleryData = {
+const galleryData: GalleryData = {
   title: '产品展示',
   description: '多角度展示产品细节',
   images: [
@@ -87,7 +132,7 @@ const galleryData = {
 }
 
 // 混合媒体数据
-const mixedData = {
+const mixedData: MixedData = {
   title: '多媒体展示',
   description: '视频、音频和图片的综合展示',
   videoUrl:
@@ -109,7 +154,7 @@ const mixedData = {
 }
 
 // 获取当前数据
-const currentData = computed(() => {
+const currentData = computed((): MediaData => {
   switch (activeMediaType.value) {
     case 'video':
       return videoData
@@ -125,6 +170,7 @@ const currentData = computed(() => {
 })
 
 // 获取当前类型的标题
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const currentTitle = computed(() => {
   const titles = {
     video: '视频播放',
@@ -157,12 +203,15 @@ const prevImage = () => {
 
 // 下一张图片
 const nextImage = () => {
-  if (selectedImageIndex.value < (currentData.value.images?.length || 0) - 1) {
-    selectedImageIndex.value++
+  if ('images' in currentData.value && currentData.value.images) {
+    if (selectedImageIndex.value < currentData.value.images.length - 1) {
+      selectedImageIndex.value++
+    }
   }
 }
 
 // 播放/暂停
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const togglePlay = () => {
   isPlaying.value = !isPlaying.value
 }
@@ -240,8 +289,8 @@ const formatTime = (seconds: number) => {
         <div class="relative rounded-2xl overflow-hidden bg-slate-900">
           <video
             v-if="!props.isPreview"
-            :src="currentData.videoUrl || ''"
-            :poster="currentData.thumbnail || ''"
+            :src="'videoUrl' in currentData ? currentData.videoUrl : ''"
+            :poster="'thumbnail' in currentData ? currentData.thumbnail : ''"
             class="w-full aspect-video"
             controls
             @play="isPlaying = true"
@@ -266,7 +315,11 @@ const formatTime = (seconds: number) => {
         <div
           class="mt-3 flex items-center justify-between text-sm text-slate-600"
         >
-          <span>时长：{{ currentData.duration || '' }}</span>
+          <span
+            >时长：{{
+              'duration' in currentData ? currentData.duration : ''
+            }}</span
+          >
           <span v-if="!props.isPreview && duration">
             {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
           </span>
@@ -280,7 +333,7 @@ const formatTime = (seconds: number) => {
             class="w-48 h-48 rounded-2xl overflow-hidden bg-slate-200 flex-shrink-0"
           >
             <img
-              :src="currentData.cover || ''"
+              :src="'cover' in currentData ? currentData.cover : ''"
               :alt="currentData.title"
               class="w-full h-full object-cover"
             />
@@ -289,7 +342,7 @@ const formatTime = (seconds: number) => {
             <div class="rounded-2xl bg-slate-100 p-4 mb-4">
               <audio
                 v-if="!props.isPreview"
-                :src="currentData.audioUrl || ''"
+                :src="'audioUrl' in currentData ? currentData.audioUrl : ''"
                 class="w-full"
                 controls
                 @play="isPlaying = true"
@@ -303,7 +356,11 @@ const formatTime = (seconds: number) => {
               </div>
             </div>
             <div class="text-sm text-slate-600">
-              <p>时长：{{ currentData.duration || '' }}</p>
+              <p>
+                时长：{{
+                  'duration' in currentData ? currentData.duration : ''
+                }}
+              </p>
               <p v-if="isPlaying" class="text-accent font-medium">
                 正在播放...
               </p>
@@ -318,8 +375,16 @@ const formatTime = (seconds: number) => {
           <!-- 主图显示 -->
           <div class="rounded-2xl overflow-hidden bg-slate-100">
             <img
-              :src="(currentData.images || [])[selectedImageIndex]?.url || ''"
-              :alt="(currentData.images || [])[selectedImageIndex]?.title || ''"
+              :src="
+                'images' in currentData
+                  ? currentData.images[selectedImageIndex]?.url || ''
+                  : ''
+              "
+              :alt="
+                'images' in currentData
+                  ? currentData.images[selectedImageIndex]?.title || ''
+                  : ''
+              "
               class="w-full aspect-[4/3] object-cover"
             />
           </div>
@@ -329,7 +394,9 @@ const formatTime = (seconds: number) => {
             <h4 class="text-lg font-semibold text-slate-900 mb-3">图片列表</h4>
             <div class="grid grid-cols-3 gap-2 mb-4">
               <div
-                v-for="(image, index) in currentData.images"
+                v-for="(image, index) in 'images' in currentData
+                  ? currentData.images
+                  : []"
                 :key="image.id"
                 @click="selectImage(index)"
                 class="aspect-video rounded-lg overflow-hidden cursor-pointer border-2 transition-all"
@@ -358,12 +425,14 @@ const formatTime = (seconds: number) => {
               </button>
               <span class="text-sm text-slate-600">
                 {{ selectedImageIndex + 1 }} /
-                {{ currentData.images?.length || 0 }}
+                {{ 'images' in currentData ? currentData.images.length : 0 }}
               </span>
               <button
                 @click="nextImage"
                 :disabled="
-                  selectedImageIndex === (currentData.images?.length || 0) - 1
+                  'images' in currentData
+                    ? selectedImageIndex === currentData.images.length - 1
+                    : true
                 "
                 class="rounded-full bg-white/60 border border-slate-300 px-4 py-2 text-slate-700 font-medium transition hover:bg-white/70 disabled:opacity-50 disabled:cursor-not-allowed"
               >
