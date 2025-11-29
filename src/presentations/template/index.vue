@@ -58,7 +58,7 @@ const presentationContext = createPresentationContext({
 
 providePresentationContext(presentationContext)
 
-const title = computed(() => '设计语言模板（优化版）')
+const title = computed(() => '设计语言模板')
 
 // 优化后的幻灯片列表 - 减少重复，增加通用性和功能性
 const slides = [
