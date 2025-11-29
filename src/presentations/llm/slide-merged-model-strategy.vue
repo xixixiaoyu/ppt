@@ -11,9 +11,6 @@ import {
   ServerStackIcon,
   ChartBarIcon,
   CurrencyDollarIcon,
-  CpuChipIcon,
-  CubeIcon,
-  CommandLineIcon,
 } from '@heroicons/vue/24/outline'
 
 // Tabs configuration

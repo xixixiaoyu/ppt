@@ -7,9 +7,6 @@ import {
   CpuChipIcon,
   LightBulbIcon,
   EyeIcon,
-  MicrophoneIcon,
-  VideoCameraIcon,
-  CodeBracketIcon,
 } from '@heroicons/vue/24/outline'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()

@@ -86,7 +86,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch, computed } from 'vue'
 
 const props = defineProps({
@@ -237,7 +237,9 @@ const onEditableFocus = e => {
   if (t && typeof t.select === 'function') {
     try {
       t.select()
-    } catch {}
+    } catch {
+      // Ignore selection errors
+    }
     return
   }
   if (t && t.childNodes && t.childNodes.length) {

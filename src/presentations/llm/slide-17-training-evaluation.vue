@@ -5,7 +5,6 @@ import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 import TrainingCurveChart from '@/shared/charts/TrainingCurveChart.vue'
 import {
   CheckCircleIcon,
-  XCircleIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/vue/24/solid'
 import { ChartBarIcon, ScaleIcon } from '@heroicons/vue/24/outline'

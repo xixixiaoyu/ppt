@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HeroBanner from '@/shared/ui/HeroBanner.vue'
-const props = defineProps<{ isActive?: boolean; isPreview?: boolean }>()
+defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
 
 <template>

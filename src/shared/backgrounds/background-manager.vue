@@ -68,7 +68,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     !event.altKey
   ) {
     event.preventDefault()
-    settingsOpen.value ? closeSettings() : openSettings()
+    void (settingsOpen.value ? closeSettings() : openSettings())
   }
 }
 

@@ -3,12 +3,10 @@ import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
 import {
-  PhotoIcon,
   MicrophoneIcon,
   VideoCameraIcon,
   CodeBracketIcon,
   EyeIcon,
-  SpeakerWaveIcon,
 } from '@heroicons/vue/24/outline'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
