@@ -8,8 +8,8 @@ const router = createRouter({
       component: () => import('@/views/Home.vue'),
     },
     {
-      path: '/design-language-template',
-      component: () => import('@/presentations/template/index.vue'),
+      path: '/template',
+      component: () => import('@/template/index.vue'),
     },
     {
       path: '/llm',

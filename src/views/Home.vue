@@ -67,7 +67,7 @@ const toggleCategory = (categoryId: string) => {
         </h1>
         <div class="mt-8">
           <RouterLink
-            to="/design-language-template"
+            to="/template"
             class="inline-flex items-center gap-2 rounded-full bg-accent/20 px-6 py-3 text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/30 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2"
           >
             <svg
