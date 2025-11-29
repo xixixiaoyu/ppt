@@ -52,7 +52,7 @@ const presentationContext = createPresentationContext({
   },
   backgrounds: backgroundRegistry,
   locales: [...localeOptions],
-  contextKey: 'design-language-template',
+  contextKey: 'design-language-template-optimized',
   persist: true,
 })
 
