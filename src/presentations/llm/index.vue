@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
+import { demoParticlesBackground } from '@/shared/backgrounds/modules/demo-particles'
+import { softMeshBackground } from '@/shared/backgrounds/modules/soft-mesh'
+import PptContainer from '@/shared/presentation/ppt-container.vue'
 import {
   createPresentationContext,
   providePresentationContext,
 } from '@/shared/presentation/presentation-context'
-import { demoParticlesBackground } from '@/shared/backgrounds/modules/demo-particles'
-import { softMeshBackground } from '@/shared/backgrounds/modules/soft-mesh'
-import BackgroundManager from '@/shared/backgrounds/background-manager.vue'
-import PptContainer from '@/shared/presentation/ppt-container.vue'
 
 import Slide01Hero from './slide-01-hero.vue'
 import Slide02Principles from './slide-02-principles.vue'
@@ -25,15 +25,15 @@ import Slide13RagOptimization from './slide-13-rag-optimization.vue'
 import Slide15RagVsFineTuning from './slide-15-rag-vs-fine-tuning.vue'
 import Slide16FineTuningDetails from './slide-16-fine-tuning-details.vue'
 import Slide17TrainingEvaluation from './slide-17-training-evaluation.vue'
-import SlideMergedRagEvaluation from './slide-merged-rag-evaluation.vue'
-import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engineering.vue'
-import SlideMergedLlmOverview from './slide-merged-llm-overview.vue'
 import Slide22FunctionCallingAndMcp from './slide-22-function-calling-and-mcp.vue'
 import Slide23AgentArchitecture from './slide-23-agent-architecture.vue'
 import Slide24MultiAgentPatterns from './slide-24-multi-agent-patterns.vue'
-import SlideMergedModelStrategy from './slide-merged-model-strategy.vue'
 import Slide29Summary from './slide-29-summary.vue'
 import Slide30ThankYou from './slide-30-thank-you.vue'
+import SlideMergedLlmOverview from './slide-merged-llm-overview.vue'
+import SlideMergedModelStrategy from './slide-merged-model-strategy.vue'
+import SlideMergedRagEvaluation from './slide-merged-rag-evaluation.vue'
+import SlideMergedTrustworthyEngineering from './slide-merged-trustworthy-engineering.vue'
 
 const localeOptions = [
   {
