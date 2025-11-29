@@ -39,9 +39,22 @@ const getGlowTexture = (hexColor: string) => {
   }
 
   const color = new THREE.Color(hexColor)
-  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2)
-  gradient.addColorStop(0, `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, 0.85)`)
-  gradient.addColorStop(1, `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, 0)`)
+  const gradient = ctx.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2
+  )
+  gradient.addColorStop(
+    0,
+    `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, 0.85)`
+  )
+  gradient.addColorStop(
+    1,
+    `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, 0)`
+  )
   ctx.fillStyle = gradient
   ctx.fillRect(0, 0, size, size)
 
@@ -64,7 +77,14 @@ const createCircleTexture = () => {
     throw new Error('Unable to create 2D context for particle texture')
   }
 
-  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2)
+  const gradient = ctx.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2
+  )
   gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
   gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.6)')
   gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
@@ -83,9 +103,30 @@ const jitter = (range: number) => (Math.random() * 2 - 1) * range
 
 const createGlowOrbConfigs = () => {
   const base = [
-    { color: '#8a2be2', angle: Math.PI * 0.18, radius: 7, height: 3.6, depth: -3.5, scale: 9 },
-    { color: '#40e0d0', angle: -Math.PI * 0.35, radius: 6, height: -3.8, depth: -4.2, scale: 7.5 },
-    { color: '#ff69b4', angle: Math.PI * 0.78, radius: 4.2, height: 0.8, depth: -2.8, scale: 6.2 }
+    {
+      color: '#8a2be2',
+      angle: Math.PI * 0.18,
+      radius: 7,
+      height: 3.6,
+      depth: -3.5,
+      scale: 9,
+    },
+    {
+      color: '#40e0d0',
+      angle: -Math.PI * 0.35,
+      radius: 6,
+      height: -3.8,
+      depth: -4.2,
+      scale: 7.5,
+    },
+    {
+      color: '#ff69b4',
+      angle: Math.PI * 0.78,
+      radius: 4.2,
+      height: 0.8,
+      depth: -2.8,
+      scale: 6.2,
+    },
   ]
 
   return base.map(item => {
@@ -113,7 +154,7 @@ const createGlowOrbConfigs = () => {
       position,
       scale: item.scale * (1 + jitter(0.08)),
       amplitude,
-      speed
+      speed,
     }
   })
 }
@@ -131,7 +172,12 @@ onMounted(() => {
 
   scene.value = new THREE.Scene()
 
-  camera.value = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
+  camera.value = new THREE.PerspectiveCamera(
+    60,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  )
   camera.value.position.z = 10
 
   renderer.value = new THREE.WebGLRenderer({ alpha: true })
@@ -148,7 +194,7 @@ onMounted(() => {
       map: getGlowTexture(config.color),
       color: config.color,
       transparent: true,
-      opacity: 0.7
+      opacity: 0.7,
     })
 
     const sprite = new THREE.Sprite(material)
@@ -159,7 +205,7 @@ onMounted(() => {
       sprite,
       basePosition: config.position.clone(),
       amplitude: config.amplitude,
-      speed: config.speed
+      speed: config.speed,
     })
 
     scene.value?.add(sprite)
@@ -199,7 +245,7 @@ onMounted(() => {
     transparent: true,
     opacity: 0.9,
     depthWrite: false,
-    blending: THREE.AdditiveBlending
+    blending: THREE.AdditiveBlending,
   })
 
   particles.value = new THREE.Points(geometry, material)
@@ -224,7 +270,8 @@ onMounted(() => {
       particles.value.rotation.y += 0.001
       particles.value.rotation.x += 0.0005
 
-      const data = particles.value.geometry.attributes.position.array as Float32Array
+      const data = particles.value.geometry.attributes.position
+        .array as Float32Array
       for (let i = 0; i < particleCount * 3; i += 3) {
         data[i] += velocities[i]
         data[i + 1] += velocities[i + 1]

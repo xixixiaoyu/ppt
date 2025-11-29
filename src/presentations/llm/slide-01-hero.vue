@@ -17,8 +17,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }"
+              />
             </linearGradient>
             <filter
               id="blur"

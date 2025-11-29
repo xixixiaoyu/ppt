@@ -19,8 +19,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g-api" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }"
+              />
             </linearGradient>
             <filter
               id="blur-api"
@@ -36,12 +42,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           </defs>
           <g filter="url(#blur-api)">
             <circle cx="700" cy="100" r="200" fill="url(#g-api)" />
-            <circle cx="100" cy="500" r="150" fill="url(#g-api)" opacity="0.5" />
+            <circle
+              cx="100"
+              cy="500"
+              r="150"
+              fill="url(#g-api)"
+              opacity="0.5"
+            />
           </g>
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-8 h-full justify-center">
+      <div
+        class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-8 h-full justify-center"
+      >
         <!-- 标题区域 -->
         <div class="text-center space-y-4">
           <HeadingGradient
@@ -63,7 +77,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div
               class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
             >
-              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-3">
+              <h3
+                class="text-lg font-bold text-slate-800 flex items-center gap-3"
+              >
                 <span
                   class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600 text-sm"
                   >1</span
@@ -71,9 +87,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 获取 API Key
               </h3>
               <p class="mt-2 text-slate-600 text-sm">
-                前往模型提供商（如 OpenAI, Anthropic, DeepSeek 等）官网注册开发者账号，在后台创建
-                API Key。
-                <span class="block mt-1 text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit">
+                前往模型提供商（如 OpenAI, Anthropic, DeepSeek
+                等）官网注册开发者账号，在后台创建 API Key。
+                <span
+                  class="block mt-1 text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit"
+                >
                   注意：Key 是你的身份凭证，切勿泄露给他人或提交到公开代码库。
                 </span>
               </p>
@@ -82,7 +100,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div
               class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
             >
-              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-3">
+              <h3
+                class="text-lg font-bold text-slate-800 flex items-center gap-3"
+              >
                 <span
                   class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm"
                   >2</span
@@ -100,7 +120,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                  <strong>框架集成：</strong> LangChain / LlamaIndex (适合复杂应用)
+                  <strong>框架集成：</strong> LangChain / LlamaIndex
+                  (适合复杂应用)
                 </li>
               </ul>
             </div>
@@ -108,7 +129,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div
               class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
             >
-              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-3">
+              <h3
+                class="text-lg font-bold text-slate-800 flex items-center gap-3"
+              >
                 <span
                   class="flex items-center justify-center w-8 h-8 rounded-full bg-violet-100 text-violet-600 text-sm"
                   >3</span
@@ -117,8 +140,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
               <p class="mt-2 text-slate-600 text-sm">
                 推荐使用
-                <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">.env</code>
-                文件管理环境变量。 例如：<code class="text-xs font-mono text-slate-500"
+                <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700"
+                  >.env</code
+                >
+                文件管理环境变量。 例如：<code
+                  class="text-xs font-mono text-slate-500"
                   >OPENAI_API_KEY=sk-proj-...</code
                 >
               </p>
@@ -139,7 +165,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
               </div>
             </div>
-            <div class="p-6 overflow-x-auto flex-1 font-mono text-sm leading-relaxed">
+            <div
+              class="p-6 overflow-x-auto flex-1 font-mono text-sm leading-relaxed"
+            >
               <pre
                 class="whitespace-pre-wrap break-words"
               ><code class="language-python"><span class="text-purple-400">import</span> <span class="text-slate-200">os</span>

@@ -19,8 +19,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g-params" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }"
+              />
             </linearGradient>
             <filter
               id="blur-params"
@@ -36,12 +42,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           </defs>
           <g filter="url(#blur-params)">
             <circle cx="200" cy="500" r="250" fill="url(#g-params)" />
-            <circle cx="600" cy="100" r="180" fill="url(#g-params)" opacity="0.6" />
+            <circle
+              cx="600"
+              cy="100"
+              r="180"
+              fill="url(#g-params)"
+              opacity="0.6"
+            />
           </g>
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-6 h-full justify-center">
+      <div
+        class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-6 h-full justify-center"
+      >
         <!-- 标题区域 -->
         <div class="text-center space-y-2">
           <HeadingGradient
@@ -111,14 +125,19 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path>
                 </svg>
               </div>
-              <h3 class="font-bold text-slate-800 text-lg font-mono">messages</h3>
+              <h3 class="font-bold text-slate-800 text-lg font-mono">
+                messages
+              </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
               对话历史列表。每个对象包含
-              <code class="bg-slate-100 px-1 rounded">role</code> (system/user/assistant) 和
+              <code class="bg-slate-100 px-1 rounded">role</code>
+              (system/user/assistant) 和
               <code class="bg-slate-100 px-1 rounded">content</code>。
             </p>
           </div>
@@ -143,7 +162,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
                 </svg>
               </div>
-              <h3 class="font-bold text-slate-800 text-lg font-mono">temperature</h3>
+              <h3 class="font-bold text-slate-800 text-lg font-mono">
+                temperature
+              </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
               控制输出的随机性 (0.0 - 2.0)。
@@ -177,7 +198,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <line x1="12" y1="17" x2="12" y2="21"></line>
                 </svg>
               </div>
-              <h3 class="font-bold text-slate-800 text-lg font-mono">max_tokens</h3>
+              <h3 class="font-bold text-slate-800 text-lg font-mono">
+                max_tokens
+              </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
               限制生成内容的最大 Token 数量。防止模型回复过长或消耗过多 Token。
@@ -209,7 +232,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">top_p</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              <strong>核采样 (Nucleus Sampling)</strong>。选取概率累积达到 P (如 0.9) 的最小候选集。
+              <strong>核采样 (Nucleus Sampling)</strong>。选取概率累积达到 P (如
+              0.9) 的最小候选集。
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
                 区别：候选集大小<strong>动态变化</strong>。确定性高时候选少，不确定时候选多。
@@ -300,7 +324,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <path d="M12 6v2" />
                 </svg>
               </div>
-              <h3 class="font-bold text-slate-800 text-lg font-mono">thinking</h3>
+              <h3 class="font-bold text-slate-800 text-lg font-mono">
+                thinking
+              </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
               <strong>思考模式</strong>。如
@@ -309,7 +335,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               >。
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                效果：决定<strong>是否</strong>让模型在回答前进行深度思考 (CoT)，并可设置思考预算。
+                效果：决定<strong>是否</strong>让模型在回答前进行深度思考
+                (CoT)，并可设置思考预算。
               </span>
             </p>
           </div>
@@ -343,8 +370,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <strong>随机种子</strong>。指定一个整数（如 42）。
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                效果：让模型的输出尽可能<strong>可复现</strong>。相同 Seed + 相同参数 =
-                几乎相同的结果。适合测试和调试。
+                效果：让模型的输出尽可能<strong>可复现</strong>。相同 Seed +
+                相同参数 = 几乎相同的结果。适合测试和调试。
               </span>
             </p>
           </div>

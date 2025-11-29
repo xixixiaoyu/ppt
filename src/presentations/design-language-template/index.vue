@@ -41,7 +41,12 @@ import Slide28ScatterChart from './slide-28-scatter-chart.vue'
 import Slide29RadarChart from './slide-29-radar-chart.vue'
 
 const localeOptions = [
-  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
+  {
+    code: 'zh-Hans',
+    label: 'Chinese',
+    nativeLabel: '简体中文',
+    direction: 'ltr',
+  },
 ] as const
 
 const presentationContext = createPresentationContext({
@@ -103,9 +108,15 @@ const slides = [
     "
   >
     <BackgroundManager />
-    <main class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10">
+    <main
+      class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10"
+    >
       <div class="deck-shell h-full w-full">
-        <PptContainer :slides="slides" :title="title" thumbnails-label="幻灯片预览" />
+        <PptContainer
+          :slides="slides"
+          :title="title"
+          thumbnails-label="幻灯片预览"
+        />
       </div>
     </main>
   </div>

@@ -16,7 +16,9 @@
               <span v-else>使用 Ctrl + Shift + P 呼出/隐藏，Esc 关闭。</span>
             </p>
           </div>
-          <button class="close-btn" type="button" @click="emit('close')">×</button>
+          <button class="close-btn" type="button" @click="emit('close')">
+            ×
+          </button>
         </header>
 
         <div class="preferences-wrapper">
@@ -53,7 +55,9 @@
           >
             <div class="card-header">
               <h3>{{ background.name }}</h3>
-              <span v-if="background.tags?.length" class="tags">{{ background.tags.join(' / ') }}</span>
+              <span v-if="background.tags?.length" class="tags">{{
+                background.tags.join(' / ')
+              }}</span>
             </div>
             <p class="description">{{ background.description }}</p>
           </button>
@@ -184,7 +188,9 @@ const selectLocale = (code: LocaleCode) => {
   cursor: pointer;
   color: #f5f7ff;
   background: rgba(255, 255, 255, 0.08);
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .close-btn:hover {
@@ -237,7 +243,10 @@ const selectLocale = (code: LocaleCode) => {
   flex-direction: column;
   gap: 4px;
   align-items: flex-start;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .pill-button:hover {
@@ -277,7 +286,10 @@ const selectLocale = (code: LocaleCode) => {
   text-align: left;
   cursor: pointer;
   color: #f5f7ff;
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .background-card:hover {

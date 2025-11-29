@@ -22,40 +22,59 @@ const keywords = new Set([
   'pass',
 ])
 
-export const escapeHtml = (s: string) => s
-  .replace(/&/g, '&amp;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;')
+export const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 const baseWordChar = /[A-Za-z0-9_]/
 
 const renderToken = (tok: string, lang: string) => {
   const t = escapeHtml(tok)
-  if (keywords.has(tok)) return `<span class='text-indigo-300 font-semibold'>${t}</span>`
-  if (/^\d+(?:\.\d+)?$/.test(tok)) return `<span class='text-amber-300'>${t}</span>`
+  if (keywords.has(tok))
+    return `<span class='text-indigo-300 font-semibold'>${t}</span>`
+  if (/^\d+(?:\.\d+)?$/.test(tok))
+    return `<span class='text-amber-300'>${t}</span>`
 
   // RAG-specific tokens
   if (lang === 'typescript') {
-    if (tok === 'similarity_top_k') return `<span class='text-emerald-300'>${t}</span>`
-    if (['buildIndex', 'asQueryEngine', 'query', 'loadData', 'fromDocuments', 'persist', 'toString', 'log'].includes(tok)) return `<span class='text-cyan-300'>${t}</span>`
-    if (['SimpleDirectoryReader', 'VectorStoreIndex', 'console'].includes(tok)) return `<span class='text-emerald-300'>${t}</span>`
+    if (tok === 'similarity_top_k')
+      return `<span class='text-emerald-300'>${t}</span>`
+    if (
+      [
+        'buildIndex',
+        'asQueryEngine',
+        'query',
+        'loadData',
+        'fromDocuments',
+        'persist',
+        'toString',
+        'log',
+      ].includes(tok)
+    )
+      return `<span class='text-cyan-300'>${t}</span>`
+    if (['SimpleDirectoryReader', 'VectorStoreIndex', 'console'].includes(tok))
+      return `<span class='text-emerald-300'>${t}</span>`
     // Auto-detect class names (PascalCase)
-    if (/^[A-Z][a-zA-Z0-9]*$/.test(tok) && !keywords.has(tok)) return `<span class='text-emerald-300'>${t}</span>`
+    if (/^[A-Z][a-zA-Z0-9]*$/.test(tok) && !keywords.has(tok))
+      return `<span class='text-emerald-300'>${t}</span>`
   }
 
   // Agent-specific tokens
   if (lang === 'json') {
-    if ([`"tool_name"`, `"parameters"`, `"query"`].includes(tok)) return `<span class='text-emerald-300'>${t}</span>`
+    if ([`"tool_name"`, `"parameters"`, `"query"`].includes(tok))
+      return `<span class='text-emerald-300'>${t}</span>`
   }
 
   if (lang === 'python') {
-    if ([`search_arxiv_paper`, `get_llm_output`].includes(tok)) return `<span class='text-cyan-300'>${t}</span>`
+    if ([`search_arxiv_paper`, `get_llm_output`].includes(tok))
+      return `<span class='text-cyan-300'>${t}</span>`
   }
 
   if (lang === 'markdown') {
     if (tok.startsWith('#')) return `<span class='text-cyan-300'>${t}</span>`
-    if (tok.startsWith('**') && tok.endsWith('**')) return `<span class='text-amber-300'>${t}</span>`
-    if (tok.startsWith('`') && tok.endsWith('`')) return `<span class='text-emerald-300'>${t}</span>`
+    if (tok.startsWith('**') && tok.endsWith('**'))
+      return `<span class='text-amber-300'>${t}</span>`
+    if (tok.startsWith('`') && tok.endsWith('`'))
+      return `<span class='text-emerald-300'>${t}</span>`
   }
 
   return t
@@ -66,7 +85,12 @@ export const highlight = (input: string, lang: string) => {
   let token = ''
   let i = 0
   const n = input.length
-  let state: 'normal' | 'stringSingle' | 'stringDouble' | 'lineComment' | 'blockComment' = 'normal'
+  let state:
+    | 'normal'
+    | 'stringSingle'
+    | 'stringDouble'
+    | 'lineComment'
+    | 'blockComment' = 'normal'
   const isWord = (ch: string) => {
     if (lang === 'markdown') return /[A-Za-z0-9_#*`]/.test(ch)
     return baseWordChar.test(ch)
@@ -76,23 +100,32 @@ export const highlight = (input: string, lang: string) => {
     const next = i + 1 < n ? input[i + 1] : ''
     if (state === 'normal') {
       if (lang !== 'markdown' && ((ch === '/' && next === '/') || ch === '#')) {
-        if (token) { out += renderToken(token, lang); token = '' }
+        if (token) {
+          out += renderToken(token, lang)
+          token = ''
+        }
         state = 'lineComment'
         out += `<span class='text-slate-400'>${escapeHtml(ch === '#' ? '#' : '//')}`
-        i += (ch === '#' ? 1 : 2)
+        i += ch === '#' ? 1 : 2
         continue
       }
       if (ch === '/' && next === '*') {
-        if (token) { out += renderToken(token, lang); token = '' }
+        if (token) {
+          out += renderToken(token, lang)
+          token = ''
+        }
         state = 'blockComment'
         out += `<span class='text-slate-400'>${escapeHtml('/*')}`
         i += 2
         continue
       }
-      if (ch === '\'' || ch === '"') {
-        if (token) { out += renderToken(token, lang); token = '' }
+      if (ch === "'" || ch === '"') {
+        if (token) {
+          out += renderToken(token, lang)
+          token = ''
+        }
         const delim = ch
-        state = ch === '\'' ? 'stringSingle' : 'stringDouble'
+        state = ch === "'" ? 'stringSingle' : 'stringDouble'
         out += `<span class='text-fuchsia-300'>${escapeHtml(delim)}`
         i++
         while (i < n) {
@@ -100,7 +133,10 @@ export const highlight = (input: string, lang: string) => {
           if (c === '\\') {
             out += escapeHtml(c)
             i++
-            if (i < n) { out += escapeHtml(input[i]); i++ }
+            if (i < n) {
+              out += escapeHtml(input[i])
+              i++
+            }
             continue
           }
           if (c === delim) {
@@ -120,7 +156,10 @@ export const highlight = (input: string, lang: string) => {
         i++
         continue
       }
-      if (token) { out += renderToken(token, lang); token = '' }
+      if (token) {
+        out += renderToken(token, lang)
+        token = ''
+      }
       out += escapeHtml(ch)
       i++
       continue

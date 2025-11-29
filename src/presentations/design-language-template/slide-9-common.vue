@@ -12,7 +12,9 @@ const features = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <section
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16"
+  >
     <div class="mb-6">
       <h2
         class="inline-block text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
@@ -33,7 +35,9 @@ const features = [
             class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/40 bg-gradient-to-r from-accent/20 to-accent/10 text-slate-900"
           ></span>
           <div class="flex-1">
-            <h3 class="text-lg md:text-xl font-bold text-slate-900">{{ f.title }}</h3>
+            <h3 class="text-lg md:text-xl font-bold text-slate-900">
+              {{ f.title }}
+            </h3>
             <p class="mt-1 text-sm text-slate-700">{{ f.description }}</p>
           </div>
         </div>

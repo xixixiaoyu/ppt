@@ -28,8 +28,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g-flow-merged" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.3)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.1)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.3)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.1)' }"
+              />
             </linearGradient>
             <filter
               id="blur-flow-merged"
@@ -44,12 +50,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           </defs>
           <g filter="url(#blur-flow-merged)">
             <circle cx="700" cy="100" r="200" fill="url(#g-flow-merged)" />
-            <circle cx="100" cy="500" r="150" fill="url(#g-flow-merged)" opacity="0.5" />
+            <circle
+              cx="100"
+              cy="500"
+              r="150"
+              fill="url(#g-flow-merged)"
+              opacity="0.5"
+            />
           </g>
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-5 h-full">
+      <div
+        class="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-5 h-full"
+      >
         <!-- Title -->
         <div class="text-center">
           <HeadingGradient
@@ -66,12 +80,18 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         </div>
 
         <!-- Part 1: QA Workflow (Compact) -->
-        <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/40 shadow-sm">
-          <h3 class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
+        <div
+          class="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-white/40 shadow-sm"
+        >
+          <h3
+            class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2"
+          >
             <CpuChipIcon class="w-5 h-5 text-indigo-500" />
             问答工作流程 (QA Workflow)
           </h3>
-          <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-xs">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-2 text-xs"
+          >
             <!-- Step 1 -->
             <div
               class="flex flex-row md:flex-col items-center gap-2 p-2 bg-white/60 rounded-lg border border-indigo-100 w-full md:w-auto flex-1 justify-center"
@@ -79,7 +99,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <span class="font-bold text-slate-700">用户提问</span>
               <span class="text-[10px] text-slate-500">Query</span>
             </div>
-            <ArrowRightIcon class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0" />
+            <ArrowRightIcon
+              class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0"
+            />
 
             <!-- Step 2 -->
             <div
@@ -88,16 +110,22 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <span class="font-bold text-slate-700">分词处理</span>
               <span class="text-[10px] text-slate-500">Tokenization</span>
             </div>
-            <ArrowRightIcon class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0" />
+            <ArrowRightIcon
+              class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0"
+            />
 
             <!-- Step 3 -->
             <div
               class="flex flex-row md:flex-col items-center gap-2 p-2 bg-indigo-50 rounded-lg border border-indigo-200 w-full md:w-auto flex-1 shadow-sm justify-center"
             >
               <span class="font-bold text-indigo-700">模型推理</span>
-              <span class="text-[10px] text-indigo-600">Next Token Prediction</span>
+              <span class="text-[10px] text-indigo-600"
+                >Next Token Prediction</span
+              >
             </div>
-            <ArrowRightIcon class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0" />
+            <ArrowRightIcon
+              class="w-3 h-3 text-slate-400 rotate-90 md:rotate-0"
+            />
 
             <!-- Step 4 -->
             <div
@@ -115,7 +143,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-blue-50/40 backdrop-blur-sm rounded-xl p-4 border border-blue-100 shadow-sm flex flex-col"
           >
-            <div class="flex items-center gap-3 mb-2 border-b border-blue-100 pb-2">
+            <div
+              class="flex items-center gap-3 mb-2 border-b border-blue-100 pb-2"
+            >
               <div class="p-1.5 bg-blue-100 rounded-lg text-blue-600">
                 <LightBulbIcon class="w-5 h-5" />
               </div>
@@ -127,7 +157,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <ul class="space-y-2 text-xs text-slate-700 flex-1">
               <li class="flex gap-2">
                 <span class="text-blue-500 font-bold">•</span>
-                <span><strong>特点：</strong> 响应快，通用性强，"直觉"反应。</span>
+                <span
+                  ><strong>特点：</strong> 响应快，通用性强，"直觉"反应。</span
+                >
               </li>
               <li class="flex gap-2">
                 <span class="text-blue-500 font-bold">•</span>
@@ -135,11 +167,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </li>
               <li class="flex gap-2">
                 <span class="text-blue-500 font-bold">•</span>
-                <span><strong>场景：</strong> 写作、摘要、闲聊、简单问答。</span>
+                <span
+                  ><strong>场景：</strong> 写作、摘要、闲聊、简单问答。</span
+                >
               </li>
             </ul>
             <div class="mt-2 pt-2 border-t border-blue-100/50">
-               <div class="text-[10px] font-mono text-blue-800 opacity-70">GPT-4, Claude 3.5</div>
+              <div class="text-[10px] font-mono text-blue-800 opacity-70">
+                GPT-4, Claude 3.5
+              </div>
             </div>
           </div>
 
@@ -147,7 +183,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-purple-50/40 backdrop-blur-sm rounded-xl p-4 border border-purple-100 shadow-sm flex flex-col"
           >
-            <div class="flex items-center gap-3 mb-2 border-b border-purple-100 pb-2">
+            <div
+              class="flex items-center gap-3 mb-2 border-b border-purple-100 pb-2"
+            >
               <div class="p-1.5 bg-purple-100 rounded-lg text-purple-600">
                 <CpuChipIcon class="w-5 h-5" />
               </div>
@@ -159,11 +197,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <ul class="space-y-2 text-xs text-slate-700 flex-1">
               <li class="flex gap-2">
                 <span class="text-purple-500 font-bold">•</span>
-                <span><strong>特点：</strong> 深度思考，逻辑强，响应较慢。</span>
+                <span
+                  ><strong>特点：</strong> 深度思考，逻辑强，响应较慢。</span
+                >
               </li>
               <li class="flex gap-2">
                 <span class="text-purple-500 font-bold">•</span>
-                <span><strong>机制：</strong> 思维链 (CoT)，隐式推理纠错。</span>
+                <span
+                  ><strong>机制：</strong> 思维链 (CoT)，隐式推理纠错。</span
+                >
               </li>
               <li class="flex gap-2">
                 <span class="text-purple-500 font-bold">•</span>
@@ -171,7 +213,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </li>
             </ul>
             <div class="mt-2 pt-2 border-t border-purple-100/50">
-               <div class="text-[10px] font-mono text-purple-800 opacity-70">o1, o3-mini</div>
+              <div class="text-[10px] font-mono text-purple-800 opacity-70">
+                o1, o3-mini
+              </div>
             </div>
           </div>
 
@@ -179,7 +223,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-emerald-50/40 backdrop-blur-sm rounded-xl p-4 border border-emerald-100 shadow-sm flex flex-col"
           >
-            <div class="flex items-center gap-3 mb-2 border-b border-emerald-100 pb-2">
+            <div
+              class="flex items-center gap-3 mb-2 border-b border-emerald-100 pb-2"
+            >
               <div class="p-1.5 bg-emerald-100 rounded-lg text-emerald-600">
                 <EyeIcon class="w-5 h-5" />
               </div>
@@ -191,19 +237,28 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <ul class="space-y-2 text-xs text-slate-700 flex-1">
               <li class="flex gap-2">
                 <span class="text-emerald-500 font-bold">•</span>
-                <span><strong>视觉：</strong> VQA、OCR、物体检测 (Vision)。</span>
+                <span
+                  ><strong>视觉：</strong> VQA、OCR、物体检测 (Vision)。</span
+                >
               </li>
               <li class="flex gap-2">
                 <span class="text-emerald-500 font-bold">•</span>
-                <span><strong>听/说：</strong> 语音识别 (STT) 与合成 (TTS)。</span>
+                <span
+                  ><strong>听/说：</strong> 语音识别 (STT) 与合成 (TTS)。</span
+                >
               </li>
               <li class="flex gap-2">
                 <span class="text-emerald-500 font-bold">•</span>
-                <span><strong>应用：</strong> 截图写代码、视频理解、具身智能。</span>
+                <span
+                  ><strong>应用：</strong>
+                  截图写代码、视频理解、具身智能。</span
+                >
               </li>
             </ul>
             <div class="mt-2 pt-2 border-t border-emerald-100/50">
-               <div class="text-[10px] font-mono text-emerald-800 opacity-70">GPT-4o, Gemini 1.5</div>
+              <div class="text-[10px] font-mono text-emerald-800 opacity-70">
+                GPT-4o, Gemini 1.5
+              </div>
             </div>
           </div>
         </div>

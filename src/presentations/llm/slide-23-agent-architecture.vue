@@ -75,7 +75,9 @@ const features = [
       </p>
     </div>
 
-    <div class="flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-0">
+    <div
+      class="flex-grow grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-0"
+    >
       <!-- Left: Interactive Architecture Diagram -->
       <div
         class="relative h-full min-h-[400px] bg-white/50 rounded-3xl border border-slate-200 shadow-xl backdrop-blur-sm p-8 flex flex-col justify-center items-center select-none overflow-hidden group"
@@ -89,14 +91,22 @@ const features = [
         <div
           @click="activeFeature = 'brain'"
           class="relative z-20 w-40 h-40 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-2xl cursor-pointer transition-all duration-300 hover:scale-110 ring-4 ring-offset-4"
-          :class="activeFeature === 'brain' ? 'ring-indigo-300 scale-110' : 'ring-transparent'"
+          :class="
+            activeFeature === 'brain'
+              ? 'ring-indigo-300 scale-110'
+              : 'ring-transparent'
+          "
         >
           <div class="text-6xl animate-pulse">🧠</div>
-          <span class="absolute -bottom-8 font-bold text-slate-700">Brain (LLM)</span>
+          <span class="absolute -bottom-8 font-bold text-slate-700"
+            >Brain (LLM)</span
+          >
         </div>
 
         <!-- Orbiting Nodes -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none"
+        >
           <!-- Planning Node (Top) -->
           <div
             class="absolute -translate-y-40 pointer-events-auto"
@@ -105,16 +115,21 @@ const features = [
             <div
               class="w-24 h-24 rounded-2xl bg-white border-2 border-blue-200 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:border-blue-400 hover:shadow-blue-200/50"
               :class="
-                activeFeature === 'planning' ? 'border-blue-500 shadow-blue-300/50 scale-110' : ''
+                activeFeature === 'planning'
+                  ? 'border-blue-500 shadow-blue-300/50 scale-110'
+                  : ''
               "
             >
               <span class="text-4xl">📝</span>
             </div>
-            <span class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
+            <span
+              class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
               >Planning</span
             >
             <!-- Connection Line -->
-            <div class="absolute top-full left-1/2 w-0.5 h-16 bg-slate-300 -z-10 origin-top"></div>
+            <div
+              class="absolute top-full left-1/2 w-0.5 h-16 bg-slate-300 -z-10 origin-top"
+            ></div>
           </div>
 
           <!-- Memory Node (Right) -->
@@ -132,28 +147,39 @@ const features = [
             >
               <span class="text-4xl">💾</span>
             </div>
-            <span class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
+            <span
+              class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
               >Memory</span
             >
             <!-- Connection Line -->
-            <div class="absolute right-full top-1/2 h-0.5 w-16 bg-slate-300 -z-10"></div>
+            <div
+              class="absolute right-full top-1/2 h-0.5 w-16 bg-slate-300 -z-10"
+            ></div>
           </div>
 
           <!-- Tools Node (Bottom) -->
-          <div class="absolute translate-y-40 pointer-events-auto" @click="activeFeature = 'tools'">
+          <div
+            class="absolute translate-y-40 pointer-events-auto"
+            @click="activeFeature = 'tools'"
+          >
             <div
               class="w-24 h-24 rounded-2xl bg-white border-2 border-amber-200 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:border-amber-400 hover:shadow-amber-200/50"
               :class="
-                activeFeature === 'tools' ? 'border-amber-500 shadow-amber-300/50 scale-110' : ''
+                activeFeature === 'tools'
+                  ? 'border-amber-500 shadow-amber-300/50 scale-110'
+                  : ''
               "
             >
               <span class="text-4xl">🛠️</span>
             </div>
-            <span class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
+            <span
+              class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
               >Action</span
             >
             <!-- Connection Line -->
-            <div class="absolute bottom-full left-1/2 w-0.5 h-16 bg-slate-300 -z-10"></div>
+            <div
+              class="absolute bottom-full left-1/2 w-0.5 h-16 bg-slate-300 -z-10"
+            ></div>
           </div>
 
           <!-- ReAct Node (Bottom Left) -->
@@ -164,12 +190,15 @@ const features = [
             <div
               class="w-20 h-20 rounded-2xl bg-white border-2 border-rose-200 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:border-rose-400 hover:shadow-rose-200/50"
               :class="
-                activeFeature === 'react' ? 'border-rose-500 shadow-rose-300/50 scale-110' : ''
+                activeFeature === 'react'
+                  ? 'border-rose-500 shadow-rose-300/50 scale-110'
+                  : ''
               "
             >
               <span class="text-3xl">🔄</span>
             </div>
-            <span class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
+            <span
+              class="absolute w-full text-center top-full mt-2 font-semibold text-slate-600"
               >ReAct</span
             >
             <!-- Connection Hint -->
@@ -204,24 +233,30 @@ const features = [
             class="bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-slate-200 shadow-2xl"
           >
             <div class="flex items-center gap-4 mb-6">
-              <span class="text-5xl">{{ features.find((f) => f.id === activeFeature)?.icon }}</span>
+              <span class="text-5xl">{{
+                features.find(f => f.id === activeFeature)?.icon
+              }}</span>
               <div>
                 <h3 class="text-3xl font-bold text-slate-800">
-                  {{ features.find((f) => f.id === activeFeature)?.title }}
+                  {{ features.find(f => f.id === activeFeature)?.title }}
                 </h3>
                 <p class="text-lg text-slate-500 font-medium">
-                  {{ features.find((f) => f.id === activeFeature)?.description }}
+                  {{ features.find(f => f.id === activeFeature)?.description }}
                 </p>
               </div>
             </div>
 
             <ul class="space-y-4">
               <li
-                v-for="(point, idx) in features.find((f) => f.id === activeFeature)?.details"
+                v-for="(point, idx) in features.find(
+                  f => f.id === activeFeature
+                )?.details"
                 :key="idx"
                 class="flex items-start gap-3 text-lg text-slate-700 leading-relaxed"
               >
-                <span class="mt-1.5 w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0"></span>
+                <span
+                  class="mt-1.5 w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0"
+                ></span>
                 <span>{{ point }}</span>
               </li>
             </ul>

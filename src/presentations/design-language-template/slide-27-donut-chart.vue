@@ -30,8 +30,14 @@ const option = ref<EChartsOption>({
 
 <template>
   <section class="h-full w-full grid place-items-center p-6">
-    <div class="w-full max-w-5xl rounded-3xl p-6 bg-white/70 border border-slate-200/30 backdrop-blur-xl shadow-xl">
-      <h2 class="m-0 text-2xl font-extrabold tracking-tight text-slate-800 text-center">环形图</h2>
+    <div
+      class="w-full max-w-5xl rounded-3xl p-6 bg-white/70 border border-slate-200/30 backdrop-blur-xl shadow-xl"
+    >
+      <h2
+        class="m-0 text-2xl font-extrabold tracking-tight text-slate-800 text-center"
+      >
+        环形图
+      </h2>
       <p class="mt-2 text-center text-slate-600">适合突出整体与部分的关系。</p>
       <VChart class="mt-6 h-[60vh] w-full" :option="option" autoresize />
     </div>

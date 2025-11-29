@@ -6,5 +6,5 @@ export const softMeshBackground: BackgroundModuleMeta = {
   name: '柔和网格渐变',
   description: '轻盈的多彩渐变和磨砂玻璃质感，适合纯展示型页面。',
   component: SoftMeshBackground,
-  tags: ['静态', '轻量']
+  tags: ['静态', '轻量'],
 }

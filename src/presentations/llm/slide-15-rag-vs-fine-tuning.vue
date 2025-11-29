@@ -57,7 +57,9 @@ const comparisonItems = [
           class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm bg-white/50 backdrop-blur-sm"
         >
           <table class="w-full text-left text-sm md:text-base">
-            <thead class="bg-slate-100/80 text-slate-900 font-bold uppercase tracking-wider">
+            <thead
+              class="bg-slate-100/80 text-slate-900 font-bold uppercase tracking-wider"
+            >
               <tr>
                 <th class="px-6 py-4">维度</th>
                 <th class="px-6 py-4 text-indigo-600">RAG (检索增强生成)</th>
@@ -70,7 +72,9 @@ const comparisonItems = [
                 :key="index"
                 class="hover:bg-slate-50/50 transition-colors"
               >
-                <td class="px-6 py-4 font-semibold text-slate-700 whitespace-nowrap">
+                <td
+                  class="px-6 py-4 font-semibold text-slate-700 whitespace-nowrap"
+                >
                   {{ item.dimension }}
                 </td>
                 <td class="px-6 py-4 text-slate-600">
@@ -93,8 +97,12 @@ const comparisonItems = [
               <li>你需要引用来源</li>
             </ul>
           </div>
-          <div class="p-4 rounded-lg bg-fuchsia-50/50 border border-fuchsia-100">
-            <h4 class="font-bold text-fuchsia-700 mb-2">选择 Fine-Tuning 当...</h4>
+          <div
+            class="p-4 rounded-lg bg-fuchsia-50/50 border border-fuchsia-100"
+          >
+            <h4 class="font-bold text-fuchsia-700 mb-2">
+              选择 Fine-Tuning 当...
+            </h4>
             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
               <li>你需要模型学习特定的语言风格</li>
               <li>你需要模型输出特定的复杂格式</li>

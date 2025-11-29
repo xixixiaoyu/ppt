@@ -57,11 +57,15 @@ const promptExample = `你是一位知识库问答助手。根据给定的上下
 - 若不确定，请给出澄清问题`
 
 const highlightedIndexExample = computed(() => highlight(indexExample, 'json'))
-const highlightedPromptExample = computed(() => highlight(promptExample, 'markdown'))
+const highlightedPromptExample = computed(() =>
+  highlight(promptExample, 'markdown')
+)
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-12 pb-32 lg:pt-16 lg:pb-40">
+  <section
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-12 pb-32 lg:pt-16 lg:pb-40"
+  >
     <div class="mb-8 text-center">
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
@@ -97,7 +101,7 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
       <!-- Steps List -->
       <div class="grid gap-4">
         <div
-          v-for="(item, index) in tabs.find((t) => t.id === activeTab)?.content"
+          v-for="(item, index) in tabs.find(t => t.id === activeTab)?.content"
           :key="index"
           class="group flex items-start gap-4 p-4 rounded-2xl bg-white/60 border border-white/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-300"
         >
@@ -138,8 +142,14 @@ const highlightedPromptExample = computed(() => highlight(promptExample, 'markdo
               <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
               <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
             </div>
-            <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
-              {{ activeTab === 'offline' ? 'INDEX_EXAMPLE.JSON' : 'PROMPT_TEMPLATE.MD' }}
+            <span
+              class="text-xs font-mono text-white/30 uppercase tracking-wider"
+            >
+              {{
+                activeTab === 'offline'
+                  ? 'INDEX_EXAMPLE.JSON'
+                  : 'PROMPT_TEMPLATE.MD'
+              }}
             </span>
           </div>
           <div class="p-6 overflow-y-auto custom-scrollbar max-h-[500px]">

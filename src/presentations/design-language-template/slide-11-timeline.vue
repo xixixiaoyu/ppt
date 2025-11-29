@@ -3,7 +3,12 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 type Status = 'done' | 'in_progress' | 'planned'
 
-const milestones: { label: string; title: string; description: string; status: Status }[] = [
+const milestones: {
+  label: string
+  title: string
+  description: string
+  status: Status
+}[] = [
   {
     label: '2025 Q1',
     title: '搭建框架',
@@ -34,19 +39,21 @@ const statusGradient = (s: Status) =>
   s === 'done'
     ? 'from-accent to-accent'
     : s === 'in_progress'
-    ? 'from-accent/80 to-accent/60'
-    : 'from-accent/30 to-accent/20'
+      ? 'from-accent/80 to-accent/60'
+      : 'from-accent/30 to-accent/20'
 
 const statusChip = (s: Status) =>
   s === 'done'
     ? 'bg-accent/10 text-accent'
     : s === 'in_progress'
-    ? 'bg-accent/8 text-accent'
-    : 'bg-slate-100 text-slate-700'
+      ? 'bg-accent/8 text-accent'
+      : 'bg-slate-100 text-slate-700'
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <section
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16"
+  >
     <div class="mb-8 text-center">
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
@@ -86,7 +93,11 @@ const statusChip = (s: Status) =>
                 :class="statusChip(m.status)"
               >
                 {{
-                  m.status === 'done' ? '已完成' : m.status === 'in_progress' ? '进行中' : '计划中'
+                  m.status === 'done'
+                    ? '已完成'
+                    : m.status === 'in_progress'
+                      ? '进行中'
+                      : '计划中'
                 }}
               </span>
             </div>

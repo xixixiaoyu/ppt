@@ -36,7 +36,12 @@ import Slide29Summary from './slide-29-summary.vue'
 import Slide30ThankYou from './slide-30-thank-you.vue'
 
 const localeOptions = [
-  { code: 'zh-Hans', label: 'Chinese', nativeLabel: '简体中文', direction: 'ltr' },
+  {
+    code: 'zh-Hans',
+    label: 'Chinese',
+    nativeLabel: '简体中文',
+    direction: 'ltr',
+  },
 ] as const
 
 const presentationContext = createPresentationContext({
@@ -107,7 +112,9 @@ const slides = [
     "
   >
     <BackgroundManager />
-    <main class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10">
+    <main
+      class="relative z-10 flex h-full w-full items-center justify-center px-6 py-6 sm:px-10"
+    >
       <div class="deck-shell h-full w-full">
         <ppt-container :slides="slides" />
       </div>

@@ -17,7 +17,10 @@ const strategies = [
         name: '元数据过滤 (Metadata Filtering)',
         desc: '为文档添加时间、作者、类别等元数据，检索时先过滤，缩小范围，提高准确率。',
       },
-      { name: '数据清洗', desc: '去除文档中的噪声（HTML 标签、页眉页脚、乱码），保证输入质量。' },
+      {
+        name: '数据清洗',
+        desc: '去除文档中的噪声（HTML 标签、页眉页脚、乱码），保证输入质量。',
+      },
     ],
   },
   {
@@ -100,7 +103,11 @@ const activeStrategy = ref('data')
           <div>
             <div
               class="font-bold text-base"
-              :class="activeStrategy === strategy.id ? 'text-slate-900' : 'text-slate-600'"
+              :class="
+                activeStrategy === strategy.id
+                  ? 'text-slate-900'
+                  : 'text-slate-600'
+              "
             >
               {{ strategy.title }}
             </div>
@@ -117,20 +124,24 @@ const activeStrategy = ref('data')
             <div class="flex items-center gap-3 mb-6">
               <div
                 class="p-2 rounded-lg bg-accent/10 text-accent"
-                v-html="strategies.find((s) => s.id === activeStrategy)?.icon"
+                v-html="strategies.find(s => s.id === activeStrategy)?.icon"
               ></div>
               <h3 class="text-2xl font-bold text-slate-800">
-                {{ strategies.find((s) => s.id === activeStrategy)?.title }}
+                {{ strategies.find(s => s.id === activeStrategy)?.title }}
               </h3>
             </div>
 
             <div class="grid gap-4">
               <div
-                v-for="(item, idx) in strategies.find((s) => s.id === activeStrategy)?.items"
+                v-for="(item, idx) in strategies.find(
+                  s => s.id === activeStrategy
+                )?.items"
                 :key="idx"
                 class="bg-white/80 rounded-xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
               >
-                <h4 class="text-lg font-semibold text-accent mb-1 flex items-center gap-2">
+                <h4
+                  class="text-lg font-semibold text-accent mb-1 flex items-center gap-2"
+                >
                   <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
                   {{ item.name }}
                 </h4>
@@ -157,15 +168,17 @@ const activeStrategy = ref('data')
                 />
               </svg>
               <span v-if="activeStrategy === 'data'">
-                数据质量是 RAG 的上限。如果源数据混乱或切分不当，后续模型再强也无法弥补 (Garbage In,
-                Garbage Out)。
+                数据质量是 RAG
+                的上限。如果源数据混乱或切分不当，后续模型再强也无法弥补
+                (Garbage In, Garbage Out)。
               </span>
               <span v-else-if="activeStrategy === 'retrieval'">
                 检索优化的核心是弥补“语义匹配”的不足，让机器更懂用户的真实意图。
               </span>
               <span v-else>
                 重排序 (Rerank) 通常是提升 RAG
-                效果性价比最高的单一手段，虽然会增加少量延迟，但能显著提升 Top-1 准确率。
+                效果性价比最高的单一手段，虽然会增加少量延迟，但能显著提升 Top-1
+                准确率。
               </span>
             </div>
           </div>
@@ -178,7 +191,9 @@ const activeStrategy = ref('data')
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .fade-enter-from,

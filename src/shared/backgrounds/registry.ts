@@ -4,9 +4,11 @@ import { softMeshBackground } from './modules/soft-mesh'
 
 export const backgroundRegistry: BackgroundModuleMeta[] = [
   demoParticlesBackground,
-  softMeshBackground
+  softMeshBackground,
 ]
 
-export const getBackgroundById = (id: string): BackgroundModuleMeta | undefined => {
+export const getBackgroundById = (
+  id: string
+): BackgroundModuleMeta | undefined => {
   return backgroundRegistry.find(bg => bg.id === id)
 }

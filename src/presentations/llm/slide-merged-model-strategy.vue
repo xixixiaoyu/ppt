@@ -92,19 +92,44 @@ const edgeAdvantages = [
 
 const edgeModels = [
   { name: 'Llama 3 8B', org: 'Meta', params: '8B', feat: '开源标杆，性能强劲' },
-  { name: 'Phi-3 Mini', org: 'Microsoft', params: '3.8B', feat: '以小博大，手机端可跑' },
-  { name: 'Gemma 2 9B', org: 'Google', params: '9B', feat: '同源 Gemini，高效架构' },
-  { name: 'Qwen3-7B', org: 'Alibaba', params: '7B', feat: '多语言能力出色，中文优' },
-  { name: 'Mistral 7B', org: 'Mistral AI', params: '7B', feat: '高性能，社区生态丰富' },
+  {
+    name: 'Phi-3 Mini',
+    org: 'Microsoft',
+    params: '3.8B',
+    feat: '以小博大，手机端可跑',
+  },
+  {
+    name: 'Gemma 2 9B',
+    org: 'Google',
+    params: '9B',
+    feat: '同源 Gemini，高效架构',
+  },
+  {
+    name: 'Qwen3-7B',
+    org: 'Alibaba',
+    params: '7B',
+    feat: '多语言能力出色，中文优',
+  },
+  {
+    name: 'Mistral 7B',
+    org: 'Mistral AI',
+    params: '7B',
+    feat: '高性能，社区生态丰富',
+  },
 ]
 </script>
 
 <template>
   <Section>
-    <Card padding="none" class="h-full flex flex-col bg-slate-50/50 overflow-hidden">
+    <Card
+      padding="none"
+      class="h-full flex flex-col bg-slate-50/50 overflow-hidden"
+    >
       <!-- Header Area -->
       <div class="bg-white border-b border-slate-200 px-6 py-4 shrink-0">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+        >
           <!-- Title -->
           <div>
             <HeadingGradient
@@ -144,65 +169,97 @@ const edgeModels = [
       <div class="flex-1 overflow-hidden relative p-6">
         <Transition name="fade" mode="out-in">
           <!-- Tab 1: Selection & Economics -->
-          <div v-if="activeTab === 'selection'" class="h-full flex flex-col gap-6 overflow-y-auto">
+          <div
+            v-if="activeTab === 'selection'"
+            class="h-full flex flex-col gap-6 overflow-y-auto"
+          >
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
               <!-- Left: Open vs Closed -->
               <div class="flex flex-col gap-4">
-                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <h3
+                  class="text-lg font-bold text-slate-800 flex items-center gap-2"
+                >
                   <ScaleIcon class="w-5 h-5 text-indigo-500" />
                   路线抉择：开源 vs 闭源
                 </h3>
 
                 <!-- Closed Source -->
-                <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+                <div
+                  class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm"
+                >
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
                       <CloudIcon class="w-5 h-5 text-sky-500" />
-                      <span class="font-bold text-slate-800">商业闭源模型 (API)</span>
+                      <span class="font-bold text-slate-800"
+                        >商业闭源模型 (API)</span
+                      >
                     </div>
-                    <span class="text-xs font-mono bg-sky-50 text-sky-700 px-2 py-0.5 rounded"
+                    <span
+                      class="text-xs font-mono bg-sky-50 text-sky-700 px-2 py-0.5 rounded"
                       >GPT-4, Claude 3.5</span
                     >
                   </div>
                   <ul class="text-sm text-slate-600 space-y-2 ml-1">
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span><strong>SOTA 性能:</strong> 拥有最强的推理与知识能力。</span>
+                      <span
+                        ><strong>SOTA 性能:</strong>
+                        拥有最强的推理与知识能力。</span
+                      >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span><strong>免运维:</strong> 无需管理 GPU 基础设施。</span>
+                      <span
+                        ><strong>免运维:</strong> 无需管理 GPU 基础设施。</span
+                      >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-red-500 text-xs mt-1">❌</span>
-                      <span><strong>数据隐私:</strong> 数据需发送至第三方服务器。</span>
+                      <span
+                        ><strong>数据隐私:</strong>
+                        数据需发送至第三方服务器。</span
+                      >
                     </li>
                   </ul>
                 </div>
 
                 <!-- Open Source -->
-                <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+                <div
+                  class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm"
+                >
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
                       <ServerStackIcon class="w-5 h-5 text-orange-500" />
-                      <span class="font-bold text-slate-800">开源私有化模型 (Local)</span>
+                      <span class="font-bold text-slate-800"
+                        >开源私有化模型 (Local)</span
+                      >
                     </div>
-                    <span class="text-xs font-mono bg-orange-50 text-orange-700 px-2 py-0.5 rounded"
+                    <span
+                      class="text-xs font-mono bg-orange-50 text-orange-700 px-2 py-0.5 rounded"
                       >Llama 3, Qwen 2</span
                     >
                   </div>
                   <ul class="text-sm text-slate-600 space-y-2 ml-1">
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span><strong>绝对隐私:</strong> 数据不出内网，适合金融/医疗。</span>
+                      <span
+                        ><strong>绝对隐私:</strong>
+                        数据不出内网，适合金融/医疗。</span
+                      >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span><strong>可定制:</strong> 允许全量微调 (Full Fine-tuning)。</span>
+                      <span
+                        ><strong>可定制:</strong> 允许全量微调 (Full
+                        Fine-tuning)。</span
+                      >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-red-500 text-xs mt-1">❌</span>
-                      <span><strong>运维复杂:</strong> 需昂贵的 GPU 集群与专业运维。</span>
+                      <span
+                        ><strong>运维复杂:</strong> 需昂贵的 GPU
+                        集群与专业运维。</span
+                      >
                     </li>
                   </ul>
                 </div>
@@ -210,7 +267,9 @@ const edgeModels = [
 
               <!-- Right: Economics -->
               <div class="flex flex-col gap-4">
-                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <h3
+                  class="text-lg font-bold text-slate-800 flex items-center gap-2"
+                >
                   <ChartBarIcon class="w-5 h-5 text-emerald-500" />
                   成本优化与不可能三角
                 </h3>
@@ -223,21 +282,31 @@ const edgeModels = [
                     <div
                       class="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center"
                     >
-                      <span class="font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded text-xs"
+                      <span
+                        class="font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded text-xs"
                         >性能</span
                       >
-                      <div class="w-2 h-2 bg-indigo-400 rounded-full mt-1"></div>
+                      <div
+                        class="w-2 h-2 bg-indigo-400 rounded-full mt-1"
+                      ></div>
                     </div>
-                    <div class="absolute bottom-0 left-0 flex flex-col items-center">
-                      <div class="w-2 h-2 bg-emerald-400 rounded-full mb-1"></div>
+                    <div
+                      class="absolute bottom-0 left-0 flex flex-col items-center"
+                    >
+                      <div
+                        class="w-2 h-2 bg-emerald-400 rounded-full mb-1"
+                      ></div>
                       <span
                         class="font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded text-xs"
                         >成本</span
                       >
                     </div>
-                    <div class="absolute bottom-0 right-0 flex flex-col items-center">
+                    <div
+                      class="absolute bottom-0 right-0 flex flex-col items-center"
+                    >
                       <div class="w-2 h-2 bg-rose-400 rounded-full mb-1"></div>
-                      <span class="font-bold text-rose-700 bg-rose-50 px-2 py-1 rounded text-xs"
+                      <span
+                        class="font-bold text-rose-700 bg-rose-50 px-2 py-1 rounded text-xs"
                         >隐私</span
                       >
                     </div>
@@ -261,27 +330,53 @@ const edgeModels = [
                 </div>
 
                 <!-- Cost Saving Tips -->
-                <div class="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100">
-                  <h4 class="font-bold text-emerald-900 mb-2 flex items-center gap-2 text-sm">
+                <div
+                  class="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100"
+                >
+                  <h4
+                    class="font-bold text-emerald-900 mb-2 flex items-center gap-2 text-sm"
+                  >
                     <CurrencyDollarIcon class="w-4 h-4" />
                     Token 经济学优化策略
                   </h4>
                   <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="bg-white p-2 rounded border border-emerald-100/50">
-                      <strong class="text-slate-800 block">Prompt Caching</strong>
-                      <span class="text-slate-500">缓存公共前缀，降低首字延迟与成本。</span>
+                    <div
+                      class="bg-white p-2 rounded border border-emerald-100/50"
+                    >
+                      <strong class="text-slate-800 block"
+                        >Prompt Caching</strong
+                      >
+                      <span class="text-slate-500"
+                        >缓存公共前缀，降低首字延迟与成本。</span
+                      >
                     </div>
-                    <div class="bg-white p-2 rounded border border-emerald-100/50">
-                      <strong class="text-slate-800 block">Model Routing</strong>
-                      <span class="text-slate-500">简单问题路由给小模型，复杂问题给大模型。</span>
+                    <div
+                      class="bg-white p-2 rounded border border-emerald-100/50"
+                    >
+                      <strong class="text-slate-800 block"
+                        >Model Routing</strong
+                      >
+                      <span class="text-slate-500"
+                        >简单问题路由给小模型，复杂问题给大模型。</span
+                      >
                     </div>
-                    <div class="bg-white p-2 rounded border border-emerald-100/50">
-                      <strong class="text-slate-800 block">Batch Inference</strong>
-                      <span class="text-slate-500">离线批量处理，通常可获 50% 折扣。</span>
+                    <div
+                      class="bg-white p-2 rounded border border-emerald-100/50"
+                    >
+                      <strong class="text-slate-800 block"
+                        >Batch Inference</strong
+                      >
+                      <span class="text-slate-500"
+                        >离线批量处理，通常可获 50% 折扣。</span
+                      >
                     </div>
-                    <div class="bg-white p-2 rounded border border-emerald-100/50">
+                    <div
+                      class="bg-white p-2 rounded border border-emerald-100/50"
+                    >
                       <strong class="text-slate-800 block">Distillation</strong>
-                      <span class="text-slate-500">用大模型生成数据微调小模型。</span>
+                      <span class="text-slate-500"
+                        >用大模型生成数据微调小模型。</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -352,8 +447,12 @@ const edgeModels = [
                     :key="selectedDeploymentStrategy.title"
                     class="relative z-10 h-full flex flex-col"
                   >
-                    <div class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-100">
-                      <span class="text-2xl">{{ selectedDeploymentStrategy.icon }}</span>
+                    <div
+                      class="flex items-center gap-3 mb-4 pb-2 border-b border-slate-100"
+                    >
+                      <span class="text-2xl">{{
+                        selectedDeploymentStrategy.icon
+                      }}</span>
                       <h3 class="text-xl font-bold text-slate-800">
                         {{ selectedDeploymentStrategy.title }}
                       </h3>
@@ -361,7 +460,9 @@ const edgeModels = [
 
                     <div class="flex-grow space-y-4">
                       <div
-                        v-for="(detail, index) in selectedDeploymentStrategy.details"
+                        v-for="(
+                          detail, index
+                        ) in selectedDeploymentStrategy.details"
                         :key="index"
                         class="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100"
                       >
@@ -370,7 +471,9 @@ const edgeModels = [
                         >
                           {{ index + 1 }}
                         </div>
-                        <p class="text-sm text-slate-700 font-medium pt-0.5">{{ detail }}</p>
+                        <p class="text-sm text-slate-700 font-medium pt-0.5">
+                          {{ detail }}
+                        </p>
                       </div>
 
                       <!-- Dynamic Visualizations -->
@@ -383,38 +486,62 @@ const edgeModels = [
                           <div class="w-2 h-2 rounded-full bg-green-500"></div>
                         </div>
 
-                        <div v-if="selectedDeploymentStrategy.title.includes('量化')">
-                          <p class="text-green-400 mb-2"># 显存占用 (Llama-3-70B)</p>
+                        <div
+                          v-if="
+                            selectedDeploymentStrategy.title.includes('量化')
+                          "
+                        >
+                          <p class="text-green-400 mb-2">
+                            # 显存占用 (Llama-3-70B)
+                          </p>
                           <div class="space-y-2">
                             <div>
-                              <div class="flex justify-between mb-1 text-[10px]">
+                              <div
+                                class="flex justify-between mb-1 text-[10px]"
+                              >
                                 <span>FP16 (140GB)</span>
                                 <span class="text-red-400">2x A100</span>
                               </div>
-                              <div class="h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                              <div
+                                class="h-1.5 bg-slate-700 rounded-full overflow-hidden"
+                              >
                                 <div class="h-full bg-red-500 w-[90%]"></div>
                               </div>
                             </div>
                             <div>
-                              <div class="flex justify-between mb-1 text-[10px]">
+                              <div
+                                class="flex justify-between mb-1 text-[10px]"
+                              >
                                 <span>INT4 (40GB)</span>
                                 <span class="text-green-400">1x A6000</span>
                               </div>
-                              <div class="h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                              <div
+                                class="h-1.5 bg-slate-700 rounded-full overflow-hidden"
+                              >
                                 <div class="h-full bg-green-500 w-[30%]"></div>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div v-else-if="selectedDeploymentStrategy.title.includes('推理')">
-                          <p class="text-purple-400 mb-2"># vLLM PagedAttention</p>
+                        <div
+                          v-else-if="
+                            selectedDeploymentStrategy.title.includes('推理')
+                          "
+                        >
+                          <p class="text-purple-400 mb-2">
+                            # vLLM PagedAttention
+                          </p>
                           <div class="flex gap-2 overflow-x-auto pb-1">
                             <div
                               class="border border-slate-600 p-1 rounded w-16 flex-shrink-0 text-center"
                             >
-                              <div class="text-[8px] text-slate-500">Block 1</div>
-                              <div class="bg-blue-900/50 mt-0.5 h-4 rounded"></div>
+                              <div class="text-[8px] text-slate-500">
+                                Block 1
+                              </div>
+                              <div
+                                class="bg-blue-900/50 mt-0.5 h-4 rounded"
+                              ></div>
                             </div>
                             <div
                               class="border border-slate-600 border-dashed p-1 rounded w-8 flex-shrink-0 text-center opacity-50 flex items-center justify-center"
@@ -424,16 +551,26 @@ const edgeModels = [
                             <div
                               class="border border-slate-600 p-1 rounded w-16 flex-shrink-0 text-center"
                             >
-                              <div class="text-[8px] text-slate-500">Block 2</div>
-                              <div class="bg-blue-900/50 mt-0.5 h-4 rounded"></div>
+                              <div class="text-[8px] text-slate-500">
+                                Block 2
+                              </div>
+                              <div
+                                class="bg-blue-900/50 mt-0.5 h-4 rounded"
+                              ></div>
                             </div>
                           </div>
                         </div>
 
                         <div v-else>
-                          <p class="text-emerald-400">$ vllm serve llama-3-8b</p>
-                          <p class="mt-1 text-slate-400">INFO: Started server...</p>
-                          <p class="mt-1 text-yellow-300">Serving at http://localhost:8000</p>
+                          <p class="text-emerald-400">
+                            $ vllm serve llama-3-8b
+                          </p>
+                          <p class="mt-1 text-slate-400">
+                            INFO: Started server...
+                          </p>
+                          <p class="mt-1 text-yellow-300">
+                            Serving at http://localhost:8000
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -444,12 +581,19 @@ const edgeModels = [
           </div>
 
           <!-- Tab 3: Edge & Small Models -->
-          <div v-else-if="activeTab === 'edge'" class="h-full flex flex-col gap-6 overflow-y-auto">
+          <div
+            v-else-if="activeTab === 'edge'"
+            class="h-full flex flex-col gap-6 overflow-y-auto"
+          >
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
               <!-- Left: Advantages -->
               <div class="flex flex-col gap-4 justify-center">
-                <div class="bg-indigo-50/50 rounded-xl p-5 border border-indigo-100">
-                  <h3 class="text-xl font-bold text-indigo-900 mb-3 flex items-center gap-2">
+                <div
+                  class="bg-indigo-50/50 rounded-xl p-5 border border-indigo-100"
+                >
+                  <h3
+                    class="text-xl font-bold text-indigo-900 mb-3 flex items-center gap-2"
+                  >
                     <span>📱</span> 为什么趋势向"小"？
                   </h3>
                   <div class="grid grid-cols-2 gap-3">
@@ -459,14 +603,22 @@ const edgeModels = [
                       class="bg-white p-3 rounded-lg shadow-sm border border-slate-100"
                     >
                       <div class="text-2xl mb-1">{{ adv.icon }}</div>
-                      <h4 class="font-bold text-slate-800 text-sm mb-0.5">{{ adv.title }}</h4>
-                      <p class="text-xs text-slate-600 leading-snug">{{ adv.desc }}</p>
+                      <h4 class="font-bold text-slate-800 text-sm mb-0.5">
+                        {{ adv.title }}
+                      </h4>
+                      <p class="text-xs text-slate-600 leading-snug">
+                        {{ adv.desc }}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
-                  <h3 class="text-base font-bold text-slate-800 mb-2">关键技术驱动</h3>
+                <div
+                  class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm"
+                >
+                  <h3 class="text-base font-bold text-slate-800 mb-2">
+                    关键技术驱动
+                  </h3>
                   <div class="flex flex-wrap gap-2">
                     <span
                       class="px-2 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium"
@@ -499,7 +651,9 @@ const edgeModels = [
                   class="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl -ml-10 -mb-10"
                 ></div>
 
-                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2 relative z-10">
+                <h3
+                  class="text-xl font-bold text-white mb-4 flex items-center gap-2 relative z-10"
+                >
                   <span class="text-purple-400">🚀</span>
                   开源小模型名人堂
                 </h3>
@@ -514,7 +668,9 @@ const edgeModels = [
                   >
                     <div>
                       <div class="flex items-center gap-2 mb-0.5">
-                        <span class="font-bold text-sm text-white">{{ model.name }}</span>
+                        <span class="font-bold text-sm text-white">{{
+                          model.name
+                        }}</span>
                         <span
                           class="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300"
                           >{{ model.org }}</span
@@ -523,10 +679,13 @@ const edgeModels = [
                       <div class="text-xs text-slate-400">{{ model.feat }}</div>
                     </div>
                     <div class="flex flex-col items-end">
-                      <span class="text-sm font-mono font-bold text-purple-400">{{
-                        model.params
-                      }}</span>
-                      <span class="text-[8px] text-slate-500 uppercase">Params</span>
+                      <span
+                        class="text-sm font-mono font-bold text-purple-400"
+                        >{{ model.params }}</span
+                      >
+                      <span class="text-[8px] text-slate-500 uppercase"
+                        >Params</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -542,7 +701,9 @@ const edgeModels = [
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .fade-enter-from,

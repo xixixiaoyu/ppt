@@ -38,14 +38,22 @@ interface CreatePresentationContextOptions {
   persist?: boolean
 }
 
-const normalizeLocale = (code: LocaleCode, locales: LocaleMeta[], fallback: LocaleCode): LocaleCode => {
+const normalizeLocale = (
+  code: LocaleCode,
+  locales: LocaleMeta[],
+  fallback: LocaleCode
+): LocaleCode => {
   const match = locales.find(locale => locale.code === code)
   if (match) return match.code
   const fallbackLocale = locales.find(locale => locale.code === fallback)
   return fallbackLocale?.code ?? locales[0]?.code ?? code
 }
 
-const normalizeBackground = (id: string, backgrounds: BackgroundModuleMeta[], fallback: string) => {
+const normalizeBackground = (
+  id: string,
+  backgrounds: BackgroundModuleMeta[],
+  fallback: string
+) => {
   const match = backgrounds.find(background => background.id === id)
   if (match) return match.id
   return backgrounds[0]?.id ?? fallback
@@ -69,7 +77,9 @@ export const createPresentationContext = (
   const shouldPersist = options.persist !== false
   const storageKey = shouldPersist ? createStorageKey(options.contextKey) : null
 
-  const backgroundsMap = new Map(options.backgrounds.map(background => [background.id, background]))
+  const backgroundsMap = new Map(
+    options.backgrounds.map(background => [background.id, background])
+  )
 
   const defaults: PresentationPreferences = {
     backgroundId: normalizeBackground(
@@ -77,7 +87,11 @@ export const createPresentationContext = (
       options.backgrounds,
       options.defaults.backgroundId
     ),
-    locale: normalizeLocale(options.defaults.locale, options.locales, options.defaults.locale)
+    locale: normalizeLocale(
+      options.defaults.locale,
+      options.locales,
+      options.defaults.locale
+    ),
   }
 
   let initial: PresentationPreferences = { ...defaults }
@@ -88,12 +102,23 @@ export const createPresentationContext = (
       if (stored) {
         const parsed = JSON.parse(stored) as PresentationPreferences
         initial = {
-          backgroundId: normalizeBackground(parsed.backgroundId, options.backgrounds, defaults.backgroundId),
-          locale: normalizeLocale(parsed.locale, options.locales, defaults.locale)
+          backgroundId: normalizeBackground(
+            parsed.backgroundId,
+            options.backgrounds,
+            defaults.backgroundId
+          ),
+          locale: normalizeLocale(
+            parsed.locale,
+            options.locales,
+            defaults.locale
+          ),
         }
       }
     } catch (error) {
-      console.warn('Failed to parse stored presentation preferences. Resetting to defaults.', error)
+      console.warn(
+        'Failed to parse stored presentation preferences. Resetting to defaults.',
+        error
+      )
     }
   }
 
@@ -103,13 +128,17 @@ export const createPresentationContext = (
     if (!shouldPersist || !storageKey || !isBrowser) return
     const payload = JSON.stringify({
       backgroundId: state.backgroundId,
-      locale: state.locale
+      locale: state.locale,
     })
     window.localStorage.setItem(storageKey, payload)
   }
 
-  const activeBackground = computed(() => backgroundsMap.get(state.backgroundId))
-  const activeLocale = computed(() => options.locales.find(locale => locale.code === state.locale))
+  const activeBackground = computed(() =>
+    backgroundsMap.get(state.backgroundId)
+  )
+  const activeLocale = computed(() =>
+    options.locales.find(locale => locale.code === state.locale)
+  )
 
   watch(
     () => state.locale,
@@ -128,7 +157,11 @@ export const createPresentationContext = (
   )
 
   const setBackground = (backgroundId: string) => {
-    const normalized = normalizeBackground(backgroundId, options.backgrounds, state.backgroundId)
+    const normalized = normalizeBackground(
+      backgroundId,
+      options.backgrounds,
+      state.backgroundId
+    )
     state.backgroundId = normalized
   }
 
@@ -150,7 +183,7 @@ export const createPresentationContext = (
     activeLocale,
     setBackground,
     setLocale,
-    resetToDefaults
+    resetToDefaults,
   }
 
   return context
@@ -161,9 +194,14 @@ export const providePresentationContext = (context: PresentationContext) => {
 }
 
 export const usePresentationContext = (): PresentationContext => {
-  const context = inject<PresentationContext | null>(PresentationContextSymbol, null)
+  const context = inject<PresentationContext | null>(
+    PresentationContextSymbol,
+    null
+  )
   if (!context) {
-    throw new Error('Presentation context is not provided. Please call providePresentationContext in a parent component.')
+    throw new Error(
+      'Presentation context is not provided. Please call providePresentationContext in a parent component.'
+    )
   }
   return context
 }

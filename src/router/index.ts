@@ -9,7 +9,8 @@ const router = createRouter({
     },
     {
       path: '/design-language-template',
-      component: () => import('@/presentations/design-language-template/index.vue'),
+      component: () =>
+        import('@/presentations/design-language-template/index.vue'),
     },
     {
       path: '/llm',

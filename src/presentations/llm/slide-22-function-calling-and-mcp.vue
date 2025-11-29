@@ -8,7 +8,8 @@ const tabs = [
   {
     id: 'fc',
     label: 'Function Calling (工具调用)',
-    description: '赋予大模型“手”和“眼”，使其能主动与外部世界交互，而不只是“空谈”。',
+    description:
+      '赋予大模型“手”和“眼”，使其能主动与外部世界交互，而不只是“空谈”。',
     points: [
       '核心原理：模型不再只输出文本，而是可以输出结构化的“函数调用请求”（如 JSON）。',
       '执行闭环：用户提问 → 模型决定调用工具 → 系统执行代码/API → 结果回传模型 → 模型生成最终回答。',
@@ -18,7 +19,8 @@ const tabs = [
   {
     id: 'mcp',
     label: 'MCP (Model Context Protocol)',
-    description: '由 Anthropic 提出的开放标准，旨在标准化 AI 模型与数据源/工具之间的连接。',
+    description:
+      '由 Anthropic 提出的开放标准，旨在标准化 AI 模型与数据源/工具之间的连接。',
     points: [
       '解决痛点：每个数据源（Slack, GitHub, Google Drive）都要单独为每个 AI 应用写适配器（N x M 复杂度）。',
       '核心类比：AI 时代的 USB 协议。只需开发一次 MCP Server，任何支持 MCP 的客户端（Claude Desktop, Cursor, IDEs）都能直接使用。',
@@ -68,7 +70,9 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <section
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16"
+  >
     <div class="mb-8 text-center">
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
@@ -87,7 +91,8 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
         @click="activeTab = tab.id"
         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/60 border border-white/40 backdrop-blur-md shadow-sm text-slate-700 font-medium transition hover:bg-white/80 hover:scale-105 active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
         :class="{
-          '!bg-white/95 text-accent ring-2 ring-accent/20 shadow-md': activeTab === tab.id,
+          '!bg-white/95 text-accent ring-2 ring-accent/20 shadow-md':
+            activeTab === tab.id,
         }"
       >
         {{ tab.label }}
@@ -105,22 +110,31 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
           v-show="activeTab === tab.id"
           class="animate-in fade-in slide-in-from-bottom-4 duration-500"
         >
-          <h3 class="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-2">
+          <h3
+            class="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-2"
+          >
             {{ tab.label }}
           </h3>
-          <p class="text-slate-600 mb-8 text-lg leading-relaxed border-l-4 border-accent/30 pl-4">
+          <p
+            class="text-slate-600 mb-8 text-lg leading-relaxed border-l-4 border-accent/30 pl-4"
+          >
             {{ tab.description }}
           </p>
           <ul class="space-y-6">
-            <li v-for="(point, idx) in tab.points" :key="idx" class="flex items-start gap-4">
+            <li
+              v-for="(point, idx) in tab.points"
+              :key="idx"
+              class="flex items-start gap-4"
+            >
               <div
                 class="shrink-0 mt-1 w-8 h-8 rounded-full bg-gradient-to-br from-accent to-blue-500 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-accent/20"
               >
                 {{ idx + 1 }}
               </div>
-              <span class="text-slate-700 leading-relaxed text-base pt-0.5 font-medium">{{
-                point
-              }}</span>
+              <span
+                class="text-slate-700 leading-relaxed text-base pt-0.5 font-medium"
+                >{{ point }}</span
+              >
             </li>
           </ul>
         </div>
@@ -142,7 +156,9 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
               <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
               <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
             </div>
-            <span class="text-xs font-mono text-white/30 uppercase tracking-wider">
+            <span
+              class="text-xs font-mono text-white/30 uppercase tracking-wider"
+            >
               {{ activeTab === 'fc' ? 'Tool_Execution_Flow' : 'MCP_Standard' }}
             </span>
           </div>

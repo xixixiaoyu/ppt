@@ -10,7 +10,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
       >
         章节分隔（占位）
       </h2>
-      <p class="mt-4 text-lg text-slate-600">用来承上启下，重置注意力与心智模型。</p>
+      <p class="mt-4 text-lg text-slate-600">
+        用来承上启下，重置注意力与心智模型。
+      </p>
     </div>
   </section>
 </template>

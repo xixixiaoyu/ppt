@@ -59,7 +59,8 @@ const currentCode = computed(() => {
         使用 LlamaIndex 构建 RAG
       </h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        LlamaIndex (GPT Index) 是一个专为 LLM 应用设计的数据框架，极大简化了 RAG 的构建流程。
+        LlamaIndex (GPT Index) 是一个专为 LLM 应用设计的数据框架，极大简化了 RAG
+        的构建流程。
       </p>
     </div>
 
@@ -93,7 +94,9 @@ const currentCode = computed(() => {
       <div
         class="relative rounded-2xl overflow-hidden bg-[#1e1e1e] shadow-2xl flex flex-col h-full min-h-[300px] text-slate-300"
       >
-        <div class="flex items-center px-4 py-2 bg-[#252526] border-b border-[#3e3e42]">
+        <div
+          class="flex items-center px-4 py-2 bg-[#252526] border-b border-[#3e3e42]"
+        >
           <div class="flex gap-1.5">
             <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
             <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>

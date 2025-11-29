@@ -5,7 +5,12 @@ type Level = 1 | 2 | 3 | 4
 type Size = '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
 type Palette = 'accent' | 'indigo-fuchsia-emerald'
 
-const props = defineProps<{ level?: Level; size?: Size; palette?: Palette; class?: string }>()
+const props = defineProps<{
+  level?: Level
+  size?: Size
+  palette?: Palette
+  class?: string
+}>()
 
 const tag = computed(() => `h${props.level ?? 2}`)
 

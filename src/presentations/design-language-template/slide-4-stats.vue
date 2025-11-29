@@ -53,7 +53,7 @@ onMounted(() => {
 
 watch(
   () => props.isActive,
-  (active) => {
+  active => {
     if (active) {
       values.value = stats.map(() => 0)
       if (rafId) cancelAnimationFrame(rafId)
@@ -71,7 +71,12 @@ watch(
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <Card v-for="(stat, i) in stats" :key="i" padding="md" class="flex flex-col gap-2">
+      <Card
+        v-for="(stat, i) in stats"
+        :key="i"
+        padding="md"
+        class="flex flex-col gap-2"
+      >
         <div class="text-5xl font-black tracking-tight text-slate-900">
           {{ values[i] }}<span v-if="stat.suffix">{{ stat.suffix }}</span>
         </div>

@@ -10,7 +10,9 @@ const points = [
 </script>
 
 <template>
-  <section class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16">
+  <section
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16"
+  >
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
       <div
         class="rounded-3xl border border-slate-200/30 bg-white/70 backdrop-blur-md shadow-xl p-4"
@@ -20,7 +22,9 @@ const points = [
         >
           媒体占位
         </div>
-        <p class="mt-2 text-center text-slate-500 text-xs">可替换为实际图片或图表</p>
+        <p class="mt-2 text-center text-slate-500 text-xs">
+          可替换为实际图片或图表
+        </p>
       </div>
       <div>
         <h2

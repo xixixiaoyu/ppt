@@ -49,7 +49,10 @@ const tag = computed(() => props.as ?? 'div')
 </script>
 
 <template>
-  <component :is="tag" :class="[baseClass, roundClass, padClass, hoverClass, props.class]">
+  <component
+    :is="tag"
+    :class="[baseClass, roundClass, padClass, hoverClass, props.class]"
+  >
     <slot />
   </component>
 </template>

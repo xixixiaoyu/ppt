@@ -31,18 +31,33 @@ const fx = computed(() => props.effect ?? 'aurora')
 
 <template>
   <Section :max="maxw" p="xl">
-    <Card :rounded="round" padding="xl" class="text-center" :class="props.class">
+    <Card
+      :rounded="round"
+      padding="xl"
+      class="text-center"
+      :class="props.class"
+    >
       <div v-if="fx === 'aurora'" class="aurora-overlay" aria-hidden="true">
         <span class="aurora-blob aurora-1" />
         <span class="aurora-blob aurora-2" />
         <span class="aurora-blob aurora-3" />
       </div>
       <div v-else class="absolute inset-0 -z-0 opacity-40" aria-hidden="true">
-        <svg class="h-full w-full" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          class="h-full w-full"
+          viewBox="0 0 800 600"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <defs>
             <linearGradient :id="gid" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }"
+              />
             </linearGradient>
             <filter
               :id="fid"
@@ -58,12 +73,23 @@ const fx = computed(() => props.effect ?? 'aurora')
           </defs>
           <g :filter="`url(#${fid})`">
             <circle cx="160" cy="120" r="120" :fill="`url(#${gid})`" />
-            <circle cx="640" cy="480" r="160" :fill="`url(#${gid})`" opacity="0.7" />
+            <circle
+              cx="640"
+              cy="480"
+              r="160"
+              :fill="`url(#${gid})`"
+              opacity="0.7"
+            />
           </g>
         </svg>
       </div>
 
-      <HeadingGradient :level="2" :size="size" :palette="pal" class="relative z-10">
+      <HeadingGradient
+        :level="2"
+        :size="size"
+        :palette="pal"
+        class="relative z-10"
+      >
         <slot name="title">
           {{ props.title }}
         </slot>
@@ -99,19 +125,31 @@ const fx = computed(() => props.effect ?? 'aurora')
 .aurora-1 {
   top: -10%;
   left: -8%;
-  background: radial-gradient(ellipse at 30% 30%, rgb(99 102 241 / 0.85), transparent 60%);
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    rgb(99 102 241 / 0.85),
+    transparent 60%
+  );
   animation: blobMove1 18s ease-in-out infinite alternate;
 }
 .aurora-2 {
   bottom: -12%;
   left: 25%;
-  background: radial-gradient(ellipse at 70% 30%, rgb(236 72 153 / 0.75), transparent 60%);
+  background: radial-gradient(
+    ellipse at 70% 30%,
+    rgb(236 72 153 / 0.75),
+    transparent 60%
+  );
   animation: blobMove2 22s ease-in-out infinite alternate;
 }
 .aurora-3 {
   top: -6%;
   right: -6%;
-  background: radial-gradient(ellipse at 40% 60%, rgb(16 185 129 / 0.75), transparent 60%);
+  background: radial-gradient(
+    ellipse at 40% 60%,
+    rgb(16 185 129 / 0.75),
+    transparent 60%
+  );
   animation: blobMove3 26s ease-in-out infinite alternate;
 }
 @keyframes blobMove1 {

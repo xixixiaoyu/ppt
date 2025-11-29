@@ -17,7 +17,7 @@
     --grid-size-mobile: 22px;
     --grid-opacity: 0.12;
     --veil-blur: 6px;
-    --veil-opacity: 0.10;
+    --veil-opacity: 0.1;
   }
 
   body {
@@ -35,7 +35,7 @@
 @media (max-width: 768px) {
   :root {
     --veil-blur: 4px;
-    --grid-opacity: 0.10;
+    --grid-opacity: 0.1;
     --mesh-saturation: 1.06;
   }
 }

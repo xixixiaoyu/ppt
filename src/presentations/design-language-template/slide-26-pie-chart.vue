@@ -22,7 +22,13 @@ const option = ref<EChartsOption>({
         { value: 135, name: 'Video' },
         { value: 1548, name: 'Search' },
       ],
-      emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.3)' } },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0,0,0,0.3)',
+        },
+      },
     },
   ],
 })
@@ -30,8 +36,14 @@ const option = ref<EChartsOption>({
 
 <template>
   <section class="h-full w-full grid place-items-center p-6">
-    <div class="w-full max-w-5xl rounded-3xl p-6 bg-white/70 border border-slate-200/30 backdrop-blur-xl shadow-xl">
-      <h2 class="m-0 text-2xl font-extrabold tracking-tight text-slate-800 text-center">构成饼图</h2>
+    <div
+      class="w-full max-w-5xl rounded-3xl p-6 bg-white/70 border border-slate-200/30 backdrop-blur-xl shadow-xl"
+    >
+      <h2
+        class="m-0 text-2xl font-extrabold tracking-tight text-slate-800 text-center"
+      >
+        构成饼图
+      </h2>
       <p class="mt-2 text-center text-slate-600">展示各类来源占比。</p>
       <VChart class="mt-6 h-[60vh] w-full" :option="option" autoresize />
     </div>

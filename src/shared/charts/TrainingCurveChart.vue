@@ -3,10 +3,20 @@ import { computed } from 'vue'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
-import { GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
+import {
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+} from 'echarts/components'
 import VChart from 'vue-echarts'
 
-use([CanvasRenderer, LineChart, GridComponent, TooltipComponent, LegendComponent])
+use([
+  CanvasRenderer,
+  LineChart,
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+])
 
 const props = defineProps<{
   type: 'success' | 'overfitting'
@@ -14,13 +24,15 @@ const props = defineProps<{
 
 const chartOption = computed(() => {
   const isSuccess = props.type === 'success'
-  
+
   // Generate data points
   const steps = Array.from({ length: 20 }, (_, i) => i + 1)
-  
+
   // Training loss always goes down
-  const trainLoss = steps.map(x => 5 * Math.exp(-0.2 * x) + 0.5 + Math.random() * 0.2)
-  
+  const trainLoss = steps.map(
+    x => 5 * Math.exp(-0.2 * x) + 0.5 + Math.random() * 0.2
+  )
+
   // Validation loss depends on type
   const valLoss = isSuccess
     ? steps.map(x => 5.2 * Math.exp(-0.2 * x) + 0.6 + Math.random() * 0.2) // Success: follows train
@@ -39,29 +51,29 @@ const chartOption = computed(() => {
       right: 10,
       bottom: 20,
       left: 30,
-      containLabel: true
+      containLabel: true,
     },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
     },
     legend: {
       data: ['Train Loss', 'Val Loss'],
       textStyle: { color: '#64748b' },
-      bottom: 0
+      bottom: 0,
     },
     xAxis: {
       type: 'category',
       data: steps,
       axisLine: { lineStyle: { color: '#cbd5e1' } },
       axisLabel: { show: false },
-      axisTick: { show: false }
+      axisTick: { show: false },
     },
     yAxis: {
       type: 'value',
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: { show: false },
-      splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } }
+      splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } },
     },
     series: [
       {
@@ -71,7 +83,7 @@ const chartOption = computed(() => {
         smooth: true,
         showSymbol: false,
         lineStyle: { width: 3, color: '#64748b' }, // slate-500
-        itemStyle: { color: '#64748b' }
+        itemStyle: { color: '#64748b' },
       },
       {
         name: 'Val Loss',
@@ -80,9 +92,9 @@ const chartOption = computed(() => {
         smooth: true,
         showSymbol: false,
         lineStyle: { width: 3, color: color },
-        itemStyle: { color: color }
-      }
-    ]
+        itemStyle: { color: color },
+      },
+    ],
   }
 })
 </script>

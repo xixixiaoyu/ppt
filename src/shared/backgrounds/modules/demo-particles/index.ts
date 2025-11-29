@@ -6,5 +6,5 @@ export const demoParticlesBackground: BackgroundModuleMeta = {
   name: 'Demo 粒子宇宙',
   description: '动态的 Three.js 粒子和发光精灵背景，适合科技感主题。',
   component: DemoParticlesBackground,
-  tags: ['动态', 'Three.js']
+  tags: ['动态', 'Three.js'],
 }

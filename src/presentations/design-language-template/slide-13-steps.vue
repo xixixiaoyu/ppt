@@ -16,7 +16,9 @@ const steps = [
   <Section>
     <div class="mb-8 text-center">
       <HeadingGradient :level="2" size="5xl">步骤流程（占位）</HeadingGradient>
-      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">用于表达端到端方法论与工作流。</p>
+      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
+        用于表达端到端方法论与工作流。
+      </p>
     </div>
 
     <div class="hidden md:flex items-center justify-center gap-4">
@@ -49,7 +51,9 @@ const steps = [
             </div>
           </div>
         </Card>
-        <div v-if="i < steps.length - 1" class="text-center text-slate-400">↓</div>
+        <div v-if="i < steps.length - 1" class="text-center text-slate-400">
+          ↓
+        </div>
       </template>
     </div>
   </Section>

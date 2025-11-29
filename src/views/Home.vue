@@ -33,7 +33,7 @@ const categories = ref<Category[]>([
 ])
 
 const toggleCategory = (categoryId: string) => {
-  const category = categories.value.find((cat) => cat.id === categoryId)
+  const category = categories.value.find(cat => cat.id === categoryId)
   if (category) {
     category.expanded = !category.expanded
   }
@@ -41,7 +41,9 @@ const toggleCategory = (categoryId: string) => {
 </script>
 
 <template>
-  <div class="home-shell relative min-h-screen overflow-hidden bg-surface text-text-primary">
+  <div
+    class="home-shell relative min-h-screen overflow-hidden bg-surface text-text-primary"
+  >
     <div class="absolute inset-0 pointer-events-none">
       <div
         class="absolute inset-0 bg-gradient-to-br from-surface/40 via-surface/10 to-accent/10"
@@ -52,8 +54,12 @@ const toggleCategory = (categoryId: string) => {
     </div>
 
     <div class="relative z-10 flex min-h-screen flex-col">
-      <header class="container mx-auto max-w-6xl px-6 md:px-8 pt-20 text-center">
-        <p class="text-xs uppercase tracking-[0.6em] text-accent/70">PRESENTATION DECKS</p>
+      <header
+        class="container mx-auto max-w-6xl px-6 md:px-8 pt-20 text-center"
+      >
+        <p class="text-xs uppercase tracking-[0.6em] text-accent/70">
+          PRESENTATION DECKS
+        </p>
         <h1
           class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
         >
@@ -85,7 +91,9 @@ const toggleCategory = (categoryId: string) => {
           <div
             class="rounded-3xl border border-accent/20 bg-surface-muted/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(var(--accent),0.35)] overflow-hidden"
           >
-            <div class="border-b border-accent/10 px-8 py-6 flex items-end justify-between">
+            <div
+              class="border-b border-accent/10 px-8 py-6 flex items-end justify-between"
+            >
               <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
               <span class="text-xs uppercase tracking-widest text-accent/70"
                 >{{ categories.length }} Categories</span
@@ -110,7 +118,9 @@ const toggleCategory = (categoryId: string) => {
                         aria-hidden="true"
                       ></span>
                       <div>
-                        <h3 class="text-base font-bold uppercase tracking-widest text-text-primary">
+                        <h3
+                          class="text-base font-bold uppercase tracking-widest text-text-primary"
+                        >
                           {{ category.name }}
                         </h3>
                         <p class="text-xs text-text-muted">
@@ -143,7 +153,10 @@ const toggleCategory = (categoryId: string) => {
                       v-show="category.expanded"
                       class="divide-y divide-accent/10 border-t border-accent/10"
                     >
-                      <li v-for="presentation in category.presentations" :key="presentation.id">
+                      <li
+                        v-for="presentation in category.presentations"
+                        :key="presentation.id"
+                      >
                         <RouterLink
                           :to="presentation.route"
                           class="flex items-start gap-3 px-5 py-4 transition-colors duration-200"
@@ -162,7 +175,9 @@ const toggleCategory = (categoryId: string) => {
                             <p class="text-sm font-medium text-text-primary">
                               {{ presentation.title }}
                             </p>
-                            <p class="mt-1 text-sm leading-relaxed text-text-muted">
+                            <p
+                              class="mt-1 text-sm leading-relaxed text-text-muted"
+                            >
                               {{ presentation.description }}
                             </p>
                           </div>

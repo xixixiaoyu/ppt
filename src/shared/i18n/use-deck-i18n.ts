@@ -9,14 +9,17 @@ interface UseDeckI18nOptions {
 
 const deckLocaleModules = {
   ...import.meta.glob('../../locales/*/deck-*.json', {
-    eager: true
+    eager: true,
   }),
   ...import.meta.glob('../../presentations/*/locales/*.json', {
-    eager: true
-  })
+    eager: true,
+  }),
 } as Record<string, { default: LocaleMessages }>
 
-const resolveNested = (messages: LocaleMessages | undefined, segments: string[]): string | undefined => {
+const resolveNested = (
+  messages: LocaleMessages | undefined,
+  segments: string[]
+): string | undefined => {
   if (!messages) return undefined
   let current: LocaleMessages | string | undefined = messages
   for (const segment of segments) {
@@ -41,7 +44,9 @@ export const useDeckI18n = (deckId: string, options: UseDeckI18nOptions) => {
 
   for (const [path, module] of Object.entries(deckLocaleModules)) {
     const legacyMatch = path.match(/locales\/([^/]+)\/deck-([^./]+)\.json$/)
-    const colocatedMatch = path.match(/presentations\/([^/]+)\/locales\/([^/.]+)\.json$/)
+    const colocatedMatch = path.match(
+      /presentations\/([^/]+)\/locales\/([^/.]+)\.json$/
+    )
 
     const localeCode = legacyMatch?.[1] ?? colocatedMatch?.[2]
     const matchedDeckId = legacyMatch?.[2] ?? colocatedMatch?.[1]
@@ -56,12 +61,17 @@ export const useDeckI18n = (deckId: string, options: UseDeckI18nOptions) => {
 
   const currentLocale = computed((): LocaleCode => {
     if (hasLocale(locale.value)) return locale.value
-    return hasLocale(fallbackLocale) ? fallbackLocale : (Object.keys(messagesByLocale)[0] as LocaleCode)
+    return hasLocale(fallbackLocale)
+      ? fallbackLocale
+      : (Object.keys(messagesByLocale)[0] as LocaleCode)
   })
 
   const translate = (key: string, params?: TranslationParams): string => {
     const segments = key.split('.')
-    const active = resolveNested(messagesByLocale[currentLocale.value], segments)
+    const active = resolveNested(
+      messagesByLocale[currentLocale.value],
+      segments
+    )
     if (active) {
       return interpolate(active, params)
     }
@@ -71,7 +81,9 @@ export const useDeckI18n = (deckId: string, options: UseDeckI18nOptions) => {
       if (import.meta.env.DEV) {
         const warningKey = `${currentLocale.value}:${key}`
         if (!missingWarnings.has(warningKey)) {
-          console.warn(`Missing translation for "${key}" in locale "${currentLocale.value}"; using fallback.`)
+          console.warn(
+            `Missing translation for "${key}" in locale "${currentLocale.value}"; using fallback.`
+          )
           missingWarnings.add(warningKey)
         }
       }
@@ -92,6 +104,6 @@ export const useDeckI18n = (deckId: string, options: UseDeckI18nOptions) => {
     t: translate,
     currentLocale,
     hasLocale,
-    messagesByLocale
+    messagesByLocale,
   }
 }

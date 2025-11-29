@@ -19,8 +19,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.30)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.12)' }"
+              />
             </linearGradient>
             <filter
               id="blur"
@@ -41,7 +47,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-8 h-full justify-center">
+      <div
+        class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-8 h-full justify-center"
+      >
         <!-- 标题区域 -->
         <div class="text-center space-y-4">
           <HeadingGradient
@@ -62,8 +70,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
           >
-            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="text-indigo-500">01.</span> 自注意力机制 (Self-Attention)
+            <h3
+              class="text-lg font-bold text-slate-800 flex items-center gap-2"
+            >
+              <span class="text-indigo-500">01.</span> 自注意力机制
+              (Self-Attention)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
               想象你在阅读长句时，为了理解"它"指代什么，会下意识回顾前文。模型也是如此：它计算输入序列中每个词与其他词的<strong>关联权重</strong>，从而捕捉长距离的依赖关系和丰富的上下文语境。
@@ -73,12 +84,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
           >
-            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="text-fuchsia-500">02.</span> 前馈神经网络 (Feed-Forward)
+            <h3
+              class="text-lg font-bold text-slate-800 flex items-center gap-2"
+            >
+              <span class="text-fuchsia-500">02.</span> 前馈神经网络
+              (Feed-Forward)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              如果 Attention 是"感知"上下文，那么 FFN 就是"消化"信息。它是一个巨大的记忆网络，对
-              Attention
+              如果 Attention 是"感知"上下文，那么 FFN
+              就是"消化"信息。它是一个巨大的记忆网络，对 Attention
               提取的特征进行<strong>非线性变换和加工</strong>，将这些关联信息转化为更深层的语义表示。
             </p>
           </div>
@@ -86,7 +100,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
           >
-            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+            <h3
+              class="text-lg font-bold text-slate-800 flex items-center gap-2"
+            >
               <span class="text-emerald-500">03.</span> 概率预测 (Probability)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
@@ -97,8 +113,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <div
             class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
           >
-            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="text-amber-500">04.</span> 位置编码 (Positional Encoding)
+            <h3
+              class="text-lg font-bold text-slate-800 flex items-center gap-2"
+            >
+              <span class="text-amber-500">04.</span> 位置编码 (Positional
+              Encoding)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
               由于 Transformer
@@ -113,7 +132,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <div class="flex flex-col md:flex-row gap-6 items-start">
             <div class="flex-1">
-              <h3 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
+              <h3
+                class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2"
+              >
                 <span class="text-2xl">🏛️</span> 中文房间实验 (The Chinese Room)
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
@@ -129,8 +150,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <p class="text-slate-600 text-sm leading-relaxed">
                 这个实验揭示了<strong>语法 (Syntax)</strong> 与
                 <strong>语义 (Semantics)</strong> 的区别。目前的 LLM
-                是否只是在进行极其复杂的“符号操纵”，而没有产生真正的意识或理解？这至今仍是 AI
-                领域最迷人的未解之谜。
+                是否只是在进行极其复杂的“符号操纵”，而没有产生真正的意识或理解？这至今仍是
+                AI 领域最迷人的未解之谜。
               </p>
             </div>
           </div>

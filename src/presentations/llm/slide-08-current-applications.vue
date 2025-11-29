@@ -19,8 +19,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
         >
           <defs>
             <linearGradient id="g-apps" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }" />
-              <stop offset="100%" :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }" />
+              <stop
+                offset="0%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.25)' }"
+              />
+              <stop
+                offset="100%"
+                :style="{ stopColor: 'rgb(var(--accent) / 0.05)' }"
+              />
             </linearGradient>
             <filter
               id="blur-apps"
@@ -36,12 +42,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           </defs>
           <g filter="url(#blur-apps)">
             <circle cx="200" cy="100" r="250" fill="url(#g-apps)" />
-            <circle cx="600" cy="500" r="180" fill="url(#g-apps)" opacity="0.6" />
+            <circle
+              cx="600"
+              cy="500"
+              r="180"
+              fill="url(#g-apps)"
+              opacity="0.6"
+            />
           </g>
         </svg>
       </div>
 
-      <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-6 h-full justify-center">
+      <div
+        class="relative z-10 w-full max-w-6xl mx-auto flex flex-col gap-6 h-full justify-center"
+      >
         <!-- 标题区域 -->
         <div class="text-center space-y-2">
           <HeadingGradient
@@ -70,7 +84,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <p class="text-sm text-slate-600 leading-relaxed">
               代码生成、重构、解释与 Debug。
               <br />
-              <span class="text-xs text-slate-400">例: GitHub Copilot, Cursor</span>
+              <span class="text-xs text-slate-400"
+                >例: GitHub Copilot, Cursor</span
+              >
             </p>
           </div>
 
@@ -85,7 +101,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <p class="text-sm text-slate-600 leading-relaxed">
               营销文案、博客撰写、邮件润色。
               <br />
-              <span class="text-xs text-slate-400">例: Jasper, ChatGPT 写作</span>
+              <span class="text-xs text-slate-400"
+                >例: Jasper, ChatGPT 写作</span
+              >
             </p>
           </div>
 
@@ -100,7 +118,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <p class="text-sm text-slate-600 leading-relaxed">
               直接获取答案而非链接，企业知识库问答。
               <br />
-              <span class="text-xs text-slate-400">例: Perplexity, RAG 系统</span>
+              <span class="text-xs text-slate-400"
+                >例: Perplexity, RAG 系统</span
+              >
             </p>
           </div>
 
@@ -115,7 +135,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <p class="text-sm text-slate-600 leading-relaxed">
               高质量多语言互译，长文档/会议快速摘要。
               <br />
-              <span class="text-xs text-slate-400">例: DeepL (AI 增强), 自动会议纪要</span>
+              <span class="text-xs text-slate-400"
+                >例: DeepL (AI 增强), 自动会议纪要</span
+              >
             </p>
           </div>
 

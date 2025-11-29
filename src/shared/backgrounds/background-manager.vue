@@ -1,6 +1,9 @@
 <template>
   <div class="background-manager" aria-hidden="true">
-    <component v-if="activeBackgroundComponent" :is="activeBackgroundComponent" />
+    <component
+      v-if="activeBackgroundComponent"
+      :is="activeBackgroundComponent"
+    />
     <BackgroundSettingsOverlay
       :visible="settingsOpen"
       :backgrounds="backgrounds"
@@ -58,7 +61,12 @@ const handleKeydown = (event: KeyboardEvent) => {
   const isMac = /Mac|iPod|iPhone|iPad/.test(window.navigator.platform)
   const ctrlOrMeta = isMac ? event.metaKey : event.ctrlKey
 
-  if (event.key.toLowerCase() === 'p' && ctrlOrMeta && event.shiftKey && !event.altKey) {
+  if (
+    event.key.toLowerCase() === 'p' &&
+    ctrlOrMeta &&
+    event.shiftKey &&
+    !event.altKey
+  ) {
     event.preventDefault()
     settingsOpen.value ? closeSettings() : openSettings()
   }

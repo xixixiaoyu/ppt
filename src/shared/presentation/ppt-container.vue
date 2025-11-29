@@ -2,7 +2,10 @@
   <div class="ppt-container" @keydown="handleKeyDown" tabindex="0">
     <!-- 幻灯片内容区域 -->
     <div class="slides-viewport">
-      <div class="slide-wrapper" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+      <div
+        class="slide-wrapper"
+        :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+      >
         <div
           v-for="(slide, index) in slides"
           :key="index"
@@ -16,7 +19,13 @@
 
     <!-- 控制栏 -->
     <div class="controls">
-      <button @click="previousSlide" :disabled="currentSlide === 0" class="control-btn">←</button>
+      <button
+        @click="previousSlide"
+        :disabled="currentSlide === 0"
+        class="control-btn"
+      >
+        ←
+      </button>
 
       <div class="slide-info">
         <input
@@ -36,7 +45,11 @@
         <span> / {{ slides.length }}</span>
       </div>
 
-      <button @click="nextSlide" :disabled="currentSlide === slides.length - 1" class="control-btn">
+      <button
+        @click="nextSlide"
+        :disabled="currentSlide === slides.length - 1"
+        class="control-btn"
+      >
         →
       </button>
     </div>
@@ -96,9 +109,12 @@ const showThumbnails = ref(false)
 const NAVIGATION_COOLDOWN = 250
 let lastNavigationAt = 0
 const editablePage = ref('1')
-const inputWidth = computed(() => Math.max(2, String(props.slides.length).length))
+const inputWidth = computed(() =>
+  Math.max(2, String(props.slides.length).length)
+)
 
-const getTimestamp = () => (typeof performance !== 'undefined' ? performance.now() : Date.now())
+const getTimestamp = () =>
+  typeof performance !== 'undefined' ? performance.now() : Date.now()
 
 const readInitialSlideFromURL = () => {
   if (typeof window === 'undefined') return
@@ -140,15 +156,18 @@ const previousSlide = () => {
   }
 }
 
-const goToSlide = (index) => {
+const goToSlide = index => {
   currentSlide.value = index
   showThumbnails.value = false
   lastNavigationAt = getTimestamp()
 }
 
-const handleKeyDown = (event) => {
+const handleKeyDown = event => {
   const t = event.target
-  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) {
+  if (
+    t &&
+    (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
+  ) {
     return
   }
   if (event.repeat) {
@@ -201,14 +220,19 @@ const commitInlinePageJump = () => {
   goToSlide(clamped - 1)
 }
 
-const onEditableInput = (e) => {
+const onEditableInput = e => {
   const t = e.target
-  const raw = t && typeof t.value === 'string' ? t.value : t && t.textContent ? t.textContent : ''
+  const raw =
+    t && typeof t.value === 'string'
+      ? t.value
+      : t && t.textContent
+        ? t.textContent
+        : ''
   const sanitized = String(raw).replace(/\D+/g, '')
   editablePage.value = sanitized
 }
 
-const onEditableFocus = (e) => {
+const onEditableFocus = e => {
   const t = e.target
   if (t && typeof t.select === 'function') {
     try {
@@ -225,7 +249,7 @@ const onEditableFocus = (e) => {
   }
 }
 
-const onEditableKeyDown = (e) => {
+const onEditableKeyDown = e => {
   const key = e.key
   const total = props.slides.length
   const current = (() => {
@@ -233,7 +257,7 @@ const onEditableKeyDown = (e) => {
     return Number.isNaN(n) ? currentSlide.value + 1 : n
   })()
 
-  const stepAdjust = (delta) => {
+  const stepAdjust = delta => {
     const next = clamp(current + delta, 1, total)
     editablePage.value = String(next)
   }
@@ -291,7 +315,7 @@ onMounted(() => {
   editablePage.value = String(currentSlide.value + 1)
 })
 
-watch(currentSlide, (val) => {
+watch(currentSlide, val => {
   editablePage.value = String(val + 1)
   writeSlideToURL()
 })

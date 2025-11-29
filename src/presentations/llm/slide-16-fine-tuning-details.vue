@@ -30,10 +30,26 @@ const methods = [
 ]
 
 const steps = [
-  { step: '01', title: '数据准备', desc: '构建高质量的问答对 (Prompt-Completion Pairs)' },
-  { step: '02', title: '选择基座', desc: '选择合适的开源模型 (如 Llama 3, Qwen, Baichuan)' },
-  { step: '03', title: '微调训练', desc: '使用 LoRA 等技术进行训练，监控 Loss 下降' },
-  { step: '04', title: '评估部署', desc: '使用测试集评估效果，导出模型权重并部署' },
+  {
+    step: '01',
+    title: '数据准备',
+    desc: '构建高质量的问答对 (Prompt-Completion Pairs)',
+  },
+  {
+    step: '02',
+    title: '选择基座',
+    desc: '选择合适的开源模型 (如 Llama 3, Qwen, Baichuan)',
+  },
+  {
+    step: '03',
+    title: '微调训练',
+    desc: '使用 LoRA 等技术进行训练，监控 Loss 下降',
+  },
+  {
+    step: '04',
+    title: '评估部署',
+    desc: '使用测试集评估效果，导出模型权重并部署',
+  },
 ]
 </script>
 
@@ -64,8 +80,14 @@ const steps = [
             :class="[method.bg, method.border]"
           >
             <div class="flex items-center gap-4 mb-4">
-              <component :is="method.icon" class="w-8 h-8" :class="method.color" />
-              <h3 class="text-xl font-bold text-slate-800">{{ method.title }}</h3>
+              <component
+                :is="method.icon"
+                class="w-8 h-8"
+                :class="method.color"
+              />
+              <h3 class="text-xl font-bold text-slate-800">
+                {{ method.title }}
+              </h3>
             </div>
             <p class="text-slate-600 mb-4">{{ method.desc }}</p>
             <div class="space-y-2 text-sm">
@@ -92,8 +114,12 @@ const steps = [
               :key="step.step"
               class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:-translate-y-1 transition-transform"
             >
-              <div class="text-3xl font-black text-slate-100 mb-2">{{ step.step }}</div>
-              <h4 class="text-lg font-bold text-slate-800 mb-1">{{ step.title }}</h4>
+              <div class="text-3xl font-black text-slate-100 mb-2">
+                {{ step.step }}
+              </div>
+              <h4 class="text-lg font-bold text-slate-800 mb-1">
+                {{ step.title }}
+              </h4>
               <p class="text-sm text-slate-500">{{ step.desc }}</p>
             </div>
           </div>

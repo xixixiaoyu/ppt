@@ -23,7 +23,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 <template>
   <Section>
     <Card padding="xl" class="grid place-items-center h-full">
-      <div class="relative z-10 px-6 py-4 w-full max-w-7xl h-full flex flex-col">
+      <div
+        class="relative z-10 px-6 py-4 w-full max-w-7xl h-full flex flex-col"
+      >
         <!-- Header -->
         <div class="text-center mb-8 shrink-0">
           <HeadingGradient
@@ -35,7 +37,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             RAG 评估体系：维度、指标与方法
           </HeadingGradient>
           <p class="mt-2 text-lg text-slate-600 max-w-4xl mx-auto">
-            从“检索”与“生成”双维度切入，利用 RAGAS 框架与多层次评估手段构建质量闭环。
+            从“检索”与“生成”双维度切入，利用 RAGAS
+            框架与多层次评估手段构建质量闭环。
           </p>
         </div>
 
@@ -44,27 +47,39 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           <!-- Row 1: Dimensions & Metrics (RAGAS) -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Retrieval Side -->
-            <div class="bg-blue-50/60 rounded-2xl p-5 border border-blue-100 flex flex-col">
-              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
+            <div
+              class="bg-blue-50/60 rounded-2xl p-5 border border-blue-100 flex flex-col"
+            >
+              <h3
+                class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-3"
+              >
                 <div class="p-1.5 bg-blue-100 rounded-lg text-blue-600">
                   <MagnifyingGlassIcon class="w-5 h-5" />
                 </div>
                 检索质量 (Retrieval)
               </h3>
               <div class="grid grid-cols-2 gap-3 flex-grow">
-                <div class="bg-white/60 rounded-xl p-3 border border-blue-100/50">
+                <div
+                  class="bg-white/60 rounded-xl p-3 border border-blue-100/50"
+                >
                   <div class="flex items-center gap-2 mb-1">
                     <ChartBarIcon class="w-4 h-4 text-blue-600" />
-                    <h4 class="font-bold text-sm text-slate-800">Context Precision</h4>
+                    <h4 class="font-bold text-sm text-slate-800">
+                      Context Precision
+                    </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
                     检索内容的“纯度”，减少噪声干扰。
                   </p>
                 </div>
-                <div class="bg-white/60 rounded-xl p-3 border border-blue-100/50">
+                <div
+                  class="bg-white/60 rounded-xl p-3 border border-blue-100/50"
+                >
                   <div class="flex items-center gap-2 mb-1">
                     <CheckCircleIcon class="w-4 h-4 text-blue-600" />
-                    <h4 class="font-bold text-sm text-slate-800">Context Recall</h4>
+                    <h4 class="font-bold text-sm text-slate-800">
+                      Context Recall
+                    </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
                     关键信息是否“找全”了？(需 Ground Truth)
@@ -74,28 +89,40 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             </div>
 
             <!-- Generation Side -->
-            <div class="bg-violet-50/60 rounded-2xl p-5 border border-violet-100 flex flex-col">
-              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
+            <div
+              class="bg-violet-50/60 rounded-2xl p-5 border border-violet-100 flex flex-col"
+            >
+              <h3
+                class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-3"
+              >
                 <div class="p-1.5 bg-violet-100 rounded-lg text-violet-600">
                   <ChatBubbleBottomCenterTextIcon class="w-5 h-5" />
                 </div>
                 生成质量 (Generation)
               </h3>
               <div class="grid grid-cols-2 gap-3 flex-grow">
-                <div class="bg-white/60 rounded-xl p-3 border border-violet-100/50">
+                <div
+                  class="bg-white/60 rounded-xl p-3 border border-violet-100/50"
+                >
                   <div class="flex items-center gap-2 mb-1">
                     <CheckBadgeIcon class="w-4 h-4 text-violet-600" />
-                    <h4 class="font-bold text-sm text-slate-800">Faithfulness</h4>
+                    <h4 class="font-bold text-sm text-slate-800">
+                      Faithfulness
+                    </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
                     <span class="font-semibold text-violet-700">忠实度</span
                     >：回答是否完全基于上下文？(防幻觉)
                   </p>
                 </div>
-                <div class="bg-white/60 rounded-xl p-3 border border-violet-100/50">
+                <div
+                  class="bg-white/60 rounded-xl p-3 border border-violet-100/50"
+                >
                   <div class="flex items-center gap-2 mb-1">
                     <BeakerIcon class="w-4 h-4 text-violet-600" />
-                    <h4 class="font-bold text-sm text-slate-800">Answer Relevance</h4>
+                    <h4 class="font-bold text-sm text-slate-800">
+                      Answer Relevance
+                    </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
                     <span class="font-semibold text-violet-700">相关性</span
@@ -116,7 +143,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <CircleStackIcon class="w-24 h-24 text-amber-600" />
               </div>
               <div class="relative z-10">
-                <h3 class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <h3
+                  class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2"
+                >
                   <span
                     class="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs"
                     >1</span
@@ -125,11 +154,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"
+                    ></span>
                     <span>构建高质量 QA 对 (问题+标准答案)</span>
                   </li>
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"
+                    ></span>
                     <span>来源：人工专家标注 / 合成数据</span>
                   </li>
                 </ul>
@@ -144,7 +177,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <TrophyIcon class="w-24 h-24 text-indigo-600" />
               </div>
               <div class="relative z-10">
-                <h3 class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <h3
+                  class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2"
+                >
                   <span
                     class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs"
                     >2</span
@@ -153,14 +188,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"
+                    ></span>
                     <span
                       >自动化评分核心 (如
-                      <span class="font-mono font-bold text-indigo-700">RAGAS</span>)</span
+                      <span class="font-mono font-bold text-indigo-700"
+                        >RAGAS</span
+                      >)</span
                     >
                   </li>
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"
+                    ></span>
                     <span>用 GPT-4 评价小模型，给出理由</span>
                   </li>
                 </ul>
@@ -175,7 +216,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <UserGroupIcon class="w-24 h-24 text-emerald-600" />
               </div>
               <div class="relative z-10">
-                <h3 class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <h3
+                  class="text-base font-bold text-slate-800 mb-2 flex items-center gap-2"
+                >
                   <span
                     class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs"
                     >3</span
@@ -184,11 +227,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"
+                    ></span>
                     <span>最终检验：用户点赞/点踩</span>
                   </li>
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"></span>
+                    <span
+                      class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"
+                    ></span>
                     <span>A/B Testing & Elo Rating</span>
                   </li>
                 </ul>
