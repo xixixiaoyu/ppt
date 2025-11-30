@@ -53,6 +53,6 @@ const tag = computed(() => props.as ?? 'div')
     :is="tag"
     :class="[baseClass, roundClass, padClass, hoverClass, props.class]"
   >
-    <slot />
+    <slot></slot>
   </component>
 </template>

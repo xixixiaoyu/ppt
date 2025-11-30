@@ -3,7 +3,7 @@
     <component
       v-if="activeBackgroundComponent"
       :is="activeBackgroundComponent"
-    />
+    ></component>
     <BackgroundSettingsOverlay
       :visible="settingsOpen"
       :backgrounds="backgrounds"

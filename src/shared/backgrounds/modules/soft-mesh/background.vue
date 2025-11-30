@@ -1,8 +1,8 @@
 <template>
   <div class="soft-mesh-background" aria-hidden="true">
-    <div class="layer mesh-gradient" />
-    <div class="layer grid-overlay" />
-    <div class="glass-veil" />
+    <div class="layer mesh-gradient"></div>
+    <div class="layer grid-overlay"></div>
+    <div class="glass-veil"></div>
   </div>
 </template>
 

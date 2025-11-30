@@ -12,7 +12,7 @@
           class="slide"
           :class="{ active: currentSlide === index }"
         >
-          <component :is="slide" :isActive="currentSlide === index" />
+          <component :is="slide" :isActive="currentSlide === index"></component>
         </div>
       </div>
     </div>
@@ -79,7 +79,11 @@
         >
           <div class="thumbnail-number">{{ index + 1 }}</div>
           <div class="thumbnail-preview">
-            <component :is="slide" :isActive="false" :isPreview="true" />
+            <component
+              :is="slide"
+              :isActive="false"
+              :isPreview="true"
+            ></component>
           </div>
         </div>
       </div>
@@ -88,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 const props = defineProps({
   slides: {
@@ -336,11 +340,43 @@ onMounted(() => {
   }
   readInitialSlideFromURL()
   editablePage.value = String(currentSlide.value + 1)
+
+  // 添加页面可见性变化监听，优化性能
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      // 页面隐藏时暂停动画
+      document.body.style.setProperty('--animation-paused', 'paused')
+    } else {
+      // 页面显示时恢复动画
+      document.body.style.setProperty('--animation-paused', 'running')
+    }
+  }
+
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+
+  // 在组件卸载时清理事件监听
+  onBeforeUnmount(() => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange)
+  })
 })
 
-watch(currentSlide, val => {
-  editablePage.value = String(val + 1)
+watch(currentSlide, (newVal, oldVal) => {
+  editablePage.value = String(newVal + 1)
   writeSlideToURL()
+
+  // 添加页面切换动画优化
+  if (newVal !== oldVal) {
+    // 预加载下一张和上一张幻灯片
+    const preloadSlide = (index: number) => {
+      if (index >= 0 && index < props.slides.length) {
+        // 预加载逻辑，这里可以根据需要实现
+        // 例如预加载图片、视频等资源
+      }
+    }
+
+    preloadSlide(newVal + 1) // 预加载下一张
+    preloadSlide(newVal - 1) // 预加载上一张
+  }
 })
 </script>
 

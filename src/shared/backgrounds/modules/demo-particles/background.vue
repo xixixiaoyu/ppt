@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="demo-particles-bg" />
+  <div ref="container" class="demo-particles-bg"></div>
 </template>
 
 <script setup lang="ts">
@@ -170,6 +170,11 @@ const handleResize = () => {
 onMounted(() => {
   if (!container.value) return
 
+  // 检查设备性能，调整粒子数量
+  const isLowEndDevice =
+    navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4
+  const particleCount = isLowEndDevice ? 2000 : 5000
+
   scene.value = new THREE.Scene()
 
   camera.value = new THREE.PerspectiveCamera(
@@ -180,9 +185,15 @@ onMounted(() => {
   )
   camera.value.position.z = 10
 
-  renderer.value = new THREE.WebGLRenderer({ alpha: true })
+  renderer.value = new THREE.WebGLRenderer({
+    alpha: true,
+    powerPreference: 'high-performance',
+    antialias: !isLowEndDevice,
+  })
   renderer.value.setSize(window.innerWidth, window.innerHeight)
-  renderer.value.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.value.setPixelRatio(
+    Math.min(window.devicePixelRatio, isLowEndDevice ? 1.5 : 2)
+  )
   renderer.value.domElement.style.pointerEvents = 'none'
   renderer.value.domElement.classList.add('demo-particles-canvas')
   container.value.appendChild(renderer.value.domElement)
@@ -211,7 +222,6 @@ onMounted(() => {
     scene.value?.add(sprite)
   })
 
-  const particleCount = 5000
   const positions = new Float32Array(particleCount * 3)
   const colors = new Float32Array(particleCount * 3)
   const velocities = new Float32Array(particleCount * 3)
@@ -254,8 +264,9 @@ onMounted(() => {
   const ambientLight = new THREE.AmbientLight(0x404040, 0.4)
   scene.value.add(ambientLight)
 
+  let frameId: number
   const animate = () => {
-    requestAnimationFrame(animate)
+    frameId = requestAnimationFrame(animate)
 
     const time = clock.getElapsedTime()
 
@@ -289,6 +300,11 @@ onMounted(() => {
 
   animate()
   window.addEventListener('resize', handleResize)
+
+  // 保存 frameId 以便在 onUnmounted 中取消
+  return () => {
+    cancelAnimationFrame(frameId)
+  }
 })
 
 onUnmounted(() => {

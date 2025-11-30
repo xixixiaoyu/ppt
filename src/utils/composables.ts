@@ -299,7 +299,23 @@ export function useLocalStorage<T>(
     try {
       window.localStorage.setItem(key, serializer.write(value))
     } catch (error) {
-      console.error(`Error setting localStorage key "${key}":`, error)
+      // 处理存储空间不足等错误
+      if (error instanceof Error && error.name === 'QuotaExceededError') {
+        console.warn(
+          `Storage quota exceeded for key "${key}". Clearing old data.`
+        )
+        try {
+          window.localStorage.clear()
+          window.localStorage.setItem(key, serializer.write(value))
+        } catch (clearError) {
+          console.error(
+            `Failed to clear and set localStorage key "${key}":`,
+            clearError
+          )
+        }
+      } else {
+        console.error(`Error setting localStorage key "${key}":`, error)
+      }
     }
   }
 

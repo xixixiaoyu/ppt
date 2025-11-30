@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
 import {
   GridComponent,
-  TooltipComponent,
   LegendComponent,
+  TooltipComponent,
 } from 'echarts/components'
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { computed } from 'vue'
 import VChart from 'vue-echarts'
 
 use([
@@ -101,7 +101,7 @@ const chartOption = computed(() => {
 
 <template>
   <div class="h-48 w-full">
-    <VChart class="chart" :option="chartOption" autoresize />
+    <VChart class="chart" :option="chartOption" autoresize></VChart>
   </div>
 </template>
 
