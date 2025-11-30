@@ -8,12 +8,16 @@ const shortcuts = [
   { key: '/', description: '聚焦搜索框' },
   { key: 'f', description: '打开/关闭筛选器' },
   { key: 'Escape', description: '关闭弹窗/清除搜索' },
+  { key: 'g', description: '切换视图模式（网格/列表）' },
   { key: 't', description: '切换主题' },
-  { key: 'e', description: '展开所有分类' },
-  { key: 'c', description: '折叠所有分类' },
-  { key: '1-5', description: '快速切换主题' },
-  { key: '↑↓', description: '在列表中导航' },
-  { key: 'Enter', description: '打开选中的演示文稿' },
+  { key: '?', description: '显示/隐藏此帮助面板' },
+  { key: '→', description: '下一张幻灯片' },
+  { key: '←', description: '上一张幻灯片' },
+  { key: 'PageDown', description: '下一张幻灯片' },
+  { key: 'PageUp', description: '上一张幻灯片' },
+  { key: 'Home', description: '第一张幻灯片' },
+  { key: 'End', description: '最后一张幻灯片' },
+  { key: '1-9', description: '快速跳转到对应幻灯片' },
 ]
 </script>
 

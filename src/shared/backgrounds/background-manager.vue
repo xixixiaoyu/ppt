@@ -19,9 +19,9 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import BackgroundSettingsOverlay from './background-settings-overlay.vue'
-import { usePresentationContext } from '../presentation/presentation-context'
 import type { LocaleCode } from '../i18n/types'
+import { usePresentationContext } from '../presentation/presentation-context'
+import BackgroundSettingsOverlay from './background-settings-overlay.vue'
 
 const emit = defineEmits<{
   (event: 'change', id: string): void
@@ -82,13 +82,13 @@ onBeforeUnmount(() => {
 
 const handleBackgroundSelection = (id: string) => {
   presentation.setBackground(id)
-  emit('change', selectedBackgroundId.value)
+  emit('change', id)
   closeSettings()
 }
 
 const handleLocaleSelection = (locale: LocaleCode) => {
   presentation.setLocale(locale)
-  emit('change:locale', selectedLocale.value)
+  emit('change:locale', locale)
 }
 </script>
 

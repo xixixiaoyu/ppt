@@ -41,6 +41,7 @@
           @input="onEditableInput"
           @focus="onEditableFocus"
           @blur="commitInlinePageJump"
+          :title="`当前页码 / 总页数 (按 Enter 确认跳转)`"
         />
         <span> / {{ slides.length }}</span>
       </div>
@@ -174,13 +175,26 @@ const handleKeyDown = (event: KeyboardEvent) => {
     event.preventDefault()
     return
   }
+
+  // 添加数字键快速跳转功能
+  if (event.key >= '1' && event.key <= '9') {
+    const slideIndex = parseInt(event.key) - 1
+    if (slideIndex < props.slides.length) {
+      event.preventDefault()
+      goToSlide(slideIndex)
+    }
+    return
+  }
+
   switch (event.key) {
     case 'ArrowRight':
     case ' ':
+    case 'PageDown':
       event.preventDefault()
       nextSlide()
       break
     case 'ArrowLeft':
+    case 'PageUp':
       event.preventDefault()
       previousSlide()
       break
@@ -193,6 +207,10 @@ const handleKeyDown = (event: KeyboardEvent) => {
       currentSlide.value = props.slides.length - 1
       break
     case 'Escape':
+      event.preventDefault()
+      showThumbnails.value = !showThumbnails.value
+      break
+    case 't':
       event.preventDefault()
       showThumbnails.value = !showThumbnails.value
       break

@@ -6,7 +6,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 <template>
   <HeroBanner
     effect="circles"
-    :title="'设计语言模板（示例)'"
+    :title="'设计语言模板（示例）'"
     :subtitle="'多版式、可重用、含交互与 SVG 动效的中文演示模板'"
     :titleSize="'7xl'"
     palette="indigo-fuchsia-emerald"

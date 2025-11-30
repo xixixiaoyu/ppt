@@ -45,7 +45,7 @@
       rgb(var(--accent) / 0.18),
       transparent 60%
     ),
-    linear-gradient(180deg, #ffffff, #f4f7ff);
+    linear-gradient(180deg, rgb(var(--surface)), rgb(var(--surface-muted)));
   filter: saturate(var(--mesh-saturation, 1.08))
     contrast(var(--mesh-contrast, 1.04));
 }
@@ -110,7 +110,7 @@
         rgb(var(--accent) / 0.16),
         transparent 60%
       ),
-      linear-gradient(180deg, #ffffff, #f7f9ff);
+      linear-gradient(180deg, rgb(var(--surface)), rgb(var(--surface-muted)));
   }
 
   .grid-overlay {

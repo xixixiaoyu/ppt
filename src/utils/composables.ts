@@ -159,20 +159,37 @@ export function useTheme() {
 }
 
 // 键盘导航
-export function useKeyboardNavigation(callbacks: Record<string, () => void>) {
+export function useKeyboardNavigation(
+  callbacks: Record<string, () => void>,
+  options: {
+    ignoreInputs?: boolean
+    preventDefault?: boolean | ((key: string) => boolean)
+  } = {}
+) {
+  const { ignoreInputs = true, preventDefault = true } = options
+
   onMounted(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // 忽略在输入框中的按键
       if (
-        event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLTextAreaElement
+        ignoreInputs &&
+        (event.target instanceof HTMLInputElement ||
+          event.target instanceof HTMLTextAreaElement ||
+          (event.target as HTMLElement)?.contentEditable === 'true')
       ) {
         return
       }
 
       const key = event.key.toLowerCase()
       if (callbacks[key]) {
-        event.preventDefault()
+        const shouldPreventDefault =
+          typeof preventDefault === 'function'
+            ? preventDefault(key)
+            : preventDefault
+
+        if (shouldPreventDefault) {
+          event.preventDefault()
+        }
         callbacks[key]()
       }
     }
@@ -256,27 +273,47 @@ export function useResponsive() {
 // 本地存储管理
 export function useLocalStorage<T>(
   key: string,
-  defaultValue: T
+  defaultValue: T,
+  options: {
+    serializer?: {
+      read: (value: string) => T
+      write: (value: T) => string
+    }
+  } = {}
 ): [Ref<T>, (value: T) => void] {
+  const { serializer = { read: JSON.parse, write: JSON.stringify } } = options
   const storedValue = ref<T>(defaultValue)
 
-  onMounted(() => {
+  const readValue = (): T | undefined => {
     try {
       const item = window.localStorage.getItem(key)
-      if (item) {
-        storedValue.value = JSON.parse(item)
-      }
+      if (item === null) return undefined
+      return serializer.read(item)
     } catch (error) {
-      console.error(`Error reading localStorage key "${key}":`, error)
+      console.warn(`Error reading localStorage key "${key}":`, error)
+      return undefined
+    }
+  }
+
+  const writeValue = (value: T): void => {
+    try {
+      window.localStorage.setItem(key, serializer.write(value))
+    } catch (error) {
+      console.error(`Error setting localStorage key "${key}":`, error)
+    }
+  }
+
+  onMounted(() => {
+    const value = readValue()
+    if (value !== undefined) {
+      storedValue.value = value
     }
   })
 
   const setValue = (value: T) => {
-    try {
+    if (value !== storedValue.value) {
       storedValue.value = value
-      window.localStorage.setItem(key, JSON.stringify(value))
-    } catch (error) {
-      console.error(`Error setting localStorage key "${key}":`, error)
+      writeValue(value)
     }
   }
 

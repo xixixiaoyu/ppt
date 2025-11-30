@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef, onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
+import { onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
 const scene = shallowRef<THREE.Scene | null>(null)
 const camera = shallowRef<THREE.PerspectiveCamera | null>(null)
@@ -327,7 +327,12 @@ onUnmounted(() => {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(var(--surface)) 0%,
+    rgb(var(--surface-muted)) 50%,
+    rgb(var(--surface)) 100%
+  );
   z-index: 0;
 }
 

@@ -54,6 +54,13 @@ const keyboardCallbacks = {
       setViewMode(viewMode.value === 'grid' ? 'list' : 'grid')
     }
   },
+  t: () => {
+    // 切换主题的快捷键
+    const themeToggle = document.querySelector('.theme-toggle button')
+    if (themeToggle) {
+      ;(themeToggle as HTMLButtonElement).click()
+    }
+  },
 }
 
 useKeyboardNavigation(keyboardCallbacks)
