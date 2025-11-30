@@ -61,75 +61,9 @@ export const categoriesConfig: Category[] = [
       },
     ],
   },
-  {
-    id: 'data-visualization',
-    name: '数据可视化',
-    description: '数据展示和图表相关的演示文稿',
-    icon: 'chart-bar',
-    expanded: false,
-    color: 'blue',
-    presentations: [
-      {
-        id: 'echarts-demos',
-        title: 'ECharts 图表演示',
-        description: '使用 ECharts 创建各种交互式图表',
-        route: '/charts',
-        tags: ['图表', '数据可视化', 'ECharts'],
-        difficulty: 'intermediate',
-        duration: '25分钟',
-        lastUpdated: '2024-01-08',
-      },
-    ],
-  },
-  {
-    id: 'web-development',
-    name: 'Web 开发',
-    description: '前端和 Web 开发相关的技术演示',
-    icon: 'code',
-    expanded: false,
-    color: 'green',
-    presentations: [
-      {
-        id: 'vue3-advanced',
-        title: 'Vue 3 高级特性',
-        description: '深入探讨 Vue 3 的高级特性和最佳实践',
-        route: '/vue3-advanced',
-        tags: ['Vue', '前端', 'JavaScript'],
-        difficulty: 'advanced',
-        duration: '40分钟',
-        lastUpdated: '2024-01-12',
-      },
-      {
-        id: 'typescript-patterns',
-        title: 'TypeScript 设计模式',
-        description: '在 TypeScript 中实现常见的设计模式',
-        route: '/typescript-patterns',
-        tags: ['TypeScript', '设计模式', '编程'],
-        difficulty: 'advanced',
-        duration: '35分钟',
-        lastUpdated: '2024-01-05',
-      },
-    ],
-  },
 ]
 
-export const tagsList = [
-  '大模型',
-  'AI',
-  '深度学习',
-  '设计',
-  '模板',
-  'UI',
-  '图表',
-  '数据可视化',
-  'ECharts',
-  'Vue',
-  '前端',
-  'JavaScript',
-  'TypeScript',
-  '设计模式',
-  '编程',
-]
+export const tagsList = ['大模型', 'AI', '深度学习', '设计', '模板', 'UI']
 
 export const difficulties = ['beginner', 'intermediate', 'advanced'] as const
 export type Difficulty = (typeof difficulties)[number]
