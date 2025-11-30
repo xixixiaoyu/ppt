@@ -51,7 +51,7 @@ const presentationContext = createPresentationContext({
   },
   backgrounds: [demoParticlesBackground, softMeshBackground],
   locales: [...localeOptions],
-  contextKey: 'acp-llm-tutorial',
+  contextKey: 'llm-tutorial',
   persist: true,
 })
 

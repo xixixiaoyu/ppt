@@ -1,225 +1,238 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import KeyboardShortcuts from '@/components/KeyboardShortcuts.vue'
+import SimplePresentationGrid from '@/components/SimplePresentationGrid.vue'
+import SimpleSearchAndFilter from '@/components/SimpleSearchAndFilter.vue'
+import ThemeToggle from '@/components/ThemeToggle.vue'
+import ViewToggle from '@/components/ViewToggle.vue'
+import { categoriesConfig } from '@/config/presentations'
+import {
+  useCategoryExpansion,
+  useKeyboardNavigation,
+  useLocalStorage,
+  useResponsive,
+  useSearchAndFilter,
+} from '@/utils/composables'
+import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-interface Presentation {
-  id: string
-  title: string
-  description: string
-  route: string
-}
+// 使用组合式函数
+const { filteredCategories } = useSearchAndFilter()
+const { expandAll } = useCategoryExpansion()
+const { isMobile } = useResponsive()
 
-interface Category {
-  id: string
-  name: string
-  expanded: boolean
-  presentations: Presentation[]
-}
+// 视图模式状态
+const [viewMode, setViewMode] = useLocalStorage<'grid' | 'list'>(
+  'presentation-view-mode',
+  'grid'
+)
 
-const categories = ref<Category[]>([
-  {
-    id: 'demo',
-    name: '大模型',
-    expanded: true,
-    presentations: [
-      {
-        id: 'acp-llm-tutorial',
-        title: 'acp',
-        description: '',
-        route: '/llm',
-      },
-    ],
+// 响应式状态
+const isFilterOpen = ref(false)
+
+// 根据屏幕尺寸自动调整视图模式
+const effectiveViewMode = computed(() => {
+  if (isMobile.value) return 'list'
+  return viewMode.value
+})
+
+// 键盘导航
+const keyboardCallbacks = {
+  '/': () => {
+    const searchInput = document.querySelector(
+      'input[type="text"]'
+    ) as HTMLInputElement
+    searchInput?.focus()
   },
-])
-
-const toggleCategory = (categoryId: string) => {
-  const category = categories.value.find(cat => cat.id === categoryId)
-  if (category) {
-    category.expanded = !category.expanded
-  }
+  f: () => {
+    isFilterOpen.value = !isFilterOpen.value
+  },
+  escape: () => {
+    isFilterOpen.value = false
+  },
+  g: () => {
+    if (!isMobile.value) {
+      setViewMode(viewMode.value === 'grid' ? 'list' : 'grid')
+    }
+  },
 }
+
+useKeyboardNavigation(keyboardCallbacks)
+
+// 组件挂载时的初始化
+onMounted(() => {
+  // 默认展开第一个分类
+  if (categoriesConfig.length > 0) {
+    expandAll()
+  }
+})
 </script>
 
 <template>
   <div
     class="home-shell relative min-h-screen overflow-hidden bg-surface text-text-primary"
   >
+    <!-- 简化背景效果 -->
     <div class="absolute inset-0 pointer-events-none">
       <div
-        class="absolute inset-0 bg-gradient-to-br from-surface/40 via-surface/10 to-accent/10"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--accent)/0.25),transparent_50%),radial-gradient(circle_at_80%_30%,rgb(var(--accent)/0.2),transparent_45%)]"
+        class="absolute inset-0 bg-gradient-to-br from-surface/30 via-surface/5 to-accent/5"
       ></div>
     </div>
 
     <div class="relative z-10 flex min-h-screen flex-col">
-      <header
-        class="container mx-auto max-w-6xl px-6 md:px-8 pt-20 text-center"
-      >
-        <p class="text-xs uppercase tracking-[0.6em] text-accent/70">
-          PRESENTATION DECKS
-        </p>
-        <h1
-          class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
-        >
-          演示文稿集合
-        </h1>
-        <div class="mt-8">
-          <RouterLink
-            to="/template"
-            class="inline-flex items-center gap-2 rounded-full bg-accent/20 px-6 py-3 text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/30 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2"
-          >
-            <svg
-              class="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
+      <!-- 极简头部 -->
+      <header class="container mx-auto max-w-7xl px-4 md:px-6 pt-12 pb-4">
+        <div class="flex items-center justify-between">
+          <!-- 标题 -->
+          <div>
+            <p class="text-xs uppercase tracking-[0.4em] text-accent/60 mb-1">
+              演示文稿
+            </p>
+            <h1
+              class="text-xl md:text-2xl font-bold tracking-tight text-text-primary"
             >
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" />
-              <path d="M2 17L12 22L22 17" />
-              <path d="M2 12L12 17L22 12" />
-            </svg>
-            设计语言模板
-          </RouterLink>
+              演示文稿集合
+            </h1>
+          </div>
+
+          <!-- 操作按钮 -->
+          <div class="flex items-center gap-3">
+            <RouterLink
+              to="/template"
+              class="inline-flex items-center gap-2 rounded-full bg-accent/20 px-3 py-1.5 text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/30 hover:scale-105"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                <path d="M2 17L12 22L22 17" />
+                <path d="M2 12L12 17L22 12" />
+              </svg>
+              模板
+            </RouterLink>
+
+            <!-- 视图切换 -->
+            <ViewToggle v-if="!isMobile" v-model="viewMode" />
+
+            <!-- 工具按钮 -->
+            <div class="flex items-center gap-2">
+              <ThemeToggle />
+              <KeyboardShortcuts />
+            </div>
+          </div>
         </div>
       </header>
 
+      <!-- 主要内容 -->
       <main class="flex-1">
-        <section class="container mx-auto max-w-6xl px-6 md:px-8 pb-16">
-          <div
-            class="rounded-3xl border border-accent/20 bg-surface-muted/60 backdrop-blur-xl shadow-[0_0_120px_-60px_rgba(var(--accent),0.35)] overflow-hidden"
-          >
-            <div
-              class="border-b border-accent/10 px-8 py-6 flex items-end justify-between"
-            >
-              <h2 class="text-lg font-medium text-text-primary">演示列表</h2>
-              <span class="text-xs uppercase tracking-widest text-accent/70"
-                >{{ categories.length }} Categories</span
-              >
-            </div>
-
-            <div class="px-6 md:px-8 py-6">
-              <div class="space-y-6">
-                <section
-                  v-for="category in categories"
-                  :key="category.id"
-                  class="rounded-2xl border border-accent/10 bg-surface/40"
-                >
-                  <button
-                    @click="toggleCategory(category.id)"
-                    :aria-expanded="category.expanded"
-                    class="group flex w-full items-center justify-between gap-6 rounded-2xl px-5 py-4 text-left transition-colors duration-200 hover:bg-accent/10"
-                  >
-                    <div class="flex items-center gap-3">
-                      <span
-                        class="inline-flex w-[2px] h-4 bg-gradient-to-b from-accent to-accent/40"
-                        aria-hidden="true"
-                      ></span>
-                      <div>
-                        <h3
-                          class="text-base font-bold uppercase tracking-widest text-text-primary"
-                        >
-                          {{ category.name }}
-                        </h3>
-                        <p class="text-xs text-text-muted">
-                          {{ category.presentations.length }} 个演示文稿
-                        </p>
-                      </div>
-                    </div>
-                    <svg
-                      class="h-4 w-4 text-accent transition-transform duration-200"
-                      :class="{ 'rotate-180': category.expanded }"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
-
-                  <transition
-                    enter-active-class="transition duration-200 ease-out"
-                    enter-from-class="opacity-0 -translate-y-2"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition duration-150 ease-in"
-                    leave-from-class="opacity-100 translate-y-0"
-                    leave-to-class="opacity-0 -translate-y-2"
-                  >
-                    <ul
-                      v-show="category.expanded"
-                      class="divide-y divide-accent/10 border-t border-accent/10"
-                    >
-                      <li
-                        v-for="presentation in category.presentations"
-                        :key="presentation.id"
-                      >
-                        <RouterLink
-                          :to="presentation.route"
-                          class="flex items-start gap-3 px-5 py-4 transition-colors duration-200"
-                          :class="[
-                            presentation.route === '#'
-                              ? 'pointer-events-none text-text-muted'
-                              : 'hover:bg-accent/10',
-                            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent))] focus-visible:outline-offset-2',
-                          ]"
-                        >
-                          <span
-                            class="inline-flex w-[2px] h-3 mt-[3px] bg-gradient-to-b from-accent to-accent/40"
-                            aria-hidden="true"
-                          ></span>
-                          <div class="flex-1">
-                            <p class="text-sm font-medium text-text-primary">
-                              {{ presentation.title }}
-                            </p>
-                            <p
-                              class="mt-1 text-sm leading-relaxed text-text-muted"
-                            >
-                              {{ presentation.description }}
-                            </p>
-                          </div>
-                          <svg
-                            v-if="presentation.route !== '#'"
-                            class="mt-1 h-4 w-4 text-accent"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                          >
-                            <path d="M9 5l7 7-7 7" />
-                          </svg>
-                        </RouterLink>
-                      </li>
-                    </ul>
-                  </transition>
-                </section>
-              </div>
-            </div>
+        <section class="container mx-auto max-w-7xl px-4 md:px-6 pb-6">
+          <!-- 极简搜索和筛选 -->
+          <div class="mb-6">
+            <SimpleSearchAndFilter v-model="isFilterOpen" />
           </div>
+
+          <!-- 极简演示文稿展示 -->
+          <SimplePresentationGrid
+            :categories="filteredCategories"
+            :view-mode="effectiveViewMode"
+          />
         </section>
       </main>
+
+      <!-- 极简页脚 -->
+      <footer class="border-t border-accent/10 bg-surface-muted/30">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6 py-3">
+          <div
+            class="flex items-center justify-between text-xs text-text-muted"
+          >
+            <span>© 2024 演示文稿集合</span>
+            <div class="flex items-center gap-3">
+              <span
+                >按
+                <kbd
+                  class="rounded border border-accent/20 bg-surface/60 px-1 py-0.5"
+                  >?</kbd
+                >
+                查看快捷键</span
+              >
+              <span v-if="!isMobile"
+                >按
+                <kbd
+                  class="rounded border border-accent/20 bg-surface/60 px-1 py-0.5"
+                  >G</kbd
+                >
+                切换视图</span
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
 
 <style scoped>
+.home-shell {
+  /* 简化背景效果 */
+}
+
 .home-shell::after {
   content: '';
   position: absolute;
-  inset: -40%;
+  inset: -30%;
   background: conic-gradient(
     from 90deg at 50% 50%,
-    rgb(var(--accent) / 0.12),
-    transparent 30%,
+    rgb(var(--accent) / 0.08),
+    transparent 40%,
     transparent 60%,
-    rgb(var(--accent) / 0.12)
+    rgb(var(--accent) / 0.08)
   );
-  filter: blur(120px);
-  opacity: 0.5;
+  filter: blur(80px);
+  opacity: 0.3;
   pointer-events: none;
+}
+
+/* 极简移动端优化 */
+@media (max-width: 768px) {
+  .home-shell {
+    @apply pb-12;
+  }
+}
+
+/* 极简焦点样式 */
+:focus-visible {
+  @apply outline-1 outline-offset-1 outline-[rgb(var(--accent))];
+}
+
+/* 极简滚动条 */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(var(--surface-muted) / 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--accent) / 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent) / 0.6);
+}
+
+/* 极简动画优化 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
