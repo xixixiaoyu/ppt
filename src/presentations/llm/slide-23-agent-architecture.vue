@@ -10,9 +10,9 @@ const features = [
     title: 'Brain (LLM)',
     description: '核心控制器',
     details: [
-      '负责所有的推理、规划和决策制定。',
-      '就像人类的大脑，处理输入信息，调用记忆，决定下一步行动。',
-      'Prompt Engineering 在这里起着关键作用，定义了 Agent 的角色和行为准则。',
+      '负责推理、规划和决策制定',
+      '处理输入信息，调用记忆，决定下一步行动',
+      'Prompt Engineering 定义 Agent 角色和行为准则',
     ],
   },
   {
@@ -21,9 +21,9 @@ const features = [
     title: 'Planning (规划)',
     description: '任务拆解与反思',
     details: [
-      '子目标分解：将大目标拆解为可管理的小步骤 (Chain of Thought, Tree of Thoughts)。',
-      '反思与修正：自我批评 (Self-Reflection)，从过去的错误中学习并优化未来的行动。',
-      '就像项目经理在执行前先列出 To-Do List。',
+      '子目标分解：大目标拆解为小步骤 (CoT, ToT)',
+      '反思与修正：从错误中学习并优化行动',
+      '类似项目经理制定执行计划',
     ],
   },
   {
@@ -32,9 +32,9 @@ const features = [
     title: 'Memory (记忆)',
     description: '上下文与知识库',
     details: [
-      '短期记忆：所有的上下文窗口内容，记录当前的对话历史。',
-      '长期记忆：通常使用向量数据库 (Vector DB)，存储和检索大量的外部知识。',
-      '就像人类既有工作记忆，也有长期知识储备。',
+      '短期记忆：上下文窗口内容，记录对话历史',
+      '长期记忆：向量数据库存储和检索外部知识',
+      '类似人类工作记忆和长期知识储备',
     ],
   },
   {
@@ -43,9 +43,9 @@ const features = [
     title: 'Tools (工具使用)',
     description: '执行行动的能力',
     details: [
-      '扩展 LLM 的能力边界，使其不仅仅是文本生成器。',
-      '常见工具：计算器、代码解释器、搜索引擎、API 接口、文件系统操作。',
-      '通过 Function Calling 或 MCP 协议连接外部世界。',
+      '扩展 LLM 能力边界，超越文本生成',
+      '常见工具：计算器、代码解释器、搜索引擎、API',
+      '通过 Function Calling 或 MCP 协议连接外部世界',
     ],
   },
   {
@@ -54,9 +54,9 @@ const features = [
     title: 'ReAct Framework',
     description: 'Reasoning + Acting',
     details: [
-      '核心思想：将“推理 (Reasoning)”和“行动 (Acting)”交织，形成闭环。',
-      '三步循环：Thought (思考下一步) → Action (调用工具) → Observation (观察结果)。',
-      '优势：相比于直接生成答案，ReAct 能处理更复杂的任务，并在遇到错误时自我修正。',
+      '核心思想：推理和行动交织形成闭环',
+      '三步循环：Thought → Action → Observation',
+      '优势：处理复杂任务，支持错误自我修正',
     ],
   },
 ]
@@ -71,7 +71,7 @@ const features = [
         AI Agent 智能体架构
       </h2>
       <p class="mt-4 text-xl text-slate-600 max-w-3xl mx-auto">
-        Agent = LLM (大脑) + Planning (规划) + Memory (记忆) + Tools (工具)
+        Agent = LLM + Planning + Memory + Tools
       </p>
     </div>
 

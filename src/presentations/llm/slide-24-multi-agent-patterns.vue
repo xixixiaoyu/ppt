@@ -9,19 +9,19 @@ const patterns = [
     id: 'sequential',
     label: 'Sequential (流水线)',
     icon: '➡️',
-    desc: '任务按预定顺序依次传递，上一个输出是下一个输入。适合流程固定的任务。',
+    desc: '任务按顺序传递，上一步输出是下一步输入。适合固定流程任务。',
   },
   {
     id: 'hierarchical',
     label: 'Hierarchical (层级式)',
     icon: '👑',
-    desc: 'Manager 负责规划和分发，Workers 并行或串行执行。适合复杂的大型项目。',
+    desc: 'Manager 规划分发，Workers 并行/串行执行。适合复杂大型项目。',
   },
   {
     id: 'joint',
     label: 'Joint Chat (圆桌会)',
     icon: '💬',
-    desc: '多个专家 Agent 自由讨论，互相修正，直到达成共识。适合创意和开放性问题。',
+    desc: '多专家自由讨论，互相修正，达成共识。适合创意和开放性问题。',
   },
 ]
 
@@ -29,25 +29,25 @@ const roles = [
   {
     title: 'Planner (规划者)',
     icon: '🗺️',
-    desc: '分析意图，拆解任务 (ToT)，制定执行路径。',
+    desc: '分析意图，拆解任务 (ToT)，制定执行路径',
     color: 'bg-blue-50 border-blue-200 text-blue-800',
   },
   {
     title: 'Executor (执行者)',
     icon: '⚡',
-    desc: '手握工具 (Tools)，专注执行特定领域的子任务。',
+    desc: '使用工具，专注执行特定领域子任务',
     color: 'bg-emerald-50 border-emerald-200 text-emerald-800',
   },
   {
     title: 'Reviewer (评估者)',
     icon: '🔍',
-    desc: '根据标准检查结果质量，提供反馈循环 (Feedback Loop)。',
+    desc: '检查结果质量，提供反馈循环',
     color: 'bg-amber-50 border-amber-200 text-amber-800',
   },
   {
     title: 'Summarizer (总结者)',
     icon: '📝',
-    desc: '汇总各方信息，消除冗余，生成最终报告。',
+    desc: '汇总信息，消除冗余，生成最终报告',
     color: 'bg-purple-50 border-purple-200 text-purple-800',
   },
 ]
@@ -62,7 +62,7 @@ const roles = [
         Multi-Agent 多智能体协作
       </h2>
       <p class="mt-4 text-xl text-slate-600 max-w-3xl mx-auto">
-        从“单打独斗”到“团队协作”：通过角色分工解决复杂问题
+        从单打独斗到团队协作：通过角色分工解决复杂问题
       </p>
     </div>
 
