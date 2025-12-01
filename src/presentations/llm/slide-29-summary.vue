@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -78,8 +78,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <span class="text-2xl">🧠</span> 原理与基础
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                理解 Transformer 架构、Token 机制以及 Pre-training/SFT/RLHF
-                训练流程是应用开发的基石。
+                Transformer 架构、Token
+                机制和训练流程（Pre-training/SFT/RLHF）是 LLM 应用开发的基础。
               </p>
             </div>
 
@@ -92,8 +92,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <span class="text-2xl">📚</span> RAG 架构
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                通过 Embedding 和向量数据库引入外部知识，结合 Rerank
-                和高级检索策略解决幻觉问题。
+                利用 Embedding 和向量数据库引入外部知识，通过 Rerank
+                和高级检索策略解决模型幻觉问题。
               </p>
             </div>
 
@@ -106,8 +106,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <span class="text-2xl">🛠️</span> 微调 (Fine-tuning)
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                当需要改变模型行为、风格或注入特定领域深度知识时，LoRA
-                等微调技术是强有力的补充。
+                LoRA 等微调技术可改变模型行为、风格，注入特定领域知识，是 RAG
+                的重要补充。
               </p>
             </div>
           </div>
@@ -122,8 +122,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <span class="text-2xl">🤖</span> Agent 智能体
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                利用 Function Calling 和 ReAct/Plan-and-Solve 模式，让 LLM
-                具备规划、工具使用和与环境交互的能力。
+                通过 Function Calling 和 ReAct 模式，让 LLM
+                具备规划、工具使用和环境交互能力。
               </p>
             </div>
 
@@ -137,7 +137,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
                 Ragas 评估框架、Prompt
-                注入防御以及数据隐私保护是构建可靠企业级应用不可或缺的环节。
+                注入防御和数据隐私保护是构建企业级应用的关键环节。
               </p>
             </div>
 
@@ -150,8 +150,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 <span class="text-2xl">🚀</span> 部署与工程化
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                从 vLLM
-                加速推理到边缘端小模型，选择合适的部署策略以平衡成本、延迟和效果。
+                vLLM
+                加速推理、边缘端小模型部署，平衡成本、延迟和效果是工程化的核心考量。
               </p>
             </div>
           </div>
