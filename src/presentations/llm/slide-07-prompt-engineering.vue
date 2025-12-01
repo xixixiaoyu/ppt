@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -64,10 +64,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            编写最佳 Prompt 的秘籍
+            Prompt 工程核心技巧
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            释放大模型潜力的关键技巧 (BROKE 原则)
+            掌握 BROKE 原则，释放 AI 潜能
           </p>
         </div>
 
@@ -80,14 +80,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🎭</span>
               <h3 class="font-bold text-slate-800 text-lg">
-                角色与背景 (Background)
+                背景设定 (Background)
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              为 AI 设定一个专家角色，并提供充足的任务背景。
+              设定专家角色，提供任务背景信息。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "你是一位资深 Python 工程师，负责优化..."</span
+                >例: "你是一位资深 Python 工程师..."</span
               >
             </p>
           </div>
@@ -99,14 +99,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🎯</span>
               <h3 class="font-bold text-slate-800 text-lg">
-                明确目标 (Objectives)
+                目标明确 (Objectives)
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              清晰地定义你希望模型完成的具体任务。
+              清晰定义模型需要完成的具体任务。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "请重构这段代码以提高可读性..."</span
+                >例: "重构代码以提高可读性..."</span
               >
             </p>
           </div>
@@ -118,14 +118,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">📦</span>
               <h3 class="font-bold text-slate-800 text-lg">
-                关键结果 (Key Results)
+                结果要求 (Key Results)
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              指定输出的格式、风格或长度限制。
+              指定输出格式、风格和长度要求。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "请以 Markdown 列表形式输出，不超过 200 字。"</span
+                >例: "Markdown 列表形式，不超过 200 字"</span
               >
             </p>
           </div>
@@ -137,14 +137,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">💡</span>
               <h3 class="font-bold text-slate-800 text-lg">
-                示例引导 (Evolve/Examples)
+                示例演示 (Examples)
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              提供优质的输入输出示例 (Few-Shot)。
+              提供输入输出示例，引导模型理解。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "输入: 苹果 -> 水果; 输入: 白菜 -> 蔬菜"</span
+                >例: "苹果 → 水果; 白菜 → 蔬菜"</span
               >
             </p>
           </div>
@@ -160,10 +160,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              引导模型"一步步思考"，展示推理过程。
+              引导模型逐步思考，展示推理过程。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "请一步步分析这个问题，然后得出结论。"</span
+                >例: "请逐步分析问题，然后得出结论"</span
               >
             </p>
           </div>
@@ -175,14 +175,14 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🚧</span>
               <h3 class="font-bold text-slate-800 text-lg">
-                负向约束 (Constraints)
+                约束条件 (Constraints)
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              明确"不要做什么"，避免模型产生幻觉或冗余。
+              明确禁止事项，避免幻觉和冗余信息。
               <br />
               <span class="text-xs text-slate-400"
-                >例: "不要解释代码，直接给出结果。"</span
+                >例: "不要解释代码，直接给出结果"</span
               >
             </p>
           </div>

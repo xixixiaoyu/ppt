@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -64,10 +64,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            常见 API 参数详解
+            API 参数详解
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            精准控制模型输出的关键配置
+            掌握关键参数，精准控制模型输出
           </p>
         </div>
 
@@ -100,10 +100,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">model</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              指定要使用的模型 ID。
+              指定使用的模型 ID
               <br />
               <span class="text-xs text-slate-400"
-                >例: "gpt-4", "claude-3-opus", "deepseek-chat"</span
+                >gpt-4, claude-3-opus, deepseek-chat</span
               >
             </p>
           </div>
@@ -135,10 +135,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              对话历史列表。每个对象包含
+              对话历史列表，包含
               <code class="bg-slate-100 px-1 rounded">role</code>
-              (system/user/assistant) 和
-              <code class="bg-slate-100 px-1 rounded">content</code>。
+              和
+              <code class="bg-slate-100 px-1 rounded">content</code>
+              字段
             </p>
           </div>
 
@@ -167,11 +168,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              控制输出的随机性 (0.0 - 2.0)。
+              控制输出随机性 (0.0 - 2.0)
               <br />
               <span class="text-xs text-slate-500">
-                • 0.2: 专注、确定 (代码/数学)<br />
-                • 0.8: 创意、多样 (创作/闲聊)
+                • 0.2: 专注确定 (代码/数学)<br />
+                • 0.8: 创意多样 (创作/闲聊)
               </span>
             </p>
           </div>
@@ -203,7 +204,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              限制生成内容的最大 Token 数量。防止模型回复过长或消耗过多 Token。
+              限制生成内容的最大 Token 数量，防止回复过长或消耗过多
             </p>
           </div>
 
@@ -232,11 +233,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">top_p</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              <strong>核采样 (Nucleus Sampling)</strong>。选取概率累积达到 P (如
-              0.9) 的最小候选集。
+              <strong>核采样</strong>，选取概率累积达到 P (如 0.9) 的最小候选集
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                区别：候选集大小<strong>动态变化</strong>。确定性高时候选少，不确定时候选多。
+                候选集大小<strong>动态变化</strong>：确定性高时候选少，不确定时候选多
               </span>
             </p>
           </div>
@@ -264,10 +264,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">top_k</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              仅从概率最高的 <strong>K 个</strong>词中进行采样（如 K=50）。
+              仅从概率最高的 <strong>K 个</strong>词中采样 (如 K=50)
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                区别：候选集大小<strong>固定</strong>。简单粗暴地切断低概率长尾，防止离谱输出。
+                候选集大小<strong>固定</strong>：切断低概率长尾，防止离谱输出
               </span>
             </p>
           </div>
@@ -295,8 +295,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">stream</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              流式输出
-              (true/false)。让服务器以数据流的形式实时返回结果，实现"打字机"效果，减少用户等待感。
+              流式输出 (true/false)，实时返回结果，实现"打字机"效果，减少等待感
             </p>
           </div>
 
@@ -329,14 +328,13 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               </h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              <strong>思考模式</strong>。如
+              <strong>思考模式</strong>，如
               <code class="bg-slate-100 px-1 rounded text-xs"
                 >{"type": "enabled", "budget_tokens": 1024}</code
-              >。
+              >
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                效果：决定<strong>是否</strong>让模型在回答前进行深度思考
-                (CoT)，并可设置思考预算。
+                决定模型回答前是否进行深度思考 (CoT)，可设置思考预算
               </span>
             </p>
           </div>
@@ -367,11 +365,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg font-mono">seed</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              <strong>随机种子</strong>。指定一个整数（如 42）。
+              <strong>随机种子</strong>，指定整数 (如 42)
               <br />
               <span class="text-xs text-slate-500 mt-1 block">
-                效果：让模型的输出尽可能<strong>可复现</strong>。相同 Seed +
-                相同参数 = 几乎相同的结果。适合测试和调试。
+                使模型输出<strong>可复现</strong>：相同 Seed + 相同参数 =
+                几乎相同结果，适合测试调试
               </span>
             </p>
           </div>

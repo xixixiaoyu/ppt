@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -64,10 +64,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            局限与破局：大模型的阿喀琉斯之踵
+            大模型的局限与解决方案
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            认清边界，善用工具，方能驾驭 AI
+            认知边界，善用工具，提升 AI 效能
           </p>
         </div>
 
@@ -81,45 +81,43 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <h2
               class="text-2xl font-bold text-slate-800 flex items-center gap-2 mb-2"
             >
-              <span class="text-red-500">⚠️</span> 核心局限 (Limitations)
+              <span class="text-red-500">⚠️</span> 核心局限
             </h2>
 
             <ul class="space-y-4 flex-1">
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">🤥</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">
-                    幻觉 (Hallucinations)
-                  </h3>
+                  <h3 class="font-bold text-slate-800">幻觉问题</h3>
                   <p class="text-slate-600 text-sm">
-                    一本正经地胡说八道，生成看似合理但完全错误的内容。
+                    生成看似合理但实际错误的内容
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">📅</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">时效性滞后</h3>
+                  <h3 class="font-bold text-slate-800">知识滞后</h3>
                   <p class="text-slate-600 text-sm">
-                    知识停留在训练截止日期，不知道“今天”发生的新闻。
+                    训练数据有截止日期，无法获取最新信息
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">📝</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">上下文限制</h3>
+                  <h3 class="font-bold text-slate-800">上下文受限</h3>
                   <p class="text-slate-600 text-sm">
-                    记忆窗口有限，无法一次性处理超长书籍或整个项目代码。
+                    记忆窗口有限，难以处理长文本内容
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">🧮</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">复杂逻辑短板</h3>
+                  <h3 class="font-bold text-slate-800">逻辑推理弱</h3>
                   <p class="text-slate-600 text-sm">
-                    即使是最强模型，在多步数学计算和严密逻辑推理上仍会犯错。
+                    多步计算和复杂推理容易出错
                   </p>
                 </div>
               </li>
@@ -134,51 +132,47 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <h2
               class="text-2xl font-bold text-slate-800 flex items-center gap-2 mb-2"
             >
-              <span class="text-green-600">💡</span> 最佳解法 (Solutions)
+              <span class="text-green-600">💡</span> 解决方案
             </h2>
 
             <ul class="space-y-4 flex-1">
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">📚</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">RAG (检索增强生成)</h3>
+                  <h3 class="font-bold text-slate-800">RAG 检索增强</h3>
                   <p class="text-slate-600 text-sm">
-                    <span class="text-green-700 font-semibold">外挂知识库</span
-                    >。让 AI 像开卷考试一样，先查资料再回答，解决幻觉和时效性。
+                    <span class="text-green-700 font-semibold">外挂知识库</span>
+                    先检索相关资料再生成回答，减少幻觉
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">🛠️</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">
-                    Function Calling / Tools
-                  </h3>
+                  <h3 class="font-bold text-slate-800">函数调用工具</h3>
                   <p class="text-slate-600 text-sm">
-                    <span class="text-green-700 font-semibold">使用工具</span
-                    >。把计算交给计算器，把搜索交给搜索引擎，补齐能力短板。
+                    <span class="text-green-700 font-semibold">工具扩展</span>
+                    调用外部 API 和工具，弥补自身能力不足
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">⛓️</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">
-                    Prompt Engineering (CoT)
-                  </h3>
+                  <h3 class="font-bold text-slate-800">思维链提示</h3>
                   <p class="text-slate-600 text-sm">
-                    <span class="text-green-700 font-semibold">思维链提示</span
-                    >。引导 AI "Step-by-step" 思考，显著提升推理准确率。
+                    <span class="text-green-700 font-semibold">分步思考</span>
+                    引导 AI 逐步推理，提高逻辑准确性
                   </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="text-2xl shrink-0">🎯</span>
                 <div>
-                  <h3 class="font-bold text-slate-800">Fine-tuning (微调)</h3>
+                  <h3 class="font-bold text-slate-800">模型微调</h3>
                   <p class="text-slate-600 text-sm">
-                    <span class="text-green-700 font-semibold">专家模式</span
-                    >。注入领域特定数据，让通用模型变成行业专家。
+                    <span class="text-green-700 font-semibold">领域专家</span>
+                    注入专业数据，定制化特定领域能力
                   </p>
                 </div>
               </li>
