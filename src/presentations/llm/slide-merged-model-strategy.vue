@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 import {
-  ScaleIcon,
-  RocketLaunchIcon,
-  DevicePhoneMobileIcon,
-  CloudIcon,
-  ServerStackIcon,
   ChartBarIcon,
+  CloudIcon,
   CurrencyDollarIcon,
+  DevicePhoneMobileIcon,
+  RocketLaunchIcon,
+  ScaleIcon,
+  ServerStackIcon,
 } from '@heroicons/vue/24/outline'
+import { ref } from 'vue'
 
 // Tabs configuration
 const tabs = [
@@ -21,41 +21,38 @@ const tabs = [
 ]
 const activeTab = ref('selection')
 
-// --- Data for Selection Tab (Slide 25b) ---
-// No dynamic data needed, purely template-based
-
-// --- Data for Deployment Tab (Slide 25) ---
+// --- 部署策略数据 ---
 const deploymentStrategies = [
   {
-    title: '模型量化 (Quantization)',
+    title: '模型量化',
     icon: '📉',
-    desc: '降低精度以减少显存占用并提高速度',
+    desc: '降低精度，减少显存占用',
     details: [
-      'FP16 (16-bit) -> INT8 / INT4',
-      '常用算法: GPTQ, AWQ, GGUF',
-      '效果: 显存减少 50-75%，推理速度显著提升',
+      'FP16 → INT8/INT4',
+      '算法: GPTQ, AWQ, GGUF',
+      '效果: 显存减 50-75%，速度提升',
     ],
     color: 'bg-blue-50 border-blue-200 text-blue-800',
   },
   {
-    title: '推理加速 (Inference)',
+    title: '推理加速',
     icon: '🚀',
-    desc: '通过优化显存管理和批处理提升吞吐量',
+    desc: '优化显存管理和批处理',
     details: [
-      'PagedAttention (vLLM): 解决显存碎片化',
-      'Continuous Batching: 动态插入新请求',
-      'FlashAttention: 硬件感知的注意力机制优化',
+      'PagedAttention: 解决显存碎片',
+      'Continuous Batching: 动态插入请求',
+      'FlashAttention: 硬件感知优化',
     ],
     color: 'bg-purple-50 border-purple-200 text-purple-800',
   },
   {
-    title: '部署框架 (Frameworks)',
+    title: '部署框架',
     icon: '🏗️',
-    desc: '成熟的生产级服务框架',
+    desc: '生产级服务框架',
     details: [
-      'vLLM: 高吞吐，易用，社区活跃',
+      'vLLM: 高吞吐，易用',
       'TensorRT-LLM: NVIDIA 极致优化',
-      'Ollama: 本地开发与边缘部署首选',
+      'Ollama: 本地开发首选',
       'TGI: Hugging Face 官方方案',
     ],
     color: 'bg-emerald-50 border-emerald-200 text-emerald-800',
@@ -63,56 +60,37 @@ const deploymentStrategies = [
 ]
 const selectedDeploymentStrategy = ref(deploymentStrategies[0])
 
-// --- Data for Edge Tab (Slide 27) ---
+// --- 端侧优势 ---
 const edgeAdvantages = [
   {
     title: '隐私安全',
-    desc: '数据无需上传云端，本地处理，彻底解决隐私风险。',
+    desc: '数据本地处理，无需上传云端',
     icon: '🔒',
   },
   {
     title: '低延迟',
-    desc: '消除网络传输耗时，实现即时响应，提升交互体验。',
+    desc: '消除网络传输，即时响应',
     icon: '⚡',
   },
   {
     title: '低成本',
-    desc: '利用终端算力，大幅降低云端推理成本。',
+    desc: '利用终端算力，降低云端成本',
     icon: '💰',
   },
   {
     title: '离线可用',
-    desc: '无网络环境下依然可用，适合车载/移动场景。',
+    desc: '无网络环境可用，适合移动场景',
     icon: '✈️',
   },
 ]
 
+// --- 小模型列表 ---
 const edgeModels = [
-  { name: 'Llama 3 8B', org: 'Meta', params: '8B', feat: '开源标杆，性能强劲' },
-  {
-    name: 'Phi-3 Mini',
-    org: 'Microsoft',
-    params: '3.8B',
-    feat: '以小博大，手机端可跑',
-  },
-  {
-    name: 'Gemma 2 9B',
-    org: 'Google',
-    params: '9B',
-    feat: '同源 Gemini，高效架构',
-  },
-  {
-    name: 'Qwen3-7B',
-    org: 'Alibaba',
-    params: '7B',
-    feat: '多语言能力出色，中文优',
-  },
-  {
-    name: 'Mistral 7B',
-    org: 'Mistral AI',
-    params: '7B',
-    feat: '高性能，社区生态丰富',
-  },
+  { name: 'Llama 3 8B', org: 'Meta', params: '8B', feat: '开源标杆' },
+  { name: 'Phi-3 Mini', org: 'Microsoft', params: '3.8B', feat: '手机端可跑' },
+  { name: 'Gemma 2 9B', org: 'Google', params: '9B', feat: '同源 Gemini' },
+  { name: 'Qwen3-7B', org: 'Alibaba', params: '7B', feat: '中文优化' },
+  { name: 'Mistral 7B', org: 'Mistral AI', params: '7B', feat: '高性能' },
 ]
 </script>
 
@@ -135,10 +113,10 @@ const edgeModels = [
               palette="indigo-fuchsia-emerald"
               class="leading-tight font-bold tracking-tight"
             >
-              LLM 落地综合策略
+              LLM 落地策略
             </HeadingGradient>
             <p class="text-sm text-slate-500 font-medium mt-1">
-              Comprehensive Strategy: 从模型选型、部署优化到端侧落地
+              模型选型、部署优化到端侧落地
             </p>
           </div>
 
@@ -177,7 +155,7 @@ const edgeModels = [
                   class="text-lg font-bold text-slate-800 flex items-center gap-2"
                 >
                   <ScaleIcon class="w-5 h-5 text-indigo-500" />
-                  路线抉择：开源 vs 闭源
+                  开源 vs 闭源
                 </h3>
 
                 <!-- Closed Source -->
@@ -187,35 +165,27 @@ const edgeModels = [
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
                       <CloudIcon class="w-5 h-5 text-sky-500" />
-                      <span class="font-bold text-slate-800"
-                        >商业闭源模型 (API)</span
-                      >
+                      <span class="font-bold text-slate-800">商业闭源模型</span>
                     </div>
                     <span
                       class="text-xs font-mono bg-sky-50 text-sky-700 px-2 py-0.5 rounded"
-                      >GPT-4, Claude 3.5</span
+                      >GPT-4, Claude</span
                     >
                   </div>
                   <ul class="text-sm text-slate-600 space-y-2 ml-1">
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
                       <span
-                        ><strong>SOTA 性能:</strong>
-                        拥有最强的推理与知识能力。</span
+                        ><strong>SOTA 性能:</strong> 最强推理与知识能力</span
                       >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span
-                        ><strong>免运维:</strong> 无需管理 GPU 基础设施。</span
-                      >
+                      <span><strong>免运维:</strong> 无需管理 GPU</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-red-500 text-xs mt-1">❌</span>
-                      <span
-                        ><strong>数据隐私:</strong>
-                        数据需发送至第三方服务器。</span
-                      >
+                      <span><strong>数据隐私:</strong> 数据需发送至第三方</span>
                     </li>
                   </ul>
                 </div>
@@ -228,12 +198,12 @@ const edgeModels = [
                     <div class="flex items-center gap-2">
                       <ServerStackIcon class="w-5 h-5 text-orange-500" />
                       <span class="font-bold text-slate-800"
-                        >开源私有化模型 (Local)</span
+                        >开源私有化模型</span
                       >
                     </div>
                     <span
                       class="text-xs font-mono bg-orange-50 text-orange-700 px-2 py-0.5 rounded"
-                      >Llama 3, Qwen 2</span
+                      >Llama, Qwen</span
                     >
                   </div>
                   <ul class="text-sm text-slate-600 space-y-2 ml-1">
@@ -241,21 +211,17 @@ const edgeModels = [
                       <span class="text-green-500 text-xs mt-1">✅</span>
                       <span
                         ><strong>绝对隐私:</strong>
-                        数据不出内网，适合金融/医疗。</span
+                        数据不出内网，适合金融/医疗</span
                       >
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-green-500 text-xs mt-1">✅</span>
-                      <span
-                        ><strong>可定制:</strong> 允许全量微调 (Full
-                        Fine-tuning)。</span
-                      >
+                      <span><strong>可定制:</strong> 允许全量微调</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-red-500 text-xs mt-1">❌</span>
                       <span
-                        ><strong>运维复杂:</strong> 需昂贵的 GPU
-                        集群与专业运维。</span
+                        ><strong>运维复杂:</strong> 需 GPU 集群与专业运维</span
                       >
                     </li>
                   </ul>
@@ -268,7 +234,7 @@ const edgeModels = [
                   class="text-lg font-bold text-slate-800 flex items-center gap-2"
                 >
                   <ChartBarIcon class="w-5 h-5 text-emerald-500" />
-                  成本优化与不可能三角
+                  成本优化与权衡
                 </h3>
 
                 <!-- The Triangle -->
@@ -334,7 +300,7 @@ const edgeModels = [
                     class="font-bold text-emerald-900 mb-2 flex items-center gap-2 text-sm"
                   >
                     <CurrencyDollarIcon class="w-4 h-4" />
-                    Token 经济学优化策略
+                    成本优化策略
                   </h4>
                   <div class="grid grid-cols-2 gap-2 text-xs">
                     <div
@@ -344,7 +310,7 @@ const edgeModels = [
                         >Prompt Caching</strong
                       >
                       <span class="text-slate-500"
-                        >缓存公共前缀，降低首字延迟与成本。</span
+                        >缓存公共前缀，降低延迟与成本</span
                       >
                     </div>
                     <div
@@ -354,7 +320,7 @@ const edgeModels = [
                         >Model Routing</strong
                       >
                       <span class="text-slate-500"
-                        >简单问题路由给小模型，复杂问题给大模型。</span
+                        >简单问题用小模型，复杂问题用大模型</span
                       >
                     </div>
                     <div
@@ -364,7 +330,7 @@ const edgeModels = [
                         >Batch Inference</strong
                       >
                       <span class="text-slate-500"
-                        >离线批量处理，通常可获 50% 折扣。</span
+                        >离线批量处理，可获 50% 折扣</span
                       >
                     </div>
                     <div
@@ -372,7 +338,7 @@ const edgeModels = [
                     >
                       <strong class="text-slate-800 block">Distillation</strong>
                       <span class="text-slate-500"
-                        >用大模型生成数据微调小模型。</span
+                        >用大模型生成数据微调小模型</span
                       >
                     </div>
                   </div>
@@ -489,7 +455,7 @@ const edgeModels = [
                           "
                         >
                           <p class="text-green-400 mb-2">
-                            # 显存占用 (Llama-3-70B)
+                            # 显存占用 (70B 模型)
                           </p>
                           <div class="space-y-2">
                             <div>
@@ -526,9 +492,7 @@ const edgeModels = [
                             selectedDeploymentStrategy.title.includes('推理')
                           "
                         >
-                          <p class="text-purple-400 mb-2">
-                            # vLLM PagedAttention
-                          </p>
+                          <p class="text-purple-400 mb-2"># vLLM 显存优化</p>
                           <div class="flex gap-2 overflow-x-auto pb-1">
                             <div
                               class="border border-slate-600 p-1 rounded w-16 flex-shrink-0 text-center"
@@ -591,7 +555,7 @@ const edgeModels = [
                   <h3
                     class="text-xl font-bold text-indigo-900 mb-3 flex items-center gap-2"
                   >
-                    <span>📱</span> 为什么趋势向"小"？
+                    <span>📱</span> 小模型优势
                   </h3>
                   <div class="grid grid-cols-2 gap-3">
                     <div
@@ -614,7 +578,7 @@ const edgeModels = [
                   class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm"
                 >
                   <h3 class="text-base font-bold text-slate-800 mb-2">
-                    关键技术驱动
+                    关键技术
                   </h3>
                   <div class="flex flex-wrap gap-2">
                     <span
@@ -652,7 +616,7 @@ const edgeModels = [
                   class="text-xl font-bold text-white mb-4 flex items-center gap-2 relative z-10"
                 >
                   <span class="text-purple-400">🚀</span>
-                  开源小模型名人堂
+                  主流小模型
                 </h3>
 
                 <div

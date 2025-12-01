@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -64,10 +64,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            目前最佳的应用场景
+            LLM 最佳应用场景
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            LLM 已经在这些领域展现出超越传统的生产力
+            已在这些领域展现出超越传统的生产力
           </p>
         </div>
 
@@ -82,11 +82,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">代码助手</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              代码生成、重构、解释与 Debug。
+              代码生成、重构、解释与调试
               <br />
-              <span class="text-xs text-slate-400"
-                >例: GitHub Copilot, Cursor</span
-              >
+              <span class="text-xs text-slate-400">GitHub Copilot, Cursor</span>
             </p>
           </div>
 
@@ -99,11 +97,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">内容创作</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              营销文案、博客撰写、邮件润色。
+              营销文案、博客撰写、邮件润色
               <br />
-              <span class="text-xs text-slate-400"
-                >例: Jasper, ChatGPT 写作</span
-              >
+              <span class="text-xs text-slate-400">Jasper, ChatGPT 写作</span>
             </p>
           </div>
 
@@ -116,11 +112,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">智能问答与搜索</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              直接获取答案而非链接，企业知识库问答。
+              直接获取答案而非链接，企业知识库问答
               <br />
-              <span class="text-xs text-slate-400"
-                >例: Perplexity, RAG 系统</span
-              >
+              <span class="text-xs text-slate-400">Perplexity, RAG 系统</span>
             </p>
           </div>
 
@@ -133,11 +127,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">翻译与摘要</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              高质量多语言互译，长文档/会议快速摘要。
+              高质量多语言互译，长文档/会议快速摘要
               <br />
-              <span class="text-xs text-slate-400"
-                >例: DeepL (AI 增强), 自动会议纪要</span
-              >
+              <span class="text-xs text-slate-400">DeepL AI, 自动会议纪要</span>
             </p>
           </div>
 
@@ -150,9 +142,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">辅助数据分析</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              自然语言转 SQL，数据解释与可视化建议。
+              自然语言转 SQL，数据解释与可视化建议
               <br />
-              <span class="text-xs text-slate-400">例: Text-to-SQL 工具</span>
+              <span class="text-xs text-slate-400">Text-to-SQL 工具</span>
             </p>
           </div>
 
@@ -165,9 +157,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3 class="font-bold text-slate-800 text-lg">智能客服</h3>
             </div>
             <p class="text-sm text-slate-600 leading-relaxed">
-              7x24 小时响应，处理常见问题与流程引导。
+              7×24 小时响应，处理常见问题与流程引导
               <br />
-              <span class="text-xs text-slate-400">例: 自动化工单处理</span>
+              <span class="text-xs text-slate-400">自动化工单处理</span>
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 import {
   ArrowRightIcon,
   CpuChipIcon,
@@ -150,7 +150,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <div>
                 <h3 class="text-lg font-bold text-slate-800">通用大模型</h3>
                 <p class="text-xs text-slate-500">
-                  General LLMs (e.g., GPT-4, Claude 3.5)
+                  General LLMs (e.g., GPT-5, Claude 4.5)
                 </p>
               </div>
             </div>

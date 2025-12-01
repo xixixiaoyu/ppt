@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 import {
-  ShieldCheckIcon,
-  CpuChipIcon,
-  CommandLineIcon,
-  ServerIcon,
-  SignalIcon,
   CheckCircleIcon,
+  CommandLineIcon,
+  CpuChipIcon,
   ExclamationCircleIcon,
+  ServerIcon,
+  ShieldCheckIcon,
+  SignalIcon,
 } from '@heroicons/vue/24/solid'
+import { onMounted, ref } from 'vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
-// --- 模拟实时监控数据 (来自 slide-26) ---
+// --- 实时监控数据 ---
 const latency = ref(120)
 const rpm = ref(450)
 const errorRate = ref(0.2)
@@ -25,39 +25,39 @@ const logs = ref<
   {
     time: '10:42:01',
     type: 'INFO',
-    msg: 'Request processed successfully (id=req_8a9v)',
+    msg: 'Request processed (id=req_8a9v)',
     color: 'text-green-400',
   },
   {
     time: '10:42:02',
     type: 'INFO',
-    msg: 'Cache hit for prompt_hash_x92 (latency=12ms)',
+    msg: 'Cache hit (latency=12ms)',
     color: 'text-green-400',
   },
 ])
 
-// 简单的动画效果
+// 实时数据更新
 onMounted(() => {
   setInterval(() => {
     latency.value = 100 + Math.random() * 40
     rpm.value = 400 + Math.floor(Math.random() * 100)
     errorRate.value = Math.random() * 0.5
 
-    // 模拟日志流滚动
+    // 日志流更新
     const newLogTypes = [
       {
         type: 'INFO',
-        msg: `Request processed (id=req_${Math.random().toString(36).substring(7)})`,
+        msg: `Request processed (id=${Math.random().toString(36).substring(7)})`,
         color: 'text-green-400',
       },
       {
         type: 'WARN',
-        msg: `Token limit approaching for user_${Math.floor(Math.random() * 9000)}`,
+        msg: `Token limit for user_${Math.floor(Math.random() * 9000)}`,
         color: 'text-yellow-400',
       },
       {
         type: 'DEBUG',
-        msg: 'Auto-scaling: checking replica count...',
+        msg: 'Auto-scaling: checking replicas...',
         color: 'text-blue-400',
       },
     ]
@@ -88,16 +88,16 @@ onMounted(() => {
             palette="indigo-fuchsia-emerald"
             class="leading-tight"
           >
-            可信赖工程与生产实践
+            可信赖工程与实践
           </HeadingGradient>
           <p class="mt-3 text-lg text-slate-600 max-w-4xl mx-auto">
-            Trustworthy Engineering: 从治理框架到生产环境的全链路保障
+            从治理框架到生产环境的全链路保障
           </p>
         </div>
 
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow min-h-0">
-          <!-- Column 1: Engineering Pillars (治理框架) -->
+          <!-- Column 1: 治理框架 -->
           <div class="flex flex-col gap-5 overflow-y-auto pr-2">
             <!-- 1. Safety & Security -->
             <div
@@ -107,9 +107,7 @@ onMounted(() => {
                 <div class="p-2 bg-red-100 rounded-lg">
                   <ShieldCheckIcon class="w-5 h-5 text-red-600" />
                 </div>
-                <h3 class="text-lg font-bold text-red-900">
-                  安全与合规 (Safety)
-                </h3>
+                <h3 class="text-lg font-bold text-red-900">安全与合规</h3>
               </div>
               <div class="space-y-2">
                 <div class="flex items-center gap-2 text-sm text-slate-700">
@@ -117,7 +115,7 @@ onMounted(() => {
                   <span class="font-medium">Prompt Injection 防护</span>
                   <span
                     class="text-xs bg-red-100 text-red-600 px-1.5 py-0.5 rounded"
-                    >NeMo/Rebuff</span
+                    >NeMo</span
                   >
                 </div>
                 <div class="flex items-center gap-2 text-sm text-slate-700">
@@ -130,7 +128,7 @@ onMounted(() => {
                 </div>
                 <div class="flex items-center gap-2 text-sm text-slate-700">
                   <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
-                  <span class="font-medium">内容风控与拦截</span>
+                  <span class="font-medium">内容风控拦截</span>
                 </div>
               </div>
             </div>
@@ -143,24 +141,20 @@ onMounted(() => {
                 <div class="p-2 bg-blue-100 rounded-lg">
                   <CpuChipIcon class="w-5 h-5 text-blue-600" />
                 </div>
-                <h3 class="text-lg font-bold text-blue-900">
-                  可靠性工程 (Reliability)
-                </h3>
+                <h3 class="text-lg font-bold text-blue-900">可靠性工程</h3>
               </div>
               <div class="space-y-2">
                 <div class="flex items-center gap-2 text-sm text-slate-700">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                  <span class="font-medium">幻觉抑制 (RAG 事实核查)</span>
+                  <span class="font-medium">幻觉抑制 (RAG 核查)</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-slate-700">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                  <span class="font-medium">结构化输出 (JSON Mode)</span>
+                  <span class="font-medium">结构化输出 (JSON)</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-slate-700">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                  <span class="font-medium"
-                    >兜底机制 (Fallback Strategies)</span
-                  >
+                  <span class="font-medium">兜底机制</span>
                 </div>
               </div>
             </div>
@@ -173,9 +167,7 @@ onMounted(() => {
                 <div class="p-2 bg-purple-100 rounded-lg">
                   <CommandLineIcon class="w-5 h-5 text-purple-600" />
                 </div>
-                <h3 class="text-lg font-bold text-purple-900">
-                  流程与评估 (LLMOps)
-                </h3>
+                <h3 class="text-lg font-bold text-purple-900">流程与评估</h3>
               </div>
               <div class="flex flex-wrap gap-2">
                 <span
@@ -194,7 +186,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <!-- Column 2: Live Monitor (生产监控) -->
+          <!-- Column 2: 生产监控 -->
           <div
             class="bg-slate-900 rounded-3xl p-6 text-slate-200 shadow-2xl flex flex-col gap-5 font-mono relative overflow-hidden border border-slate-800"
           >
@@ -213,9 +205,7 @@ onMounted(() => {
                 <div
                   class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"
                 ></div>
-                <span class="font-bold text-base text-white"
-                  >Production Monitor</span
-                >
+                <span class="font-bold text-base text-white">生产监控</span>
               </div>
               <span class="text-xs text-slate-500">us-east-1</span>
             </div>
@@ -228,7 +218,7 @@ onMounted(() => {
                 <div
                   class="text-xs text-slate-400 mb-1 flex items-center gap-1"
                 >
-                  <SignalIcon class="w-3 h-3" /> Latency (P99)
+                  <SignalIcon class="w-3 h-3" /> 延迟 (P99)
                 </div>
                 <div
                   class="text-2xl font-bold text-blue-400 flex items-end gap-2"
@@ -253,7 +243,7 @@ onMounted(() => {
                 <div
                   class="text-xs text-slate-400 mb-1 flex items-center gap-1"
                 >
-                  <ServerIcon class="w-3 h-3" /> Throughput
+                  <ServerIcon class="w-3 h-3" /> 吞吐量
                 </div>
                 <div
                   class="text-2xl font-bold text-emerald-400 flex items-end gap-2"
@@ -271,7 +261,7 @@ onMounted(() => {
               </div>
             </div>
 
-            <!-- Log Stream Simulation -->
+            <!-- 日志流 -->
             <div
               class="flex-grow bg-black/40 rounded-xl p-3 overflow-hidden text-xs space-y-1.5 border border-slate-700/30 z-10 font-mono"
             >
