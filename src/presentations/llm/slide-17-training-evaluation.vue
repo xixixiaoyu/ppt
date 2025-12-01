@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
+import TrainingCurveChart from '@/shared/charts/TrainingCurveChart.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
-import TrainingCurveChart from '@/shared/charts/TrainingCurveChart.vue'
+import Section from '@/shared/ui/Section.vue'
+import { ChartBarIcon, ScaleIcon } from '@heroicons/vue/24/outline'
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/vue/24/solid'
-import { ChartBarIcon, ScaleIcon } from '@heroicons/vue/24/outline'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -26,7 +26,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             训练评估与验证
           </HeadingGradient>
           <p class="mt-4 text-lg text-slate-600 max-w-4xl mx-auto">
-            如何判断模型“学会了”？不仅要看考试分数（测试指标），还要关注学习状态（训练指标）。
+            如何判断模型"学会了"？关注训练过程中的关键指标和验证状态。
           </p>
         </div>
 
@@ -46,9 +46,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h4 class="font-bold text-indigo-700 mb-2">
                 1. 训练集 (Training Set)
               </h4>
-              <p class="text-xs text-indigo-600/80 mb-2">
-                用于“学习”知识的数据集。
-              </p>
+              <p class="text-xs text-indigo-600/80 mb-2">模型学习的数据集</p>
               <ul class="space-y-2">
                 <li class="flex items-start gap-2">
                   <span
@@ -56,7 +54,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     >Loss</span
                   >
                   <span class="text-slate-600 text-sm"
-                    >损失函数值。越低越好，代表预测与真实值的偏差越小。</span
+                    >损失函数值，越低表示预测越准确</span
                   >
                 </li>
               </ul>
@@ -67,7 +65,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 2. 验证集 (Validation Set)
               </h4>
               <p class="text-xs text-amber-600/80 mb-2">
-                训练过程中用于“模拟考试”，调整超参数，监控过拟合。
+                训练中用于调整超参数，监控过拟合
               </p>
               <ul class="space-y-2">
                 <li class="flex items-start gap-2">
@@ -76,8 +74,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     >Val Loss</span
                   >
                   <span class="text-slate-600 text-sm"
-                    >验证集损失。若 Training Loss 降但 Val Loss
-                    升，则为过拟合。</span
+                    >验证集损失，上升时表明过拟合</span
                   >
                 </li>
               </ul>
@@ -90,7 +87,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 3. 测试集 (Test Set)
               </h4>
               <p class="text-xs text-fuchsia-600/80 mb-2">
-                训练结束后用于“期末大考”，评估最终模型能力。
+                训练完成后评估最终模型性能
               </p>
               <ul class="space-y-2">
                 <li class="flex items-start gap-2">
@@ -99,7 +96,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     >Benchmarks</span
                   >
                   <span class="text-slate-600 text-sm"
-                    >MMLU, C-Eval 等通用榜单。</span
+                    >MMLU、C-Eval 等标准评测榜单</span
                   >
                 </li>
               </ul>
@@ -127,8 +124,8 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                       训练成功 (Success)
                     </h4>
                     <p class="text-sm text-emerald-700 mt-1">
-                      Training Loss 和 Validation Loss
-                      同步下降并趋于收敛。泛化能力强。
+                      Training Loss 与 Validation Loss
+                      同步下降并收敛，模型泛化能力强
                     </p>
                   </div>
                 </div>
@@ -153,9 +150,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                       过拟合 (Overfitting)
                     </h4>
                     <p class="text-sm text-amber-700 mt-1">
-                      Training Loss 继续下降，但
-                      <span class="font-bold">Validation Loss 开始上升</span
-                      >。模型在“死记硬背”。
+                      Training Loss 下降但
+                      <span class="font-bold">Validation Loss 上升</span
+                      >，模型开始"死记硬背"
                     </p>
                   </div>
                 </div>

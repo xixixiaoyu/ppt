@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
@@ -18,18 +18,18 @@ const comparisonItems = [
   },
   {
     dimension: '幻觉风险',
-    rag: '较低 (基于检索事实)',
-    fineTuning: '可能存在 (记忆错误)',
+    rag: '低 (基于事实)',
+    fineTuning: '可能存在',
   },
   {
     dimension: '成本',
-    rag: '较低 (检索 + 推理)',
-    fineTuning: '较高 (训练 + 部署)',
+    rag: '低',
+    fineTuning: '高',
   },
   {
     dimension: '适用场景',
-    rag: '私有数据问答、实时资讯',
-    fineTuning: '特定风格/格式、领域术语',
+    rag: '私有数据问答',
+    fineTuning: '特定风格/格式',
   },
 ]
 </script>
@@ -48,8 +48,7 @@ const comparisonItems = [
             RAG vs Fine-Tuning
           </HeadingGradient>
           <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-4xl mx-auto">
-            如何选择？RAG 就像给模型这一“大脑”配备了参考书，而 Fine-Tuning
-            则是让“大脑”通过学习掌握新技能。
+            如何选择？RAG 给模型配备参考书，Fine-Tuning 让模型掌握新技能
           </p>
         </div>
 
@@ -92,9 +91,9 @@ const comparisonItems = [
           <div class="p-4 rounded-lg bg-indigo-50/50 border border-indigo-100">
             <h4 class="font-bold text-indigo-700 mb-2">选择 RAG 当...</h4>
             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
-              <li>你需要准确的、基于事实的回答</li>
-              <li>你的数据频繁更新</li>
-              <li>你需要引用来源</li>
+              <li>需要基于事实的准确回答</li>
+              <li>数据频繁更新</li>
+              <li>需要引用来源</li>
             </ul>
           </div>
           <div
@@ -104,9 +103,9 @@ const comparisonItems = [
               选择 Fine-Tuning 当...
             </h4>
             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
-              <li>你需要模型学习特定的语言风格</li>
-              <li>你需要模型输出特定的复杂格式</li>
-              <li>基础模型在你的特定任务上表现很差</li>
+              <li>需要特定语言风格</li>
+              <li>需要特定输出格式</li>
+              <li>基础模型表现不佳</li>
             </ul>
           </div>
         </div>

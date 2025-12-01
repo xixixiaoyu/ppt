@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -64,10 +64,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            如何接入大模型 API
+            API 接入指南
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            从获取密钥到完成第一次调用
+            三步完成大模型 API 集成
           </p>
         </div>
 
@@ -87,12 +87,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 获取 API Key
               </h3>
               <p class="mt-2 text-slate-600 text-sm">
-                前往模型提供商（如 OpenAI, Anthropic, DeepSeek
-                等）官网注册开发者账号，在后台创建 API Key。
+                在模型提供商官网注册并创建 API Key
                 <span
                   class="block mt-1 text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit"
                 >
-                  注意：Key 是你的身份凭证，切勿泄露给他人或提交到公开代码库。
+                  安全提示：API Key 相当于密码，请妥善保管
                 </span>
               </p>
             </div>
@@ -112,16 +111,15 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <ul class="mt-2 space-y-2 text-slate-600 text-sm">
                 <li class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                  <strong>官方 SDK：</strong> Python / Node.js (推荐，封装完善)
+                  <strong>官方 SDK：</strong> 推荐使用，功能完善
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                  <strong>HTTP 请求：</strong> 适用于 curl 或其他语言 (通用性强)
+                  <strong>HTTP 请求：</strong> 通用性强，适合所有语言
                 </li>
                 <li class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                  <strong>框架集成：</strong> LangChain / LlamaIndex
-                  (适合复杂应用)
+                  <strong>框架集成：</strong> LangChain 等适合复杂场景
                 </li>
               </ul>
             </div>
@@ -139,13 +137,12 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 环境配置
               </h3>
               <p class="mt-2 text-slate-600 text-sm">
-                推荐使用
+                使用
                 <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700"
                   >.env</code
                 >
-                文件管理环境变量。 例如：<code
-                  class="text-xs font-mono text-slate-500"
-                  >OPENAI_API_KEY=sk-proj-...</code
+                文件管理 API Key：<code class="text-xs font-mono text-slate-500"
+                  >OPENAI_API_KEY=sk-xxx</code
                 >
               </p>
             </div>
@@ -173,27 +170,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               ><code class="language-python"><span class="text-purple-400">import</span> <span class="text-slate-200">os</span>
 <span class="text-purple-400">from</span> <span class="text-slate-200">openai</span> <span class="text-purple-400">import</span> <span class="text-slate-200">OpenAI</span>
 
-<span class="text-slate-500"># 初始化客户端 (自动读取环境变量)</span>
+<span class="text-slate-500"># 初始化客户端</span>
 <span class="text-slate-200">client</span> <span class="text-blue-400">=</span> <span class="text-yellow-200">OpenAI</span><span class="text-slate-300">(</span>
     <span class="text-slate-200">api_key</span><span class="text-blue-400">=</span><span class="text-slate-200">os</span><span class="text-slate-300">.</span><span class="text-blue-300">environ</span><span class="text-slate-300">.</span><span class="text-blue-300">get</span><span class="text-slate-300">(</span><span class="text-green-400">"OPENAI_API_KEY"</span><span class="text-slate-300">)</span>
 <span class="text-slate-300">)</span>
 
-<span class="text-slate-500"># 发起对话请求</span>
+<span class="text-slate-500"># 发起请求</span>
 <span class="text-slate-200">response</span> <span class="text-blue-400">=</span> <span class="text-slate-200">client</span><span class="text-slate-300">.</span><span class="text-slate-200">chat</span><span class="text-slate-300">.</span><span class="text-slate-200">completions</span><span class="text-slate-300">.</span><span class="text-blue-300">create</span><span class="text-slate-300">(</span>
-    <span class="text-slate-200">model</span><span class="text-blue-400">=</span><span class="text-green-400">"gpt-4-turbo"</span><span class="text-slate-300">,</span>
+    <span class="text-slate-200">model</span><span class="text-blue-400">=</span><span class="text-green-400">"gpt-4"</span><span class="text-slate-300">,</span>
     <span class="text-slate-200">messages</span><span class="text-blue-400">=</span><span class="text-slate-300">[</span>
-        <span class="text-slate-300">{</span>
-            <span class="text-green-400">"role"</span><span class="text-slate-300">:</span> <span class="text-green-400">"system"</span><span class="text-slate-300">,</span>
-            <span class="text-green-400">"content"</span><span class="text-slate-300">:</span> <span class="text-green-400">"你是一个代码助手。"</span>
-        <span class="text-slate-300">},</span>
-        <span class="text-slate-300">{</span>
-            <span class="text-green-400">"role"</span><span class="text-slate-300">:</span> <span class="text-green-400">"user"</span><span class="text-slate-300">,</span>
-            <span class="text-green-400">"content"</span><span class="text-slate-300">:</span> <span class="text-green-400">"如何反转字符串？"</span>
-        <span class="text-slate-300">}</span>
+        <span class="text-slate-300">{</span><span class="text-green-400">"role"</span><span class="text-slate-300">:</span> <span class="text-green-400">"user"</span><span class="text-slate-300">,</span> <span class="text-green-400">"content"</span><span class="text-slate-300">:</span> <span class="text-green-400">"解释什么是 API"</span><span class="text-slate-300">}</span>
     <span class="text-slate-300">]</span>
 <span class="text-slate-300">)</span>
 
-<span class="text-slate-500"># 打印结果</span>
+<span class="text-slate-500"># 输出结果</span>
 <span class="text-blue-300">print</span><span class="text-slate-300">(</span><span class="text-slate-200">response</span><span class="text-slate-300">.</span><span class="text-slate-200">choices</span><span class="text-slate-300">[</span><span class="text-orange-400">0</span><span class="text-slate-300">].</span><span class="text-slate-200">message</span><span class="text-slate-300">.</span><span class="text-slate-200">content</span><span class="text-slate-300">)</span></code></pre>
             </div>
           </div>

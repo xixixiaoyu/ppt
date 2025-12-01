@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 import {
-  MagnifyingGlassIcon,
+  ArrowPathIcon,
+  ChartBarIcon,
+  CheckBadgeIcon,
+  CheckCircleIcon,
+  CircleStackIcon,
+} from '@heroicons/vue/24/outline'
+import {
+  BeakerIcon,
   ChatBubbleBottomCenterTextIcon,
+  MagnifyingGlassIcon,
   TrophyIcon,
   UserGroupIcon,
-  BeakerIcon,
 } from '@heroicons/vue/24/solid'
-import {
-  ChartBarIcon,
-  CheckCircleIcon,
-  CheckBadgeIcon,
-  CircleStackIcon,
-  ArrowPathIcon,
-} from '@heroicons/vue/24/outline'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -34,11 +34,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight"
           >
-            RAG 评估体系：维度、指标与方法
+            RAG 评估体系
           </HeadingGradient>
           <p class="mt-2 text-lg text-slate-600 max-w-4xl mx-auto">
-            从“检索”与“生成”双维度切入，利用 RAGAS
-            框架与多层次评估手段构建质量闭环。
+            检索与生成双维度评估，RAGAS 框架构建质量闭环
           </p>
         </div>
 
@@ -65,11 +64,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <div class="flex items-center gap-2 mb-1">
                     <ChartBarIcon class="w-4 h-4 text-blue-600" />
                     <h4 class="font-bold text-sm text-slate-800">
-                      Context Precision
+                      上下文精确度
                     </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
-                    检索内容的“纯度”，减少噪声干扰。
+                    检索内容纯度，减少噪声干扰
                   </p>
                 </div>
                 <div
@@ -78,11 +77,11 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   <div class="flex items-center gap-2 mb-1">
                     <CheckCircleIcon class="w-4 h-4 text-blue-600" />
                     <h4 class="font-bold text-sm text-slate-800">
-                      Context Recall
+                      上下文召回率
                     </h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
-                    关键信息是否“找全”了？(需 Ground Truth)
+                    关键信息完整性 (需标准答案)
                   </p>
                 </div>
               </div>
@@ -106,13 +105,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 >
                   <div class="flex items-center gap-2 mb-1">
                     <CheckBadgeIcon class="w-4 h-4 text-violet-600" />
-                    <h4 class="font-bold text-sm text-slate-800">
-                      Faithfulness
-                    </h4>
+                    <h4 class="font-bold text-sm text-slate-800">忠实度</h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
-                    <span class="font-semibold text-violet-700">忠实度</span
-                    >：回答是否完全基于上下文？(防幻觉)
+                    回答基于上下文程度 (防幻觉)
                   </p>
                 </div>
                 <div
@@ -120,13 +116,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 >
                   <div class="flex items-center gap-2 mb-1">
                     <BeakerIcon class="w-4 h-4 text-violet-600" />
-                    <h4 class="font-bold text-sm text-slate-800">
-                      Answer Relevance
-                    </h4>
+                    <h4 class="font-bold text-sm text-slate-800">回答相关性</h4>
                   </div>
                   <p class="text-xs text-slate-600 leading-snug">
-                    <span class="font-semibold text-violet-700">相关性</span
-                    >：是否直接回答了用户的问题？
+                    回答与用户问题的匹配度
                   </p>
                 </div>
               </div>
@@ -150,20 +143,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     class="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs"
                     >1</span
                   >
-                  金标准 (Golden Dataset)
+                  标准数据集
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
                     <span
                       class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"
                     ></span>
-                    <span>构建高质量 QA 对 (问题+标准答案)</span>
+                    <span>高质量问答对 (问题+标准答案)</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span
                       class="mt-1 w-1 h-1 bg-amber-400 rounded-full shrink-0"
                     ></span>
-                    <span>来源：人工专家标注 / 合成数据</span>
+                    <span>人工标注或合成数据</span>
                   </li>
                 </ul>
               </div>
@@ -184,7 +177,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs"
                     >2</span
                   >
-                  LLM-as-a-Judge
+                  LLM 自动评估
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
@@ -192,17 +185,18 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                       class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"
                     ></span>
                     <span
-                      >自动化评分核心 (如
+                      >基于
                       <span class="font-mono font-bold text-indigo-700"
                         >RAGAS</span
-                      >)</span
+                      >
+                      框架</span
                     >
                   </li>
                   <li class="flex items-start gap-2">
                     <span
                       class="mt-1 w-1 h-1 bg-indigo-400 rounded-full shrink-0"
                     ></span>
-                    <span>用 GPT-4 评价小模型，给出理由</span>
+                    <span>强模型评估弱模型，提供评分依据</span>
                   </li>
                 </ul>
               </div>
@@ -223,20 +217,20 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                     class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs"
                     >3</span
                   >
-                  人工反馈 (Human Loop)
+                  人工反馈
                 </h3>
                 <ul class="space-y-1.5 text-xs text-slate-700">
                   <li class="flex items-start gap-2">
                     <span
                       class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"
                     ></span>
-                    <span>最终检验：用户点赞/点踩</span>
+                    <span>用户点赞/点踩反馈</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span
                       class="mt-1 w-1 h-1 bg-emerald-400 rounded-full shrink-0"
                     ></span>
-                    <span>A/B Testing & Elo Rating</span>
+                    <span>A/B 测试与 Elo 评分</span>
                   </li>
                 </ul>
               </div>
@@ -249,10 +243,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
           >
             <ArrowPathIcon class="w-5 h-5 text-slate-500" />
             <p class="text-sm text-slate-700 font-medium">
-              <span class="text-slate-500">数据飞轮：</span> 收集 Bad Cases
-              <span class="text-slate-400">-></span> 优化检索/Prompt
-              <span class="text-slate-400">-></span> 更新评估集
-              <span class="text-slate-400">-></span> 持续迭代
+              <span class="text-slate-500">优化循环：</span> 收集问题案例
+              <span class="text-slate-400">→</span> 优化检索与提示
+              <span class="text-slate-400">→</span> 更新评估集
+              <span class="text-slate-400">→</span> 持续迭代
             </p>
           </div>
         </div>
