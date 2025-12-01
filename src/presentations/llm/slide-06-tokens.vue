@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -112,10 +112,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 定义与本质
               </h3>
               <p class="text-slate-600 leading-relaxed text-sm">
-                Token 是模型处理文本的最小单位。它不完全等同于单词或字符。
+                Token 是模型处理文本的最小单位，不等于单词或字符。
                 <br />
-                模型在预训练时，将文本切分为 Token
-                序列进行学习；在推理时，也是逐个 Token 进行生成。
+                模型训练和推理时，都将文本切分为 Token 序列进行处理。
               </p>
             </div>
 
@@ -170,7 +169,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                 </div>
                 <p class="text-xs text-slate-500 mt-2">
                   *注：不同模型的 Tokenizer 实现不同，中文通常比英文占用更多
-                  Token（但在新模型中已有显著优化）。
+                  Token（新模型已优化）。
                 </p>
               </div>
             </div>
@@ -260,8 +259,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                       >成本计算</span
                     >
                     <span class="text-sm text-slate-600"
-                      >大多数商业模型按 Token
-                      收费。输入（Prompt）通常比输出（Completion）便宜。</span
+                      >商业模型按 Token 收费，输入比输出便宜。</span
                     >
                   </div>
                 </li>
@@ -271,11 +269,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                   ></span>
                   <div>
                     <span class="font-semibold text-slate-800 block"
-                      >上下文窗口 (Context Window)</span
+                      >上下文窗口</span
                     >
                     <span class="text-sm text-slate-600"
-                      >模型有最大记忆容量（如
-                      128k）。超出部分会被截断，导致模型“遗忘”之前的对话。</span
+                      >模型有最大记忆容量（如 128k），超出部分会被截断。</span
                     >
                   </div>
                 </li>
@@ -288,8 +285,7 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
                       >性能与延迟</span
                     >
                     <span class="text-sm text-slate-600"
-                      >生成的 Token 越多，耗时越长。推理速度通常以 tokens/sec
-                      衡量。</span
+                      >生成 Token 越多，耗时越长，速度以 tokens/sec 衡量。</span
                     >
                   </div>
                 </li>
