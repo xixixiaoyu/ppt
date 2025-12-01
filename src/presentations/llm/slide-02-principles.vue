@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Section from '@/shared/ui/Section.vue'
 import Card from '@/shared/ui/Card.vue'
 import HeadingGradient from '@/shared/ui/HeadingGradient.vue'
+import Section from '@/shared/ui/Section.vue'
 
 defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 </script>
@@ -58,10 +58,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             palette="indigo-fuchsia-emerald"
             class="leading-tight font-bold tracking-tight"
           >
-            大模型基本原理
+            大模型核心原理
           </HeadingGradient>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-            从 Transformer 架构到“智能”的本质探讨
+            四大机制让机器理解语言
           </p>
         </div>
 
@@ -74,10 +74,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               class="text-lg font-bold text-slate-800 flex items-center gap-2"
             >
               <span class="text-indigo-500">01.</span> 自注意力机制
-              (Self-Attention)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              想象你在阅读长句时，为了理解"它"指代什么，会下意识回顾前文。模型也是如此：它计算输入序列中每个词与其他词的<strong>关联权重</strong>，从而捕捉长距离的依赖关系和丰富的上下文语境。
+              计算词与词之间的<strong>关联权重</strong>，让模型理解上下文关系。就像我们知道"它"指代什么，模型也能捕捉长距离依赖。
             </p>
           </div>
 
@@ -88,12 +87,9 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               class="text-lg font-bold text-slate-800 flex items-center gap-2"
             >
               <span class="text-fuchsia-500">02.</span> 前馈神经网络
-              (Feed-Forward)
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              如果 Attention 是"感知"上下文，那么 FFN
-              就是"消化"信息。它是一个巨大的记忆网络，对 Attention
-              提取的特征进行<strong>非线性变换和加工</strong>，将这些关联信息转化为更深层的语义表示。
+              对注意力提取的特征进行<strong>非线性变换</strong>，将简单的词关联转化为深层语义理解。相当于模型的"思考"过程。
             </p>
           </div>
 
@@ -103,10 +99,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <h3
               class="text-lg font-bold text-slate-800 flex items-center gap-2"
             >
-              <span class="text-emerald-500">03.</span> 概率预测 (Probability)
+              <span class="text-emerald-500">03.</span> 概率预测
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              大模型的核心是一个<strong>概率分布预测器</strong>。它不断学习词汇间的统计规律，为每个可能的下一个词分配概率，并通过采样策略生成连贯文本。
+              核心是<strong>预测下一个词</strong>。模型学习海量文本的统计规律，为每个可能的词分配概率，选择最合适的词来组成句子。
             </p>
           </div>
 
@@ -116,12 +112,10 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
             <h3
               class="text-lg font-bold text-slate-800 flex items-center gap-2"
             >
-              <span class="text-amber-500">04.</span> 位置编码 (Positional
-              Encoding)
+              <span class="text-amber-500">04.</span> 位置编码
             </h3>
             <p class="mt-3 text-slate-600 leading-relaxed text-sm">
-              由于 Transformer
-              本身不具备序列顺序感知能力，位置编码为每个词添加"位置信息"。这使得模型能够理解"我爱你"和"你爱我"的语义差异，捕捉语言的时序特性。
+              为每个词添加<strong>位置信息</strong>，让模型理解词序。没有它，"我爱你"和"你爱我"对模型来说是一样的。
             </p>
           </div>
         </div>
@@ -135,23 +129,21 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
               <h3
                 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2"
               >
-                <span class="text-2xl">🏛️</span> 中文房间实验 (The Chinese Room)
+                <span class="text-2xl">🏛️</span> 中文房间实验
               </h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                这是哲学家约翰·希尔勒提出的思想实验：想象一个不懂中文的人关在房间里，凭借一本极其详尽的“规则书”（类似模型的参数），将递进来的中文符号转化为正确的中文回复。
+                不懂中文的人按规则手册处理中文符号，输出正确回答。他真的理解中文吗？
               </p>
             </div>
             <div
               class="flex-1 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6"
             >
               <p class="text-slate-700 text-sm font-medium italic mb-2">
-                “房间里的人真的‘懂’中文吗？”
+                模型是真正理解，还是只会模式匹配？
               </p>
               <p class="text-slate-600 text-sm leading-relaxed">
-                这个实验揭示了<strong>语法 (Syntax)</strong> 与
-                <strong>语义 (Semantics)</strong> 的区别。目前的 LLM
-                是否只是在进行极其复杂的“符号操纵”，而没有产生真正的意识或理解？这至今仍是
-                AI 领域最迷人的未解之谜。
+                这揭示了<strong>语法</strong>与<strong>语义</strong>的区别。LLM
+                是在真正理解，还是在进行复杂的符号操作？这是 AI 领域的终极问题。
               </p>
             </div>
           </div>
