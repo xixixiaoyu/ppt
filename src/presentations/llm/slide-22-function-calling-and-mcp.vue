@@ -71,7 +71,8 @@ const mcpExample = `// MCP Server 标准定义
   >
     <div class="mb-6 text-center -mt-8">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70 leading-tight"
+        class="inline-block text-4xl md:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
+        style="letter-spacing: 0.025em; line-height: 1.2"
       >
         Function Calling & MCP
       </h2>

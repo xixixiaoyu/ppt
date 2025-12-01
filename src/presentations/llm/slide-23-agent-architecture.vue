@@ -66,7 +66,8 @@ const features = [
   <section class="container mx-auto max-w-7xl px-6 py-12 h-full flex flex-col">
     <div class="mb-8 text-center flex-shrink-0">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+        class="inline-block text-4xl md:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+        style="letter-spacing: 0.025em; line-height: 1.2"
       >
         AI Agent 智能体架构
       </h2>
