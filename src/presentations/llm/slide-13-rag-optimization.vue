@@ -6,54 +6,54 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 const strategies = [
   {
     id: 'data',
-    title: '数据与索引优化 (Data & Indexing)',
+    title: '数据与索引优化',
     icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>',
     items: [
       {
-        name: '更小的分块 (Small-to-Big)',
-        desc: '检索时使用小块文本以提高精准度，但给 LLM 时提供其所属的更大父文档块，补充上下文。',
+        name: '小块检索，大块生成',
+        desc: '检索用小块提高精准度，生成用大块提供完整上下文。',
       },
       {
-        name: '元数据过滤 (Metadata Filtering)',
-        desc: '为文档添加时间、作者、类别等元数据，检索时先过滤，缩小范围，提高准确率。',
+        name: '元数据过滤',
+        desc: '添加时间、类别等标签，检索前先过滤，缩小搜索范围。',
       },
       {
         name: '数据清洗',
-        desc: '去除文档中的噪声（HTML 标签、页眉页脚、乱码），保证输入质量。',
+        desc: '去除 HTML 标签、页眉页脚等噪声，确保数据质量。',
       },
     ],
   },
   {
     id: 'retrieval',
-    title: '检索策略优化 (Retrieval)',
+    title: '检索策略优化',
     icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>',
     items: [
       {
-        name: '混合检索 (Hybrid Search)',
-        desc: '结合关键词搜索 (BM25) 和向量搜索 (Vector Search)。关键词擅长精确匹配（如人名、型号），向量擅长语义理解。',
+        name: '混合检索',
+        desc: '结合关键词搜索（精确匹配）和向量搜索（语义理解），优势互补。',
       },
       {
-        name: '查询重写 (Query Rewriting)',
-        desc: 'LLM 将用户的模糊问题改写为更适合检索的形式，或分解为多个子问题。',
+        name: '查询重写',
+        desc: '将模糊问题改写为更易检索的形式，或分解为多个子问题。',
       },
       {
-        name: '假设性文档嵌入 (HyDE)',
-        desc: '先让 LLM 生成一个假设性答案，再用该答案去检索相似的真实文档。',
+        name: '假设性文档嵌入',
+        desc: '先生成假设答案，再用它检索相似的真实文档。',
       },
     ],
   },
   {
     id: 'post-retrieval',
-    title: '检索后处理 (Post-Retrieval)',
+    title: '检索后处理',
     icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" /></svg>',
     items: [
       {
-        name: '重排序 (Reranking)',
-        desc: '使用专门的 Rerank 模型（如 Cohere Rerank, BGE-Reranker）对召回的 Top-K 结果进行精细排序，将最相关的排在最前。',
+        name: '重排序',
+        desc: '使用专门模型对检索结果重新排序，将最相关内容置顶。',
       },
       {
         name: '上下文压缩',
-        desc: '仅提取检索文档中与问题相关的关键句子，减少无关信息对 LLM 的干扰。',
+        desc: '只提取与问题相关的关键句子，减少无关信息干扰。',
       },
     ],
   },
@@ -70,10 +70,10 @@ const activeStrategy = ref('data')
       <h2
         class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
       >
-        提升 RAG 准确性：高级优化策略
+        RAG 优化策略
       </h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        从单纯的“检索-生成”进化为更智能的系统，关键在于每一个环节的精细调优。
+        精调每个环节，从"检索-生成"升级为智能系统
       </p>
     </div>
 
@@ -168,17 +168,14 @@ const activeStrategy = ref('data')
                 />
               </svg>
               <span v-if="activeStrategy === 'data'">
-                数据质量是 RAG
-                的上限。如果源数据混乱或切分不当，后续模型再强也无法弥补
-                (Garbage In, Garbage Out)。
+                数据质量决定 RAG 上限。垃圾进，垃圾出 (Garbage In, Garbage
+                Out)。
               </span>
               <span v-else-if="activeStrategy === 'retrieval'">
-                检索优化的核心是弥补“语义匹配”的不足，让机器更懂用户的真实意图。
+                检索优化核心：弥补语义匹配不足，更懂用户真实意图。
               </span>
               <span v-else>
-                重排序 (Rerank) 通常是提升 RAG
-                效果性价比最高的单一手段，虽然会增加少量延迟，但能显著提升 Top-1
-                准确率。
+                重排序是提升 RAG 效果性价比最高的方法，显著提高准确率。
               </span>
             </div>
           </div>

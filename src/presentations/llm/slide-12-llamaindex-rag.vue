@@ -6,33 +6,33 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 
 const steps = [
   {
-    title: '1. 加载数据 (Loading)',
-    desc: '使用 LlamaIndex 的 SimpleDirectoryReader 等加载器，从文件（PDF, Markdown）、API（Notion, Slack）或数据库中加载原始数据。',
+    title: '1. 加载数据',
+    desc: '从各种数据源（文件、API、数据库）加载原始文档',
     code: `import { SimpleDirectoryReader, VectorStoreIndex } from "llamaindex";
 
-// 1. 加载文档
+// 加载文档
 const reader = new SimpleDirectoryReader();
 const documents = await reader.loadData({ directoryPath: "./data" });`,
   },
   {
-    title: '2. 索引构建 (Indexing)',
-    desc: '将加载的文档切分成节点 (Nodes)，计算 Embeddings，并构建向量索引。这一步是 RAG 的核心，决定了后续检索的质量。',
-    code: `// 2. 构建索引 (自动处理分块和向量化)
+    title: '2. 构建索引',
+    desc: '文档分块、向量化，构建可检索的向量索引',
+    code: `// 构建索引（自动分块和向量化）
 const index = await VectorStoreIndex.fromDocuments(documents);`,
   },
   {
-    title: '3. 存储 (Storing)',
-    desc: '虽然示例中是内存索引，但生产环境通常会将索引持久化存储到向量数据库（如 Pinecone, Milvus, Chroma）中，以便长期使用。',
-    code: `// (可选) 持久化存储示例
+    title: '3. 持久化存储',
+    desc: '将索引保存到向量数据库，供长期使用',
+    code: `// 持久化存储（可选）
 // await index.storageContext.persist("./storage");`,
   },
   {
-    title: '4. 查询与生成 (Querying)',
-    desc: '创建一个查询引擎 (Query Engine)，它封装了检索 (Retrieval) 和合成 (Synthesis) 的过程。接收用户问题，检索相关片段，并生成最终回答。',
-    code: `// 3. 创建查询引擎
+    title: '4. 查询生成',
+    desc: '检索相关内容并生成回答',
+    code: `// 创建查询引擎
 const queryEngine = index.asQueryEngine();
 
-// 4. 提问
+// 提问并获取回答
 const response = await queryEngine.query({
   query: "LlamaIndex 的主要功能是什么？",
 });
@@ -59,8 +59,7 @@ const currentCode = computed(() => {
         使用 LlamaIndex 构建 RAG
       </h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        LlamaIndex (GPT Index) 是一个专为 LLM 应用设计的数据框架，极大简化了 RAG
-        的构建流程。
+        LlamaIndex 是专为 LLM 应用设计的数据框架，简化 RAG 构建流程
       </p>
     </div>
 

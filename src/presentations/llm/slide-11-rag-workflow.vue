@@ -6,55 +6,49 @@ defineProps<{ isActive?: boolean; isPreview?: boolean }>()
 const tabs = [
   {
     id: 'offline',
-    label: '离线阶段：数据准备 (Offline)',
+    label: '离线阶段：数据准备',
     content: [
-      '数据提取：从不同数据源 (如 Confluence, Notion, GitHub) 提取文档',
-      '文本解析与分块：加载文档并将其切割成更小、更易于检索的文本块 (Chunk)',
-      '向量化 (Embedding)：调用模型将文本块转换为高维向量',
-      '建立索引：将文本块及其向量存储到专门的向量数据库中',
+      '数据提取：从各种数据源提取文档',
+      '文本分块：将文档切割成更小的文本块',
+      '向量化：将文本块转换为高维向量',
+      '建立索引：存储到向量数据库中',
     ],
   },
   {
     id: 'online',
-    label: '在线阶段：检索与生成 (Online)',
+    label: '在线阶段：检索与生成',
     content: [
-      '问题向量化：当用户提问时，同样调用 Embedding 模型将其转换为向量',
-      '相似度检索：在向量数据库中执行相似度搜索，召回与问题最相关的 Top-K 个文本块',
-      '构建上下文与提示词 (Prompt)：将召回的文本块与原始问题整合成一个丰富的 Prompt',
-      '调用大模型生成答案：将构建好的 Prompt 发送给大模型，获取最终答案',
+      '问题向量化：将用户问题转换为向量',
+      '相似度检索：搜索最相关的文本块',
+      '构建提示词：整合检索结果与问题',
+      '生成答案：调用大模型生成最终答案',
     ],
   },
 ]
 const activeTab = ref('offline')
 
 const indexExample = `{
-  'chunk_id': 'employee-handbook.md#3',
-  'doc_id': 'employee-handbook.md',
-  'text': '请假流程：员工需提前 3 天在 HR 系统提交申请，直属领导审批。',
-  'embedding': [0.012, -0.234, 0.443, -0.017, 0.128, -0.065, 0.201, 0.089],
-  'metadata': {
-    'source': 'HR 手册',
-    'page': 12,
-    'tags': ['流程', '假期']
+  "chunk_id": "doc-001#3",
+  "text": "请假流程：员工需提前 3 天在 HR 系统提交申请。",
+  "embedding": [0.012, -0.234, 0.443, ...],
+  "metadata": {
+    "source": "HR 手册",
+    "page": 12
   }
 }`
 
-const promptExample = `你是一位知识库问答助手。根据给定的上下文回答用户问题；若答案不在上下文中，请明确说明并提出澄清问题。
+const promptExample = `你是一位知识库问答助手，根据上下文回答用户问题。
 
-问题：
-“项目管理用什么工具？”
+问题：项目管理用什么工具？
 
 上下文：
-[1] 文档 'project-management.md' 段落 3：
-我们统一使用 Jira 进行需求、任务与缺陷管理，所有团队需在入职一周内创建项目并配置工作流。
-
-[2] 文档 'onboarding.md' 段落 7：
-新成员需要加入公司 Jira 组织，并在个人主页完成权限申请。
+[1] 我们统一使用 Jira 进行需求、任务与缺陷管理
+[2] 新成员需要加入公司 Jira 组织并完成权限申请
 
 要求：
-- 直接给出结论并简要引用依据
-- 使用中文作答，保持简洁准确
-- 若不确定，请给出澄清问题`
+- 直接给出答案并引用依据
+- 保持简洁准确
+- 若不确定，请提出澄清问题`
 
 const highlightedIndexExample = computed(() => highlight(indexExample, 'json'))
 const highlightedPromptExample = computed(() =>
@@ -73,7 +67,7 @@ const highlightedPromptExample = computed(() =>
         RAG 的工作流程
       </h2>
       <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        流程分为“离线的数据准备”和“在线的检索生成”两个阶段。
+        RAG 分为离线数据准备和在线检索生成两个阶段
       </p>
     </div>
 

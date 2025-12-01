@@ -8,47 +8,44 @@ const tabs = [
   {
     id: 'fc',
     label: 'Function Calling (工具调用)',
-    description:
-      '赋予大模型“手”和“眼”，使其能主动与外部世界交互，而不只是“空谈”。',
+    description: '让大模型能够调用外部工具，实现与真实世界的交互。',
     points: [
-      '核心原理：模型不再只输出文本，而是可以输出结构化的“函数调用请求”（如 JSON）。',
-      '执行闭环：用户提问 → 模型决定调用工具 → 系统执行代码/API → 结果回传模型 → 模型生成最终回答。',
-      '应用场景：实时联网搜索、查询内部数据库、操作办公软件、编写并运行代码等。',
+      '核心原理：模型输出结构化的函数调用请求（JSON 格式），而非纯文本。',
+      '执行流程：用户提问 → 模型决定调用工具 → 系统执行 → 结果回传 → 生成回答。',
+      '典型应用：联网搜索、数据库查询、软件操作、代码执行等。',
     ],
   },
   {
     id: 'mcp',
     label: 'MCP (Model Context Protocol)',
     description:
-      '由 Anthropic 提出的开放标准，旨在标准化 AI 模型与数据源/工具之间的连接。',
+      'Anthropic 提出的开放标准，统一 AI 模型与数据源/工具的连接方式。',
     points: [
-      '解决痛点：每个数据源（Slack, GitHub, Google Drive）都要单独为每个 AI 应用写适配器（N x M 复杂度）。',
-      '核心类比：AI 时代的 USB 协议。只需开发一次 MCP Server，任何支持 MCP 的客户端（Claude Desktop, Cursor, IDEs）都能直接使用。',
-      '三大要素：Resources (资源/数据), Prompts (提示词模板), Tools (可执行工具)。',
+      '解决问题：避免为每个数据源和 AI 应用重复开发适配器（降低 N×M 复杂度）。',
+      '核心价值：一次开发，多处使用。类似 AI 时代的 USB 协议。',
+      '三大组件：Resources（数据资源）、Prompts（提示模板）、Tools（可执行工具）。',
     ],
   },
 ]
 
-const fcExample = `// 1. 用户提问: "帮我查下北京今天的天气"
-// 2. 模型思考与输出 (Function Call):
+const fcExample = `// 用户提问: "北京今天天气如何？"
+
+// 模型输出函数调用:
 {
-  "thought": "用户询问天气，我需要调用 get_weather 工具",
   "tool_calls": [{
     "name": "get_weather",
     "arguments": { "location": "Beijing" }
   }]
 }
 
-// 3. 系统执行函数 (API Request) -> 返回 "25°C, 晴朗"
+// 系统执行并返回: "25°C, 晴朗"
 
-// 4. 模型接收工具结果 (Observation)
+// 模型最终回答:
+"北京今天天气晴朗，气温 25°C。"`
 
-// 5. 模型最终回答:
-"北京今天天气不错，晴朗，气温 25°C。"`
-
-const mcpExample = `// MCP Server 定义 (标准化接口)
+const mcpExample = `// MCP Server 标准定义
 {
-  "name": "weather-mcp-server",
+  "name": "weather-server",
   "tools": [{
     "name": "get_forecast",
     "description": "获取天气预报",
@@ -61,26 +58,25 @@ const mcpExample = `// MCP Server 定义 (标准化接口)
   }]
 }
 
-// 🔌 连接效应：
-// 一旦这个 MCP Server 启动...
-// - Claude Desktop 客户端 ✅ 自动识别并能使用
-// - Cursor 编辑器      ✅ 自动识别并能使用
-// - 其他 AI Agent      ✅ 自动识别并能使用
-// 无需重复开发集成代码！`
+// 一次开发，多处使用：
+// ✅ Claude Desktop
+// ✅ Cursor 编辑器
+// ✅ 其他 AI 应用
+// 无需重复集成！`
 </script>
 
 <template>
   <section
-    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 py-12 lg:py-16"
+    class="container mx-auto max-w-6xl px-6 md:px-8 lg:px-12 pt-8 lg:pt-10 pb-12 lg:pb-16"
   >
-    <div class="mb-8 text-center">
+    <div class="mb-6 text-center -mt-8">
       <h2
-        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70"
+        class="inline-block text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent/90 to-accent/70 leading-tight"
       >
         Function Calling & MCP
       </h2>
-      <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
-        让大模型拥有“行动力”，并建立通用的“连接标准”。
+      <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
+        赋予大模型执行能力，建立统一的连接标准。
       </p>
     </div>
 
