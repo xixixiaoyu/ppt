@@ -101,7 +101,7 @@ const edgeModels = [
       class="h-full flex flex-col bg-slate-50/50 overflow-hidden"
     >
       <!-- Header Area -->
-      <div class="bg-white border-b border-slate-200 px-6 py-4 shrink-0">
+      <div class="bg-white border-b border-slate-200 px-8 py-6 shrink-0">
         <div
           class="flex flex-col md:flex-row md:items-center justify-between gap-4"
         >
@@ -141,14 +141,14 @@ const edgeModels = [
       </div>
 
       <!-- Main Content Area -->
-      <div class="flex-1 overflow-hidden relative p-6">
+      <div class="flex-1 overflow-hidden relative p-8">
         <Transition name="fade" mode="out-in">
           <!-- Tab 1: Selection & Economics -->
           <div
             v-if="activeTab === 'selection'"
             class="h-full flex flex-col gap-6 overflow-y-auto"
           >
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
               <!-- Left: Open vs Closed -->
               <div class="flex flex-col gap-4">
                 <h3
@@ -160,7 +160,7 @@ const edgeModels = [
 
                 <!-- Closed Source -->
                 <div
-                  class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm"
+                  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm"
                 >
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
@@ -192,7 +192,7 @@ const edgeModels = [
 
                 <!-- Open Source -->
                 <div
-                  class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm"
+                  class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm"
                 >
                   <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
@@ -239,7 +239,7 @@ const edgeModels = [
 
                 <!-- The Triangle -->
                 <div
-                  class="bg-white rounded-xl p-4 border border-slate-200 flex-1 flex flex-col items-center justify-center relative overflow-hidden min-h-[200px]"
+                  class="bg-white rounded-xl p-6 border border-slate-200 flex-1 flex flex-col items-center justify-center relative overflow-hidden min-h-[220px]"
                 >
                   <div class="relative w-48 h-40 scale-90">
                     <div
@@ -294,7 +294,7 @@ const edgeModels = [
 
                 <!-- Cost Saving Tips -->
                 <div
-                  class="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100"
+                  class="bg-emerald-50/50 rounded-xl p-6 border border-emerald-100"
                 >
                   <h4
                     class="font-bold text-emerald-900 mb-2 flex items-center gap-2 text-sm"
@@ -352,14 +352,14 @@ const edgeModels = [
             v-else-if="activeTab === 'deployment'"
             class="h-full flex flex-col gap-6 overflow-y-auto"
           >
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
               <!-- Left: Strategy List -->
-              <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="lg:col-span-5 flex flex-col gap-4">
                 <button
                   v-for="strategy in deploymentStrategies"
                   :key="strategy.title"
                   @click="selectedDeploymentStrategy = strategy"
-                  class="text-left p-4 rounded-xl border-2 transition-all duration-200 hover:shadow-md group relative overflow-hidden"
+                  class="text-left p-5 rounded-xl border-2 transition-all duration-200 hover:shadow-md group relative overflow-hidden"
                   :class="
                     selectedDeploymentStrategy.title === strategy.title
                       ? strategy.color + ' border-current shadow-md'
@@ -399,7 +399,7 @@ const edgeModels = [
 
               <!-- Right: Detail Visualization -->
               <div
-                class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-lg p-6 flex flex-col relative overflow-hidden"
+                class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-lg p-8 flex flex-col relative overflow-hidden"
               >
                 <div
                   class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-slate-50 to-slate-100 rounded-bl-full -z-0 opacity-50"
@@ -546,22 +546,22 @@ const edgeModels = [
             v-else-if="activeTab === 'edge'"
             class="h-full flex flex-col gap-6 overflow-y-auto"
           >
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 h-full">
               <!-- Left: Advantages -->
               <div class="flex flex-col gap-4 justify-center">
                 <div
-                  class="bg-indigo-50/50 rounded-xl p-5 border border-indigo-100"
+                  class="bg-indigo-50/50 rounded-xl p-7 border border-indigo-100"
                 >
                   <h3
                     class="text-xl font-bold text-indigo-900 mb-3 flex items-center gap-2"
                   >
                     <span>📱</span> 小模型优势
                   </h3>
-                  <div class="grid grid-cols-2 gap-3">
+                  <div class="grid grid-cols-2 gap-4">
                     <div
                       v-for="adv in edgeAdvantages"
                       :key="adv.title"
-                      class="bg-white p-3 rounded-lg shadow-sm border border-slate-100"
+                      class="bg-white p-4 rounded-lg shadow-sm border border-slate-100"
                     >
                       <div class="text-2xl mb-1">{{ adv.icon }}</div>
                       <h4 class="font-bold text-slate-800 text-sm mb-0.5">
@@ -575,7 +575,7 @@ const edgeModels = [
                 </div>
 
                 <div
-                  class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm"
+                  class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm"
                 >
                   <h3 class="text-base font-bold text-slate-800 mb-2">
                     关键技术
@@ -603,7 +603,7 @@ const edgeModels = [
 
               <!-- Right: Hall of Fame -->
               <div
-                class="bg-slate-900 rounded-2xl p-6 text-slate-200 shadow-xl flex flex-col relative overflow-hidden"
+                class="bg-slate-900 rounded-2xl p-8 text-slate-200 shadow-xl flex flex-col relative overflow-hidden"
               >
                 <div
                   class="absolute top-0 right-0 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl -mr-10 -mt-10"
@@ -625,7 +625,7 @@ const edgeModels = [
                   <div
                     v-for="model in edgeModels"
                     :key="model.name"
-                    class="group bg-slate-800/50 hover:bg-slate-800 transition-colors p-3 rounded-lg border border-slate-700 flex items-center justify-between"
+                    class="group bg-slate-800/50 hover:bg-slate-800 transition-colors p-4 rounded-lg border border-slate-700 flex items-center justify-between"
                   >
                     <div>
                       <div class="flex items-center gap-2 mb-0.5">
